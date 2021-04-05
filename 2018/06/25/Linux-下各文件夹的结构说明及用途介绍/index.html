@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="文件夹结构,转载,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="文件夹结构 /bin: 二进制可执行命令 /dev: 设备特殊文件 /etc: 系统管理和配置文件 /etc/rc.d: 启动的配置文件和脚本 /home: 用户家目录 /lib: 标准程序设计库，又叫动态链接共享库 /sbin: 系统管理命令 /tmp: 存储公用的临时文件 /root: 系统管理员主目录 /mnt: 用于临时挂载其他文件系统 /lost+found: 系统非正常关机而留下“无家">
+<meta name="keywords" content="文件夹结构,转载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 下各文件夹的结构说明及用途介绍">
+<meta property="og:url" content="http://yoursite.com/2018/06/25/Linux-下各文件夹的结构说明及用途介绍/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="文件夹结构 /bin: 二进制可执行命令 /dev: 设备特殊文件 /etc: 系统管理和配置文件 /etc/rc.d: 启动的配置文件和脚本 /home: 用户家目录 /lib: 标准程序设计库，又叫动态链接共享库 /sbin: 系统管理命令 /tmp: 存储公用的临时文件 /root: 系统管理员主目录 /mnt: 用于临时挂载其他文件系统 /lost+found: 系统非正常关机而留下“无家">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-04-05T08:46:05.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 下各文件夹的结构说明及用途介绍">
+<meta name="twitter:description" content="文件夹结构 /bin: 二进制可执行命令 /dev: 设备特殊文件 /etc: 系统管理和配置文件 /etc/rc.d: 启动的配置文件和脚本 /home: 用户家目录 /lib: 标准程序设计库，又叫动态链接共享库 /sbin: 系统管理命令 /tmp: 存储公用的临时文件 /root: 系统管理员主目录 /mnt: 用于临时挂载其他文件系统 /lost+found: 系统非正常关机而留下“无家">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/25/Linux-下各文件夹的结构说明及用途介绍/">
+
+
+
+
+
+  <title>Linux 下各文件夹的结构说明及用途介绍 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/Linux-下各文件夹的结构说明及用途介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux 下各文件夹的结构说明及用途介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-25T20:23:33+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="文件夹结构"><a href="#文件夹结构" class="headerlink" title="文件夹结构"></a>文件夹结构</h2><ul>
+<li>/bin: 二进制可执行命令</li>
+<li>/dev: 设备特殊文件</li>
+<li>/etc: 系统管理和配置文件</li>
+<li>/etc/rc.d: 启动的配置文件和脚本</li>
+<li>/home: 用户家目录</li>
+<li>/lib: 标准程序设计库，又叫动态链接共享库</li>
+<li>/sbin: 系统管理命令</li>
+<li>/tmp: 存储公用的临时文件</li>
+<li>/root: 系统管理员主目录</li>
+<li>/mnt: 用于临时挂载其他文件系统</li>
+<li>/lost+found: 系统非正常关机而留下“无家可归”的文件就存放于此</li>
+<li>/proc: 虚拟目录，是系统的内存映射，可直接访问这个目录来获取系统信息</li>
+<li>/var: 某些大文件的溢出区，各种服务的日志文件就是存放于此</li>
+<li>/usr: 最庞大的目录，要用到的应用程序和文件几乎都在这个目录下<ul>
+<li>/usr/x11r6: 存放 x window 的目录</li>
+<li>/usr/bin； 众多的应用程序</li>
+<li>/usr/sbin: 存放一些超级用户的管理程序</li>
+<li>/usr/doc: linux 文档</li>
+<li>/usr/include: linux 下开发和编译应用程序所需要的头文件</li>
+<li>/usr/lib: 常用的动态链接库和软件包的配置文件</li>
+<li>/usr/man: 帮助文档</li>
+<li>/usr/src: 源代码。内核源代码存放在该文件夹下的 linux 文件夹下面</li>
+<li>/usr/local/bin: 本地增加的命令</li>
+<li>/usr/local/lib: 本地增加的库根文件系统<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="用途介绍"><a href="#用途介绍" class="headerlink" title="用途介绍"></a>用途介绍</h2><ul>
+<li><p>/bin目录</p>
+<p>  /bin目录包含了引导启动所需的命令或普通用户可能用的命令(可能在引导启动后)。这些命 令都是二进制文件的可执行程序(bin是binary的简称)，多是系统中重要的系统文件。</p>
+</li>
+<li><p>/sbin目录</p>
+<p>  /sbin目录类似/bin ，也用于存储二进制文件。因为其中的大部分文件多是系统管理员使用的基本的系统程序，所以虽然普通用户必要且允许时可以使用，但一般不给普通用户使用。</p>
+</li>
+<li><p>/etc目录</p>
+<p>  /etc目录存放着各种系统配置文件，其中包括了用户信息文件/etc/passwd，系统初始化文件/etc/rc等。linux正是靠这些文件才得以正常地运行。</p>
+</li>
+<li><p>/root目录</p>
+<p>  /root目录是超级用户的目录。</p>
+</li>
+<li><p>/lib目录</p>
+<p>  /lib目录是根文件系统上的程序所需的共享库，存放了根文件系统程序运行所需的共享文件。 这些文件包含了可被许多程序共享的代码，以避免每个程序都包含有相同的子程序的副本，故可以使得可执行文件变得更小，节省空间。</p>
+</li>
+<li><p>/lib/modules目录</p>
+<p>  /lib/modules目录包含系统核心可加载各种模块，尤其是那些在恢复损坏的系统时重新引导系统所需的模块(例如网络和文件系统驱动)。</p>
+</li>
+<li><p>/dev目录</p>
+<p> /dev目录存放了设备文件，即设备驱动程序，用户通过这些文件访问外部设备。比如，用户可以通过访问/dev/mouse来访问鼠标的输入，就像访问其他文件一样。</p>
+</li>
+<li><p>/tmp目录</p>
+<p>  /tmp目录存放程序在运行时产生的信息和数据。但在引导启动后，运行的程序最好使用/var/tmp来 代替/tmp，因为前者可能拥有一个更大的磁盘空间。</p>
+</li>
+<li><p>/boot目录</p>
+<p>  /boot目录存放引导加载器(bootstrap loader)使用的文件，如lilo，核心映像也经常放在这里，而不是放在根目录中。但是如果有许多核心映像，这个目录就可能变得很大，这时使用单独的 文件系统会更好一些。还有一点要注意的是，要确保核心映像必须在ide硬盘的前1024柱面内。</p>
+</li>
+<li><p>/mnt目录</p>
+<p>  /mnt目录是系统管理员临时安装(mount)文件系统的安装点。程序并不自动支持安装到/mnt 。/mnt下面可以分为许多子目录，例如/mnt/dosa可能是使用 msdos文件系统的软驱，而/mnt/exta可能是使用ext2文件系统的软驱，/mnt/cdrom光驱等等。</p>
+</li>
+</ul>
+<ul>
+<li><p>/proc, /usr, /var, /home目录</p>
+<p>  其他文件系统的安装点。</p>
+<p>  目录树可以分为小的部分，每个部分可以在自己的磁盘或分区上。主要部分是根、/usr 、/var 和 /home 文件系统。每个部分有不同的目的。</p>
+<p>  每台机器都有根文件系统，它包含系统引导和使其他文件系统得以mount所必要的文件，根文件系统应该有单用户状态所必须的足够的内容。还应该包括修复损坏 系统、恢复备份等的工具。</p>
+<p>  /usr 文件系统包含所有命令、库、man页和其他一般操作中所需的不改变的文件。 </p>
+<p>  /usr 不应该有 一般使用中要修改的文件。这样允许此文件系统中的文件通过网络共享，这样可以更有效，因为这样节省了磁盘空间(/usr 很容易是数百兆)，且易于管理 (当升级应用时，只有主/usr 需要改变，而无须改变每台机器) 即使此文件系统在本地盘上，也可以只读mount，以减少系统崩溃时文件系统的损 坏。</p>
+<p>  /var 文件系统包含会改变的文件，比如spool目录(mail、news、打印机等用的)， log文件、 formatted manual pages和暂存文件。传统上/var 的所有东西曾在 /usr 下的某个地方，但这样/usr 就不可能只读安装 了。</p>
+<p>  /home 文件系统包含用户家目录，即系统上的所有实际数据。一个大的/home 可能要分为若干文件系统，需要在 /home 下加一级名字，如/home/students 、/home/staff 等。</p>
+</li>
+</ul>
+<p>下面详细介绍：</p>
+<h3 id="etc文件系统"><a href="#etc文件系统" class="headerlink" title="/etc文件系统"></a>/etc文件系统</h3><p>/etc目录包含各种系统配置文件，下面说明其中的一些。其他的你应该知道它们属于哪个程序， 并阅读该程序的man页。许多网络配置文件也在/etc中。</p>
+<ul>
+<li><p>/etc/rc或/etc/rc.d或/etc/rc?.d：</p>
+<p>  启动、或改变运行级时运 行的脚本或脚本的目录。</p>
+</li>
+<li><p>/etc/passwd：</p>
+<p>  用户数据库，其中的域给出了用户名、真实姓名、用户起始目 录、加密口令和用户的其他信息。</p>
+</li>
+<li><p>/etc/fdprm：</p>
+<p>  软盘参数表，用以说明不同的软盘格式。可用setfdprm进 行设置。更多的信息见setfdprm的帮助页。</p>
+</li>
+<li><p>/etc/fstab：</p>
+<p>  指定启动时需要自动安装的文件系统列表。也包括用swapon -a启用的swap区的信息。</p>
+</li>
+<li><p>/etc/group：</p>
+<p>  类似/etc/passwd ，但说明的不是用户信息而是组的信息。包括组的各种数据。</p>
+</li>
+<li><p>/etc/inittab：</p>
+<p>  init 的配置文件。</p>
+</li>
+<li><p>/etc/issue：</p>
+<p>  包括用户在登录提示符前的输出信息。通常包括系统的一段短说明 或欢迎信息。具体内容由系统管理员确定。</p>
+</li>
+<li><p>/etc/magic：</p>
+<p>  “file”的配置文件。包含不同文件格式的说 明，“file”基于它猜测文件类型。</p>
+</li>
+<li><p>/etc/motd：</p>
+<p>  motd是message of the day的缩写，用户成功登录后自动输出。内容由系统管理员确定。常用于通告信息，如计划关机时间的警告等。</p>
+</li>
+<li><p>/etc/mtab：</p>
+<p>  当前安装的文件系统列表。由脚本(scritp)初始化，并由 mount命令自动更新。当需要一个当前安装的文件系统的列表时使用(例如df命令)。</p>
+</li>
+<li><p>/etc/shadow：</p>
+<p>  在安装了影子(shadow)口令软件的系统上的影子口令文件。影子口令文件将/etc/passwd文件中的加密口令移动到/etc/shadow中，而后者只对超级用户(root)可读。这使破译口令更困 难，以此增加系统的安全性。</p>
+</li>
+<li><p>/etc/login.defs：</p>
+<p>  login命令的配置文件。</p>
+</li>
+<li><p>/etc/printcap：</p>
+<p>  类似/etc/termcap ，但针对打印机。语法不同。</p>
+</li>
+<li><p>/etc/profile 、/etc/csh.login、/etc/csh.cshrc：</p>
+<p>  登录或启动时bourne或cshells执行的文件。这允许系统管理员为所有用户建立全局缺省环境。</p>
+</li>
+<li><p>/etc/securetty：</p>
+<p>  确认安全终端，即哪个终端允许超级用户(root) 登录。一般只列出虚拟控制台，这样就不可能(至少很困难)通过调制解调器(modem)或网络闯入系统并得到超级用户特权。</p>
+</li>
+<li><p>/etc/shells：</p>
+<p>  列出可以使用的shell。chsh命令允许用户在本文件 指定范围内改变登录的shell。提供一台机器ftp服务的服务进程ftpd检查用户shell是否列在/etc/shells文件 中，如果不是，将不允许该用户登录。</p>
+</li>
+<li><p>/etc/termcap：</p>
+<p>  终端性能数据库。说明不同的终端用什么“转义序列”控制。写程序时不直接输出转义序列(这样只能工作于特定品牌的终端)，而是从/etc/termcap中查找要做的工作的正确序列。这样，多数的程序可以在多数终端上运行。</p>
+</li>
+</ul>
+<h3 id="dev文件系统"><a href="#dev文件系统" class="headerlink" title="/dev文件系统"></a>/dev文件系统</h3><p>/dev目录包括所有设备的设备文件。设备文件用特定的约定命名，这在设备列表中说明。设备文件在安装时由系 统产生，以后可以用/dev/makedev描述。/dev/makedev.local 是系统管理员为本地设备文件(或连接)写的描述文稿(即如一些非标准设备驱动不是标准makedev 的一部分)。下面简要介绍/dev下 一些常用文件。</p>
+<ul>
+<li><p>/dev/console：</p>
+<p>  系统控制台，也就是直接和系统连接的监视器。</p>
+</li>
+<li><p>/dev/hd：</p>
+<p>  ide硬盘驱动程序接口。如：/dev/hda指的是第一个硬 盘，had1则是指/dev/hda的第一个分区。如系统中有其他的硬盘，则依次为/dev /hdb、/dev/hdc、. . . . . .；如有多个分区则依次为hda1、hda2 . . . . . .</p>
+</li>
+<li><p>/dev/sd：</p>
+<p>  scsi磁盘驱动程序接口。如系统有scsi硬盘，就不会访问/dev/had， 而会访问/dev/sda。</p>
+</li>
+<li><p>/dev/fd：</p>
+<p>  软驱设备驱动程序。如：/dev/fd0指系统的第一个软盘，也就是通常所说的a盘，/dev/fd1指第二个软盘，. . . . . .而/dev/fd1 h1440则表示访问驱动器1中的4.5高密盘。</p>
+</li>
+<li><p>/dev/st：</p>
+<p>  scsi磁带驱动器驱动程序。</p>
+</li>
+<li><p>/dev/tty：</p>
+<p>  提供虚拟控制台支持。如：/dev/tty1指的是系统的第一个虚拟控制台，/dev/tty2则是系统的第二个虚拟控制台。</p>
+</li>
+<li><p>/dev/pty：</p>
+<p>  提供远程登陆伪终端支持。在进行telnet登录时就要用到/dev/pty设 备。</p>
+</li>
+<li><p>/dev/ttys：</p>
+<p>  计算机串行接口，对于dos来说就是“com1”口。</p>
+</li>
+<li><p>/dev/cua：</p>
+<p>  计算机串行接口，与调制解调器一起使用的设备。</p>
+</li>
+<li><p>/dev/null：</p>
+<p>  “黑洞”，所有写入该设备的信息都将消失。例如：当想要将屏幕上的输出信息隐藏起来时，只要将输出信息输入到/dev/null中即可。</p>
+</li>
+</ul>
+<h3 id="usr文件系统"><a href="#usr文件系统" class="headerlink" title="/usr文件系统"></a>/usr文件系统</h3><p>/usr是个很重要的目录，通常这一文件系统很大，因为所有程序安装在这里。/usr里的所有文件一般来自linux发行版；本地安装的程序和其他东西在/usr/local下，因为这样可以在升级新版系统或新发行版时无须重新安装全部程序。/usr目录下的许多内容是可选的，但这些功能会使用户使用系统更加有效。/usr可容纳许多大型的软件包和它们的 配置文件。下面列出一些重要的目录(一些不太重要的目录被省略了)。</p>
+<ul>
+<li><p>/usr/x11r6：</p>
+<p>  包含x window系统的所有可执行程序、配置文件和支持文件。为简化x的开发和安装，x的文件没有集成到系统中。x window系统是一个功能强大的图形环境，提供了大量的图形工具程序。用户如果对microsoft windows比较熟悉的话，就不会对x window系统感到束手无策了。</p>
+</li>
+<li><p>/usr/x386：</p>
+<p>  类似/usr/x11r6 ，但是是专门给x 11 release 5的。</p>
+</li>
+<li><p>/usr/bin：</p>
+<p>  集中了几乎所有用户命令，是系统的软件库。另有些命令在/bin或/usr/local/bin中。</p>
+</li>
+<li><p>/usr/sbin：</p>
+<p>  包括了根文件系统不必要的系统管理命令，例如多数服务程序。</p>
+</li>
+<li><p>/usr/man、/usr/info、/usr/doc：</p>
+<p>  这些目录包含所有手册页、gnu信息文档和各种其他文档文件。每个联机手册的“节”都有两个子目录。例如：/usr/man/man1中包含联机手册第一节的源码(没有格式化的原始文件)，/usr/man/cat1包含第一节已格式化的内容。联机手册分为以下九节：内部命令、系统调用、库函数、设备、文件格式、游戏、宏软件包、系统管理和核心程序。</p>
+</li>
+<li><p>/usr/include：</p>
+<p>  包含了c语言的头文件，这些文件多以.h结尾，用来描述c语言程序中用到的数据结构、子过程和常量。为了保持一致性，这实际上应该放在/usr/lib下，但习惯上一直沿用了这 个名字。</p>
+</li>
+<li><p>/usr/lib：</p>
+<p>  包含了程序或子系统的不变的数据文件，包括一些site – wide配置文件。名字lib来源于库(library); 编程的原始库也存在/usr/lib里。当编译程序时，程序便会和其中的库进行连接。也有许多程序把配置文件存入其中。</p>
+</li>
+<li><p>/usr/local：</p>
+<p>  本地安装的软件和其他文件放在这里。这与/usr很相似。用户可能会在这发现一些比较大的软件包，如tex、emacs等。</p>
+</li>
+</ul>
+<h3 id="var文件系统"><a href="#var文件系统" class="headerlink" title="/var文件系统"></a>/var文件系统</h3><p>/var包含系统一般运行时要改变的数据。通常这些数据所在的目录的大小是要经常变化或扩充 的。原来/var目录中有些内容是在/usr中的，但为了保持/usr目录的相对稳定，就把那些需要经常改变的目录放到/var中了。每个系统是特定的，即不通过网络与其他计算机共享。下面列出一些重要的目录(一些不太重要的目录省略了)。</p>
+<ul>
+<li><p>/var/catman：</p>
+<p>  包括了格式化过的帮助(man)页。帮助页的源文件一般存在/usr/man/catman中；有些man页可能有预格式化的版本，存在/usr/man/cat中。而其他的man页在第一次看时都需要格式化，格式化完的版本存在/var/man中，这样其他人再看相同的页时就无须等待格式化了。(/var/catman经常被 清除，就像清除临时目录一样。)</p>
+</li>
+<li><p>/var/lib：</p>
+<p>  存放系统正常运行时要改变的文件。</p>
+</li>
+<li><p>/var/local：</p>
+<p>  存放/usr/local中安装的程序的可变数据(即系统管理员安装的程序)。注意，如果必要，即使本地安装的程序也会使用其他/var目录，例如/var/lock 。</p>
+</li>
+<li><p>/var/lock：</p>
+<p>  锁定文件。许多程序遵循在/var/lock中产生一个锁定文件的约定，以用来支持他们正在使用某个特定的设备或文件。其他程序注意到这个锁定文件时，就不会再使用这个设备或文件。</p>
+</li>
+<li><p>/var/log：</p>
+<p>  各种程序的日志(log)文件，尤其是login (/var/log/wtmplog纪 录所有到系统的登录和注销) 和syslog (/var/log/messages纪录存储所有核心和系统程序信息)。/var/log里的文件经常不确定地增长，应该定期清除。</p>
+</li>
+<li><p>/var/run：</p>
+<p>  保存在下一次系统引导前有效的关于系统的信息文件。例如，/var/run/utmp包 含当前登录的用户的信息。</p>
+</li>
+<li><p>/var/spool：</p>
+<p>  放置“假脱机(spool)”程序的目录，如mail、news、打印队列和其他队列工作的目录。每个不同的spool在/var/spool下有自己的子目录，例如，用户的邮箱就存放在/var/spool/mail 中。</p>
+</li>
+<li><p>/var/tmp：</p>
+<p>  比/tmp允许更大的或需要存在较长时间的临时文件。注意系统管理 员可能不允许/var/tmp有很旧的文件。</p>
+</li>
+</ul>
+<h3 id="proc文件系统"><a href="#proc文件系统" class="headerlink" title="/proc文件系统"></a>/proc文件系统</h3><p>/proc文件系统是一个伪的文件系统，就是说它是一个实际上不存在的目录，因而这是一个非常特殊的目录。它并不存在于某个磁盘上，而是由核心在内存中产生。这个目录用于提供关于系统的信息。下面说明一些最重要的文件和目录(/proc文件系统 在proc man页中有更详细的说明)。</p>
+<ul>
+<li><p>/proc/x：</p>
+<p>  关于进程x的信息目录，这x是这一进程的标识号。每个进程在 /proc下有一个名为自己进程号的目录。</p>
+</li>
+<li><p>/proc/cpuinfo：</p>
+<p>  存放处理器(cpu)的信息，如cpu的类型、制造商、 型号和性能等。</p>
+</li>
+<li><p>/proc/devices：</p>
+<p>  当前运行的核心配置的设备驱动的列表。</p>
+</li>
+<li><p>/proc/dma：</p>
+<p>  显示当前使用的dma通道。</p>
+</li>
+<li><p>/proc/filesystems：</p>
+<p>  核心配置的文件系统信息。</p>
+</li>
+<li><p>/proc/interrupts：</p>
+<p>  显示被占用的中断信息和占用者的信息，以及被占用 的数量。</p>
+</li>
+<li><p>/proc/ioports：</p>
+<p>  当前使用的i/o端口。</p>
+</li>
+<li><p>/proc/kcore：</p>
+<p>  系统物理内存映像。与物理内存大小完全一样，然而实际上没有占用这么多内存；它仅仅是在程序访问它时才被创建。(注意：除非你把它拷贝到什么地方，否则/proc下没有任何东西占用任何磁盘空间。)</p>
+</li>
+<li><p>/proc/kmsg：</p>
+<p>  核心输出的消息。也会被送到syslog。</p>
+</li>
+<li><p>/proc/ksyms：</p>
+<p>  核心符号表。</p>
+</li>
+<li><p>/proc/loadavg：</p>
+<p>  系统“平均负载”；3个没有意义的指示器指出系统当前的工作量。</p>
+</li>
+<li><p>/proc/meminfo：</p>
+<p>  各种存储器使用信息，包括物理内存和交换分区 (swap)。</p>
+</li>
+<li><p>/proc/modules：</p>
+<p>  存放当前加载了哪些核心模块信息。</p>
+</li>
+<li><p>/proc/net：</p>
+<p>  网络协议状态信息。</p>
+</li>
+<li><p>/proc/self：</p>
+<p>  存放到查看/proc的程序的进程目录的符号连接。当2个进程查看/proc时，这将会是不同的连接。这主要便于程序得到它自己的进程目录。</p>
+</li>
+<li><p>/proc/stat：</p>
+<p>  系统的不同状态，例如，系统启动后页面发生错误的次数。</p>
+</li>
+<li><p>/proc/uptime：</p>
+<p>  系统启动的时间长度。</p>
+</li>
+<li><p>/proc/version：</p>
+<p>  核心版本。</p>
+</li>
+<li><p>/usr/local：</p>
+<p>  一般是你安装软件的目录，这个目录就相当于在windows下的programefiles这个目录 </p>
+</li>
+<li><p>/opt：</p>
+<p>  这个目录是一些大型软件的安装目录，或者是一些服务程序的安装目录</p>
+<p>  举个例子：刚才装的测试版firefox，就可以装到/opt/firefox_beta目录下，/opt/firefox_beta目录下面就包含了运 行firefox所需要的所有文件、库、数据等等。要删除firefox的时候，你只需删除/opt/firefox_beta目录即可，非常简单。</p>
+</li>
+<li><p>/usr/local：</p>
+<p>  这里主要存放那些手动安装的软件，即 不是通过“新立得”或apt-get安装的软件 。 它和/usr目录具有相类似的目录结构。让软件包管理器来管理/usr目录，而把自定义的脚本(scripts)放到/usr/local目录下面，我想这应该是个不错的主意。</p>
+</li>
+</ul>
+<p>转载自： <a href="http://www.cnblogs.com/xningge/p/8331631.html" target="_blank" rel="noopener">http://www.cnblogs.com/xningge/p/8331631.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文件夹结构/" rel="tag"># 文件夹结构</a>
+          
+            <a href="/tags/转载/" rel="tag"># 转载</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/12/C-中的指针/" rel="next" title="C++ 中的指针">
+                <i class="fa fa-chevron-left"></i> C++ 中的指针
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/15/Git-常用命令/" rel="prev" title="Git 常用命令">
+                Git 常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件夹结构"><span class="nav-number">1.</span> <span class="nav-text">文件夹结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用途介绍"><span class="nav-number">2.</span> <span class="nav-text">用途介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc文件系统"><span class="nav-number">2.1.</span> <span class="nav-text">/etc文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dev文件系统"><span class="nav-number">2.2.</span> <span class="nav-text">/dev文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usr文件系统"><span class="nav-number">2.3.</span> <span class="nav-text">/usr文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#var文件系统"><span class="nav-number">2.4.</span> <span class="nav-text">/var文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proc文件系统"><span class="nav-number">2.5.</span> <span class="nav-text">/proc文件系统</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构与算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述 存储结构  顺序存储 链式存储 索引存储 散列存储">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法相关知识点整理">
+<meta property="og:url" content="http://yoursite.com/2020/08/20/数据结构与算法相关知识点整理/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="概述 存储结构  顺序存储 链式存储 索引存储 散列存储">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2020/08/19/oQcMX5WbRJqIK4a.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/19/7PXYlaTiQzFEHLG.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/20/ktWCuxwqVB3cNaA.png">
+<meta property="og:updated_time" content="2021-04-05T08:46:05.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法相关知识点整理">
+<meta name="twitter:description" content="概述 存储结构  顺序存储 链式存储 索引存储 散列存储">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/19/oQcMX5WbRJqIK4a.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/20/数据结构与算法相关知识点整理/">
+
+
+
+
+
+  <title>数据结构与算法相关知识点整理 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/20/数据结构与算法相关知识点整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构与算法相关知识点整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-20T15:15:46+08:00">
+                2020-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="https://i.loli.net/2020/08/19/oQcMX5WbRJqIK4a.png" alt="数据的逻辑结构.png"></p>
+<p>存储结构</p>
+<ul>
+<li>顺序存储</li>
+<li>链式存储</li>
+<li>索引存储</li>
+<li>散列存储</li>
+</ul>
+<a id="more"></a>
+<ol>
+<li><p>以下属于逻辑结构的是(<code>C</code>)<br> A、顺序表  B、哈希表  C、有序表 D、单链表</p>
+<pre><code>有序表是关键字有序的线性表，只描述逻辑
+</code></pre></li>
+<li><p>以下与数据存储结构无关的术语是(<code>D</code>)<br> A、循环队列 B、链表 C、哈希表 D、栈</p>
+<pre><code>循环队列是顺序表表示的队列，而栈是抽象数据结构
+</code></pre></li>
+</ol>
+<p>在存储数据时，应该存储 1. 各个数据元素的值 2. 数据元素的关系</p>
+<p>链式存储设计中，不同结点的存储空间可以不连续，但结点内的存储单元地址必须连续</p>
+<h2 id="推导时间复杂度"><a href="#推导时间复杂度" class="headerlink" title="推导时间复杂度"></a>推导时间复杂度</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt;= n) &#123;</span><br><span class="line">    i = i*<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>找到正比的循环变量代入条件求解</p>
+<p>设次数为$t$，则 $2^t \leq n  $  —&gt;  $t \leq log_2{n}$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> y=<span class="number">5</span>;</span><br><span class="line"><span class="keyword">while</span>((y+<span class="number">1</span>)*(y+<span class="number">1</span>) &lt; n) &#123;</span><br><span class="line">    y = y + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>y+1</code>的次数与$T(n)$成正比<br>设次数为$t$,则 $t = y - 5$<br>$(y+5+1)(t+5+1) &lt; n$<br>$t &lt; \sqrt{n-6}$<br>所以$T(n) = O(\sqrt{n})$</p>
+<ol start="2">
+<li>递归程序</li>
+</ol>
+<p>$T(n) = 1 + T(n-1) = 1 + 1 + T(n-2) = …… = n -1 + T(1)$<br>所以$T(n) = O(n)$</p>
+<h1 id="树和二叉树"><a href="#树和二叉树" class="headerlink" title="树和二叉树"></a>树和二叉树</h1><h2 id="树的性质"><a href="#树的性质" class="headerlink" title="树的性质"></a>树的性质</h2><ul>
+<li>$结点数 = 结点度数 + 1$</li>
+<li>$度为 m 的树，第 i 层，至多m^{i-1}个结点$</li>
+<li>$高度为h的m叉树至多有\frac{m^h-1}{m-1}个结点$  ===&gt; $1+2+3+4+5…$</li>
+<li>$具有n个结点的m叉树最小高度为\lceil\log_m{(n(m-1)+1)}\rceil$  ===&gt; $ n\leq \frac{m^h-1}{m-1} $  ===&gt; $h\geq\log_m{(n(m-1)+1)}$</li>
+</ul>
+<h2 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h2><ul>
+<li>$叶子结点数等于度为2的结点数加1,即n_0 = n_2 + 1$</li>
+<li>$第k层至多2^{k-1}个结点$</li>
+<li>$高度为h，至多2^h-1个结点$</li>
+<li>$结点i所在的层次为\lfloor\log_2i\rfloor+1$</li>
+<li>$具有n个结点的完全二叉树高度为\lceil\log_2{(n+1)}\rceil或者是\lfloor\log_2n\rfloor+1$</li>
+</ul>
+<p>$对于满m叉树，双亲结点为i号，则孩子结点第一个编号为j = (i-1)*m+2$</p>
+<p>在二叉树中有2个结点，m和n，则使用(<code>C</code>)可以找到m到n的路径<br>A、先序   B、中序   C、后序   D、层次</p>
+<p>线索二叉树是一种物理结构  ===&gt; 加上了线索的链表结构<br>二叉树是逻辑结构</p>
+<p>二叉树线索化后，仍不能有效求解的问题是(<code>D</code>)<br>A、先序线索二叉树中求先序后继<br>B、中序线索二叉树中求中序后继<br>C、中序线索二叉树中求中序前继<br>D、后续线索二叉树中求后序后继</p>
+<p>$对于n个不同元素进栈,出栈序列个数为\frac{1}{n+1}C_{2n}^{n}$</p>
+<p>$在m叉树的情况下，结点i的第一个子女编号为j = (i-1)*m+1$<br>$在m叉树的情况下，结点i的双亲的编号是\lfloor(i-2)/m\rfloor+1$</p>
+<p>二叉树遍历的对应关系<br><img src="https://i.loli.net/2020/08/19/7PXYlaTiQzFEHLG.png" alt="二叉树遍历的对应关系.png"></p>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="有向图与无向图"><a href="#有向图与无向图" class="headerlink" title="有向图与无向图"></a>有向图与无向图</h2><p>$有向图： n个顶点，n(n-1)/2条边$<br>$无向图： n个顶点，n(n-1)条有向边$</p>
+<h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><ul>
+<li>对称且唯一</li>
+<li>空间复杂度$O(n^2)$</li>
+<li>对无向图而言：$第i行非零个数为第i个顶点的度$</li>
+<li>对有向图而言：$第i行为出度的个数，第j列为入度的个数$</li>
+</ul>
+<h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><ul>
+<li>存储空间<ol>
+<li>无向图：$O(|v|+2|e|)$</li>
+<li>有向图：$O(|v|+|e|)$</li>
+</ol>
+</li>
+<li>$顶点v在边表中出现次数为v的入度$</li>
+<li>$v的出度即为链表的长度$</li>
+<li>不唯一</li>
+</ul>
+<h2 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h2><ul>
+<li>对有向图而言</li>
+</ul>
+<h2 id="邻接多重表"><a href="#邻接多重表" class="headerlink" title="邻接多重表"></a>邻接多重表</h2><ul>
+<li>对无向图而言</li>
+</ul>
+<h2 id="BFS-层序"><a href="#BFS-层序" class="headerlink" title="BFS(层序)"></a>BFS(层序)</h2><ul>
+<li>$队列$</li>
+<li>$空间复杂度O(|v|)$</li>
+<li>$时间复杂度：$<ol>
+<li>$邻接矩阵:O(|v|^2)$</li>
+<li>$邻接表：O(|v|+|E|)$</li>
+</ol>
+</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><ol>
+<li><p>$Prim–O(|v|^2)$</p>
+<ul>
+<li>每次找两集合相连的边中的最小</li>
+<li>适合稠密图</li>
+</ul>
+</li>
+<li><p>$Kruskal–O(|E|\log|E|)$</p>
+<ul>
+<li>寻的边的权值是递增的</li>
+<li>适合边稀疏，顶点较多的图</li>
+</ul>
+</li>
+</ol>
+<h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><ol>
+<li><p>单源最短路径：</p>
+<ul>
+<li>$Dijkstra：与Prim类似$</li>
+<li>$邻接矩阵O(|v|^2)$</li>
+<li>不允许负值</li>
+</ul>
+</li>
+<li><p>每对顶点最短路径：</p>
+<ul>
+<li>$Floyd算法—O(|v|^3)$</li>
+<li>$每迭代一次，在从v_i到v_j的最短路径上就多考虑了一个顶点$</li>
+<li>允许负权值，但不允许负权值组成回路</li>
+</ul>
+</li>
+</ol>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><ol>
+<li>$每次选取入度为0的点$</li>
+<li>$O(|V|+|E|)$</li>
+<li>邻接矩阵为三角阵，则存在拓扑排序，反之不成立</li>
+</ol>
+<h3 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h3><p>AOE： 顶点表示事件，有向边表示活动</p>
+<ul>
+<li>事件(点)最早发生时间：从前向后，最长</li>
+<li>事件(点)最迟发生时间：从后向前，用最长减去最长</li>
+<li>活动(边)最早开始时间：边前面的点的最早开始时间</li>
+<li>活动(边)最迟开始时间：边后面的点的最迟时间与本身的权值之差</li>
+</ul>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h2 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h2><ol>
+<li><p>一般线性表<br>ASL<sub>成功</sub> $= \frac{1}{n}<em>\frac{(n+1)</em>n}{2} = \frac{n+1}{2}$<br>ASL<sub>不成功</sub> $=n<em>(n+1)</em>\frac{1}{n} = n+1$</p>
+</li>
+<li><p>有序表<br>ASL<sub>成功</sub> $= \frac{n+1}{2}$<br>ASL<sub>不成功</sub>$=\frac{1+2+3+…+n+n}{n+1}= \frac{n}{2}+\frac{n}{n+1}$</p>
+</li>
+</ol>
+<h2 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h2><ol>
+<li>ASL<sub>成功</sub>$=\frac{1}{n}<em>(1</em>1+2<em>2+…+h</em>2^{h-1})=\frac{n+1}{n}log_2{(n+1)}-1\approx log_2{(n+1)}-1$</li>
+<li>查找不成功的次数至多为：$\lceil log_2{(n+1)}\rceil = \lfloor log_2n +1 \rfloor$<br> $失败结点个数*(所在层数-1)$</li>
+<li>$时间复杂度: O(log_2n)$</li>
+</ol>
+<h2 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h2><ol>
+<li>块内无序，块间有序</li>
+<li>第一步：顺序查找或折半查找索引表<br>第二步：块内顺序查找</li>
+<li>$若查找表长为n，分b块，每块S个记录，若均采用顺序查找，ASL = L_1+L_2=\frac{b+1}{2}+\frac{S+1}{2}= \frac{S^2+2S+n}{2S}$<br>$若块的长度=(总长度)^\frac{1}{2},即S=\sqrt{n},则ASL=\sqrt{n}+1$<br>$若索引表为折半查找，ASL = \lceil log_2{(b+1)} \rceil+ \frac{S+1}{2}$</li>
+</ol>
+<h2 id="B树和B-树"><a href="#B树和B-树" class="headerlink" title="B树和B+树"></a>B树和B+树</h2><h3 id="m阶B树"><a href="#m阶B树" class="headerlink" title="$m阶B树$"></a>$m阶B树$</h3><ol>
+<li><p>$各个结点子树个数x:$<br>$若为根，则2\leq x \leq m$<br>$若为非叶结点：则\lceil \frac{m}{2} \rceil \leq x \leq m$</p>
+</li>
+<li><p>$各个结点关键字个数：$<br>$若为根，则1\leq x \leq m-1$<br>$若为非叶结点：则\lceil \frac{m}{2} \rceil -1 \leq x \leq m-1$</p>
+</li>
+<li><p>$m阶B树， n个关键字，结点个数为k，高度为h$<br>$则  \lceil \frac{m}{2} \rceil ^ h -1 \leq k \leq \frac{m^h-1}{m-1}$<br>$log_m{(n+1)} \leq h \leq log_{\lceil \frac{m}{2} \rceil}{( \frac{n+1}{2} )}+1 $<br>$ (\lceil \frac{m}{2} \rceil -1 )(2^h-2) +1 \leq n \leq m^h-1$</p>
+</li>
+</ol>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="$B+树$"></a>$B+树$</h3><ol>
+<li>非叶根结点(既不是叶结点也不是根结点)至少2棵子树，其他分支结点至少$\lceil \frac{m}{2} \rceil$个子树</li>
+<li>结点子树个数与关键字个数相等</li>
+<li>$各个结点关键字个数x：$<br>$若为根：1 \leq x \leq m$<br>$若非根： \lceil \frac{m}{2} \rceil \leq x \leq m$</li>
+<li>分支结点的某关键字为其子树中最大关键字的副本</li>
+</ol>
+<h2 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h2><ol>
+<li>冲突/碰撞不可避免</li>
+<li>ASL<sub>成功</sub>看关键字个数和冲突次数<br>ASL<sub>失败</sub>看表长</li>
+</ol>
+<h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><p>$’ababa’ 求next[]$<br>$’a’  前缀：\emptyset 后缀：\emptyset \Longrightarrow \emptyset \bigcap \emptyset = \emptyset \Longrightarrow n = 0$<br>$’ab’ 前缀：{a} 后缀：{b} \Longrightarrow {a} \bigcap {b} = \emptyset \Longrightarrow n = 0 $<br>$’aba’ 前缀：{a,ab} 后缀：{a,ba}\Longrightarrow {a,ab} \bigcap {a, ba} = {a} \Longrightarrow n=1$<br>$’abab’ 前缀：{a,ab,aba} \bigcap 后缀：{b,ab,bab} = {ab} \Longrightarrow n=2$<br>$’ababa’ 前缀：{a,ab,aba,abab} \bigcap {a,ba,aba,baba} = {a,aba}\Longrightarrow n=3$</p>
+<p>next数组有三种表示方法：</p>
+<ul>
+<li>$00123$</li>
+<li>$右移一位：(-1) 0012$</li>
+<li>$全部加一：01123$</li>
+</ul>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p><img src="https://i.loli.net/2020/08/20/ktWCuxwqVB3cNaA.png" alt="排序.png"></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol>
+<li>同一线性表使用不用的排序方法，结果可能不同</li>
+<li>n个关键字基于比较的排序，两两比较次数至少为$\lceil log_2{(n!)} \rceil$</li>
+</ol>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>基本有序，数据量不大</p>
+<ol>
+<li>直接插入排序： 适用于顺序或者链式存储(边比较边移动)</li>
+<li>折半插入排序： 先折半查找插入的位置，再移动，再插入，比较次数为$O(nlog_2n)$</li>
+<li>希尔排序：<ul>
+<li>$d_1 = \frac{n}{2} 并且 d_i=\lfloor  \frac{d_{i-1}}{2} \rfloor$</li>
+<li>各个组使用直接插入排序</li>
+<li>重复迭代，直到$d_t = 1$</li>
+</ul>
+</li>
+</ol>
+<h2 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
+<li>每次最小的元素放第一个位置</li>
+<li>从后往前两两比较，若为逆序则交换</li>
+</ul>
+<p>过程产生的有序子序列一定是全局有序的，这点与插入排序不同</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>快排需要掌握算法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(ElemType A[], <span class="keyword">int</span> low, <span class="keyword">int</span> hight)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low &lt; hight) &#123;</span><br><span class="line">        <span class="keyword">int</span> pivotpos = Partition(A, low, hight);</span><br><span class="line">        QuickSort(A, low, pivotpos - <span class="number">1</span>);</span><br><span class="line">        QuickSort(A, pivotpos + <span class="number">1</span>, hight);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(ElemType A[], <span class="keyword">int</span> low, <span class="keyword">int</span> hight)</span> </span>&#123;</span><br><span class="line">    ElemType pivot = A[low];</span><br><span class="line">    <span class="keyword">while</span>(low &lt; hight) &#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; hight &amp;&amp; A[hight] &gt;= pivot) </span><br><span class="line">            --hight;</span><br><span class="line">        </span><br><span class="line">        A[low] = A[hight];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(low &lt; hight &amp;&amp; A[low] &lt;= pivot&gt;)</span><br><span class="line">            ++low;</span><br><span class="line"></span><br><span class="line">        A[hight] = A[low];</span><br><span class="line">    &#125;</span><br><span class="line">    A[low] = pivot;</span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>从前往后，每个元素与后面所有元素比较</p>
+<h3 id="简单选择"><a href="#简单选择" class="headerlink" title="简单选择"></a>简单选择</h3><p>$移动次数： \leq 3(n-1) $<br>$比较次数： \frac{n(n-1)}{2}$</p>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><ol>
+<li>$构建时：对结点 \lfloor \frac{n}{2} \rfloor 一直到根的子树进行筛选$</li>
+<li>排序：<ul>
+<li>输出堆顶，删除根节点</li>
+<li>堆底送入根节点</li>
+<li>自上而下调整，重复排序的第一步</li>
+</ul>
+</li>
+<li>插入： <ul>
+<li>结点插入到堆底</li>
+<li>自下而上调整</li>
+</ul>
+</li>
+</ol>
+<h2 id="归并与基排"><a href="#归并与基排" class="headerlink" title="归并与基排"></a>归并与基排</h2><ol>
+<li><p>归并排序<br>$对于N个元素，进行K路归并排序，趟数为m，则 K^m = N,所以m=\lceil log_k{N} \rceil$</p>
+</li>
+<li><p>基数排序</p>
+</li>
+</ol>
+<ul>
+<li>最高位优先</li>
+<li>最低位优先(推荐)</li>
+</ul>
+<h2 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h2><ol>
+<li><p>$外部排序的总时间 = 内部排序时间 + 外存信息读写时间 + 内部归并时间$<br>$t_{es} = rt_{IS} + dt_{I/O}+S(n-1)t_{mg}$<br>$其中，r是初始归并段个数，d是外存访问次数，t_{I/O}是外存读写时间，S是归并趟数，(n-1)是记录数，t_{mg}是取关键字最小记录时间$</p>
+</li>
+<li><p>在做m路平衡归并时，为实现输入/内部归并/输出的并行处理，要<strong>2m</strong>个输入缓冲区和<strong>2</strong>个输出缓冲区</p>
+</li>
+<li><p>$若一个2000记录文件，一个磁盘块250个记录，8个磁盘块，2路归并$<br>$则，2000/250 =8，即每趟8次读+8次写$<br>$归并段个数为8 ===&gt; 内部排序 ===&gt; 8+8次读写$<br>$S=\lceil log_m{r} = log_28 = 3 \rceil$<br>$所以读写次数为： 3(8+8) +8 + 8 = 64$<br>$所以,t_{es} = 8t_{Is}+64t_{I/O} + 3*2000t_{mg}$</p>
+</li>
+<li><p>多路平衡归并与败者树</p>
+</li>
+</ol>
+<ul>
+<li>$S趟归并共需比较次数：$<br>$S(n-1)(m-1) = \lfloor log_mr \rfloor (n-1)(m-1)= \frac{\lfloor log_2r \rfloor (n-1)(m-1)}{\lfloor log2m \rfloor}$</li>
+<li>败者树：为了选出最小的元素<br>A、 大的为失败者，小的为胜利者<br>B、 非叶节点记录败者(较大的)<pre><code>比较时却比胜者(较小的)
+</code></pre></li>
+<li><p>置换-选择排序</p>
+<ol>
+<li>生成初始归并段</li>
+<li>长度不一时，使用哈夫曼树<br>工作区选择最小的元素就是使用败者树的</li>
+</ol>
+</li>
+<li><p>最佳归并树(采用哈夫曼树的思想)<br>记录数少的归并段先归并，总的I/O次数为2*(WPL)</p>
+</li>
+</ul>
+<p>$判断虚段数目x$<br>$n_0个归并段，m路归并$<br>$若(n_0-1)\%(m-1)=u \neq 0$<br>$则需要x=m-u-1个虚段$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/17/操作系统相关知识点整理/" rel="next" title="操作系统相关知识点整理">
+                <i class="fa fa-chevron-left"></i> 操作系统相关知识点整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/21/计算网络相关知识点整理/" rel="prev" title="计算网络相关知识点整理">
+                计算网络相关知识点整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#推导时间复杂度"><span class="nav-number">1.1.</span> <span class="nav-text">推导时间复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树和二叉树"><span class="nav-number">2.</span> <span class="nav-text">树和二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#树的性质"><span class="nav-number">2.1.</span> <span class="nav-text">树的性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的性质"><span class="nav-number">2.2.</span> <span class="nav-text">二叉树的性质</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">3.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有向图与无向图"><span class="nav-number">3.1.</span> <span class="nav-text">有向图与无向图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">3.2.</span> <span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接表"><span class="nav-number">3.3.</span> <span class="nav-text">邻接表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十字链表"><span class="nav-number">3.4.</span> <span class="nav-text">十字链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接多重表"><span class="nav-number">3.5.</span> <span class="nav-text">邻接多重表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFS-层序"><span class="nav-number">3.6.</span> <span class="nav-text">BFS(层序)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">3.7.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树"><span class="nav-number">3.7.1.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短路径"><span class="nav-number">3.7.2.</span> <span class="nav-text">最短路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑排序"><span class="nav-number">3.7.3.</span> <span class="nav-text">拓扑排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键路径"><span class="nav-number">3.7.4.</span> <span class="nav-text">关键路径</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找"><span class="nav-number">4.</span> <span class="nav-text">查找</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序查找"><span class="nav-number">4.1.</span> <span class="nav-text">顺序查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#折半查找"><span class="nav-number">4.2.</span> <span class="nav-text">折半查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分块查找"><span class="nav-number">4.3.</span> <span class="nav-text">分块查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B树和B-树"><span class="nav-number">4.4.</span> <span class="nav-text">B树和B+树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#m阶B树"><span class="nav-number">4.4.1.</span> <span class="nav-text">$m阶B树$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-树"><span class="nav-number">4.4.2.</span> <span class="nav-text">$B+树$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散列表"><span class="nav-number">4.5.</span> <span class="nav-text">散列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串"><span class="nav-number">4.6.</span> <span class="nav-text">串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">5.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">5.2.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交换排序"><span class="nav-number">5.3.</span> <span class="nav-text">交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">5.3.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">5.3.2.</span> <span class="nav-text">快速排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">5.4.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单选择"><span class="nav-number">5.4.1.</span> <span class="nav-text">简单选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">5.4.2.</span> <span class="nav-text">堆排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并与基排"><span class="nav-number">5.5.</span> <span class="nav-text">归并与基排</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部排序"><span class="nav-number">5.6.</span> <span class="nav-text">外部排序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

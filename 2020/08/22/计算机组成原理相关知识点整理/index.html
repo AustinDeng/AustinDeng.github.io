@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机组成原理,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="计算机概述 吞吐量：系统在单位时间内处理请求的数量主要取决于主存的存取周期 CPU时钟周期(节拍脉冲，T周期)：最小时间单位每个动作至少一个时钟周期 主频：CPU时钟频率，时钟周期的倒数 CPI：执行一条指令所需要的时钟周期数 CPU执行时间，运行一个程序所花费的时间$ CP执行时间 = \frac{CPU时钟周期数}{主频} = \frac{指令条数*CPI}{主频}$ MIPS：每秒执行多少百">
+<meta name="keywords" content="计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理相关知识点整理">
+<meta property="og:url" content="http://yoursite.com/2020/08/22/计算机组成原理相关知识点整理/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="计算机概述 吞吐量：系统在单位时间内处理请求的数量主要取决于主存的存取周期 CPU时钟周期(节拍脉冲，T周期)：最小时间单位每个动作至少一个时钟周期 主频：CPU时钟频率，时钟周期的倒数 CPI：执行一条指令所需要的时钟周期数 CPU执行时间，运行一个程序所花费的时间$ CP执行时间 = \frac{CPU时钟周期数}{主频} = \frac{指令条数*CPI}{主频}$ MIPS：每秒执行多少百">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/l6SbQksCwnZIEmA.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/WZBADCqHfn1rEhu.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/fCo5QKTyAMwv3aI.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/WwqJeOHfk9lXs7Y.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/CJupMT31PfLXhQl.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/30/KT2Bnvrxq1jZ3yC.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/30/apUhuEy9WtkvVJm.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/EGLfsYVQ2wAexOp.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/iBmWSKDJ3Up2xPs.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/23/qavfywzlPRC741o.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/4d8IV6LQcDBn7vk.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/26/mGiw1UNP6lh8E3C.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/mN6a24B5sKAIXEQ.png">
+<meta property="og:updated_time" content="2021-04-05T08:46:05.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机组成原理相关知识点整理">
+<meta name="twitter:description" content="计算机概述 吞吐量：系统在单位时间内处理请求的数量主要取决于主存的存取周期 CPU时钟周期(节拍脉冲，T周期)：最小时间单位每个动作至少一个时钟周期 主频：CPU时钟频率，时钟周期的倒数 CPI：执行一条指令所需要的时钟周期数 CPU执行时间，运行一个程序所花费的时间$ CP执行时间 = \frac{CPU时钟周期数}{主频} = \frac{指令条数*CPI}{主频}$ MIPS：每秒执行多少百">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/23/l6SbQksCwnZIEmA.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/22/计算机组成原理相关知识点整理/">
+
+
+
+
+
+  <title>计算机组成原理相关知识点整理 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/22/计算机组成原理相关知识点整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机组成原理相关知识点整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-22T23:30:17+08:00">
+                2020-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="计算机概述"><a href="#计算机概述" class="headerlink" title="计算机概述"></a>计算机概述</h1><ul>
+<li>吞吐量：系统在单位时间内处理请求的数量<br>主要取决于主存的存取周期</li>
+<li>CPU时钟周期(节拍脉冲，T周期)：最小时间单位<br>每个动作至少一个时钟周期</li>
+<li>主频：CPU时钟频率，时钟周期的倒数</li>
+<li>CPI：执行一条指令所需要的时钟周期数</li>
+<li>CPU执行时间，运行一个程序所花费的时间<br>$ CP执行时间 = \frac{CPU时钟周期数}{主频} = \frac{指令条数*CPI}{主频}$</li>
+<li>MIPS：每秒执行多少百万条指令<br>$MIPS = \frac{指令条数}{执行时间*10^6}=\frac{主频}{CPI}$<br>$指令周期=\frac{1}{MIPS}$</li>
+<li>程序员可见的寄存器：<ul>
+<li>状态寄存器</li>
+<li>通用寄存器</li>
+</ul>
+</li>
+<li>程序员不可见(透明)的寄存器：<ul>
+<li>IR</li>
+<li>MAR</li>
+<li>MDR</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h1 id="数据的表示与运算"><a href="#数据的表示与运算" class="headerlink" title="数据的表示与运算"></a>数据的表示与运算</h1><h2 id="BCD码："><a href="#BCD码：" class="headerlink" title="BCD码："></a>BCD码：</h2><ul>
+<li>8421码： 1010 ~ 1111 六个无效码，区间位于此的要+6修正</li>
+<li>余3码： 在8421码的基础上加上(0011)<sub>2</sub></li>
+<li>2421码</li>
+</ul>
+<h2 id="ASCII码："><a href="#ASCII码：" class="headerlink" title="ASCII码："></a>ASCII码：</h2><p>数字0 ~ 9 ===&gt; 48 ~ 57<br>共7位</p>
+<h2 id="大端存储"><a href="#大端存储" class="headerlink" title="大端存储"></a>大端存储</h2><p>高位字节向低位字节顺序存放，符合人类思维</p>
+<h2 id="码距"><a href="#码距" class="headerlink" title="码距"></a>码距</h2><p>各位异或之后结果为1的个数</p>
+<h2 id="奇偶检验码"><a href="#奇偶检验码" class="headerlink" title="奇偶检验码"></a>奇偶检验码</h2><p>码距为2</p>
+<h2 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h2><p>$海明不等式：2^r \geq n+r+1(其中n为信息位，r为冗余信息位)$<br>$纠错理论： L-1 = D+C且D \geq C(其中L为码距，D为检错的位数，C为纠错位数)$</p>
+<h2 id="循环冗余码-CRC"><a href="#循环冗余码-CRC" class="headerlink" title="循环冗余码(CRC)"></a>循环冗余码(CRC)</h2><p>此处的知识点与计算机网络一样</p>
+<h2 id="定点小数"><a href="#定点小数" class="headerlink" title="定点小数"></a>定点小数</h2><p><img src="https://i.loli.net/2020/08/23/l6SbQksCwnZIEmA.png" alt="定点小数.png"></p>
+<p>$01…1 ===&gt; 最大正数： 1-2^{-n}$<br>$11…1 ===&gt; 最大负数： -(1-2^{-n})$</p>
+<h2 id="定点整数"><a href="#定点整数" class="headerlink" title="定点整数"></a>定点整数</h2><p>最大正数：$2^n-1$<br>最小负数：$-(2^n-1)$</p>
+<h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>小数：</p>
+<p>$$ [x]_{原码}=\left{<br>\begin{array}{rcl}<br>x       &amp;      &amp; {0 \leq  x &lt; 1}\<br>1-x = 1+|x|     &amp;      &amp; {-1 &lt; x \leq 0}\<br>\end{array} \right. $$</p>
+<p>对于负小数:<br>$x=-0.x_1x_2…x_n$<br>$[x]_{原码} = 1.x_1x_2…x_n$</p>
+<p>对n+1字长：<br>$-(1-2^{-n}) \leq x \leq 1-2^{-n}  原点对称$<br>真值0有$+0$和$-0$两种表示</p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>小数：<br>$$ [x]_{补码}=\left{<br>\begin{array}{rcl}<br>x       &amp;      &amp; {0 \leq  x &lt; 1}\<br>2+x=2-|x|     &amp;      &amp; {-1 \leq x &lt; 0}\<br>\end{array} \right. $$</p>
+<p>整数：<br>$$ [x]_{补码}=\left{<br>\begin{array}{rcl}<br>0,x       &amp;      &amp; {0 \leq  x &lt; 2^n}\<br>2^{n+1}+x=2^{n+1}-|x|     &amp;      &amp; {-2^n \leq x \leq 0}\<br>\end{array} \right. $$</p>
+<p>对小数而言：多了一个-1 ===&gt; 1.0000<br>整数:比原码多了一个$-2^n$</p>
+<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p>小数：<br>$$ [x]_{反码}=\left{<br>\begin{array}{rcl}<br>x(正数不变)      &amp;      &amp; {0 \leq  x &lt; 1}\<br>(2-2^{-n})+x     &amp;      &amp; {-1 &lt; x \leq 0}\<br>\end{array} \right. $$</p>
+<p>范围：$-(1-2^{-n}) \leq x \leq 1-2^{-n}$<br>原点对称 ===&gt; 真值0的反码不唯一</p>
+<ul>
+<li>0.000…</li>
+<li>1.111…</li>
+</ul>
+<h2 id="移码"><a href="#移码" class="headerlink" title="移码"></a>移码</h2><p>$[x]_{移码} = 2^n +x(字长为n+1)$</p>
+<p>$x_1 = +10101~~~x_2=-10101(字长为8)$<br>$[x1]<em>{移码} = 2^7+10101 = 1,0010101$<br>$[x2]</em>{移码} = 2^7+(-10101) = 0,1101011$</p>
+<p>特点：</p>
+<ol>
+<li>零的表示唯一</li>
+<li>与补码相差一个符号位<br> $[x]<em>{补码} = [x]</em>{移码}的符号位取反$</li>
+<li>全0表示最小值：$-2^n$<br>全1表示最大值：$2^n-1$</li>
+<li>保持数据原有的大小顺序</li>
+</ol>
+<h2 id="数值表示之间的关系"><a href="#数值表示之间的关系" class="headerlink" title="数值表示之间的关系"></a>数值表示之间的关系</h2><p><img src="https://i.loli.net/2020/08/23/WZBADCqHfn1rEhu.png" alt="数值表示之间的关系.png"></p>
+<p>当$x$为正数时：<br>$x = [x]<em>{原码} = [x]</em>{反码} = [x]_{补码}$</p>
+<h2 id="定点数的移位运算"><a href="#定点数的移位运算" class="headerlink" title="定点数的移位运算"></a>定点数的移位运算</h2><p><img src="https://i.loli.net/2020/08/23/fCo5QKTyAMwv3aI.png" alt="码制添补关系.png"></p>
+<p>逻辑移位不管左移还是右移，都添加0</p>
+<h2 id="符号拓展"><a href="#符号拓展" class="headerlink" title="符号拓展"></a>符号拓展</h2><ol>
+<li>原有形式的符号位移到新形式的符号位上</li>
+<li>$$ 负数\left{<br>\begin{array}{rcl}<br>原码：补0      &amp;      &amp; {}\<br>补码：整数补1，小数补0     &amp;      &amp; {例如：-1101 ==&gt; 0011 ==&gt; 1[111]_{补1}0011}\<br>反码：补1<br>\end{array} \right. $$</li>
+</ol>
+<h2 id="溢出判断"><a href="#溢出判断" class="headerlink" title="溢出判断"></a>溢出判断</h2><ol>
+<li>符号位<ul>
+<li>参加操作的两个数，符号相同，结果又与原操作数符号不同，则溢出</li>
+</ul>
+</li>
+<li>双符号位<ul>
+<li>01 正溢出</li>
+<li>10 负溢出</li>
+</ul>
+</li>
+<li>一位符号位与数据位的进出<ul>
+<li>$V = C_s \bigoplus C_1 ~~~~ 若v=0 ~~无溢出(相同)， 若v=1 ~~则溢出(相异)$</li>
+</ul>
+</li>
+</ol>
+<h2 id="各个码制之间关系的实例"><a href="#各个码制之间关系的实例" class="headerlink" title="各个码制之间关系的实例"></a>各个码制之间关系的实例</h2><p><img src="https://i.loli.net/2020/08/23/WwqJeOHfk9lXs7Y.png" alt="各码制之间关系的实例.png"></p>
+<h2 id="规格化浮点数"><a href="#规格化浮点数" class="headerlink" title="规格化浮点数"></a>规格化浮点数</h2><p>左规：可能多次<br>右规：只用一次</p>
+<ol>
+<li><p>原码规格化：<br>$ \frac{1}{2} \leq M \leq (1-2^{-n}) $<br>$-(1-2^n) \leq M \leq -\frac{1}{2}$</p>
+</li>
+<li><p>补码规格化：<br>$\frac{1}{2} \leq M \leq (1-2^{-n})$<br>$-1 \leq M \leq -(\frac{1}{2} +2^{-n})   ===&gt; -(0.100…1) ===&gt; \frac{1}{2} + … +\frac{1}{2^n}$</p>
+</li>
+</ol>
+<h2 id="不同基数之间的特点"><a href="#不同基数之间的特点" class="headerlink" title="不同基数之间的特点"></a>不同基数之间的特点</h2><ol>
+<li><p>基数为2：</p>
+<ul>
+<li>原码：尾数最高为1</li>
+<li>补码：尾数最高位与尾数符号位相反</li>
+</ul>
+</li>
+<li><p>基数为4：</p>
+<ul>
+<li>原码：最高2位不全0</li>
+</ul>
+</li>
+<li><p>基数为8：</p>
+<ul>
+<li>原码：最高3位不全0</li>
+<li>补码：负 -&gt; 前三位不全1</li>
+</ul>
+</li>
+</ol>
+<h2 id="IEEE-754"><a href="#IEEE-754" class="headerlink" title="IEEE 754"></a>IEEE 754</h2><p>单精度float  ===&gt; 32位</p>
+<p><img src="https://i.loli.net/2020/08/23/CJupMT31PfLXhQl.png" alt="IEEE754.png"></p>
+<p>$(-1)^s<em>1.M</em>2^{E-127} ~~~~E\in[1, 254]$</p>
+<p>规定：</p>
+<ul>
+<li>$E = 0且M=0，真值0$</li>
+<li>$E = 0且M\not=0,非规格化，真值=(-1)^s<em>0.M</em>2^{-126}$</li>
+<li>$1 \leq E \leq 254~~~ 真值=(-1)^s<em>1.M</em>2^{E-127}$</li>
+<li>$E = 255且M \not=0时，真值为‘NAN’ $</li>
+<li>$E=255且M=0，表示正无穷或负无穷(看符号位)$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">格式</th>
+<th style="text-align:center">最小值</th>
+<th style="text-align:center">最大值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">单精度</td>
+<td style="text-align:center">$E=1，M=0,1.0*2^{1-127}=2^{-126}$</td>
+<td style="text-align:center">$E=254,M=1.11…,1.111…*2^{254-127}=2^{127}(2-2^{-23})$</td>
+</tr>
+<tr>
+<td style="text-align:center">双精度</td>
+<td style="text-align:center">$E=1,M=0,1.0*2^{1-1023}=2^{-1022}$</td>
+<td style="text-align:center">$E=2046,2^{1023}*(2-2^{52})$</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://i.loli.net/2020/08/30/KT2Bnvrxq1jZ3yC.png" alt="各个编码方式的数值范围.png"></p>
+<h1 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h1><p><img src="https://i.loli.net/2020/08/30/apUhuEy9WtkvVJm.png" alt="地址寻址.png"></p>
+<h2 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h2><p>静态随机存储器<br>双稳态触发器(六管Mos)、非破坏性读出、易失性、集成度低</p>
+<h2 id="DRAM-动态"><a href="#DRAM-动态" class="headerlink" title="DRAM(动态)"></a>DRAM(动态)</h2><p>电容、一次刷新一行存储单元</p>
+<ul>
+<li>集中刷新，有访存“死区”</li>
+<li>分散刷新</li>
+<li>异步刷新</li>
+</ul>
+<p>DRAM采用地址复用技术(以及ROM)<br>SRAM不采用</p>
+<h2 id="ROM-密度高、非易失性"><a href="#ROM-密度高、非易失性" class="headerlink" title="ROM(密度高、非易失性)"></a>ROM(密度高、非易失性)</h2><ul>
+<li>MROM: 写入后无法修改</li>
+<li>PROM：可编程</li>
+<li>EPROM：可擦除可编程</li>
+<li>闪速存储器</li>
+<li>固态硬盘(SSD)</li>
+</ul>
+<h2 id="字位拓展"><a href="#字位拓展" class="headerlink" title="字位拓展"></a>字位拓展</h2><p>注意$\overline{CS}$为低电平有效</p>
+<h2 id="地址分配与片选"><a href="#地址分配与片选" class="headerlink" title="地址分配与片选"></a>地址分配与片选</h2><ol>
+<li><p>线选法<br>n条线 —&gt; n个选片信号<br>电路简单、地址空间不连续</p>
+</li>
+<li><p>译码片选法(使用译码器)<br>n条线 —&gt; $2^n$个选片信号<br>电路复杂，地址空间连续，可加逻辑设计</p>
+</li>
+</ol>
+<h2 id="双端口RAM"><a href="#双端口RAM" class="headerlink" title="双端口RAM"></a>双端口RAM</h2><p>可行：</p>
+<ul>
+<li>两个端口不同时对同地址存取</li>
+<li>两个端口同时对同地址读</li>
+</ul>
+<p>不可行：</p>
+<ul>
+<li>同时对同地址写</li>
+<li>同时对同地址，一个读，一个写</li>
+</ul>
+<h2 id="多模块"><a href="#多模块" class="headerlink" title="多模块"></a>多模块</h2><ul>
+<li>单体多字，一次取多字</li>
+<li>多体并行<ul>
+<li>高位交叉(体号+体内地址)<br>连续取$n$个字：$T_总 = n*T_单$</li>
+<li>低位交叉(体内地址+体号)<br>连续取$n$个字：$T_总=T_单+(n-1)\tau(\tau为启动下一个存储器时间，即总线传送周期)$<br>$当字长为W时：带宽= \frac{nW}{T+(n-1)\tau}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="Cache和主存的映射"><a href="#Cache和主存的映射" class="headerlink" title="Cache和主存的映射"></a>Cache和主存的映射</h2><h3 id="直接映射：主存数据块放Cache中唯一位置"><a href="#直接映射：主存数据块放Cache中唯一位置" class="headerlink" title="直接映射：主存数据块放Cache中唯一位置"></a>直接映射：主存数据块放Cache中唯一位置</h3><p><img src="https://i.loli.net/2020/08/23/EGLfsYVQ2wAexOp.png" alt="直接映射.png"></p>
+<p>地址变换：主存地址 ===&gt; Cache中的地址</p>
+<ol>
+<li>取主存块号  ===&gt; 找到Cache块号</li>
+<li>比较Cache块号中的区号(标记)与主存的区号(标记)是否一致</li>
+<li>若是，则主存的区块号+块内地址 = 访问Cache的地址</li>
+</ol>
+<h3 id="全相联映像：主存数据块随意放在Cache中"><a href="#全相联映像：主存数据块随意放在Cache中" class="headerlink" title="全相联映像：主存数据块随意放在Cache中"></a>全相联映像：主存数据块随意放在Cache中</h3><p><img src="https://i.loli.net/2020/08/23/iBmWSKDJ3Up2xPs.png" alt="全相联映射.png"></p>
+<p>地址变换：</p>
+<ol>
+<li>取主存块号  —&gt; 与标识Cache(标识Cache可能是一个存放一张表的Cache)全表比较</li>
+<li>若找到，则取出Cache块号</li>
+<li>Cache块号 + 块内地址 = 访问Cache的地址 </li>
+</ol>
+<h3 id="组相联映像-只能放特定组，组内可以随意放"><a href="#组相联映像-只能放特定组，组内可以随意放" class="headerlink" title="组相联映像:只能放特定组，组内可以随意放"></a>组相联映像:只能放特定组，组内可以随意放</h3><p><img src="https://i.loli.net/2020/08/23/qavfywzlPRC741o.png" alt="组相联映射.png"></p>
+<p>地址变换机构：</p>
+<ol>
+<li>取出主存地址的块号，取余，得到Cache的<strong>组号</strong></li>
+<li>通过组号在标识Cache中找到对应的组</li>
+<li>一般一个组有好几块，用主存的标记与该组中的每一块作比较，看是否命中</li>
+<li>若命中，则取出标识Cache中的<strong>组内块号</strong></li>
+<li>Cache地址 = 组号 + 组内地址 + 块内地址</li>
+</ol>
+<h3 id="Cache写策略："><a href="#Cache写策略：" class="headerlink" title="Cache写策略："></a>Cache写策略：</h3><ul>
+<li><p>Cache命中</p>
+<ul>
+<li>全写法：数据同时写入Cache和主存</li>
+<li>写回法：先只修改Cache内容，换出时才写回主存</li>
+</ul>
+</li>
+<li><p>不命中</p>
+<ul>
+<li>写分配法：加载主存的块到Cache中</li>
+<li>非写分配法：只写入主存，不进行调块</li>
+</ul>
+</li>
+</ul>
+<p>写分配法  ===&gt; 写回法<br>非写分配法 ===&gt; 全写法</p>
+<h1 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>$访存次数 = 取指令一次+取操作数n次+回存一次$</li>
+<li>$设地址长度为n，上层留出m种状态，下层可多拓展m*2^n种状态$</li>
+</ul>
+<h2 id="地址格式"><a href="#地址格式" class="headerlink" title="地址格式"></a>地址格式</h2><ul>
+<li>零地址</li>
+<li>一地址<ul>
+<li>$OP(A_1)<del>–&gt;</del>A_1(三次访存)$</li>
+<li>$(隐含)<del>(ACC)OP(A_1)</del>–&gt;~~ACC(两次访存，结果放寄存器中)$</li>
+</ul>
+</li>
+<li>二地址<ul>
+<li>$(A_1)OP(A_2)<del>–&gt;</del>A_1(四次访存)$</li>
+</ul>
+</li>
+<li>三地址<ul>
+<li>$(A_1)OP(A_2)~~–&gt;A_3(四次访存，取址一次，取操作数两次，回存一次)$</li>
+</ul>
+</li>
+<li>四地址：<ul>
+<li>$(A_1)OP(A_2)<del>–&gt;</del>A_3<del>~</del>A_4为下一条指令执行地址(四次访存)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="寻址方式：EA表示操作数的有效地址"><a href="#寻址方式：EA表示操作数的有效地址" class="headerlink" title="寻址方式：EA表示操作数的有效地址"></a>寻址方式：EA表示操作数的有效地址</h2><ol>
+<li><p>隐含寻址(0次访存)：另一个操作数隐含在了$ACC$中</p>
+<ul>
+<li>$(ACC)OP(A_1)<del>–&gt;</del>ACC$</li>
+</ul>
+</li>
+<li><p>立即(数)寻址(0次访存)：地址字段直接就是操作数本身</p>
+</li>
+<li><p>直接寻址(一次访存)：地址$A$就是$EA$</p>
+<ul>
+<li>地址位数为$k$,寻址范围为$2^k$</li>
+</ul>
+</li>
+<li><p>间接寻址(两次访存)：$EA=(A)$</p>
+<ul>
+<li>字长为$m$,寻址范围$2^m$</li>
+</ul>
+</li>
+<li><p>寄存器寻址(0次访存)：</p>
+<ul>
+<li>直接寻址的主存换成了寄存器</li>
+</ul>
+</li>
+<li><p>寄存器间接寻址(一次访存)：</p>
+<ul>
+<li>间接寻址的第一步是找到寄存器</li>
+</ul>
+</li>
+<li><p>相对寻址(一次访存)：</p>
+<ul>
+<li>PC的内容加上指令格式中的形式地址A而形成操作数的有效地址</li>
+<li>$EA = (PC) + A$</li>
+<li>$A$的位数决定了操作数的寻址范围<ul>
+<li>便于程序浮动</li>
+<li>转移指令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>基址寻址(一次访存)：</p>
+<ul>
+<li>$EA = (BR)+A$</li>
+<li>面向操作系统，基址寄存器内容不变，形式地址可变(作偏移)<ul>
+<li>扩大寻址范围</li>
+<li>有利于多道程序设计</li>
+<li>可编制浮动程序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>变址寻址(一次访存):</p>
+<ul>
+<li>$EA=(IX)+A$</li>
+<li>寄存器位数/字长$m$,寻址范围$2^m$</li>
+<li>面向用户，变址寄存器内容可由用户改变，形式地址$A$不变</li>
+<li>扩大了寻址范围</li>
+<li>适合编制循环变量(数组)</li>
+</ul>
+</li>
+</ol>
+<h2 id="混合的寻址方式"><a href="#混合的寻址方式" class="headerlink" title="混合的寻址方式"></a>混合的寻址方式</h2><ol>
+<li>先变址后间址：$EA=(A+(IX))$</li>
+<li>先间址后变址：$EA=(A)+(IX)$</li>
+<li>变址基址一起: $EA=A+(BR)+(IX)$</li>
+</ol>
+<h2 id="复杂指令集-CISC-和精简指令集-RISC"><a href="#复杂指令集-CISC-和精简指令集-RISC" class="headerlink" title="复杂指令集(CISC)和精简指令集(RISC)"></a>复杂指令集(CISC)和精简指令集(RISC)</h2><p><img src="https://i.loli.net/2020/08/25/4d8IV6LQcDBn7vk.png" alt="精简指令集与复杂指令集.png"></p>
+<h1 id="中央处理器"><a href="#中央处理器" class="headerlink" title="中央处理器"></a>中央处理器</h1><h2 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h2><ul>
+<li>算术逻辑单元(ALU)</li>
+<li>暂存寄存器</li>
+<li>累加寄存器(ACC)</li>
+<li>通用寄存器组</li>
+<li>程序状态字寄存器(PSW)</li>
+<li>移位器</li>
+<li>计数器(CT)</li>
+</ul>
+<h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><ul>
+<li>程序计数器(PC)</li>
+<li>指令寄存器(IR)</li>
+<li>指令译码器(ID)</li>
+<li>存储器地址寄存器(MAR)</li>
+<li>存储器数据寄存器(MDR)</li>
+<li>时序系统</li>
+<li>微操作信号发生器</li>
+<li>中断控制逻辑</li>
+</ul>
+<p>指令部件包括：PC、IR、ID</p>
+<h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><p>用户可见：</p>
+<ul>
+<li>PC</li>
+<li>PSW</li>
+<li>ACC</li>
+<li>R0/R1/R2/R3</li>
+</ul>
+<p>用户不可见：</p>
+<ul>
+<li>MAR</li>
+<li>MDR</li>
+<li>IR</li>
+</ul>
+<h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><ul>
+<li>ALU</li>
+<li>寄存器</li>
+<li>中断系统</li>
+<li>时序控制(CU)</li>
+</ul>
+<h2 id="指令周期"><a href="#指令周期" class="headerlink" title="指令周期"></a>指令周期</h2><p>完成一条指令：</p>
+<ul>
+<li>取址周期：取址、分析</li>
+<li>执行周期：执行指令</li>
+</ul>
+<p>$时钟周期 &lt; 机器周期 &lt; 指令周期$<br>一般一个阶段对应一个机器周期<br>一个机器周期存在若干个时钟周期</p>
+<p>指令译码是对指令的操作码字段进行译码的</p>
+<h2 id="指令周期的数据流"><a href="#指令周期的数据流" class="headerlink" title="指令周期的数据流"></a>指令周期的数据流</h2><h3 id="取址周期："><a href="#取址周期：" class="headerlink" title="取址周期："></a>取址周期：</h3><ol>
+<li>PC ==&gt; MAR ==&gt; 地址总线 ==&gt; 主存</li>
+<li>CU发出控制信号 ==&gt; 控制总线 ==&gt; 主存</li>
+<li>主存 ==&gt; 数据总线 ==&gt; MDR ==&gt; IR</li>
+<li>CU发出读命令 ==&gt; PC+1</li>
+</ol>
+<h3 id="间址周期"><a href="#间址周期" class="headerlink" title="间址周期"></a>间址周期</h3><ol>
+<li>Ad(IR) ==&gt; MAR ==&gt; 地址总线 ==&gt; 主存</li>
+<li>CU发出读命令 ==&gt; 控制总线 ==&gt; 主存</li>
+<li>主存 ==&gt; 数据总线 ==&gt; MDR</li>
+</ol>
+<h3 id="执行周期"><a href="#执行周期" class="headerlink" title="执行周期"></a>执行周期</h3><p>不定</p>
+<h3 id="中断周期"><a href="#中断周期" class="headerlink" title="中断周期"></a>中断周期</h3><ol>
+<li>CU控制SP-1，SP ==&gt; MAR ==&gt; 地址总线 ==&gt; 主存</li>
+<li>CU发出写命令 ==&gt; 控制总线 ==&gt; 主存</li>
+<li>PC ==&gt; MDR ==&gt; 数据总线 ==&gt; 主存(断点存入主存)</li>
+<li>CU(中断服务程序入口地址) ==&gt; PC</li>
+</ol>
+<h2 id="指令执行流程"><a href="#指令执行流程" class="headerlink" title="指令执行流程"></a>指令执行流程</h2><p>固定的前三步：</p>
+<ul>
+<li>(PC) ==&gt; MAR, READ</li>
+<li>(PC)+1 ==&gt; PC</li>
+<li>(M ==&gt; MDR) ==&gt;IR </li>
+</ul>
+<h2 id="微指令"><a href="#微指令" class="headerlink" title="微指令"></a>微指令</h2><ul>
+<li>一条机器指令就是一个微程序</li>
+<li>一个微程序包含若干个微指令</li>
+<li>一条微指令包含若干微操作</li>
+<li>一个微操作 = 一个微命令</li>
+</ul>
+<p>指令系统中具有$n$种机器指令，则微程序数至少为$n+1$个<br>其中的$1$为公共的取址微程序，若带中断，再$+1$</p>
+<h2 id="微指令编码方式"><a href="#微指令编码方式" class="headerlink" title="微指令编码方式"></a>微指令编码方式</h2><ol>
+<li>直接编码方式：(又快又长)<br>字段种的每一位都代表一个命令</li>
+<li>字段直接编址方式(慢)<br>需要译码电路译码<ul>
+<li>互斥性微命令放同一段，相容性微命令放不同段(同时执行)</li>
+<li>留一个状态位，即 ==&gt; 若有三位，则只能表示7个互斥微命令</li>
+</ul>
+</li>
+<li>字段间接编码</li>
+</ol>
+<h2 id="微指令格式"><a href="#微指令格式" class="headerlink" title="微指令格式"></a>微指令格式</h2><p><img src="https://i.loli.net/2020/08/26/mGiw1UNP6lh8E3C.png" alt="微指令格式.png"></p>
+<ol>
+<li><p>水平型微指令：<br>定义并执行几种并行的基本操作</p>
+<ul>
+<li>微程序短</li>
+<li>执行速度快</li>
+<li>微指令长</li>
+</ul>
+</li>
+<li><p>垂直型微指令<br>定义并执行一种基本操作</p>
+<ul>
+<li>微程序长</li>
+<li>执行速度慢</li>
+<li>微指令短</li>
+</ul>
+</li>
+<li><p>混合型微指令<br>垂直 + 简单并行</p>
+</li>
+</ol>
+<h2 id="微程序控制单元"><a href="#微程序控制单元" class="headerlink" title="微程序控制单元"></a>微程序控制单元</h2><p>因为微指令的地址均由上一条微指令的下地址字段直接给出<br>所以每一条微指令都要加一个将微指令下地址字段送到CMAR的微操作</p>
+<p>$取址：$<br>$T_0:PC \rightarrow MAR, 1 \rightarrow R$<br>$T_1:Ad(CMDR) \rightarrow CMAR$<br>$T_2:M(MAR) \rightarrow MDR,(PC) + 1 \rightarrow PC$<br>$T_3:Ad(CMDR) \rightarrow CMAR$<br>$T_4:MDR \rightarrow IR$<br>$T_5:PC(IR) \rightarrow 微地址形成部件 \rightarrow CMAR$</p>
+<h2 id="指令流水线："><a href="#指令流水线：" class="headerlink" title="指令流水线："></a>指令流水线：</h2><p>$取址 \rightarrow 分析 \rightarrow执行$</p>
+<ol>
+<li>顺序执行：$T=3nT$ </li>
+<li>一次叠加执行:$T=3t+(n-1)2t=(1+2n)t$</li>
+<li>二次叠加执行：$T=3T+(n-1)T=(2+n)t$</li>
+</ol>
+<h2 id="影响因素"><a href="#影响因素" class="headerlink" title="影响因素"></a>影响因素</h2><ol>
+<li>结构相关(资源冲突)<br>多条指令同一时刻争用同一资源  ===&gt;  资源重复配置</li>
+<li>数据相关(数据冲突)<br>存在先后顺序，前一个完成才能执行后一个 ===&gt; 数据旁路技术<ul>
+<li>读后写(WAR)：乱序发射</li>
+<li>写后读(RAW)：后续指令用到相关数据</li>
+<li>写后写(WAW，写的是两个不同指令)：各个功能部件</li>
+</ul>
+</li>
+<li>控制相关<br>转移指令，其他改变PC值的指令</li>
+</ol>
+<h2 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h2><ol>
+<li><p>吞吐率<br>$TP = \frac{n}{T_k}(n个任务，T_k为完成总时间)$<br>$TP = \frac{n}{(k+n-1)\Delta t}(k为流水线段数，\Delta t是时钟周期)$<br>$当n \rightarrow \infty 时,TP=\frac{1}{\Delta t}$</p>
+</li>
+<li><p>加速比<br>$S= \frac{T_0}{T_k}(T_0为不使用流水线时间，T_k为使用流水线时间)$<br>$S= \frac{kn \Delta t}{(k+n-1) \Delta t} = \frac{kn}{k+n-1}$<br>$当n \rightarrow \infty 时,S_{max} = k$</p>
+</li>
+<li><p>效率<br>$E = \frac{n个任务有效面积}{时空总面积} = \frac{T_0}{kT_k}$<br>$当n \rightarrow \infty 时,E_{max} = 1$</p>
+</li>
+</ol>
+<h1 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h1><h2 id="系统总线"><a href="#系统总线" class="headerlink" title="系统总线"></a>系统总线</h2><ol>
+<li>数据总线(双向)</li>
+<li>地址总线(单向)</li>
+<li>控制总线</li>
+</ol>
+<h2 id="工作频率：一秒内传递几次数据"><a href="#工作频率：一秒内传递几次数据" class="headerlink" title="工作频率：一秒内传递几次数据"></a>工作频率：一秒内传递几次数据</h2><p>$若总线周期 = N个时钟周期$<br>$则总线工作频率=\frac{时钟频率}{N}$<br>$总线带宽 = 总线工作频率*\frac{总线宽度}{8}$</p>
+<h2 id="集中仲裁方式"><a href="#集中仲裁方式" class="headerlink" title="集中仲裁方式"></a>集中仲裁方式</h2><ol>
+<li>链式查询方式(3条线，请求线1，总线忙1，总线允许1)<br>顺序查询每一个设备，离总线控制器越近，优先级越高<ul>
+<li>简单，易拓展，优先级固定</li>
+<li>电路敏感</li>
+<li>优先级不灵活</li>
+</ul>
+</li>
+<li><p>定时器定时查询方式($\lceil log_2n \rceil +2 $条线，请求1，总线忙1，总线允许$\lceil log_2n \rceil $)<br>有请求  ==&gt; 计数器计数 ==&gt; 值与请求设备一致</p>
+<ul>
+<li>优先级灵活</li>
+<li>线多复杂</li>
+</ul>
+</li>
+<li><p>独立请求方式(2n+1条线，请求n，允许n，忙1)<br>每一个设备都有一个请求线$BR_i$和总线允许线$BG_i$</p>
+<ul>
+<li>响应快，优先级灵活</li>
+<li>线多复杂</li>
+</ul>
+</li>
+</ol>
+<h2 id="总线异步定时方式-按需分配时间"><a href="#总线异步定时方式-按需分配时间" class="headerlink" title="总线异步定时方式(按需分配时间)"></a>总线异步定时方式(按需分配时间)</h2><p><img src="https://i.loli.net/2020/08/25/mN6a24B5sKAIXEQ.png" alt="总线异步定时方式.png"></p>
+<h2 id="总线标准"><a href="#总线标准" class="headerlink" title="总线标准"></a>总线标准</h2><ul>
+<li>ISA: 最早微机系统总线</li>
+<li>EISA: 扩展ISA(32位)</li>
+<li>VESA: 局部总线，活动图像，多媒体</li>
+<li>PCI: 局部总线，外围部件，显卡，声卡，网卡</li>
+<li>PCI-Express: 取代PCI、AGP</li>
+<li>AGP: 局部总线，视频接口</li>
+<li>RS-232C: 串行二进制，数据终端与通信</li>
+<li>USB: 设备总线，串行</li>
+<li>PCMCIA: 笔记本电脑</li>
+<li>IDE: 磁盘驱动器</li>
+<li>SCSI: 智能设备(硬盘、软盘、光驱、打印)</li>
+<li>SATA: 硬盘接口，行业标准</li>
+</ul>
+<h1 id="输入-输出系统"><a href="#输入-输出系统" class="headerlink" title="输入/输出系统"></a>输入/输出系统</h1><h2 id="显式存储器"><a href="#显式存储器" class="headerlink" title="显式存储器"></a>显式存储器</h2><p>$VRAM容器 = 分辨率 <em> 灰度级位数$<br>$VRAM带宽 = 分辨率 </em> 灰度级位数 * 帧频$</p>
+<h2 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h2><p>$存取时间 = 寻道时间 + 旋转延迟时间 + 传输时间$<br>$数据传输率D_r = rN(r为转速，r转/秒，N为每个磁道N个字节)$</p>
+<p>地址格式：<br>|  驱动器号(磁盘)   | 柱面(磁道)号  |  盘面号   | 扇区号  |<br>|  —-  | —-  |  —-  | —-  |</p>
+<h2 id="冗余阵列"><a href="#冗余阵列" class="headerlink" title="冗余阵列"></a>冗余阵列</h2><p>RAID0 无容错能力</p>
+<h2 id="I-O接口的基本结构"><a href="#I-O接口的基本结构" class="headerlink" title="I/O接口的基本结构"></a>I/O接口的基本结构</h2><ul>
+<li>内部接口：与内存，CPU相连(并行)</li>
+<li>外部接口：外设相连(串行)</li>
+</ul>
+<h2 id="I-O端口编址"><a href="#I-O端口编址" class="headerlink" title="I/O端口编址"></a>I/O端口编址</h2><ol>
+<li><p>统一编址：存储器映射</p>
+<ul>
+<li>优点：不需要专门的I/O指令，灵活、方便、编址空间大</li>
+<li>缺点：内存容量变小，执行速度慢</li>
+</ul>
+</li>
+<li><p>独立编址：I/O映射方式</p>
+<ul>
+<li>优点：程序编制清晰，易理解</li>
+<li>缺点：要专门的I/O指令，控制更复杂</li>
+</ul>
+</li>
+</ol>
+<h2 id="I-O方式"><a href="#I-O方式" class="headerlink" title="I/O方式"></a>I/O方式</h2><p>与操作系统中一致</p>
+<h2 id="中断处理过程"><a href="#中断处理过程" class="headerlink" title="中断处理过程"></a>中断处理过程</h2><ol>
+<li>关中断</li>
+<li>保存断点</li>
+<li>识别中断源</li>
+<li>保存现场</li>
+<li>中断事件处理</li>
+<li>恢复现场</li>
+<li>开中断</li>
+<li>中断返回</li>
+</ol>
+<p>其中，前三步由硬件完成，又称中断隐指令，后四步又软件(操作系统完成)，又称为中断服务程序</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机组成原理/" rel="tag"># 计算机组成原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/21/计算网络相关知识点整理/" rel="next" title="计算网络相关知识点整理">
+                <i class="fa fa-chevron-left"></i> 计算网络相关知识点整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/05/Python 中的装饰器/" rel="prev" title="Python中的装饰器">
+                Python中的装饰器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机概述"><span class="nav-number">1.</span> <span class="nav-text">计算机概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据的表示与运算"><span class="nav-number">2.</span> <span class="nav-text">数据的表示与运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BCD码："><span class="nav-number">2.1.</span> <span class="nav-text">BCD码：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASCII码："><span class="nav-number">2.2.</span> <span class="nav-text">ASCII码：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大端存储"><span class="nav-number">2.3.</span> <span class="nav-text">大端存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#码距"><span class="nav-number">2.4.</span> <span class="nav-text">码距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇偶检验码"><span class="nav-number">2.5.</span> <span class="nav-text">奇偶检验码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#海明校验码"><span class="nav-number">2.6.</span> <span class="nav-text">海明校验码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环冗余码-CRC"><span class="nav-number">2.7.</span> <span class="nav-text">循环冗余码(CRC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定点小数"><span class="nav-number">2.8.</span> <span class="nav-text">定点小数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定点整数"><span class="nav-number">2.9.</span> <span class="nav-text">定点整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原码"><span class="nav-number">2.10.</span> <span class="nav-text">原码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补码"><span class="nav-number">2.11.</span> <span class="nav-text">补码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反码"><span class="nav-number">2.12.</span> <span class="nav-text">反码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移码"><span class="nav-number">2.13.</span> <span class="nav-text">移码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值表示之间的关系"><span class="nav-number">2.14.</span> <span class="nav-text">数值表示之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定点数的移位运算"><span class="nav-number">2.15.</span> <span class="nav-text">定点数的移位运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号拓展"><span class="nav-number">2.16.</span> <span class="nav-text">符号拓展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#溢出判断"><span class="nav-number">2.17.</span> <span class="nav-text">溢出判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各个码制之间关系的实例"><span class="nav-number">2.18.</span> <span class="nav-text">各个码制之间关系的实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#规格化浮点数"><span class="nav-number">2.19.</span> <span class="nav-text">规格化浮点数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同基数之间的特点"><span class="nav-number">2.20.</span> <span class="nav-text">不同基数之间的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IEEE-754"><span class="nav-number">2.21.</span> <span class="nav-text">IEEE 754</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储系统"><span class="nav-number">3.</span> <span class="nav-text">存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SRAM"><span class="nav-number">3.1.</span> <span class="nav-text">SRAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DRAM-动态"><span class="nav-number">3.2.</span> <span class="nav-text">DRAM(动态)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROM-密度高、非易失性"><span class="nav-number">3.3.</span> <span class="nav-text">ROM(密度高、非易失性)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字位拓展"><span class="nav-number">3.4.</span> <span class="nav-text">字位拓展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地址分配与片选"><span class="nav-number">3.5.</span> <span class="nav-text">地址分配与片选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双端口RAM"><span class="nav-number">3.6.</span> <span class="nav-text">双端口RAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多模块"><span class="nav-number">3.7.</span> <span class="nav-text">多模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cache和主存的映射"><span class="nav-number">3.8.</span> <span class="nav-text">Cache和主存的映射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接映射：主存数据块放Cache中唯一位置"><span class="nav-number">3.8.1.</span> <span class="nav-text">直接映射：主存数据块放Cache中唯一位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全相联映像：主存数据块随意放在Cache中"><span class="nav-number">3.8.2.</span> <span class="nav-text">全相联映像：主存数据块随意放在Cache中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组相联映像-只能放特定组，组内可以随意放"><span class="nav-number">3.8.3.</span> <span class="nav-text">组相联映像:只能放特定组，组内可以随意放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cache写策略："><span class="nav-number">3.8.4.</span> <span class="nav-text">Cache写策略：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指令系统"><span class="nav-number">4.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地址格式"><span class="nav-number">4.2.</span> <span class="nav-text">地址格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻址方式：EA表示操作数的有效地址"><span class="nav-number">4.3.</span> <span class="nav-text">寻址方式：EA表示操作数的有效地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混合的寻址方式"><span class="nav-number">4.4.</span> <span class="nav-text">混合的寻址方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂指令集-CISC-和精简指令集-RISC"><span class="nav-number">4.5.</span> <span class="nav-text">复杂指令集(CISC)和精简指令集(RISC)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中央处理器"><span class="nav-number">5.</span> <span class="nav-text">中央处理器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运算器"><span class="nav-number">5.1.</span> <span class="nav-text">运算器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制器"><span class="nav-number">5.2.</span> <span class="nav-text">控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寄存器"><span class="nav-number">5.3.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU"><span class="nav-number">5.4.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令周期"><span class="nav-number">5.5.</span> <span class="nav-text">指令周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令周期的数据流"><span class="nav-number">5.6.</span> <span class="nav-text">指令周期的数据流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取址周期："><span class="nav-number">5.6.1.</span> <span class="nav-text">取址周期：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间址周期"><span class="nav-number">5.6.2.</span> <span class="nav-text">间址周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行周期"><span class="nav-number">5.6.3.</span> <span class="nav-text">执行周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断周期"><span class="nav-number">5.6.4.</span> <span class="nav-text">中断周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令执行流程"><span class="nav-number">5.7.</span> <span class="nav-text">指令执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微指令"><span class="nav-number">5.8.</span> <span class="nav-text">微指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微指令编码方式"><span class="nav-number">5.9.</span> <span class="nav-text">微指令编码方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微指令格式"><span class="nav-number">5.10.</span> <span class="nav-text">微指令格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微程序控制单元"><span class="nav-number">5.11.</span> <span class="nav-text">微程序控制单元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令流水线："><span class="nav-number">5.12.</span> <span class="nav-text">指令流水线：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#影响因素"><span class="nav-number">5.13.</span> <span class="nav-text">影响因素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能指标"><span class="nav-number">5.14.</span> <span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总线"><span class="nav-number">6.</span> <span class="nav-text">总线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统总线"><span class="nav-number">6.1.</span> <span class="nav-text">系统总线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作频率：一秒内传递几次数据"><span class="nav-number">6.2.</span> <span class="nav-text">工作频率：一秒内传递几次数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集中仲裁方式"><span class="nav-number">6.3.</span> <span class="nav-text">集中仲裁方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总线异步定时方式-按需分配时间"><span class="nav-number">6.4.</span> <span class="nav-text">总线异步定时方式(按需分配时间)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总线标准"><span class="nav-number">6.5.</span> <span class="nav-text">总线标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入-输出系统"><span class="nav-number">7.</span> <span class="nav-text">输入/输出系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#显式存储器"><span class="nav-number">7.1.</span> <span class="nav-text">显式存储器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘"><span class="nav-number">7.2.</span> <span class="nav-text">磁盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冗余阵列"><span class="nav-number">7.3.</span> <span class="nav-text">冗余阵列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O接口的基本结构"><span class="nav-number">7.4.</span> <span class="nav-text">I/O接口的基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O端口编址"><span class="nav-number">7.5.</span> <span class="nav-text">I/O端口编址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O方式"><span class="nav-number">7.6.</span> <span class="nav-text">I/O方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断处理过程"><span class="nav-number">7.7.</span> <span class="nav-text">中断处理过程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

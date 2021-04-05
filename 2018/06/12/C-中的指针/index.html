@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="程序设计,原创,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、指针 C++ 的指针很好理解，但是操作起来就有点难度了。而我对指针传参过程的理解也是费了点心思。主要是 JS 写得脑萎缩了。  先用一张图回忆一下指针   P 是一个 int 型的指针，指向内存 Ox6efff4  与指针配套食用的是取地址运算符&amp;amp;和解除引用运算符*，于是我们就需要知道三个属性：&amp;amp;p是指针的变量地址 p指针指向的地址（即存储数据的地址） *p指针指向的地址的值">
+<meta name="keywords" content="程序设计,原创">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 中的指针">
+<meta property="og:url" content="http://yoursite.com/2018/06/12/C-中的指针/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="一、指针 C++ 的指针很好理解，但是操作起来就有点难度了。而我对指针传参过程的理解也是费了点心思。主要是 JS 写得脑萎缩了。  先用一张图回忆一下指针   P 是一个 int 型的指针，指向内存 Ox6efff4  与指针配套食用的是取地址运算符&amp;amp;和解除引用运算符*，于是我们就需要知道三个属性：&amp;amp;p是指针的变量地址 p指针指向的地址（即存储数据的地址） *p指针指向的地址的值">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://t1.picb.cc/uploads/2018/06/12/2xG5a7.png">
+<meta property="og:image" content="https://t1.picb.cc/uploads/2018/06/12/2xHfft.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/13/COgG90.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/13/COgcjO.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b589b210e0c8.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b589c0ce8181.png">
+<meta property="og:updated_time" content="2021-04-05T08:46:05.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ 中的指针">
+<meta name="twitter:description" content="一、指针 C++ 的指针很好理解，但是操作起来就有点难度了。而我对指针传参过程的理解也是费了点心思。主要是 JS 写得脑萎缩了。  先用一张图回忆一下指针   P 是一个 int 型的指针，指向内存 Ox6efff4  与指针配套食用的是取地址运算符&amp;amp;和解除引用运算符*，于是我们就需要知道三个属性：&amp;amp;p是指针的变量地址 p指针指向的地址（即存储数据的地址） *p指针指向的地址的值">
+<meta name="twitter:image" content="https://t1.picb.cc/uploads/2018/06/12/2xG5a7.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/12/C-中的指针/">
+
+
+
+
+
+  <title>C++ 中的指针 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/C-中的指针/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++ 中的指针</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T21:05:23+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、指针"><a href="#一、指针" class="headerlink" title="一、指针"></a>一、指针</h1><ul>
+<li><p>C++ 的指针很好理解，但是操作起来就有点难度了。而我对指针传参过程的理解也是费了点心思。<del>主要是 JS 写得脑萎缩了。</del></p>
+</li>
+<li><p>先用一张图回忆一下指针</p>
+</li>
+</ul>
+<p><img src="https://t1.picb.cc/uploads/2018/06/12/2xG5a7.png" alt="C++Pointer"><br><code>P</code> 是一个 <code>int</code> 型的指针，指向内存 <code>Ox6efff4</code></p>
+<ul>
+<li>与指针配套食用的是取地址运算符<code>&amp;</code>和解除引用运算符<code>*</code>，于是我们就需要知道三个属性：<pre><code>&amp;p是指针的变量地址
+p指针指向的地址（即存储数据的地址）
+*p指针指向的地址的值
+</code></pre></li>
+</ul>
+<a id="more"></a>
+<h1 id="二、传参过程中的指针"><a href="#二、传参过程中的指针" class="headerlink" title="二、传参过程中的指针"></a>二、传参过程中的指针</h1><ul>
+<li>C++ 中参数的传递有三种，<code>值传递</code>，<code>引用传递</code>以及<code>指针传递</code>。</li>
+<li><code>值传递</code>：形参是实参的拷贝，函数内部对形参的修改不能改变外部实参的值，换言之，传递的值不会被修改。</li>
+<li><code>引用传递</code>：形参相当于是实参的别名，函数内部对形参的修改相当于对外部实参的修改，即传递的值会被修改。</li>
+<li><p><code>指针传递</code>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">int</span> *x)</span></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*x: "</span> &lt;&lt; *x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  *x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> *p = &amp;a;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;a: "</span> &lt;&lt; &amp;a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"p: "</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  function(p);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://t1.picb.cc/uploads/2018/06/12/2xHfft.png" alt="result"></p>
+</li>
+</ul>
+<h1 id="三、二级指针"><a href="#三、二级指针" class="headerlink" title="三、二级指针"></a>三、二级指针</h1><ul>
+<li>其实上面说得都不是啥重点。</li>
+<li>指向指针的指针被称为二级指针。</li>
+<li>二级指针图示：</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/06/13/COgG90.png" alt="pointer"><br>同样我们需要知道这些：</p>
+<ul>
+<li><code>pp</code>是二级指针保存的地址</li>
+<li><code>&amp;pp</code>是二级指针的地址</li>
+<li><code>*pp</code>是二级指针所指向的地址里面保存的数据（其实也是一个地址，相当于<code>p</code>）</li>
+<li><p><code>**pp</code>是二级指针所指向的地址里面保存的地址（数据），该地址里面保存的数据（相当于<code>*p</code>）</p>
+<p>二级指针作为参数传递：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">int</span> **x)</span></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*x: "</span> &lt;&lt; *x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"**x: "</span> &lt;&lt; **x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  **x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> *p = &amp;a;</span><br><span class="line">  <span class="keyword">int</span> **pp = &amp;p;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;a: "</span> &lt;&lt; &amp;a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"p: "</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"pp: "</span> &lt;&lt; pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*pp: "</span> &lt;&lt; *pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"**pp: "</span> &lt;&lt; **pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  function(pp);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://s1.ax1x.com/2018/06/13/COgcjO.png" alt="point2"></p>
+<p>程序说明：</p>
+<ul>
+<li>这么简单就不用说明了吧。</li>
+<li>不过要注意的是，因为传的是二级指针，所以函数原型中声明参数的时候需要<code>int **x</code>使用两个星号。</li>
+</ul>
+</li>
+<li><p>来个更直观一点的图示:<br><img src="https://i.loli.net/2018/07/25/5b589b210e0c8.png" alt="截图20180725234511.png"><br>让我们来看看各个变量代表的值是什么:</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">int</span> *p = &amp;x;</span><br><span class="line">  <span class="keyword">int</span> **pp = &amp;p;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;x: "</span> &lt;&lt; &amp;x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"p: "</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*p: "</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;p: "</span> &lt;&lt; &amp;p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"pp: "</span> &lt;&lt; pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*pp: "</span> &lt;&lt; *pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"**pp: "</span> &lt;&lt; **pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;pp: "</span> &lt;&lt; &amp;pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*&amp;pp: "</span> &lt;&lt; *&amp;pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行结果: </p>
+<p>  <img src="https://i.loli.net/2018/07/25/5b589c0ce8181.png" alt="20180725234912.png"></p>
+<p>所以得出一个结论:</p>
+<pre><code>x == *p == **p;
+&amp;x == p == *pp;
+&amp;p == pp == *&amp;pp;
+</code></pre><p>注意那个 <code>*&amp;pp</code></p>
+<h1 id="四、关于字符数组"><a href="#四、关于字符数组" class="headerlink" title="四、关于字符数组"></a>四、关于字符数组</h1><ul>
+<li><strong>很明显这里才是重点</strong>。</li>
+<li>在多数情况下，C++ 将数组名解释为数组第一个元素的地址。</li>
+<li><p>下面这个语句声明一个 double 类型的指针，它指向了 wages 数组的第一个元素</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> wages[<span class="number">3</span>] = &#123;<span class="number">100.0</span>, <span class="number">200.0</span>, <span class="number">300.0</span>&#125;;</span><br><span class="line"><span class="keyword">double</span> *p = wages; <span class="comment">// wages = &amp;wages[0]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后我们就可以进行指针变量加一的操作，该操作增加的值等于指向的类型占用的字节数。</p>
+<p>  <code>*(p+1) == wages[1] // true</code></p>
+</li>
+<li><p>可以将一维数组视为一个指针，使用方括号就是等同于解除引用，同理可得，<strong>二维数组可视为一个二级指针(二维数组 != 二级指针 )</strong></p>
+<p>  <code>tacos[0] == *tacos; // true</code><br>  <code>tacos[1] == *(tacos + 1); //true</code></p>
+</li>
+<li><p>有一个思考：</p>
+<pre><code>char a = &apos;$&apos;; // 这是一个字符
+char *p = &apos;abcdefg&apos; // 这是什么？可以理解为字符串吗？
+</code></pre></li>
+</ul>
+<h1 id="五、二维数组与指针"><a href="#五、二维数组与指针" class="headerlink" title="五、二维数组与指针"></a>五、二维数组与指针</h1><ul>
+<li><p>当我们对二维数组执行像一维数组一样的操作的时候</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>] = &#123; &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125; &#125;;</span><br><span class="line"><span class="keyword">int</span> **p = a;</span><br></pre></td></tr></table></figure>
+<p>  编译器会报错：<code>error: cannot convert &#39;int (*)[3]&#39; to &#39;int**&#39; in initialization</code><br>原因其实很简单，二维数组的数组名已经不是第一个元素的地址了，而是数组指针，它指向的是第一行数组的首地址，也称为行指针。因此它应该是这样的:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*p)[<span class="number">3</span>] = a;</span><br></pre></td></tr></table></figure>
+<p>  该定义的含义数组指针<code>p</code>，指向的是一个数组元素为int类型并且数组元素的个数为3的一个数组指针<br>若要取其中第二行第三列<code>(从 1 开始计数)</code>的元素：</p>
+<p>  <code>*(*(p+1)+2)</code></p>
+</li>
+<li><p>关于二维数组的传参(补充)<br>因为二维数组名是数组指针，所以我们在将数组名作为参数传参的时候也是传的数组指针，这时候在函数原型声明的时候可以将数组指针转化为<code>void *</code></p>
+</li>
+</ul>
+<h1 id="六、使用-const-修饰的指针"><a href="#六、使用-const-修饰的指针" class="headerlink" title="六、使用 const 修饰的指针"></a>六、使用 <code>const</code> 修饰的指针</h1><ul>
+<li><p>第一种：<code>const * p</code></p>
+<pre><code>int gorp = 16;
+int chips = 12;
+const int * p = &amp;gorp;
+
+*p = 20; // error: 不允许修改指针所指向的地址里面的内容
+p = &amp;chips; // OK:允许修改指针的指向(可以修改 p 的值)
+</code></pre></li>
+<li><p>第二种：<code>* const p</code></p>
+<pre><code>int gorp = 16;
+int chips = 12;
+int * const p = &amp;gorp;
+
+*p = 20; // OK: 允许修改指针所指向的地址里面的内容
+p = &amp;chips; // error: 不允许修改指针的指向(不可以修改 p 的值)
+</code></pre></li>
+<li><p>第三种：<code>const * const p</code></p>
+<pre><code>既不允许修改 p 指针所指向的地址里面的内容，也不允许修改指针的指向
+</code></pre></li>
+<li><p>思考：<br>  下面代码是否允许？</p>
+<pre><code>const int gorp = 16;
+int *p = &amp;gorp;
+</code></pre></li>
+</ul>
+<p>参考：<br><a href="https://blog.csdn.net/qq_32483145/article/details/52901230" target="_blank" rel="noopener">https://blog.csdn.net/qq_32483145/article/details/52901230</a><br><a href="https://blog.csdn.net/zhouxuguang236/article/details/12256321" target="_blank" rel="noopener">https://blog.csdn.net/zhouxuguang236/article/details/12256321</a><br>《C++ Primer Plus》</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/程序设计/" rel="tag"># 程序设计</a>
+          
+            <a href="/tags/原创/" rel="tag"># 原创</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/06/《C-Primer-Plus》学习笔记/" rel="next" title="《C++ Primer Plus》学习笔记">
+                <i class="fa fa-chevron-left"></i> 《C++ Primer Plus》学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/25/Linux-下各文件夹的结构说明及用途介绍/" rel="prev" title="Linux 下各文件夹的结构说明及用途介绍">
+                Linux 下各文件夹的结构说明及用途介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、指针"><span class="nav-number">1.</span> <span class="nav-text">一、指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、传参过程中的指针"><span class="nav-number">2.</span> <span class="nav-text">二、传参过程中的指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、二级指针"><span class="nav-number">3.</span> <span class="nav-text">三、二级指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、关于字符数组"><span class="nav-number">4.</span> <span class="nav-text">四、关于字符数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、二维数组与指针"><span class="nav-number">5.</span> <span class="nav-text">五、二维数组与指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、使用-const-修饰的指针"><span class="nav-number">6.</span> <span class="nav-text">六、使用 const 修饰的指针</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

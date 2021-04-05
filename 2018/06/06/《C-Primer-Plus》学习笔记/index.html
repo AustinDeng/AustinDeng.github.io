@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="程序设计,原创,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一章: 预备知识 编译步骤：  如果程序违反了语言规则，编译器将会生成错误信息。 但是，有时，真正的问题可能在标识之前； 有时，一个错误可能引发一连串的错误消息。  所以，改正错误时，先改正第一个错误； 如果找不到错误，请查看前一行；">
+<meta name="keywords" content="程序设计,原创">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《C++ Primer Plus》学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/06/06/《C-Primer-Plus》学习笔记/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="第一章: 预备知识 编译步骤：  如果程序违反了语言规则，编译器将会生成错误信息。 但是，有时，真正的问题可能在标识之前； 有时，一个错误可能引发一连串的错误消息。  所以，改正错误时，先改正第一个错误； 如果找不到错误，请查看前一行；">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://t1.picb.cc/uploads/2018/06/06/2BbETR.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/06/19/5b29029b3531d.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/20/5b2a01500fe26.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/20/5b2a01a8057e8.png">
+<meta property="og:updated_time" content="2021-04-05T08:46:05.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《C++ Primer Plus》学习笔记">
+<meta name="twitter:description" content="第一章: 预备知识 编译步骤：  如果程序违反了语言规则，编译器将会生成错误信息。 但是，有时，真正的问题可能在标识之前； 有时，一个错误可能引发一连串的错误消息。  所以，改正错误时，先改正第一个错误； 如果找不到错误，请查看前一行；">
+<meta name="twitter:image" content="https://t1.picb.cc/uploads/2018/06/06/2BbETR.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/06/《C-Primer-Plus》学习笔记/">
+
+
+
+
+
+  <title>《C++ Primer Plus》学习笔记 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/《C-Primer-Plus》学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《C++ Primer Plus》学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T10:15:43+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第一章-预备知识"><a href="#第一章-预备知识" class="headerlink" title="第一章: 预备知识"></a>第一章: 预备知识</h2><ul>
+<li>编译步骤：<br><img src="https://t1.picb.cc/uploads/2018/06/06/2BbETR.jpg" alt="编程步骤"></li>
+</ul>
+<pre><code>如果程序违反了语言规则，编译器将会生成错误信息。
+但是，有时，真正的问题可能在标识之前；
+有时，一个错误可能引发一连串的错误消息。
+
+所以，改正错误时，先改正第一个错误；
+如果找不到错误，请查看前一行；
+</code></pre><a id="more"></a>
+<ul>
+<li>一个技巧<br>IDE 通过辅助窗口运行程序，程序运行完毕后，有些 IDE 会关闭改窗口，导致难以看出程序输出。因此，我们可以在程序的最后加上这些代码：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	<span class="built_in">cin</span>.<span class="built_in">get</span>(); <span class="comment">// add this statement</span></span><br><span class="line">	<span class="built_in">cin</span>.<span class="built_in">get</span>(); <span class="comment">// and maybe this, too</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果程序在常规输入下后留下一个没有被处理的键击，则第二个语句是必须的。<br>例如：如果要输入一个数字，则需要输入该数字，然后按 Enter 键。程序将读取该数字，但 Enter 键不被处理，这样它将被第一个 <code>cin.get()</code> 读取。</p>
+<h2 id="第二章：-开始学习-C"><a href="#第二章：-开始学习-C" class="headerlink" title="第二章： 开始学习 C++"></a>第二章： 开始学习 C++</h2><ul>
+<li><p>一些知识点</p>
+<ul>
+<li>C++ 可以使用 printf()、 scanf()和其他所有标准 C 输入和输出函数，只需要包含常规 C 语言的 stdio.h 文件。</li>
+<li>所有的语句都以分号结束，因此在写代码的时候，不要省略分号。</li>
+<li><code>main()</code> 函数是程序的入口，被启动代码调用，而启动代码是由编译器添加到主程序中的，是程序和操作系统之间的桥梁。事实上，该函数描述的是 main() 和操作系统之间的接口。</li>
+<li><code>void main()</code> 不是当前标准强制的一个选项，因此在有些系统上不能工作。</li>
+<li>如果编译器执行到函数末尾也没有遇到返回语句，则认为 main() 以如下语句结尾：<br>  <code>retrun 0;</code><br>  该条隐含的返回语句只适用于main()函数，而不适用于其他函数。</li>
+<li><p><code>#include&lt;iostream&gt;</code> 该编译指令将预处理器将 iostream 文件的内容添加到程序中。原始的文件没有被修改，而是将源代码问价和 iostream 组合成一个复合文件，编译的下一个阶段将会使用该文件。</p>
+</li>
+<li><p><code>using namespace std;</code> using 编译指令使用 std 的命名空间，这样便不用 std::cout 而直接使用 cout 即可。</p>
+</li>
+<li><code>cout</code> 是一个对象，它的类在 iostream 文件中定义， <code>&lt;&lt;</code> 表示该语句将把字符串发送给 cout ；该符号指出了信息流动的路径。（<code>&lt;&lt;</code>也可是代表位运算符号，这是一个运算符重载的列子）</li>
+<li>main() 函数中的<code>return 0;</code> 并不是返回给程序的其他部分的，而是返回给操作系统的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第三章：-处理数据"><a href="#第三章：-处理数据" class="headerlink" title="第三章： 处理数据"></a>第三章： 处理数据</h2><ul>
+<li><p>知识点</p>
+<ul>
+<li>使用 <code>&amp;</code> 运算符来检索某一个变量的内存地址</li>
+<li>定义变量不可以使用 <code>-</code> 连字符，会被编译器解释成减号，例如：<br>  <code>int honk-tonk; // invalid -- no hyphens allowed</code></li>
+<li>C++ 基本类型（按宽度递增）： <code>char</code> <code>short</code> <code>int</code> <code>long</code> 还有 C++11 新增的<code>long long</code>，其中每种类型都有有符号版本和无符号版本，因此总共有 10 种类型可以选择。</li>
+<li><p>对类型名（如 int ）使用<code>sizeof</code>运算符时，应将名称放在括号中；但对变量名（如 n_short ）使用该运算符，括号是可选的：</p>
+<figure class="highlight plain"><figcaption><span><< "int is " << size (int) << " bytes.";</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; &quot;short is &quot; &lt;&lt;sizeof n_short &lt;&lt; &quot; bytes.&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>头文件<code>climits</code>定义了符号常量来表示类型的限制。例如<code>INT_MAX</code>表示类型<code>int</code>能够存储的最大值。</p>
+</li>
+<li>如果不对函数内部定义的变量进行初始化，该变量的值是不确定的。这意味着该变量的值将是它被创建之前，相应内存单元保存的值。</li>
+<li>C++11 使得可将大括号初始化器用于任何类型。</li>
+<li>关键字<code>unsigned</code>用于声明无符号版本的基本整型。<br><code>unsigned int rovert; // unsigned int type</code></li>
+<li>浮点类型可以表示小数值以及比整型能够表示的值大得多的值。三种浮点类型分别是<code>float</code>、<code>double</code> 和 <code>long double</code>。</li>
+<li>对变量赋值、在运算符中使用不同类型、使用强制类型装换时， C++ 将把值从一种类型转化为另外一种类型。大多数情况下的转换是“安全的”。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第四章：复合类型"><a href="#第四章：复合类型" class="headerlink" title="第四章：复合类型"></a>第四章：复合类型</h2><ul>
+<li>数组<ul>
+<li>数组之所以被称为复合类型，是因为它是使用其他类型来创建的。所以，在语句<code>float loans[20];</code>中，<code>loans</code>的类型不是数组，而是<code>float 数组</code></li>
+<li>数组只有在定义的时候可以初始化，也不能将一个数组赋给另外一个数组。但是可以把一个 string 对象赋值给另一个 string 对象。</li>
+</ul>
+</li>
+<li><p>字符串</p>
+<ul>
+<li><p>字符串又称字符串常量或者字符串字面量，它长这个样子：</p>
+<pre><code>char bird[11] = &quot;Mr. Cheeps&quot;;
+char fish[] = &quot;Bubbles&quot;;
+</code></pre></li>
+<li>C++ 对字符串长度没有限制。</li>
+<li><p>使用字符数组总存在目标数组过小，无法存储指定信息的危险。例如使用 strcat() 函数的时候。</p>
+</li>
+<li><p>字符串常量(使用双引号)不能喝字符常量(使用单引号)互换。</p>
+<pre><code>char shirt_size = &apos;S&apos;; // 将 S 的 ASCII 码 83 赋值给 shirt_size 
+char shirt_size = &quot;S&quot;; // 将 S 的内存地址赋值给 shirt_size
+</code></pre></li>
+<li>标准头文件 <code>&lt;cstring&gt;</code> 提供了字符串相关函数的声明。头文件<code>&lt;string&gt;</code>提供了 string 类。</li>
+<li><p><code>getline()</code>函数每次读取一行，它通过换行符来确定行尾，但不保存换行符；<code>get()</code>函数也是用来读取一行的输入，不过读取到行尾时，并不再读取并丢弃换行符，而是将其留在输入队列中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"What year was your house built?\n"</span>;</span><br><span class="line">  <span class="keyword">int</span> year;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; year;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"What is its street address?\n"</span>;</span><br><span class="line">  <span class="keyword">char</span> address[<span class="number">80</span>];</span><br><span class="line">  <span class="built_in">cin</span>.getline(address, <span class="number">80</span>);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Year built: "</span> &lt;&lt; year &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Address: "</span> &lt;&lt; address &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Done!\n"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果<br><img src="https://i.loli.net/2018/06/19/5b29029b3531d.png" alt><br>我们发现，根本就没有输入地址的机会。<strong>原因在于</strong>，当 cin 读取年份，将回车键生成的换行符留在了输入队列中。后面的 cin.getline() 看到换行符后，将认为是一个空行，并将一个空的字符串赋值给了 address 数组。<br>解决方法：</p>
+<p>  cin &gt;&gt; yuear;<br>  cin.get(); // or cin,get(ch);</p>
+<p>或者：</p>
+<p>  (cin &gt;&gt; year).get();</p>
+</li>
+<li><code>getline</code>函数可以这么使用： <code>getline(cin, str);</code>表示将输入赋值给 <code>str</code>。</li>
+</ul>
+</li>
+<li><p>string 类</p>
+<ul>
+<li><p>原始 (raw) 字符串使用前缀 R 来标识。</p>
+<pre><code>cout &lt;&lt; R&quot;Hello, Worle!\n&quot;;  // display =&gt; Hello, World!\n
+</code></pre></li>
+<li>貌似没啥说的了。</li>
+</ul>
+</li>
+<li>结构<ul>
+<li>使用关键字 <code>struct</code> 来声明一个结构体。</li>
+<li>相同的结构体允许相互赋值。</li>
+<li>结构初始化的时候不允许窄缩转换。</li>
+<li>当标识符是结构名的时候。使用句点运算符；当标识符是指向结构的指针时，使用箭头运算符。</li>
+</ul>
+</li>
+<li>公用体<ul>
+<li>使用关键字 <code>union</code> 声明。</li>
+<li>内部可以声明多个类型，但是只会选择其中一个。</li>
+</ul>
+</li>
+<li>枚举<ul>
+<li>使用关键字 <code>enum</code> 声明。</li>
+<li>枚举是有默认值的，可以显示地赋值，但是有范围，不可以瞎赋值。</li>
+<li>用到的时候查一下就好了。</li>
+</ul>
+</li>
+<li>指针<ul>
+<li><code>&amp;</code>是取地址运算符，<code>*</code>被称为间接值或者解除引用。</li>
+<li>指针要记得初始化。</li>
+<li>使用 <code>new</code> 来分配内存，使用 <code>delete</code> 来释放内存。</li>
+<li>内容太多，列举不完。可以去看关于 C++ 指针的那篇文章。</li>
+</ul>
+</li>
+<li>数组的替代品<ul>
+<li>模板类 vector：<br>  <code>vector</code>表示动态数组，效率稍低，需要包含头文件 <vector>。在 C++98 中不能用初始化列表初始化，C++11 是可以的。<br>  声明如下：<br>  <code>vector&lt;typeName&gt; vt(n_elem); // 参数 n_elem 可以是整型常量，也可以是整型变量。</code> </vector></li>
+<li>模板类 array：<br>  <code>array</code>数组的长度也是固定，但是效率和数组一样，而且更方便，更安全，需要包含头文件<array>。可以使用初始化列表初始化。<br>  声明如下：<br>  <code>arrat&lt;typeName, n_elem&gt; arr; // n_elem 不能是变量。</code></array></li>
+<li>使用成员函数<code>at()</code>，将在运行期间捕获非法索引，而程序将默认中断。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第五章：-循环和关系表达式"><a href="#第五章：-循环和关系表达式" class="headerlink" title="第五章： 循环和关系表达式"></a>第五章： 循环和关系表达式</h2><ul>
+<li><p>for 循环</p>
+<pre><code>for (initialization; test-expression; update-expression)
+    body
+</code></pre></li>
+<li>递增/递减运算符<br>  表达式： <code>a++</code> 意味着：使用当前 <code>a</code> 的值计算表达式，然后再将 <code>a</code> 的值加一；<br>  表达式： <code>++a</code> 意味着：先将 <code>a</code> 的值加一，然后再用加一后的值去计算表达式；<br>  前缀递增、前缀递减和解除引用运算符的优先级相同，以从左向右的方式进行结合。<br>  后缀递增和后缀递减的优先级相同，但是比<strong>前缀运算符</strong>的优先级高。</li>
+<li><p>while 循环</p>
+<pre><code>while (test-expression)
+    body
+</code></pre></li>
+<li>头文件 <code>&lt;ctime&gt;</code> 定义了成员函数 <code>clock()</code> 返回系统当前时间，但是单位不确定。可是使用常量<code>CLOCK_PRE_SEC</code>乘以秒数，得到系统单位为单位的时间。</li>
+<li>头文件<code>&lt;cstring&gt;</code>定义了成员函数<code>strcmp()</code>，该函数接受两个字符串地址作为参数(指针、字符串常量、字符数组名)。如果两个字符串相投，返回零，第一个字符串在第二个字符串之前，返回负数值，之后返回正数值。</li>
+<li><p><code>#define</code> 和 <code>typedef</code> 都可以定义类型的别名。不过后者更好。这样的 <code>#define</code> 会出问题</p>
+<pre><code>#define FLOAT_POINTER float *
+FLOAT_POINTER pa, pb;
+</code></pre><p>预处理器这样处理该声明：</p>
+<pre><code>float * pa, pb; // pa 是一个 float 类型的指针而 pb 是一个 float 类型。
+</code></pre></li>
+<li><p><code>cin</code> 读取 char 时，与读取其他类型一样， cin 将会忽略空格和换行符。可以使用 <code>cin.get(ch)</code>来补救。</p>
+</li>
+<li>文件尾条件(EOF)在文件 <code>&lt;iostream&gt;</code> 中定义。</li>
+</ul>
+<h2 id="第六章：-分支语句和逻辑运算符"><a href="#第六章：-分支语句和逻辑运算符" class="headerlink" title="第六章： 分支语句和逻辑运算符"></a>第六章： 分支语句和逻辑运算符</h2><ul>
+<li><p>if else 语句</p>
+<pre><code>if(test-expression)
+    statement1
+else
+    statement2
+</code></pre><p>  书上的例子：</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> ch;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Type, and I shall repeat!\n"</span>;</span><br><span class="line">  <span class="built_in">cin</span>.<span class="built_in">get</span>(ch);</span><br><span class="line">  <span class="keyword">while</span>(ch != <span class="string">'.'</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (ch == <span class="string">'\n'</span>)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; ch;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; ++ch; <span class="comment">// 此处改为 cout &lt;&lt; ch + 1 会发生什么？</span></span><br><span class="line">    <span class="built_in">cin</span>.<span class="built_in">get</span>(ch);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"\nDone!"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  运行结果：<br>  <img src="https://i.loli.net/2018/06/20/5b2a01500fe26.png" alt><br>  将第十七行改一下就变成这样了：<br>  <img src="https://i.loli.net/2018/06/20/5b2a01a8057e8.png" alt><br>  这涉及到 cout 处理不同的类型的转换。</p>
+</li>
+<li><p>逻辑表达式</p>
+<ul>
+<li>OR 逻辑运算符： ||<br>  只要第一个表达式为真，就不会再去执行第二个表达式，直接返回真。</li>
+<li><p>AND 逻辑运算符： &amp;&amp;<br>  只要第一个表达式为假，直接返回假。</p>
+<pre><code>if（ 17 &lt; age &lt; 35）
+该 if 判断永远为真。
+应该这么做
+if ( 17 &lt; age &amp;&amp; age &lt; 35 )
+</code></pre></li>
+</ul>
+</li>
+<li><p>读取数字的循环</p>
+<ul>
+<li><p>有一段这样的代码：</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; n;</span><br></pre></td></tr></table></figure>
+<p>  如果输入的是一个字母而不是一个数字将会发生以下事件：<br>  1、n 的值保持不变。<br>  2、不匹配的输入将被留在输入队列中。<br>  3、<strong>cin 对象被一个错误标记被重置。</strong><br>  4、<strong>对 cin 方法的调用将返回 false</strong> (如果转换为 bool 型)</p>
+</li>
+<li><p>对于第四点，我们假设有这样一种情况：</p>
+<pre><code>const int Max = 5;
+double fish[Max];
+...
+int i;
+while (i &lt; Max &amp;&amp; cin &gt;&gt; fish[i] ) // 当输入为非数字的时候返回 false
+{...}
+</code></pre><p>  为了看到输入，我们要这样做：</p>
+<pre><code>if (!cin)
+{
+    cin.clear();
+    cin,get();
+}
+cin.get();
+cin.get();
+</code></pre></li>
+<li><p>如果程序发现用户输入了错误的内容时，应该这么做：<br>  1、重置 cin 以接受新的输入<br>  2、删除错误输入<br>  3、提示用户重新输入</p>
+<pre><code>while (!(cin &gt;&gt; golf[i])){
+    cin.clear();
+    while (cin.get != &apos;\n&apos;)
+        continue;
+    cout &lt;&lt; &quot;Please enter a number: &quot;;
+}
+</code></pre><p>  该循环第一句使用 clear() 方法重置输入，如果省略，程序将拒绝继续读取输入，接下来的 while 循环中使用 cin.get() 来读取行尾之前的所有输入，从而删除这一行的错误输入。    </p>
+</li>
+</ul>
+</li>
+<li><p>简单文件输入/输出</p>
+<ul>
+<li>文件输入<br>  1、必须包含头文件<code>&lt;fstream&gt;</code>。<br>  2、头文件定义了<code>fstream</code>定义了一个用于处理输出的<code>ifstream</code>类。<br>  3、需要声明一个或多个<code>ofstream</code>变量(对象),并以自己喜欢的方式对其命名，条件的遵守常用的命名规则。<br>  4、必须使用命名空间<code>std:</code>。<br>  5、需要将<code>ofstream</code>对象与文件关联起来。为此，方法之一就是使用<code>open()</code>方法。<br>  6、使用完文件后，应使用<code>close()</code>方法将其关闭。<br>  7、可结合使用<code>ofstream</code>对象和运算符 <code>&gt;&gt;</code> 来输出各种类型的数据。<br>  8、可以使用 <code>ifstream</code>对象和<code>get()</code>方法来读取一个字符，使用<code>ifstream</code>对象和<code>getline()</code>来读取一行字符。<br>  9、<code>ifstream</code>对象本身被用作测试条件时，如果最后一个读取成功，它将被转换为布尔值<code>true</code>,否者为<code>false</code>。</li>
+<li>文件输出<br>  1、必须包含头文件<code>&lt;fstream&gt;</code>。<br>  2、头文件定义了<code>fstream</code>定义了一个用于处理输出的<code>ofstream</code>类。<br>  3、需要声明一个或多个<code>ofstream</code>变量(对象),并以自己喜欢的方式对其命名，条件的遵守常用的命名规则。<br>  4、必须使用命名空间<code>std:</code>。<br>  5、需要将<code>ofstream</code>对象与文件关联起来。为此，方法之一就是使用<code>open()</code>方法。<br>  6、使用完文件后，应使用<code>close()</code>方法将其关闭。<br>  7、可结合使用<code>ofstream</code>对象和运算符 <code>&lt;&lt;</code> 来输出各种类型的数据。<br>(未完待续… ^_^)        </li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/程序设计/" rel="tag"># 程序设计</a>
+          
+            <a href="/tags/原创/" rel="tag"># 原创</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/12/C-中的指针/" rel="prev" title="C++ 中的指针">
+                C++ 中的指针 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-预备知识"><span class="nav-number">1.</span> <span class="nav-text">第一章: 预备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章：-开始学习-C"><span class="nav-number">2.</span> <span class="nav-text">第二章： 开始学习 C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章：-处理数据"><span class="nav-number">3.</span> <span class="nav-text">第三章： 处理数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章：复合类型"><span class="nav-number">4.</span> <span class="nav-text">第四章：复合类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章：-循环和关系表达式"><span class="nav-number">5.</span> <span class="nav-text">第五章： 循环和关系表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章：-分支语句和逻辑运算符"><span class="nav-number">6.</span> <span class="nav-text">第六章： 分支语句和逻辑运算符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="转载,网页设计,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本概念: 在 flex 容器中默认存在两条轴，水平主轴(main axis) 和垂直的交叉轴(cross axis)，这是默认的设置，当然你可以通过修改使垂直方向变为主轴，水平方向变为交叉轴，这个我们后面再说。 在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main size), 占据的交叉轴的空间为 (cross size)。 这里需要强调，不能先入为主认为宽度">
+<meta name="keywords" content="转载,网页设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flux 布局">
+<meta property="og:url" content="http://yoursite.com/2018/09/07/Flux-布局/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="基本概念: 在 flex 容器中默认存在两条轴，水平主轴(main axis) 和垂直的交叉轴(cross axis)，这是默认的设置，当然你可以通过修改使垂直方向变为主轴，水平方向变为交叉轴，这个我们后面再说。 在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main size), 占据的交叉轴的空间为 (cross size)。 这里需要强调，不能先入为主认为宽度">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91d949a447a.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dce168f0b.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dd56a759a.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dd56a8ede.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dd56a5d88.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dd56b962e.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dd56bad55.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dd56bc09d.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d154ac.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d159be.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d16568.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d15f24.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d175b5.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d16e2e.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d17a16.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d18a1b.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d18ec5.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91de0d28187.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dfae95061.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dfaeb5cd2.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dfaead6c0.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dfaec1d66.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dfaec06cb.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dfaec3355.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91dfaec47a3.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91e4a62ce32.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91e4a631b33.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91e4a642d2a.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b91e4a6433b0.jpg">
+<meta property="og:updated_time" content="2021-04-05T08:46:05.974Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flux 布局">
+<meta name="twitter:description" content="基本概念: 在 flex 容器中默认存在两条轴，水平主轴(main axis) 和垂直的交叉轴(cross axis)，这是默认的设置，当然你可以通过修改使垂直方向变为主轴，水平方向变为交叉轴，这个我们后面再说。 在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main size), 占据的交叉轴的空间为 (cross size)。 这里需要强调，不能先入为主认为宽度">
+<meta name="twitter:image" content="https://i.loli.net/2018/09/07/5b91d949a447a.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/07/Flux-布局/">
+
+
+
+
+
+  <title>Flux 布局 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/Flux-布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flux 布局</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T10:42:35+08:00">
+                2018-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念:"></a>基本概念:</h2><p><img src="https://i.loli.net/2018/09/07/5b91d949a447a.jpg" alt></p>
+<p>在 flex 容器中默认存在两条轴，水平主轴(main axis) 和垂直的交叉轴(cross axis)，这是默认的设置，当然你可以通过修改使垂直方向变为主轴，水平方向变为交叉轴，这个我们后面再说。</p>
+<p>在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main size), 占据的交叉轴的空间为 (cross size)。</p>
+<p>这里需要强调，不能先入为主认为宽度就是 main size，高度就是 cross size，这个还要取决于你主轴的方向，如果你垂直方向是主轴，那么项目的高度就是 main size。</p>
+<h2 id="Flex-容器："><a href="#Flex-容器：" class="headerlink" title="Flex 容器："></a>Flex 容器：</h2><p>首先，实现 flex 布局需要先指定一个容器，任何一个容器都可以被指定为 flex 布局，这样容器内部的元素就可以使用 flex 来进行布局。</p>
+<pre><code>.container {
+    display: flex | inline-flex;       //可以有两种取值
+}
+</code></pre><p>分别生成一个块状或行内的 flex 容器盒子。简单说来，如果你使用块元素如 div，你就可以使用 flex，而如果你使用行内元素，你可以使用 inline-flex。</p>
+<p><strong>需要注意的是：当时设置 flex 布局之后，子元素的 float、clear、vertical-align 的属性将会失效。</strong></p>
+<p>有下面六种属性可以设置在容器上，它们分别是：</p>
+<ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+<a id="more"></a>
+<h3 id="1-flex-direction-决定主轴的方向-即项目的排列方向"><a href="#1-flex-direction-决定主轴的方向-即项目的排列方向" class="headerlink" title="1. flex-direction: 决定主轴的方向(即项目的排列方向)"></a><strong>1. flex-direction: 决定主轴的方向(即项目的排列方向)</strong></h3><pre><code>.container {
+    flex-direction: row | row-reverse | column | column-reverse;
+}
+</code></pre><p>默认值：row，主轴为水平方向，起点在左端<br><img src="https://i.loli.net/2018/09/07/5b91dce168f0b.jpg" alt="2.jpg"><br>row-reverse：主轴为水平方向，起点在右端<br><img src="https://i.loli.net/2018/09/07/5b91dd56a759a.jpg" alt="3.jpg"><br>column：主轴为垂直方向，起点在上沿<br><img src="https://i.loli.net/2018/09/07/5b91dd56a8ede.jpg" alt="4.jpg"><br>column-reverse：主轴为垂直方向，起点在下沿<br><img src="https://i.loli.net/2018/09/07/5b91dd56a5d88.jpg" alt="5.jpg"></p>
+<h3 id="2-flex-wrap-决定容器内项目是否可换行"><a href="#2-flex-wrap-决定容器内项目是否可换行" class="headerlink" title="2. flex-wrap: 决定容器内项目是否可换行"></a><strong>2. flex-wrap: 决定容器内项目是否可换行</strong></h3><p>默认情况下，项目都排在主轴线上，使用 flex-wrap 可实现项目的换行。</p>
+<pre><code>.container {
+    flex-wrap: nowrap | wrap | wrap-reverse;
+}
+</code></pre><p>默认值：nowrap 不换行，即当主轴尺寸固定时，当空间不足时，项目尺寸会随之调整而并不会挤到下一行<br><img src="https://i.loli.net/2018/09/07/5b91dd56b962e.jpg" alt="6.jpg"><br>wrap：项目主轴总尺寸超出容器时换行，第一行在上方<br><img src="https://i.loli.net/2018/09/07/5b91dd56bad55.jpg" alt="7.jpg"><br>wrap-reverse：换行，第一行在下方<br><img src="https://i.loli.net/2018/09/07/5b91dd56bc09d.jpg" alt="8.jpg"></p>
+<h3 id="3-flex-flow-flex-direction-和-flex-wrap-的简写形式"><a href="#3-flex-flow-flex-direction-和-flex-wrap-的简写形式" class="headerlink" title="3. flex-flow: flex-direction 和 flex-wrap 的简写形式"></a><strong>3. flex-flow: flex-direction 和 flex-wrap 的简写形式</strong></h3><pre><code>.container {
+    flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+}
+</code></pre><p>默认值为: row nowrap，感觉没什么卵用，老老实实分开写就好了。这样就不用记住这个属性了。</p>
+<h3 id="4-justify-content：定义了项目在主轴的对齐方式"><a href="#4-justify-content：定义了项目在主轴的对齐方式" class="headerlink" title="4. justify-content：定义了项目在主轴的对齐方式"></a><strong>4. justify-content：定义了项目在主轴的对齐方式</strong></h3><pre><code>.container {
+    justify-content: flex-start | flex-end | center | space-between | space-around;
+}
+</code></pre><p><strong>建立在主轴为水平方向时测试，即 flex-direction: row</strong></p>
+<p>默认值: flex-start 左对齐<br><img src="https://i.loli.net/2018/09/07/5b91de0d154ac.jpg" alt="9.jpg"><br>flex-end：右对齐<br><img src="https://i.loli.net/2018/09/07/5b91de0d159be.jpg" alt="10.jpg"><br>center：居中<br><img src="https://i.loli.net/2018/09/07/5b91de0d16568.jpg" alt="11.jpg"><br>space-between：两端对齐，项目之间的间隔相等，即剩余空间等分成间隙<br><img src="https://i.loli.net/2018/09/07/5b91de0d15f24.jpg" alt="12.jpg"><br>space-around：每个项目两侧的间隔相等，所以项目之间的间隔比项目与边缘的间隔大一倍<br><img src="https://i.loli.net/2018/09/07/5b91de0d175b5.jpg" alt="13.jpg"></p>
+<h3 id="5-align-items-定义了项目在交叉轴上的对齐方式"><a href="#5-align-items-定义了项目在交叉轴上的对齐方式" class="headerlink" title="5. align-items: 定义了项目在交叉轴上的对齐方式"></a><strong>5. align-items: 定义了项目在交叉轴上的对齐方式</strong></h3><pre><code>.container {
+    align-items: flex-start | flex-end | center | baseline | stretch;
+}
+</code></pre><p><strong>建立在主轴为水平方向时测试，即 flex-direction: row</strong><br>默认值为 stretch 即如果项目未设置高度或者设为 auto，将占满整个容器的高度<br><img src="https://i.loli.net/2018/09/07/5b91de0d16e2e.jpg" alt="14.jpg"><br>假设容器高度设置为 100px，而项目都没有设置高度的情况下，则项目的高度也为 100px</p>
+<p>flex-start：交叉轴的起点对齐<br><img src="https://i.loli.net/2018/09/07/5b91de0d17a16.jpg" alt="15.jpg"><br>假设容器高度设置为 100px，而项目分别为 20px, 40px, 60px, 80px, 100px, 则如上图显示</p>
+<p>flex-end：交叉轴的终点对齐<br><img src="https://i.loli.net/2018/09/07/5b91de0d18a1b.jpg" alt="16.jpg"><br>center：交叉轴的中点对齐<br><img src="https://i.loli.net/2018/09/07/5b91de0d18ec5.jpg" alt="17.jpg"><br>baseline: 项目的第一行文字的基线对齐<br><img src="https://i.loli.net/2018/09/07/5b91de0d28187.jpg" alt="18.jpg"><br>以文字的底部为主，仔细看图可以理解</p>
+<h3 id="6-align-content-定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用"><a href="#6-align-content-定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用" class="headerlink" title="6. align-content: 定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用"></a><strong>6. align-content: 定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用</strong></h3><pre><code>.container {
+    align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+</code></pre><p>这个这样理解：</p>
+<p>当你 flex-wrap 设置为 nowrap 的时候，容器仅存在一根轴线，因为项目不会换行，就不会产生多条轴线。</p>
+<p>当你 flex-wrap 设置为 wrap 的时候，容器可能会出现多条轴线，这时候你就需要去设置多条轴线之间的对齐方式了。</p>
+<p>建立在主轴为水平方向时测试，即 flex-direction: row, flex-wrap: wrap</p>
+<p>默认值为 stretch，看下面的图就很好理解了<br><img src="https://i.loli.net/2018/09/07/5b91dfae95061.jpg" alt="1.jpg"></p>
+<p>从图可以看出又三条轴线(因为容器宽度有限)，当值为 stretch 时会三条轴线平分容器的垂直方向上的空间。</p>
+<p>值得注意的是，虽然在每条轴线上项目的默认值也为 stretch，但是由于我每个项目我都设置了高度，所以它并没有撑开整个容器。如果项目不设置高度的话就会变成下面这样：<br><img src="https://i.loli.net/2018/09/07/5b91dfaeb5cd2.jpg" alt="2.jpg"></p>
+<p>这个我在前面也有提到(align-items)，这里重点还是理解三条轴线会平分垂直轴上的空间。</p>
+<p>flex-start：轴线全部在交叉轴上的起点对齐<br><img src="https://i.loli.net/2018/09/07/5b91dfaead6c0.jpg" alt="3.jpg"><br>flex-end：轴线全部在交叉轴上的终点对齐<br><img src="https://i.loli.net/2018/09/07/5b91dfaec1d66.jpg" alt="4.jpg"><br>center：轴线全部在交叉轴上的中间对齐<br><img src="https://i.loli.net/2018/09/07/5b91dfaec06cb.jpg" alt="5.jpg"><br>space-between：轴线两端对齐，之间的间隔相等，即剩余空间等分成间隙<br><img src="https://i.loli.net/2018/09/07/5b91dfaec3355.jpg" alt="6.jpg"><br>space-around：每个轴线两侧的间隔相等，所以轴线之间的间隔比轴线与边缘的间隔大一倍<br><img src="https://i.loli.net/2018/09/07/5b91dfaec47a3.jpg" alt="7.jpg"></p>
+<p>到这里关于容器上的所有属性都讲完了，接下来就来讲讲关于在 flex item 上的属性。</p>
+<h2 id="Flex-项目属性："><a href="#Flex-项目属性：" class="headerlink" title="Flex 项目属性："></a>Flex 项目属性：</h2><p>有六种属性可运用在 item 项目上：</p>
+<ul>
+<li>order</li>
+<li>flex-basis</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex</li>
+<li>align-self</li>
+</ul>
+<h3 id="1-order-定义项目在容器中的排列顺序，数值越小，排列越靠前，默认值为-0"><a href="#1-order-定义项目在容器中的排列顺序，数值越小，排列越靠前，默认值为-0" class="headerlink" title="1. order: 定义项目在容器中的排列顺序，数值越小，排列越靠前，默认值为 0"></a><strong>1. order: 定义项目在容器中的排列顺序，数值越小，排列越靠前，默认值为 0</strong></h3><pre><code>.item {
+    order: &lt;integer&gt;;
+}
+</code></pre><p><img src="https://i.loli.net/2018/09/07/5b91e4a62ce32.jpg" alt="1.jpg"><br>在 HTML 结构中，虽然 -2，-1 的 item 排在后面，但是由于分别设置了 order，使之能够排到最前面。</p>
+<h3 id="2-flex-basis-定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间"><a href="#2-flex-basis-定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间" class="headerlink" title="2. flex-basis: 定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间"></a><strong>2. flex-basis: 定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间</strong></h3><pre><code>.item {
+    flex-basis: &lt;length&gt; | auto;
+}
+</code></pre><p>默认值：auto，即项目本来的大小, 这时候 item 的宽高取决于 width 或 height 的值</p>
+<p><strong>当主轴为水平方向的时候，当设置了 flex-basis，项目的宽度设置值会失效，flex-basis 需要跟 flex-grow 和 flex-shrink 配合使用才能发挥效果。</strong></p>
+<ul>
+<li>当 flex-basis 值为 0 % 时，是把该项目视为零尺寸的，故即使声明该尺寸为 140px，也并没有什么用。</li>
+<li>当 flex-basis 值为 auto 时，则跟根据尺寸的设定值(假如为 100px)，则这 100px 不会纳入剩余空间。<h3 id="3-flex-grow-定义项目的放大比例"><a href="#3-flex-grow-定义项目的放大比例" class="headerlink" title="3. flex-grow: 定义项目的放大比例"></a><strong>3. flex-grow: 定义项目的放大比例</strong></h3>  .item {<pre><code>flex-grow: &lt;number&gt;;
+</code></pre>  }<br>默认值为 0，即如果存在剩余空间，也不放大</li>
+</ul>
+<p><img src="https://i.loli.net/2018/09/07/5b91e4a631b33.jpg" alt="2.jpg"></p>
+<p>当所有的项目都以 flex-basis 的值进行排列后，仍有剩余空间，那么这时候 flex-grow 就会发挥作用了。<br>如果所有项目的 flex-grow 属性都为 1，则它们将等分剩余空间。(如果有的话)</p>
+<p>如果一个项目的 flex-grow 属性为 2，其他项目都为 1，则前者占据的剩余空间将比其他项多一倍。</p>
+<p>当然如果当所有项目以 flex-basis 的值排列完后发现空间不够了，且 flex-wrap：nowrap 时，此时 flex-grow 则不起作用了，这时候就需要接下来的这个属性。</p>
+<h3 id="4-flex-shrink-定义了项目的缩小比例"><a href="#4-flex-shrink-定义了项目的缩小比例" class="headerlink" title="4. flex-shrink: 定义了项目的缩小比例"></a><strong>4. flex-shrink: 定义了项目的缩小比例</strong></h3><pre><code>.item {
+    flex-shrink: &lt;number&gt;;
+}
+</code></pre><p>默认值: 1，即如果空间不足，该项目将缩小，负值对该属性无效。</p>
+<p><img src="https://i.loli.net/2018/09/07/5b91e4a642d2a.jpg" alt="3.jpg"></p>
+<p>这里可以看出，虽然每个项目都设置了宽度为 50px，但是由于自身容器宽度只有 200px，这时候每个项目会被同比例进行缩小，因为默认值为 1。<br>同理可得：</p>
+<p>如果所有项目的 flex-shrink 属性都为 1，当空间不足时，都将等比例缩小。 </p>
+<p>如果一个项目的 flex-shrink 属性为 0，其他项目都为 1，则空间不足时，前者不缩小。</p>
+<h3 id="5-flex-flex-grow-flex-shrink-和-flex-basis的简写"><a href="#5-flex-flex-grow-flex-shrink-和-flex-basis的简写" class="headerlink" title="5. flex: flex-grow, flex-shrink 和 flex-basis的简写"></a><strong>5. flex: flex-grow, flex-shrink 和 flex-basis的简写</strong></h3><p>flex 的默认值是以上三个属性值的组合。假设以上三个属性同样取默认值，则 flex 的默认值是 0 1 auto。</p>
+<p>有关快捷值：auto (1 1 auto) 和 none (0 0 auto)</p>
+<p>关于 flex 取值，还有许多特殊的情况，可以按以下来进行划分：</p>
+<ul>
+<li><p>当 flex 取值为一个非负数字，则该数字为 flex-grow 值，flex-shrink 取 1，flex-basis 取 0%，如下是等同的：</p>
+<p>  .item {flex: 1;}<br>  .item {</p>
+<pre><code>flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 0%;
+</code></pre><p>  }</p>
+</li>
+<li><p>当 flex 取值为 0 时，对应的三个值分别为 0 1 0%</p>
+<pre><code>.item {flex: 0;}
+.item {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+</code></pre></li>
+<li><p>当 flex 取值为一个长度或百分比，则视为 flex-basis 值，flex-grow 取 1，flex-shrink 取 1，有如下等同情况（注意 0% 是一个百分比而不是一个非负数字）</p>
+<pre><code>.item-1 {flex: 0%;}
+.item-1 {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.item-2 {flex: 24px;}
+.item-2 {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 24px;
+}
+</code></pre></li>
+<li><p>当 flex 取值为两个非负数字，则分别视为 flex-grow 和 flex-shrink 的值，flex-basis 取 0%，如下是等同的：</p>
+<pre><code>.item {flex: 2 3;}
+.item {
+    flex-grow: 2;
+    flex-shrink: 3;
+    flex-basis: 0%;
+}
+</code></pre></li>
+<li><p>当 flex 取值为一个非负数字和一个长度或百分比，则分别视为 flex-grow 和 flex-basis 的值，flex-shrink 取 1，如下是等同的：</p>
+<pre><code>.item {flex: 11 32px;}
+.item {
+    flex-grow: 11;
+    flex-shrink: 1;
+    flex-basis: 32px;
+}
+</code></pre><p>  建议优先使用这个属性，而不是单独写三个分离的属性。</p>
+</li>
+</ul>
+<p>grow 和 shrink 是一对双胞胎，grow 表示伸张因子，shrink 表示是收缩因子。</p>
+<p>grow 在 flex 容器下的子元素的宽度和比容器和小的时候起作用。 grow 定义了子元素的尺寸增长因子，容器中除去子元素之和剩下的尺寸会按照各个子元素的 grow 值进行平分加大各个子元素上。</p>
+<p>容器的 flex-wrap 与子项的 flex-shrink、flex-grow 之间的关系：</p>
+<ol>
+<li>当 flex-wrap 为 wrap | wrap-reverse，且子项宽度和不及父容器宽度时，flex-grow 会起作用，子项会根据 flex-grow 设定的值放大（为0的项不放大）</li>
+<li>当 flex-wrap 为 wrap | wrap-reverse，且子项宽度和超过父容器宽度时，首先一定会换行，换行后，每一行的右端都可能会有剩余空间（最后一行包含的子项可能比前几行少，所以剩余空间可能会更大），这时 flex-grow 会起作用，若当前行所有子项的 flex-grow 都为0，则剩余空间保留，若当前行存在一个子项的 flex-grow 不为0，则剩余空间会被 flex-grow 不为0的子项占据</li>
+<li>当 flex-wrap 为 nowrap，且子项宽度和不及父容器宽度时，flex-grow 会起作用，子项会根据 flex-grow 设定的值放大（为0的项不放大）</li>
+<li>当 flex-wrap 为 nowrap，且子项宽度和超过父容器宽度时，flex-shrink 会起作用，子项会根据 flex-shrink 设定的值进行缩小（为0的项不缩小）。但这里有一个较为特殊情况，就是当这一行所有子项 flex-shrink 都为0时，也就是说所有的子项都不能缩小，就会出现讨厌的横向滚动条</li>
+</ol>
+<p>总结上面四点，可以看出不管在什么情况下，在同一时间，flex-shrink 和 flex-grow 只有一个能起作用，这其中的道理细想起来也很浅显：空间足够时，flex-grow 就有发挥的余地，而空间不足时，flex-shrink 就能起作用。当然，flex-wrap 的值为 wrap | wrap-reverse 时，表明可以换行，既然可以换行，一般情况下空间就总是足够的，flex-shrink 当然就不会起作用</p>
+<h3 id="6-align-self-允许单个项目有与其他项目不一样的对齐方式"><a href="#6-align-self-允许单个项目有与其他项目不一样的对齐方式" class="headerlink" title="6. align-self: 允许单个项目有与其他项目不一样的对齐方式"></a><strong>6. align-self: 允许单个项目有与其他项目不一样的对齐方式</strong></h3><p>单个项目覆盖 align-items 定义的属性</p>
+<p>默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。</p>
+<pre><code>.item {
+     align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+</code></pre><p>这个跟 align-items 属性时一样的，只不过 align-self 是对单个项目生效的，而 align-items 则是对容器下的所有项目生效的。</p>
+<p><img src="https://i.loli.net/2018/09/07/5b91e4a6433b0.jpg" alt="4.jpg"></p>
+<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
+<p>转载自: <a href="https://zhuanlan.zhihu.com/p/25303493" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25303493</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/转载/" rel="tag"># 转载</a>
+          
+            <a href="/tags/网页设计/" rel="tag"># 网页设计</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/06/MySQL-数据库操作常用命令/" rel="next" title="MySQL 数据库操作常用命令">
+                <i class="fa fa-chevron-left"></i> MySQL 数据库操作常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/19/Vue-学习总结/" rel="prev" title="Vue 学习总结">
+                Vue 学习总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex-容器："><span class="nav-number">2.</span> <span class="nav-text">Flex 容器：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-flex-direction-决定主轴的方向-即项目的排列方向"><span class="nav-number">2.1.</span> <span class="nav-text">1. flex-direction: 决定主轴的方向(即项目的排列方向)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-flex-wrap-决定容器内项目是否可换行"><span class="nav-number">2.2.</span> <span class="nav-text">2. flex-wrap: 决定容器内项目是否可换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-flex-flow-flex-direction-和-flex-wrap-的简写形式"><span class="nav-number">2.3.</span> <span class="nav-text">3. flex-flow: flex-direction 和 flex-wrap 的简写形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-justify-content：定义了项目在主轴的对齐方式"><span class="nav-number">2.4.</span> <span class="nav-text">4. justify-content：定义了项目在主轴的对齐方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-align-items-定义了项目在交叉轴上的对齐方式"><span class="nav-number">2.5.</span> <span class="nav-text">5. align-items: 定义了项目在交叉轴上的对齐方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-align-content-定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用"><span class="nav-number">2.6.</span> <span class="nav-text">6. align-content: 定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex-项目属性："><span class="nav-number">3.</span> <span class="nav-text">Flex 项目属性：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-order-定义项目在容器中的排列顺序，数值越小，排列越靠前，默认值为-0"><span class="nav-number">3.1.</span> <span class="nav-text">1. order: 定义项目在容器中的排列顺序，数值越小，排列越靠前，默认值为 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-flex-basis-定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间"><span class="nav-number">3.2.</span> <span class="nav-text">2. flex-basis: 定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-flex-grow-定义项目的放大比例"><span class="nav-number">3.3.</span> <span class="nav-text">3. flex-grow: 定义项目的放大比例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-flex-shrink-定义了项目的缩小比例"><span class="nav-number">3.4.</span> <span class="nav-text">4. flex-shrink: 定义了项目的缩小比例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-flex-flex-grow-flex-shrink-和-flex-basis的简写"><span class="nav-number">3.5.</span> <span class="nav-text">5. flex: flex-grow, flex-shrink 和 flex-basis的简写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-align-self-允许单个项目有与其他项目不一样的对齐方式"><span class="nav-number">3.6.</span> <span class="nav-text">6. align-self: 允许单个项目有与其他项目不一样的对齐方式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
