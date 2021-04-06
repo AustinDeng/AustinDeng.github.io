@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面向对象,OOP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
+<meta name="keywords" content="面向对象,OOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++: 面向高级对象编程">
+<meta property="og:url" content="http://yoursite.com/2021/04/05/C-面向高级对象编程/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2021/04/05/MtNP8hWp4gsDBjK.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/97K4M3Nq8gioUnd.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/35ZmH9ILTcOAoE2.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/8yxAuonNEH4dB5g.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/B4A8FxyJjIcizL6.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/7G1dufcMv2CDSyF.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/aM4fsPlNj8vODKV.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/8sBdNyYlLj59SeK.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/n6mXrQlvxP7Ok4j.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/bynX8LER7m3VOqx.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/oOjtJi8pTXm7wsS.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/XjnVyIvrGkgPwmf.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/TXe1ixfp48sdEqQ.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/06/wAal9VWbzHjQBpg.png">
+<meta property="og:updated_time" content="2021-04-06T08:53:17.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++: 面向高级对象编程">
+<meta name="twitter:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/05/MtNP8hWp4gsDBjK.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/04/05/C-面向高级对象编程/">
+
+
+
+
+
+  <title>C++: 面向高级对象编程 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/05/C-面向高级对象编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++: 面向高级对象编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-05T17:13:07+08:00">
+                2021-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。</p>
+<h2 id="基于对象-Object-Based-的程序设计"><a href="#基于对象-Object-Based-的程序设计" class="headerlink" title="基于对象(Object Based)的程序设计"></a>基于对象(Object Based)的程序设计</h2><h3 id="不带有指针成员变量的类——以复数类complex为例"><a href="#不带有指针成员变量的类——以复数类complex为例" class="headerlink" title="不带有指针成员变量的类——以复数类complex为例"></a>不带有指针成员变量的类——以复数类complex为例</h3><h4 id="头文件的结构"><a href="#头文件的结构" class="headerlink" title="头文件的结构"></a>头文件的结构</h4><p><img src="https://i.loli.net/2021/04/05/MtNP8hWp4gsDBjK.png" alt="头文件结构.PNG"></p>
+<p>由上图可知，头文件的结构一般包含以下四个部分：</p>
+<ul>
+<li>防卫式声明(guard)：防止头文件被重复包含</li>
+<li>前置声明(forward declarations): 声明头文件中用到的类和函数</li>
+<li>类声明(class declarations): 声明类的函数和变量</li>
+<li>类定义(class definition): 实现前面声明的函数</li>
+</ul>
+<h4 id="访问级别"><a href="#访问级别" class="headerlink" title="访问级别"></a>访问级别</h4><p>在 C++ 中包含三种访问级别：</p>
+<ul>
+<li>private： 只能被<strong>本类中的函数</strong>访问</li>
+<li>protected： 能被<strong>本类的函数</strong>和<strong>子类的函数</strong>访问</li>
+<li>public: 可以被<strong>所有函数</strong>访问</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">complex</span>(<span class="keyword">double</span> r=<span class="number">0</span>, <span class="keyword">double</span> i=<span class="number">0</span>) : re(r), im(i) &#123;&#125;</span><br><span class="line">        <span class="built_in">complex</span>&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="built_in">complex</span>&amp;);</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">real</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> re;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> im;&#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">double</span> re, im;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">complex</span>&amp; __doapl(<span class="built_in">complex</span>*, <span class="keyword">const</span> <span class="built_in">complex</span>&amp;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类的声明内可以交叉定义多个不同级别的访问控制块</p>
+<h3 id="函数设计"><a href="#函数设计" class="headerlink" title="函数设计"></a>函数设计</h3><h4 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h4><p>在类声明内定义的函数将自动转换为<code>inline</code>函数<br>在类声明以外定义的函数，需要加上<code>inline</code>关键字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="built_in">complex</span>&amp; x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x.imag();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>构造函数可以使用默认实参，并且采用列表初始化(initialization list)</p>
+<p><img src="https://i.loli.net/2021/04/06/97K4M3Nq8gioUnd.png" alt="构造函数参数.png"></p>
+<h4 id="常量成员函数"><a href="#常量成员函数" class="headerlink" title="常量成员函数"></a>常量成员函数</h4><p>如果类中的成员函数不会改变成员变量，则应当加上<code>const</code>关键字</p>
+<p><img src="https://i.loli.net/2021/04/06/35ZmH9ILTcOAoE2.png" alt="常量成员函数.png"></p>
+<p>若这类函数不加以const修饰,则常量对象将不能调用这些函数</p>
+<h4 id="参数按值传递和按引用传递"><a href="#参数按值传递和按引用传递" class="headerlink" title="参数按值传递和按引用传递"></a>参数按值传递和按引用传递</h4><p><img src="https://i.loli.net/2021/04/06/8yxAuonNEH4dB5g.png" alt="参数传递.png"></p>
+<p>按引用传递可以节约内存，提高传递效率</p>
+<p>为了避免传入的参数在函数体内被修改，可以使用<code>const</code>关键字修饰传入的参数</p>
+<h4 id="返回值的值传递与引用传递"><a href="#返回值的值传递与引用传递" class="headerlink" title="返回值的值传递与引用传递"></a>返回值的值传递与引用传递</h4><p><img src="https://i.loli.net/2021/04/06/B4A8FxyJjIcizL6.png" alt="返回值传递.png"></p>
+<p>为提高效率,若函数的返回值是原本就存在的对象,则应以引用形式返回</p>
+<p>若函数的返回值是临时变量,则只能通过值传递返回</p>
+<h4 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h4><p>友元函数不受访问级别的控制，可以自由访问对象的所有成员</p>
+<p><img src="https://i.loli.net/2021/04/06/7G1dufcMv2CDSyF.png" alt="友元1.png"></p>
+<p>同一类的各个对象互为友元函数，因此在类定义内可以访问其他对象的私有变量</p>
+<p><img src="https://i.loli.net/2021/04/06/aM4fsPlNj8vODKV.png" alt="友元2.png"></p>
+<h3 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h3><p>C++操作符重载有两种形式</p>
+<ul>
+<li>在类内声明<code>public</code>函数实现操作符重载，此时操作符作用在左操作数上</li>
+<li>在类外声明全局函数实现操作符重载</li>
+</ul>
+<p>例如使用两种方式对操作符<code>+</code>重载</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">complex</span> c1;</span><br><span class="line">c1 + <span class="number">2</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// case1:</span></span><br><span class="line"><span class="built_in">complex</span>::<span class="keyword">operator</span> += (<span class="keyword">int</span>)</span><br><span class="line"><span class="comment">// case2:</span></span><br><span class="line"><span class="built_in">complex</span> <span class="keyword">operator</span> + (<span class="keyword">const</span> <span class="built_in">complex</span>&amp;, <span class="keyword">double</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="在类内声明public函数重载"><a href="#在类内声明public函数重载" class="headerlink" title="在类内声明public函数重载 +="></a>在类内声明public函数重载 +=</h4><pre><code>complex::operator += (const complex&amp; r)
+</code></pre><p>输入参数和输出参数均使用引用传值,输入参数在函数中不应被改动,因此使用<code>const</code>修饰</p>
+<p>输出参数类型为<code>complex&amp;</code>,这是为了支持将多个<code>+=</code>操作符串联起来</p>
+<p>若返回参数类型设为<code>void</code>,也支持形如<code>c2+=c1</code>的运算,但不支持形如<code>c3+=c2+=c1</code>的运算</p>
+<p><img src="https://i.loli.net/2021/04/06/8sBdNyYlLj59SeK.png" alt="重载__.png"></p>
+<p>函数体内调用友元函数<code>__doapl(complex *, const complex &amp;)</code>第一个参数接收成员函数内隐含的<code>this</code>指针,其内容在函数中会被改变<br>第二个参数接收重载函数的参数,该参数在函数中不会被改变,以<code>const</code>修饰.</p>
+<p><img src="https://i.loli.net/2021/04/06/n6mXrQlvxP7Ok4j.png" alt="重载__2.png"></p>
+<p>引用传递参数和返回值的好处在于传送者无需知道接收者是否以引用形式接收,只需要和值传递一样写代码就行,不需要改动</p>
+<h4 id="在类内声明或函数重载"><a href="#在类内声明或函数重载" class="headerlink" title="在类内声明或函数重载 +"></a>在类内声明或函数重载 +</h4><p><img src="https://i.loli.net/2021/04/06/bynX8LER7m3VOqx.png" alt="重载_.png"></p>
+<p>因为重载操作符的成员函数是作用在左操作数上的,若使用类内声明<code>public</code>函数重载操作符的方法,就不能支持第3种用法了<br>因此使用在类外声明函数重载<code>+</code>运算符</p>
+<p>这3个函数返回的是局部对象(local object),在退出函数时对象就会被销毁,因此不能使用引用传递返回值</p>
+<h4 id="在类外声明函数重载-lt-lt"><a href="#在类外声明函数重载-lt-lt" class="headerlink" title="在类外声明函数重载 &lt;&lt;"></a>在类外声明函数重载 &lt;&lt;</h4><p><img src="https://i.loli.net/2021/04/06/oOjtJi8pTXm7wsS.png" alt="重载流输出.png"></p>
+<p>与重载+的考虑方法类似,&lt;&lt;操作符通常的使用方式是<code>cout&lt;&lt;c1</code>而非<code>c1&lt;&lt;cout</code>,因此不能使用成员函数重载<code>&lt;&lt;</code>运算符</p>
+<p>考虑到形如<code>cout&lt;&lt;c1&lt;&lt;c2&lt;&lt;c3</code>的级联用法,重载函数的返回值为<code>ostream&amp;</code>而非<code>void</code></p>
+<h3 id="总结代码编写的注意事项"><a href="#总结代码编写的注意事项" class="headerlink" title="总结代码编写的注意事项"></a>总结代码编写的注意事项</h3><ul>
+<li>构造函数中使用列表初始化为成员函数赋值</li>
+<li>常量成员函数用<code>const</code>修饰</li>
+<li>参数的传递尽量考虑使用按引用传递，若函数体内修改传入的参数，则应当加上<code>const</code>修饰</li>
+<li>返回值若非局部变量，其传递尽量考虑使用引用传递</li>
+<li>数据放入<code>private</code>中，大部分函数放入<code>public</code>中</li>
+</ul>
+<h2 id="带有指针的成员变量的类——以字符串String为例"><a href="#带有指针的成员变量的类——以字符串String为例" class="headerlink" title="带有指针的成员变量的类——以字符串String为例"></a>带有指针的成员变量的类——以字符串String为例</h2><p>String类定义在头文件string.h中,其结构与complex.h类似</p>
+<p><img src="https://i.loli.net/2021/04/06/XjnVyIvrGkgPwmf.png" alt="string头文件.png"></p>
+<p>类声明如下,使用指针成员变量m_data管理String类中的字符串数据</p>
+<p><img src="https://i.loli.net/2021/04/06/TXe1ixfp48sdEqQ.png" alt="string类定义.png"></p>
+<h3 id="三种特殊函数"><a href="#三种特殊函数" class="headerlink" title="三种特殊函数"></a>三种特殊函数</h3><ul>
+<li>拷贝构造函数</li>
+<li>拷贝赋值函数</li>
+<li>析构函数</li>
+</ul>
+<p>对于不带有指针的类,这3个函数可以使用编译器默认为我们生成的版本;但是编写带有指针的类时就有必要定义这3个特殊函数</p>
+<h4 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h4><p>构造函数和析构函数中执行数据的深拷贝和释放</p>
+<p><img src="https://i.loli.net/2021/04/06/wAal9VWbzHjQBpg.png" alt="构造和析构.png"></p>
+<p>值得注意的是使用<code>delete[]</code>操作符释放数组内存,若直接使用<code>delete</code>操作符释放数组内存虽然能够通过编译,但有可能产生内存泄漏</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面向对象/" rel="tag"># 面向对象</a>
+          
+            <a href="/tags/OOP/" rel="tag"># OOP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/05/Python 中的装饰器/" rel="next" title="Python中的装饰器">
+                <i class="fa fa-chevron-left"></i> Python中的装饰器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/05/C-面经/" rel="prev" title="C++: 面经">
+                C++: 面经 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于对象-Object-Based-的程序设计"><span class="nav-number">2.</span> <span class="nav-text">基于对象(Object Based)的程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不带有指针成员变量的类——以复数类complex为例"><span class="nav-number">2.1.</span> <span class="nav-text">不带有指针成员变量的类——以复数类complex为例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#头文件的结构"><span class="nav-number">2.1.1.</span> <span class="nav-text">头文件的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问级别"><span class="nav-number">2.1.2.</span> <span class="nav-text">访问级别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数设计"><span class="nav-number">2.2.</span> <span class="nav-text">函数设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内联函数"><span class="nav-number">2.2.1.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量成员函数"><span class="nav-number">2.2.3.</span> <span class="nav-text">常量成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数按值传递和按引用传递"><span class="nav-number">2.2.4.</span> <span class="nav-text">参数按值传递和按引用传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值的值传递与引用传递"><span class="nav-number">2.2.5.</span> <span class="nav-text">返回值的值传递与引用传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#友元函数"><span class="nav-number">2.2.6.</span> <span class="nav-text">友元函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符重载"><span class="nav-number">2.3.</span> <span class="nav-text">操作符重载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在类内声明public函数重载"><span class="nav-number">2.3.1.</span> <span class="nav-text">在类内声明public函数重载 +=</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在类内声明或函数重载"><span class="nav-number">2.3.2.</span> <span class="nav-text">在类内声明或函数重载 +</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在类外声明函数重载-lt-lt"><span class="nav-number">2.3.3.</span> <span class="nav-text">在类外声明函数重载 &lt;&lt;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结代码编写的注意事项"><span class="nav-number">2.4.</span> <span class="nav-text">总结代码编写的注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带有指针的成员变量的类——以字符串String为例"><span class="nav-number">3.</span> <span class="nav-text">带有指针的成员变量的类——以字符串String为例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种特殊函数"><span class="nav-number">3.1.</span> <span class="nav-text">三种特殊函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数和析构函数"><span class="nav-number">3.1.1.</span> <span class="nav-text">构造函数和析构函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
