@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="日记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言最近想做一个 cpp 有关的项目练一下手，因为之前基本都是在学习关于 cpp 的语法特性啥的，并没有做过实际的应用项目，那就找个项目玩玩吧。 通过查找资料，我选择了一个名为oat++的 cpp web应用框架，因为之前学过一些 web 相关的技术知识，理论架构基础还是有的，想必应该还是很好上手的吧。 但是呢，显然我并没有在 cpp 构建web项目这方面的经验，不免走了许多弯路，期间也遇到一些问">
+<meta name="keywords" content="日记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决问题的感觉真爽">
+<meta property="og:url" content="http://yoursite.com/2021/04/09/解决问题的感觉真爽/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="前言最近想做一个 cpp 有关的项目练一下手，因为之前基本都是在学习关于 cpp 的语法特性啥的，并没有做过实际的应用项目，那就找个项目玩玩吧。 通过查找资料，我选择了一个名为oat++的 cpp web应用框架，因为之前学过一些 web 相关的技术知识，理论架构基础还是有的，想必应该还是很好上手的吧。 但是呢，显然我并没有在 cpp 构建web项目这方面的经验，不免走了许多弯路，期间也遇到一些问">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2021/04/09/iH4IObCnYy9f5SU.png">
+<meta property="og:updated_time" content="2021-04-09T14:33:29.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决问题的感觉真爽">
+<meta name="twitter:description" content="前言最近想做一个 cpp 有关的项目练一下手，因为之前基本都是在学习关于 cpp 的语法特性啥的，并没有做过实际的应用项目，那就找个项目玩玩吧。 通过查找资料，我选择了一个名为oat++的 cpp web应用框架，因为之前学过一些 web 相关的技术知识，理论架构基础还是有的，想必应该还是很好上手的吧。 但是呢，显然我并没有在 cpp 构建web项目这方面的经验，不免走了许多弯路，期间也遇到一些问">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/09/iH4IObCnYy9f5SU.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/04/09/解决问题的感觉真爽/">
+
+
+
+
+
+  <title>解决问题的感觉真爽 | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/09/解决问题的感觉真爽/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">解决问题的感觉真爽</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-09T21:03:45+08:00">
+                2021-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想做一个 <code>cpp</code> 有关的项目练一下手，因为之前基本都是在学习关于 <code>cpp</code> 的语法特性啥的，并没有做过实际的应用项目，那就找个项目玩玩吧。</p>
+<p>通过查找<a href="https://github.com/jobbole/awesome-cpp-cn" target="_blank" rel="noopener">资料</a>，我选择了一个名为<a href="https://github.com/oatpp/oatpp" target="_blank" rel="noopener">oat++</a>的 <code>cpp</code> web应用框架，因为之前学过一些 web 相关的技术知识，理论架构基础还是有的，想必应该还是很好上手的吧。</p>
+<p>但是呢，显然我并没有在 <code>cpp</code> 构建web项目这方面的经验，不免走了许多弯路，期间也遇到一些问题。不过所幸的是，最后问题都解决了。</p>
+<p>遇到了什么问题呢？我相信，这一类问题凡是第一步涉足一个新的领域都会碰到，那就是环境配置的问题。</p>
+<p>是的，我花了三天时间，配置好了环境，成功编译并运行了第一个 Demo 程序。三天的时间还是比较漫长的，所幸最后没有放弃。</p>
+<h2 id="关于-cmake-的问题"><a href="#关于-cmake-的问题" class="headerlink" title="关于 cmake 的问题"></a>关于 cmake 的问题</h2><p>从 <code>github</code> 中下载了 <code>oatpp</code> 的源代码，通过文档我得知了第一步就是重新编译这个源代码文件。很简单。</p>
+<pre><code>$ git clone https://github.com/oatpp/oatpp.git
+$ cd oatpp\
+$ MD build
+$ cd build\
+
+$ cmake ..
+$ cmake --build . --target INSTALL
+</code></pre><p>我使用了 <code>visual studio code</code> 打开了这个项目，我一直以为在 <code>vs code</code> 中写代码是一件很舒服的事，虽然它只是一个类似于记事本的功能，但是通过安装相应的插件和在命令行中执行相应的命令就可以达到和IDE一样的功能。</p>
+<p>但是呢，我的能力现在不允许我装这个B，因为如果在命令行里面 <code>cmake</code> 的话，需要加一些参数，我没有学过 <code>cmake</code>。但是呢，我还是尝试了一下，通过查找相关的资料，我依旧成功地在命令行里进行构建了。不，并没有完全成功，而是成功一半吧。因为遇到了第一个问题。</p>
+<p>由于 <code>oatpp</code> 中使用了 <code>std::mutex</code> 这个多线程库，但是我的编译器似乎在编译这个库的时候遇到了一个关于 <code>c++14</code> 标准的问题，大概就是，源代码中有一个操作是在 <code>c++14</code> 中定义的，但是我的编译器并不支持 <code>c++14</code></p>
+<p>没办法，那就换编译器呗，于是我从 <code>Mingw</code> 换成了 <code>Msys2</code>，期间配置各种环境变量也是颇为曲折</p>
+<p>接下来就是在 <code>cmake</code> 的时候指定编译器就好了，但是呢，我尝试完所有方法，即在执行命令行操作的时候设置各种各样的编译参数，均不能编译成功。整吐了。这个问题我弄了一个下午加一个晚上。</p>
+<h2 id="关于32位编译和64位编译的问题"><a href="#关于32位编译和64位编译的问题" class="headerlink" title="关于32位编译和64位编译的问题"></a>关于32位编译和64位编译的问题</h2><p>第二天我依旧不依不饶地尝试无果之后，果断认清了自己的认知水平。</p>
+<p>直接上 <code>visual studio 2019</code>，vs第一次使用还是大学刚刚学 <code>cpp</code> 的时候，印象最深刻的就是，笨重！</p>
+<p>因为那时候刚刚学 <code>cpp</code>，写的程序都是 <code>HelloWorld</code> 那种级别的，顶多就是快排算法这样的，根本用不上 <code>vs</code> 这种专门做工程项目的软件，于是那时候我并没有继续使用它，而是选择古老的 <code>vc6.0</code>。现在做项目了，用 <code>vs</code>，香！那是真的香啊！</p>
+<p>果然，我用 <code>vs</code> 打开这个 <code>oatpp</code> 这个项目，它自动帮我配置好了 <code>cmake</code> 参数，直接<code>make</code> 好了，然后 <code>install</code>，舒服的一批，根本没有任何编译器的问题。我的妈呀。昨天弄了半天的问题也算解决了，之后还得好好补一补 <code>Makefile</code> 相关的知识才行。</p>
+<p>oatpp 这个项目安装好了，开始写跑自己的项目吧。(在此之前我还特意去 <code>vs</code> 官网中学习了一下怎么使用 <code>vs</code>构建一个项目。哈哈哈哈。)</p>
+<p>然后我去oatpp官网的学习文档中，copy了第一份<a href="https://oatpp.io/docs/start/step-by-step/#api-low-level-components-overview" target="_blank" rel="noopener">demo</a>代码。开始编译运行，一开始看着编译器的输出还是很顺利的，但是最后还是失败了。</p>
+<p>具体遇到了什么问题呢？这不是重点(不过一会应该也知道)。重点是，这个问题指向的是 <code>oatpp</code> 这个库的源代码的问题，我的妈呀，不会要我改这个库的源代码叭，我可没有那个本事啊。</p>
+<p>终于在网上查找了各种解决办法后，确定了问题产生的愿意，但是解决的办法都是改源代码的，我又改不动，没办法，我只能去 <code>oatpp</code> 这个库的 <code>GitHub</code> 上提<a href="https://github.com/oatpp/oatpp/issues/410" target="_blank" rel="noopener">issues</a></p>
+<h2 id="关于引用lib库的问题"><a href="#关于引用lib库的问题" class="headerlink" title="关于引用lib库的问题"></a>关于引用lib库的问题</h2><p>又过了一天，心情已是极度郁闷了。起床打开电脑，看 <code>GitHub</code>，果然有项目的维护者回复了我的问题。给出了该问题的解决的方法。让我试试在64位的环境中编译试试，果然，这个问题解决了。。然后我关闭了  <code>issues</code>。</p>
+<p>但是后来发现这个回复我的小哥又把 <code>issues</code> 打开了，他认为这确实是该项目在 <code>win32</code> 环境下编译的一个问题，需要解决。我感觉我也算给这个库找到了一个比较关键的问题，而且也是我第一次提 <code>issues</code>，还挺成功的，心情大好。</p>
+<p>不过好没两下心就凉了，因为这个 <code>demo</code> 还是不能运行起来。然后还是编译的问题，这次问题指向的是 <code>lib</code> 库引用的问题。这很显然是<code>vs</code>配置的问题了，噢对了，刚刚使用 <code>vs</code> 的时候，还配置了好一会才把 <code>include</code> 库添加进去。</p>
+<p>接着我就 <code>lib</code> 库引用这个问题继续在网上找资料。但是，这次很不幸，我找到的所有方法都是如出一辙的，但是我照着他们给的方法一一试了一下都不能解决。</p>
+<p>为了解决这个问题，我又耗费了一下午，心情又开始郁闷起来了。</p>
+<p>终于在睡前去 <code>StackOverflow</code> 社区<a href="https://stackoverflow.com/questions/67007305/questions-about-third-party-libraryoat-configuration-in-visual-studio" target="_blank" rel="noopener">发帖子</a>，描述了一下我遇到的问题并请求帮助。希望有大佬回答叭。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>时间来到了今天，我一上午都有课，上到十二点，吃个饭回宿舍快一点钟了。我急忙打开电脑，登陆 <code>StackOverflow</code> 社区，果然有人回复了，而且有个大佬提交了一个 <code>Answer</code>，我急忙试一试，卧槽！终于！编译成功了！！哈哈哈哈。心情大好！太开心了。而且这也是我第一次在 <code>StackOverflow</code> 这个社区提问。</p>
+<p><img src="https://i.loli.net/2021/04/09/iH4IObCnYy9f5SU.png" alt="编译成功.png"></p>
+<p>虽然只是一个很微不足道的小 <code>demo</code>，但是期间遇到的问题一度让我陷入自闭，几乎都想放弃了，但是所幸最后还是坚持下来了，把所有问题都通过自己的方式去找到解决办法了。期间还是有收获的，学到了很多，也认清了自己有很多不足之处。未来的路还很长，希望未来的我也可以坚持不懈，不要轻言放弃！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/日记/" rel="tag"># 日记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/09/Leetcode学习笔记/" rel="next" title="Leetcode学习笔记">
+                <i class="fa fa-chevron-left"></i> Leetcode学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-cmake-的问题"><span class="nav-number">2.</span> <span class="nav-text">关于 cmake 的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于32位编译和64位编译的问题"><span class="nav-number">3.</span> <span class="nav-text">关于32位编译和64位编译的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于引用lib库的问题"><span class="nav-number">4.</span> <span class="nav-text">关于引用lib库的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

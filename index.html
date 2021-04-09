@@ -262,6 +262,322 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/09/解决问题的感觉真爽/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/09/解决问题的感觉真爽/" itemprop="url">解决问题的感觉真爽</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-09T21:03:45+08:00">
+                2021-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想做一个 <code>cpp</code> 有关的项目练一下手，因为之前基本都是在学习关于 <code>cpp</code> 的语法特性啥的，并没有做过实际的应用项目，那就找个项目玩玩吧。</p>
+<p>通过查找<a href="https://github.com/jobbole/awesome-cpp-cn" target="_blank" rel="noopener">资料</a>，我选择了一个名为<a href="https://github.com/oatpp/oatpp" target="_blank" rel="noopener">oat++</a>的 <code>cpp</code> web应用框架，因为之前学过一些 web 相关的技术知识，理论架构基础还是有的，想必应该还是很好上手的吧。</p>
+<p>但是呢，显然我并没有在 <code>cpp</code> 构建web项目这方面的经验，不免走了许多弯路，期间也遇到一些问题。不过所幸的是，最后问题都解决了。</p>
+<p>遇到了什么问题呢？我相信，这一类问题凡是第一步涉足一个新的领域都会碰到，那就是环境配置的问题。</p>
+<p>是的，我花了三天时间，配置好了环境，成功编译并运行了第一个 Demo 程序。三天的时间还是比较漫长的，所幸最后没有放弃。</p>
+<h2 id="关于-cmake-的问题"><a href="#关于-cmake-的问题" class="headerlink" title="关于 cmake 的问题"></a>关于 cmake 的问题</h2><p>从 <code>github</code> 中下载了 <code>oatpp</code> 的源代码，通过文档我得知了第一步就是重新编译这个源代码文件。很简单。</p>
+<pre><code>$ git clone https://github.com/oatpp/oatpp.git
+$ cd oatpp\
+$ MD build
+$ cd build\
+
+$ cmake ..
+$ cmake --build . --target INSTALL
+</code></pre><p>我使用了 <code>visual studio code</code> 打开了这个项目，我一直以为在 <code>vs code</code> 中写代码是一件很舒服的事，虽然它只是一个类似于记事本的功能，但是通过安装相应的插件和在命令行中执行相应的命令就可以达到和IDE一样的功能。</p>
+<p>但是呢，我的能力现在不允许我装这个B，因为如果在命令行里面 <code>cmake</code> 的话，需要加一些参数，我没有学过 <code>cmake</code>。但是呢，我还是尝试了一下，通过查找相关的资料，我依旧成功地在命令行里进行构建了。不，并没有完全成功，而是成功一半吧。因为遇到了第一个问题。</p>
+<p>由于 <code>oatpp</code> 中使用了 <code>std::mutex</code> 这个多线程库，但是我的编译器似乎在编译这个库的时候遇到了一个关于 <code>c++14</code> 标准的问题，大概就是，源代码中有一个操作是在 <code>c++14</code> 中定义的，但是我的编译器并不支持 <code>c++14</code></p>
+<p>没办法，那就换编译器呗，于是我从 <code>Mingw</code> 换成了 <code>Msys2</code>，期间配置各种环境变量也是颇为曲折</p>
+<p>接下来就是在 <code>cmake</code> 的时候指定编译器就好了，但是呢，我尝试完所有方法，即在执行命令行操作的时候设置各种各样的编译参数，均不能编译成功。整吐了。这个问题我弄了一个下午加一个晚上。</p>
+<h2 id="关于32位编译和64位编译的问题"><a href="#关于32位编译和64位编译的问题" class="headerlink" title="关于32位编译和64位编译的问题"></a>关于32位编译和64位编译的问题</h2><p>第二天我依旧不依不饶地尝试无果之后，果断认清了自己的认知水平。</p>
+<p>直接上 <code>visual studio 2019</code>，vs第一次使用还是大学刚刚学 <code>cpp</code> 的时候，印象最深刻的就是，笨重！</p>
+<p>因为那时候刚刚学 <code>cpp</code>，写的程序都是 <code>HelloWorld</code> 那种级别的，顶多就是快排算法这样的，根本用不上 <code>vs</code> 这种专门做工程项目的软件，于是那时候我并没有继续使用它，而是选择古老的 <code>vc6.0</code>。现在做项目了，用 <code>vs</code>，香！那是真的香啊！</p>
+<p>果然，我用 <code>vs</code> 打开这个 <code>oatpp</code> 这个项目，它自动帮我配置好了 <code>cmake</code> 参数，直接<code>make</code> 好了，然后 <code>install</code>，舒服的一批，根本没有任何编译器的问题。我的妈呀。昨天弄了半天的问题也算解决了，之后还得好好补一补 <code>Makefile</code> 相关的知识才行。</p>
+<p>oatpp 这个项目安装好了，开始写跑自己的项目吧。(在此之前我还特意去 <code>vs</code> 官网中学习了一下怎么使用 <code>vs</code>构建一个项目。哈哈哈哈。)</p>
+<p>然后我去oatpp官网的学习文档中，copy了第一份<a href="https://oatpp.io/docs/start/step-by-step/#api-low-level-components-overview" target="_blank" rel="noopener">demo</a>代码。开始编译运行，一开始看着编译器的输出还是很顺利的，但是最后还是失败了。</p>
+<p>具体遇到了什么问题呢？这不是重点(不过一会应该也知道)。重点是，这个问题指向的是 <code>oatpp</code> 这个库的源代码的问题，我的妈呀，不会要我改这个库的源代码叭，我可没有那个本事啊。</p>
+<p>终于在网上查找了各种解决办法后，确定了问题产生的愿意，但是解决的办法都是改源代码的，我又改不动，没办法，我只能去 <code>oatpp</code> 这个库的 <code>GitHub</code> 上提<a href="https://github.com/oatpp/oatpp/issues/410" target="_blank" rel="noopener">issues</a></p>
+<h2 id="关于引用lib库的问题"><a href="#关于引用lib库的问题" class="headerlink" title="关于引用lib库的问题"></a>关于引用lib库的问题</h2><p>又过了一天，心情已是极度郁闷了。起床打开电脑，看 <code>GitHub</code>，果然有项目的维护者回复了我的问题。给出了该问题的解决的方法。让我试试在64位的环境中编译试试，果然，这个问题解决了。。然后我关闭了  <code>issues</code>。</p>
+<p>但是后来发现这个回复我的小哥又把 <code>issues</code> 打开了，他认为这确实是该项目在 <code>win32</code> 环境下编译的一个问题，需要解决。我感觉我也算给这个库找到了一个比较关键的问题，而且也是我第一次提 <code>issues</code>，还挺成功的，心情大好。</p>
+<p>不过好没两下心就凉了，因为这个 <code>demo</code> 还是不能运行起来。然后还是编译的问题，这次问题指向的是 <code>lib</code> 库引用的问题。这很显然是<code>vs</code>配置的问题了，噢对了，刚刚使用 <code>vs</code> 的时候，还配置了好一会才把 <code>include</code> 库添加进去。</p>
+<p>接着我就 <code>lib</code> 库引用这个问题继续在网上找资料。但是，这次很不幸，我找到的所有方法都是如出一辙的，但是我照着他们给的方法一一试了一下都不能解决。</p>
+<p>为了解决这个问题，我又耗费了一下午，心情又开始郁闷起来了。</p>
+<p>终于在睡前去 <code>StackOverflow</code> 社区<a href="https://stackoverflow.com/questions/67007305/questions-about-third-party-libraryoat-configuration-in-visual-studio" target="_blank" rel="noopener">发帖子</a>，描述了一下我遇到的问题并请求帮助。希望有大佬回答叭。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>时间来到了今天，我一上午都有课，上到十二点，吃个饭回宿舍快一点钟了。我急忙打开电脑，登陆 <code>StackOverflow</code> 社区，果然有人回复了，而且有个大佬提交了一个 <code>Answer</code>，我急忙试一试，卧槽！终于！编译成功了！！哈哈哈哈。心情大好！太开心了。而且这也是我第一次在 <code>StackOverflow</code> 这个社区提问。</p>
+<p><img src="https://i.loli.net/2021/04/09/iH4IObCnYy9f5SU.png" alt="编译成功.png"></p>
+<p>虽然只是一个很微不足道的小 <code>demo</code>，但是期间遇到的问题一度让我陷入自闭，几乎都想放弃了，但是所幸最后还是坚持下来了，把所有问题都通过自己的方式去找到解决办法了。期间还是有收获的，学到了很多，也认清了自己有很多不足之处。未来的路还很长，希望未来的我也可以坚持不懈，不要轻言放弃！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/09/Leetcode学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/09/Leetcode学习笔记/" itemprop="url">Leetcode学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-09T20:20:36+08:00">
+                2021-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 <code>Leetcode</code> 中学习了也有一阵子了，但是总感觉算法这玩意，时间一长就不熟练了，因此弄个学习笔记吧。用来记录一下在<code>Leetcode</code>的学习收获吧，也方便以后日后的复习。</p>
+<p>这个学习笔记用来记录一些比较琐碎的知识，一些专题知识如果以后有时间再归纳汇总吧。</p>
+<p>目前前的刷题进度如下：<br><img src="https://i.loli.net/2021/04/09/1FJXeVR6pNUitvQ.png" alt="进度.png"></p>
+<h2 id="剑指office64：求1-2-3-…-n"><a href="#剑指office64：求1-2-3-…-n" class="headerlink" title="剑指office64：求1+2+3+…+n"></a>剑指office64：求1+2+3+…+n</h2><p><a href="https://leetcode-cn.com/problems/qiu-12n-lcof/" target="_blank" rel="noopener">剑指 Offer 64. 求1+2+…+n</a></p>
+<p>求 <code>1+2+...+n</code> ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</p>
+<p><strong>示例一</strong></p>
+<pre><code>输入: n = 3
+输出: 6
+</code></pre><p><strong>实例二</strong></p>
+<pre><code>输入: n = 9
+输出: 45
+</code></pre><p><strong>限制</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 10000</code></li>
+</ul>
+<h3 id="逻辑运算符的短路性质"><a href="#逻辑运算符的短路性质" class="headerlink" title="逻辑运算符的短路性质"></a>逻辑运算符的短路性质</h3><p>由于不能使用条件判断语句(A?B:C)，因此我们可以使用逻辑运算符的短路性质来替代。</p>
+<p>对于 <code>A &amp;&amp; B</code> 这个表达式，如果 <code>A</code> 的判断为 $False$，那么 <code>B</code> 就不会执行；<br>同理 <code>A || B</code> 这个表达式，如果 <code>A</code> 的判断为 $True$，那么 <code>B</code> 就不会执行。</p>
+<p>对于表达式 <code>n == 0 ? 0 : n + sumNums(n - 1)</code> 可以改写为 <code>n &amp;&amp; (n += sumNums(n-1))</code></p>
+<h3 id="俄罗斯农名乘法"><a href="#俄罗斯农名乘法" class="headerlink" title="俄罗斯农名乘法"></a>俄罗斯农名乘法</h3><p>考虑 <code>A</code> 和 <code>B</code> 两数相乘的时候利用加法和位运算来模拟.<br>其实就是将 <code>B</code> 二进制展开，如果 <code>B</code> 的二进制表示下第 $i$ 位为 1，那么这一位对最后结果的贡献就是 $A*(1&lt;&lt;i)$ ，即 $A&lt;&lt;i$。<br>遍历 <code>B</code> 二进制展开下的每一位，将所有贡献累加起来就是最后的答案。</p>
+<p>这个方法经常被用于两数相乘取模的场景，如果两数相乘已经超过数据范围，但取模后不会超过，可以利用这个方法来拆位取模计算贡献，保证每次运算都在数据范围内。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">quickMulti</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( ; B; B &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (B &amp; <span class="number">1</span>) &#123;</span><br><span class="line">            ans += A;</span><br><span class="line">        &#125;</span><br><span class="line">        A &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/05/C-面经/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1919,322 +2235,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/设计模式中的六大原则/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Austin Deng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓某的杂货铺">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/01/设计模式中的六大原则/" itemprop="url">设计模式中的六大原则</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-01T22:20:01+08:00">
-                2018-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><p>单一职责原则的定义是：应该有且仅有一个原因引起类的变更。</p>
-<p>从字面上理解,就是说实例类的职责应该是单一的。一个类只能有一个职责，只负责做一件事。</p>
-<p>而且不仅仅是类，其他接口或者方法应该适合该原则。</p>
-<p>比如： <code>修改用户密码</code>的功能不能放到<code>修改用户信息</code>这个方法里面去。</p>
-<pre><code>void changeUser(IUserOB userOB, String...changeOptions)
-</code></pre><p>这个方法指责太大了，颗粒度太粗，指责不单一，这样是不对的。</p>
-<p>然而，单一指责原则最难划分的就是指责，一般来说，一个指责一个接口，但是“指责”一词很难被量化。需要从具体的项目中出发，去细化指责。</p>
-<p>也有不少优秀的类设计是与单一指责相违背的。</p>
-<p>所以，最佳实践告诉我们：对于接口要做到单一原则，而类的设计尽量做到只有一个原因引起变化。</p>
-<p>单一指责原则的好处：</p>
-<ul>
-<li>降低类的复杂度，明确清晰地定义了类的指责</li>
-<li>提高代码可读性</li>
-<li>提高代码维护性</li>
-<li>减少变更引起的风险</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/01/设计模式中的六大原则/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/使用-Vue-进行前端开发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Austin Deng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓某的杂货铺">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/26/使用-Vue-进行前端开发/" itemprop="url">使用 Vue 进行前端开发</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T20:13:59+08:00">
-                2018-11-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>众所周知，传统的前端Web开发离不开三件套 HTML、CSS以及JavaScript。</p>
-<p>由HTML 负责页面的整体架构，CSS负责美化渲染，而JavaScript则负责处理页面的逻辑。</p>
-<p>HTML 的结构依赖于 DOM（Document Object Model） 这样的树形结构，而JavaScript 的逻辑处理操作更多的是对 Dom 节点的操作。为了更好的处理与DOM 节点的交互，出现了像 JQuery 这样优秀的前端框架。</p>
-<p>除了传统的前端Web开发以外，还有Web 应用开发基本也遵循 MVC（Model-View-Controller） 的开发模式，基本上View端作为普遍认为的前端领域，无非就是操作DOM 对后端提供的数据进行展示。</p>
-<p>随着Web浪潮的迅速发展，人们发现，传统的前端开发模式暴露了以下三个痛点：</p>
-<ul>
-<li>对DOM节点的操作（频繁地调用相同的DOM API），处理繁琐，操作冗余，使得代码难以维护。</li>
-<li>大量的DOM操作使页面渲染性能降低，加载速度变慢，影响用户体验。</li>
-<li>当 Model 频繁发生变化，开发者需要主动更新到View ；当用户的操作导致 Model 发生变化，开发者同样需要将变化的数据同步到Model 中，这样的工作不仅繁琐，而且很难维护复杂多变的数据状态。</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/26/使用-Vue-进行前端开发/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2287,7 +2287,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2298,7 +2298,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2309,7 +2309,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
