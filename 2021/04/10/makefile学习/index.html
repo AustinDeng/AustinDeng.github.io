@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Vue,">
+  <meta name="keywords" content="makefile,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="众所周知，传统的前端Web开发离不开三件套 HTML、CSS以及JavaScript。 由HTML 负责页面的整体架构，CSS负责美化渲染，而JavaScript则负责处理页面的逻辑。 HTML 的结构依赖于 DOM（Document Object Model） 这样的树形结构，而JavaScript 的逻辑处理操作更多的是对 Dom 节点的操作。为了更好的处理与DOM 节点的交互，出现了像 JQ">
-<meta name="keywords" content="Vue">
+<meta name="description" content="程序的编译和连接 C/C++ 会通过编译(comoile)将源文件编译成中间代码文件(Object File)然后将这些中间代码文件通过链接(Link)形成执行文件 Makefile文件makefile文件就是告诉make指令该如何去编译和链接程序 makefile有以下几个规则：  若工程没有被编译过，则所有源文件都要被编译并链接 若这个工程的某几个源文件被修改过，则只需要编译这些被修改过的源文">
+<meta name="keywords" content="makefile">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 Vue 进行前端开发">
-<meta property="og:url" content="http://yoursite.com/2018/11/26/使用-Vue-进行前端开发/index.html">
+<meta property="og:title" content="makefile学习">
+<meta property="og:url" content="http://yoursite.com/2021/04/10/makefile学习/index.html">
 <meta property="og:site_name" content="邓某的杂货铺">
-<meta property="og:description" content="众所周知，传统的前端Web开发离不开三件套 HTML、CSS以及JavaScript。 由HTML 负责页面的整体架构，CSS负责美化渲染，而JavaScript则负责处理页面的逻辑。 HTML 的结构依赖于 DOM（Document Object Model） 这样的树形结构，而JavaScript 的逻辑处理操作更多的是对 Dom 节点的操作。为了更好的处理与DOM 节点的交互，出现了像 JQ">
+<meta property="og:description" content="程序的编译和连接 C/C++ 会通过编译(comoile)将源文件编译成中间代码文件(Object File)然后将这些中间代码文件通过链接(Link)形成执行文件 Makefile文件makefile文件就是告诉make指令该如何去编译和链接程序 makefile有以下几个规则：  若工程没有被编译过，则所有源文件都要被编译并链接 若这个工程的某几个源文件被修改过，则只需要编译这些被修改过的源文">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-04-05T08:46:05.978Z">
+<meta property="og:image" content="https://i.loli.net/2021/04/10/hm9fGADVHn3vbCl.png">
+<meta property="og:updated_time" content="2021-04-10T12:24:18.208Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Vue 进行前端开发">
-<meta name="twitter:description" content="众所周知，传统的前端Web开发离不开三件套 HTML、CSS以及JavaScript。 由HTML 负责页面的整体架构，CSS负责美化渲染，而JavaScript则负责处理页面的逻辑。 HTML 的结构依赖于 DOM（Document Object Model） 这样的树形结构，而JavaScript 的逻辑处理操作更多的是对 Dom 节点的操作。为了更好的处理与DOM 节点的交互，出现了像 JQ">
+<meta name="twitter:title" content="makefile学习">
+<meta name="twitter:description" content="程序的编译和连接 C/C++ 会通过编译(comoile)将源文件编译成中间代码文件(Object File)然后将这些中间代码文件通过链接(Link)形成执行文件 Makefile文件makefile文件就是告诉make指令该如何去编译和链接程序 makefile有以下几个规则：  若工程没有被编译过，则所有源文件都要被编译并链接 若这个工程的某几个源文件被修改过，则只需要编译这些被修改过的源文">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/10/hm9fGADVHn3vbCl.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/26/使用-Vue-进行前端开发/">
+  <link rel="canonical" href="http://yoursite.com/2021/04/10/makefile学习/">
 
 
 
 
 
-  <title>使用 Vue 进行前端开发 | 邓某的杂货铺</title>
+  <title>makefile学习 | 邓某的杂货铺</title>
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/使用-Vue-进行前端开发/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/10/makefile学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用 Vue 进行前端开发</h1>
+          <h1 class="post-title" itemprop="name headline">makefile学习</h1>
         
 
         <div class="post-meta">
@@ -292,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T20:13:59+08:00">
-                2018-11-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-10T15:57:40+08:00">
+                2021-04-10
               </time>
             
 
@@ -315,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -352,30 +354,75 @@
       
 
       
-        <p>众所周知，传统的前端Web开发离不开三件套 HTML、CSS以及JavaScript。</p>
-<p>由HTML 负责页面的整体架构，CSS负责美化渲染，而JavaScript则负责处理页面的逻辑。</p>
-<p>HTML 的结构依赖于 DOM（Document Object Model） 这样的树形结构，而JavaScript 的逻辑处理操作更多的是对 Dom 节点的操作。为了更好的处理与DOM 节点的交互，出现了像 JQuery 这样优秀的前端框架。</p>
-<p>除了传统的前端Web开发以外，还有Web 应用开发基本也遵循 MVC（Model-View-Controller） 的开发模式，基本上View端作为普遍认为的前端领域，无非就是操作DOM 对后端提供的数据进行展示。</p>
-<p>随着Web浪潮的迅速发展，人们发现，传统的前端开发模式暴露了以下三个痛点：</p>
+        <h2 id="程序的编译和连接"><a href="#程序的编译和连接" class="headerlink" title="程序的编译和连接"></a>程序的编译和连接</h2><p><img src="https://i.loli.net/2021/04/10/hm9fGADVHn3vbCl.png" alt="编译过程.png"></p>
+<p>C/C++ 会通过编译(comoile)将源文件编译成中间代码文件(Object File)<br>然后将这些中间代码文件通过链接(Link)形成执行文件</p>
+<h2 id="Makefile文件"><a href="#Makefile文件" class="headerlink" title="Makefile文件"></a>Makefile文件</h2><p><code>makefile</code>文件就是告诉<code>make</code>指令该如何去编译和链接程序</p>
+<p>makefile有以下几个规则：</p>
 <ul>
-<li>对DOM节点的操作（频繁地调用相同的DOM API），处理繁琐，操作冗余，使得代码难以维护。</li>
-<li>大量的DOM操作使页面渲染性能降低，加载速度变慢，影响用户体验。</li>
-<li>当 Model 频繁发生变化，开发者需要主动更新到View ；当用户的操作导致 Model 发生变化，开发者同样需要将变化的数据同步到Model 中，这样的工作不仅繁琐，而且很难维护复杂多变的数据状态。</li>
+<li>若工程没有被编译过，则所有源文件都要被编译并链接</li>
+<li>若这个工程的某几个源文件被修改过，则只需要编译这些被修改过的源文件，并链接目标程序</li>
+<li>若这个工程的头文件被修改过，则需要编译引用了这个头文件的源文件，并链接目标程序</li>
 </ul>
-<a id="more"></a>
-<p>为了解决以上问题，Vue.js 横空出世，与React.js，Angular.js并称前端三辆马车。正因为他们的出现，使得单页面应用程序的开发难度大大降低。</p>
-<p>Vue.js 采用MVVM（Model-View-ViewModel）的思想，将 Controller 端拓展为ViewModel。</p>
-<p>Model 层依然代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑；View 代表UI 组件，它负责将数据模型转化成UI 展现出来，ViewModel是一个同步View 和 Model的对象。</p>
-<p>在MVVM架构下，View 和 Model 之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View和Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM来统一管理。</p>
-<p>Vue.js可以说是MVVM 架构的最佳实践，专注于 MVVM中的 ViewModel，不仅做到了数据双向绑定，而且也是一款相对比较轻量级的JS库，API简洁，学习门槛也不高。Vue.js 有许多强大的特征：</p>
+<h2 id="Makefile规则"><a href="#Makefile规则" class="headerlink" title="Makefile规则"></a>Makefile规则</h2><pre><code>target ... : prerequisites ...
+    command
+    ...
+    ...
+</code></pre><p><strong>target</strong><br>    目标文件/可执行文件/标签(label)</p>
+<p><strong>prerequisites</strong><br>    生成target所依赖的文件</p>
+<p><strong>command</strong><br>    该target要执行的命令</p>
+<pre><code>prerequisites中如果有一个以上的文件比target文件要新的话(修改的时间在target之后)，command所定义的命令就会被执行。
+</code></pre><a id="more"></a>
+<h2 id="make是如何工作的"><a href="#make是如何工作的" class="headerlink" title="make是如何工作的"></a>make是如何工作的</h2><pre><code>edit : main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+cc -o edit main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+
+main.o : main.c defs.h
+    cc -c main.c
+kbd.o : kbd.c defs.h command.h
+    cc -c kbd.c
+command.o : command.c defs.h command.h
+    cc -c command.c
+display.o : display.c defs.h buffer.h
+    cc -c display.c
+insert.o : insert.c defs.h buffer.h
+    cc -c insert.c
+search.o : search.c defs.h buffer.h
+    cc -c search.c
+files.o : files.c defs.h buffer.h command.h
+    cc -c files.c
+utils.o : utils.c defs.h
+    cc -c utils.c
+clean :
+    rm edit main.o kbd.o command.o display.o \
+        insert.o search.o files.o utils.o
+</code></pre><p>make 工作流程：</p>
 <ol>
-<li>组件：为了更好地管理一个大型的应用程序，往往需要将应用切割为小而独立、具有复用性的组件。在Vue中，组件是基础HTML元素的拓展，可方便地自定义其数据与行为。</li>
-<li>模板：Vue使用基于HTML的模板语法，允许开发者将DOM元素与底层Vue实例中的数据相绑定。所有Vue的模板都是合法的HTML，所以能被遵循规范的浏览器和HTML解析器解析。在底层的实现上，Vue将模板编译成虚拟DOM渲染函数。结合响应式系统，在应用状态改变时，Vue能够智能地计算出重新渲染组件的最小代价并应用到DOM操作上。</li>
-<li>响应式设计（数据的双向绑定）：响应式是指MVC模型中的视图随着模型变化而变化。在Vue中，开发者只需将视图与对应的模型进行绑定，Vue便能自动观测模型的变动，并重绘视图。这一特性使得Vue的状态管理变得相当简单直观。</li>
-<li>过渡效果：Vue在插入、更新或者移除DOM时，提供多种不同方式的应用过渡效果。</li>
-<li>单文件组件：为了更好地适应复杂的项目，Vue支持以.vue为扩展名的文件来定义一个完整组件，用以替代使用Vue.component注册组件的方式。开发者可以使用 Webpack或Browserify等构建工具来打包单文件组件。</li>
+<li>make会在当前目录下找名字叫“Makefile”或“makefile”的文件。</li>
+<li>如果找到，它会找文件中的第一个目标文件（target），在上面的例子中，他会找到“edit”这个文件，并把这个文件作为最终的目标文件。</li>
+<li>如果edit文件不存在，或是edit所依赖的后面的 .o 文件的文件修改时间要比 edit 这个文件新，那么，他就会执行后面所定义的命令来生成 edit 这个文件。</li>
+<li>如果 edit 所依赖的 .o 文件也不存在，那么make会在当前文件中找目标为 .o 文件的依赖性，如果找到则再根据那一个规则生成 .o 文件。（这有点像一个堆栈的过程）</li>
+<li>当然，你的C文件和H文件是存在的啦，于是make会生成 .o 文件，然后再用 .o 文件生成make的终极任务，也就是执行文件 edit 了。</li>
 </ol>
-<p>目前，前端三大框架已经成为主流趋势。现在，Vue.js 在GitHub 上star 数为120，148。高于React和Angular,而且发张势头不减。现在，Vue.js 作者尤雨溪正在紧锣密鼓地开发Vue3.0，相信第三版的发布，无论是在性能还是在开发效率上，都将会有所飞跃。</p>
+<h2 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h2><pre><code>objects = main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+
+edit : $(objects)
+    cc -o edit $(objects)
+...
+clean :
+    rm edit $(objects)
+</code></pre><h2 id="make的自动推导"><a href="#make的自动推导" class="headerlink" title="make的自动推导"></a>make的自动推导</h2><p>只要make看到一个 <code>.o</code> 文件，它就会自动的把 <code>.c</code> 文件加在依赖关系中，如果make找到一个 <code>whatever.o</code> ，那么 <code>whatever.c</code> 就会是 <code>whatever.o</code> 的依赖文件。</p>
+<p>因为 <code>.o</code> 文件本来就是依赖于同名的 <code>.c</code> 文件而来的</p>
+<h2 id="Makefile-的主要内容"><a href="#Makefile-的主要内容" class="headerlink" title="Makefile 的主要内容"></a>Makefile 的主要内容</h2><p>Makefile里主要包含了五个东西：显式规则、隐晦规则、变量定义、文件指示和注释。</p>
+<ul>
+<li>显式规则。显式规则说明了如何生成一个或多个目标文件。这是由Makefile的书写者明显指出要生成的文件、文件的依赖文件和生成的命令。</li>
+<li>隐晦规则。由于我们的make有自动推导的功能，所以隐晦的规则可以让我们比较简略地书写 Makefile，这是由make所支持的。</li>
+<li>变量的定义。在Makefile中我们要定义一系列的变量，变量一般都是字符串，这个有点像你C语言中的宏，当Makefile被执行时，其中的变量都会被扩展到相应的引用位置上。</li>
+<li>文件指示。其包括了三个部分，一个是在一个Makefile中引用另一个Makefile，就像C语言中的include一样；另一个是指根据某些情况指定Makefile中的有效部分，就像C语言中的预编译#if一样；还有就是定义一个多行的命令。有关这一部分的内容，我会在后续的部分中讲述。</li>
+<li>注释。Makefile中只有行注释，和UNIX的Shell脚本一样，其注释是用 # 字符，这个就像C/C++中的 // 一样。如果你要在你的Makefile中使用 # 字符，可以用反斜杠进行转义，如： # 。</li>
+</ul>
+<p>最后，还值得一提的是，在Makefile中的命令，必须要以 Tab 键开始。</p>
 
       
     </div>
@@ -393,7 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vue/" rel="tag"># Vue</a>
+            <a href="/tags/makefile/" rel="tag"># makefile</a>
           
         </div>
       
@@ -406,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/22/JavaScript-学习笔记/" rel="next" title="JavaScript 学习笔记">
-                <i class="fa fa-chevron-left"></i> JavaScript 学习笔记
+              <a href="/2021/04/09/解决问题的感觉真爽/" rel="next" title="解决问题的感觉真爽">
+                <i class="fa fa-chevron-left"></i> 解决问题的感觉真爽
               </a>
             
           </div>
@@ -415,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/01/设计模式中的六大原则/" rel="prev" title="设计模式中的六大原则">
-                设计模式中的六大原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -470,8 +513,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -533,6 +585,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序的编译和连接"><span class="nav-number">1.</span> <span class="nav-text">程序的编译和连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Makefile文件"><span class="nav-number">2.</span> <span class="nav-text">Makefile文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Makefile规则"><span class="nav-number">3.</span> <span class="nav-text">Makefile规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#make是如何工作的"><span class="nav-number">4.</span> <span class="nav-text">make是如何工作的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用变量"><span class="nav-number">5.</span> <span class="nav-text">使用变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#make的自动推导"><span class="nav-number">6.</span> <span class="nav-text">make的自动推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Makefile-的主要内容"><span class="nav-number">7.</span> <span class="nav-text">Makefile 的主要内容</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

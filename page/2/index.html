@@ -262,6 +262,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/12/c-中的Lambda表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/12/c-中的Lambda表达式/" itemprop="url">c++中的Lambda表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-12T10:17:53+08:00">
+                2020-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h2><p>谓词函数： 进行一个操作时的一个临时函数，一般使用匿名函数。比如<code>sort</code>函数的第三个参数即传入一个谓词函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::sort(X, X+N, [](<span class="keyword">float</span> a, <span class="keyword">float</span> b) &#123;<span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">abs</span>(a) &lt; <span class="built_in">std</span>::<span class="built_in">abs</span>(b);&#125;);</span><br></pre></td></tr></table></figure>
+<p>Lambda 表达式使用一对方括号作为开始的标识，就类似于声明一个函数(也是匿名函数)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;[](<span class="keyword">float</span> f) &#123;<span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">abs</span>(f);&#125;(<span class="number">-3.5</span>);            <span class="comment">// 3.5</span></span><br></pre></td></tr></table></figure>
+<p>当只有一个返回值时，C++会自动判断返回值的类型而无需声明返回值的类型</p>
+<p>我们也可以强制将返回值转换为<code>int</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;[](<span class="keyword">float</span> f) -&gt; <span class="keyword">int</span> &#123;<span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">abs</span>(f);&#125;(<span class="number">-3.5</span>);     <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>有点 JavaScript 里立即执行函数的味道了</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/12/c-中的Lambda表达式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/设计模式中的六大原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1693,152 +1846,6 @@ git config  user.name &quot;AustinDeng&quot;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/数据结构与算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Austin Deng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓某的杂货铺">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/数据结构与算法/" itemprop="url">数据结构与算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T20:41:05+08:00">
-                2018-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="线性表的线性存储结构"><a href="#线性表的线性存储结构" class="headerlink" title="线性表的线性存储结构"></a>线性表的线性存储结构</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> data;</span><br><span class="line">  node *next;  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> node *<span class="built_in">position</span>;</span><br><span class="line"><span class="keyword">typedef</span> node *LIST;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createList</span><span class="params">(LIST &amp;)</span></span>; <span class="comment">// 构建线性表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">readList</span><span class="params">(LIST &amp;)</span></span>; <span class="comment">// 读取线性表</span></span><br><span class="line"><span class="function"><span class="built_in">position</span> <span class="title">end</span><span class="params">(LIST)</span></span>; <span class="comment">// 返回尾部节点，可以用于尾插法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span>, <span class="built_in">position</span>)</span></span>; <span class="comment">// 在某一节点的下一位插入节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(<span class="built_in">position</span>)</span></span>; <span class="comment">// 删除节点的下一个节点</span></span><br><span class="line"><span class="function"><span class="built_in">position</span> <span class="title">Local</span><span class="params">(<span class="keyword">int</span>, LIST)</span></span>;<span class="comment">// 返回元素为 x 的第一个节点</span></span><br><span class="line"><span class="function"><span class="built_in">position</span> <span class="title">makeNull</span><span class="params">(LIST &amp;)</span></span>; <span class="comment">// 线性表置空</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  LIST L = <span class="literal">NULL</span>;</span><br><span class="line">  createList(L);</span><br><span class="line">  readList(L); </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createList</span><span class="params">(LIST &amp;L)</span></span>&#123;</span><br><span class="line">  <span class="comment">// 直接操作 L 会导致段错误</span></span><br><span class="line">  <span class="built_in">position</span> p1, p2;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter the Data or -1 to end:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		p1 = <span class="keyword">new</span> node;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; p1-&gt;data;</span><br><span class="line">		<span class="keyword">if</span>(p1-&gt;data == <span class="number">-1</span>)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(L == <span class="number">0</span>)&#123;</span><br><span class="line">			L = p1;</span><br><span class="line">			p2 = p1;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			p2-&gt;next = p1;</span><br><span class="line">			p2 = p1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	p2-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">readList</span><span class="params">(LIST &amp;L)</span></span>&#123;</span><br><span class="line">  <span class="built_in">position</span> p = L;</span><br><span class="line">	<span class="keyword">for</span>(; p ; p = p-&gt;next)&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">position</span> <span class="title">end</span><span class="params">(LIST L)</span></span>&#123;</span><br><span class="line">  <span class="built_in">position</span> q;</span><br><span class="line">  q = L;</span><br><span class="line">  <span class="keyword">while</span> (q -&gt; next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">    q = q -&gt; next;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="built_in">position</span> p)</span></span>&#123;</span><br><span class="line">  <span class="built_in">position</span> q = <span class="keyword">new</span> node;</span><br><span class="line">  q -&gt; data = x;</span><br><span class="line">  q -&gt; next = p -&gt; next;</span><br><span class="line">  p -&gt; next = q;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(<span class="built_in">position</span> p)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (p -&gt; next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="built_in">position</span> q = p -&gt; next;</span><br><span class="line">    p -&gt; next = q -&gt; next;</span><br><span class="line">    <span class="keyword">delete</span> q;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">position</span> <span class="title">Local</span><span class="params">(<span class="keyword">int</span> x, LIST L)</span></span>&#123;</span><br><span class="line">  <span class="built_in">position</span> p;</span><br><span class="line">  p = L;</span><br><span class="line">  <span class="keyword">while</span> (p -&gt; next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (p -&gt; data == x)&#123;</span><br><span class="line">      <span class="keyword">return</span> p;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      p = p -&gt; next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">position</span> <span class="title">makeNull</span><span class="params">(LIST &amp;L)</span></span>&#123;</span><br><span class="line">  L = <span class="keyword">new</span> node;</span><br><span class="line">  L -&gt; next = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/15/数据结构与算法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1891,7 +1898,7 @@ git config  user.name &quot;AustinDeng&quot;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1902,7 +1909,7 @@ git config  user.name &quot;AustinDeng&quot;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1913,7 +1920,7 @@ git config  user.name &quot;AustinDeng&quot;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

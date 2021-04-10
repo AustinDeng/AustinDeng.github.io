@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/04/06/XjnVyIvrGkgPwmf.png">
 <meta property="og:image" content="https://i.loli.net/2021/04/06/TXe1ixfp48sdEqQ.png">
 <meta property="og:image" content="https://i.loli.net/2021/04/06/wAal9VWbzHjQBpg.png">
-<meta property="og:updated_time" content="2021-04-08T15:36:17.343Z">
+<meta property="og:updated_time" content="2021-04-10T07:38:18.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++: 面向高级对象编程">
 <meta name="twitter:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
@@ -382,6 +382,7 @@
 <li>protected： 能被<strong>本类的函数</strong>和<strong>子类的函数</strong>访问</li>
 <li>public: 可以被<strong>所有函数</strong>访问</li>
 </ul>
+<a id="more"></a>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">complex</span>(<span class="keyword">double</span> r=<span class="number">0</span>, <span class="keyword">double</span> i=<span class="number">0</span>) : re(r), im(i) &#123;&#125;</span><br><span class="line">        <span class="built_in">complex</span>&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="built_in">complex</span>&amp;);</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">real</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> re;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> im;&#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">double</span> re, im;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">complex</span>&amp; __doapl(<span class="built_in">complex</span>*, <span class="keyword">const</span> <span class="built_in">complex</span>&amp;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>类的声明内可以交叉定义多个不同级别的访问控制块</p>
 <h3 id="函数设计"><a href="#函数设计" class="headerlink" title="函数设计"></a>函数设计</h3><h4 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h4><p>在类声明内定义的函数将自动转换为<code>inline</code>函数<br>在类声明以外定义的函数，需要加上<code>inline</code>关键字</p>
@@ -565,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -576,7 +577,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -587,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
