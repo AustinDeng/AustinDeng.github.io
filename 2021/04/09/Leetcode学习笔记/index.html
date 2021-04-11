@@ -88,7 +88,7 @@
 <meta property="og:description" content="前言在 Leetcode 中学习了也有一阵子了，但是总感觉算法这玩意，时间一长就不熟练了，因此弄个学习笔记吧。用来记录一下在Leetcode的学习收获吧，也方便以后日后的复习。 这个学习笔记用来记录一些比较琐碎的知识，一些专题知识如果以后有时间再归纳汇总吧。 目前前的刷题进度如下：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2021/04/09/1FJXeVR6pNUitvQ.png">
-<meta property="og:updated_time" content="2021-04-10T07:38:31.321Z">
+<meta property="og:updated_time" content="2021-04-11T14:18:52.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode学习笔记">
 <meta name="twitter:description" content="前言在 Leetcode 中学习了也有一阵子了，但是总感觉算法这玩意，时间一长就不熟练了，因此弄个学习笔记吧。用来记录一下在Leetcode的学习收获吧，也方便以后日后的复习。 这个学习笔记用来记录一些比较琐碎的知识，一些专题知识如果以后有时间再归纳汇总吧。 目前前的刷题进度如下：">
@@ -376,6 +376,41 @@
 <h3 id="俄罗斯农名乘法"><a href="#俄罗斯农名乘法" class="headerlink" title="俄罗斯农名乘法"></a>俄罗斯农名乘法</h3><p>考虑 <code>A</code> 和 <code>B</code> 两数相乘的时候利用加法和位运算来模拟.<br>其实就是将 <code>B</code> 二进制展开，如果 <code>B</code> 的二进制表示下第 $i$ 位为 1，那么这一位对最后结果的贡献就是 $A*(1&lt;&lt;i)$ ，即 $A&lt;&lt;i$。<br>遍历 <code>B</code> 二进制展开下的每一位，将所有贡献累加起来就是最后的答案。</p>
 <p>这个方法经常被用于两数相乘取模的场景，如果两数相乘已经超过数据范围，但取模后不会超过，可以利用这个方法来拆位取模计算贡献，保证每次运算都在数据范围内。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">quickMulti</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( ; B; B &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (B &amp; <span class="number">1</span>) &#123;</span><br><span class="line">            ans += A;</span><br><span class="line">        &#125;</span><br><span class="line">        A &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="LRU-缓存机制"><a href="#LRU-缓存机制" class="headerlink" title="LRU 缓存机制"></a>LRU 缓存机制</h2><p><a href="https://leetcode-cn.com/problems/lru-cache/" target="_blank" rel="noopener">LRU 缓存机制</a></p>
+<p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制 。<br>实现 <code>LRUCache</code> 类：</p>
+<ul>
+<li>LRUCache(int capacity) 以正整数作为容量 capacity 初始化 LRU 缓存</li>
+<li>int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。</li>
+<li>void put(int key, int value) 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字-值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。</li>
+</ul>
+<p>进阶：你是否可以在 <code>O(1)</code> 时间复杂度内完成这两种操作？</p>
+<p>示例：</p>
+<pre><code>输入
+[&quot;LRUCache&quot;, &quot;put&quot;, &quot;put&quot;, &quot;get&quot;, &quot;put&quot;, &quot;get&quot;, &quot;put&quot;, &quot;get&quot;, &quot;get&quot;, &quot;get&quot;]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+输出
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+解释
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // 缓存是 {1=1}
+lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+lRUCache.get(1);    // 返回 1
+lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+lRUCache.get(2);    // 返回 -1 (未找到)
+lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+lRUCache.get(1);    // 返回 -1 (未找到)
+lRUCache.get(3);    // 返回 3
+lRUCache.get(4);    // 返回 4
+</code></pre><p>提示：</p>
+<ul>
+<li>1 &lt;= capacity &lt;= 3000</li>
+<li>0 &lt;= key &lt;= 3000</li>
+<li>0 &lt;= value &lt;= 104</li>
+<li>最多调用 3 * 10^4 次 get 和 put</li>
+</ul>
+<p>这道题主要运用到了双向链表以及哈希表的使用，注意怎么使用list的接口</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    LRUCache(<span class="keyword">int</span> capacity) : _capacity(capacity) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> it = _table.<span class="built_in">find</span>(key);</span><br><span class="line">        <span class="keyword">if</span>(it != _table.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            _lru.splice(_lru.<span class="built_in">begin</span>(), _lru, it-&gt;second);</span><br><span class="line">            <span class="keyword">return</span> it-&gt;second-&gt;second;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> it = _table.<span class="built_in">find</span>(key);</span><br><span class="line">        <span class="keyword">if</span>(it != _table.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            _lru.splice(_lru.<span class="built_in">begin</span>(), _lru, it-&gt;second);</span><br><span class="line">            it-&gt;second-&gt;second = value;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        _lru.emplace_front(key, value);</span><br><span class="line">        _table[key] = _lru.<span class="built_in">begin</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (_table.<span class="built_in">size</span>() &gt; _capacity) &#123;</span><br><span class="line">            _table.erase(_lru.back().first);</span><br><span class="line">            _lru.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;::iterator&gt; _table;</span><br><span class="line">    <span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; _lru;</span><br><span class="line">    <span class="keyword">int</span> _capacity;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your LRUCache object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * LRUCache* obj = new LRUCache(capacity);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj-&gt;get(key);</span></span><br><span class="line"><span class="comment"> * obj-&gt;put(key,value);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -418,8 +453,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/04/09/解决问题的感觉真爽/" rel="prev" title="解决问题的感觉真爽">
-                解决问题的感觉真爽 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/04/09/记录一次解决问题的过程/" rel="prev" title="记录一次解决问题的过程">
+                记录一次解决问题的过程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -554,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剑指office64：求1-2-3-…-n"><span class="nav-number">2.</span> <span class="nav-text">剑指office64：求1+2+3+…+n</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符的短路性质"><span class="nav-number">2.1.</span> <span class="nav-text">逻辑运算符的短路性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#俄罗斯农名乘法"><span class="nav-number">2.2.</span> <span class="nav-text">俄罗斯农名乘法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剑指office64：求1-2-3-…-n"><span class="nav-number">2.</span> <span class="nav-text">剑指office64：求1+2+3+…+n</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符的短路性质"><span class="nav-number">2.1.</span> <span class="nav-text">逻辑运算符的短路性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#俄罗斯农名乘法"><span class="nav-number">2.2.</span> <span class="nav-text">俄罗斯农名乘法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LRU-缓存机制"><span class="nav-number">3.</span> <span class="nav-text">LRU 缓存机制</span></a></li></ol></div>
             
 
           </div>
