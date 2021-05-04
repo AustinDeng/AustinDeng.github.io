@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面经,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础知识 算法和数据结构 数组、链表、二叉树、队列、栈的各种操作（性能，场景） 二分查找和各种变种的二分查找 各类排序算法以及复杂度分析（快排、归并、堆） 各类算法题（手写） 理解并可以分析时间和空间复杂度。 动态规划、贪心。 红黑树、AVL树、Hash树、Tire树、B树、B+树。 图算法（比较少，也就两个最短路径算法理解吧） 计算机网络 OSI7层模型（TCP4层） 每层的协议 url到页面的">
+<meta name="keywords" content="面经">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面经知识汇总*">
+<meta property="og:url" content="http://yoursite.com/2021/05/03/面经知识汇总/index.html">
+<meta property="og:site_name" content="邓某的杂货铺">
+<meta property="og:description" content="基础知识 算法和数据结构 数组、链表、二叉树、队列、栈的各种操作（性能，场景） 二分查找和各种变种的二分查找 各类排序算法以及复杂度分析（快排、归并、堆） 各类算法题（手写） 理解并可以分析时间和空间复杂度。 动态规划、贪心。 红黑树、AVL树、Hash树、Tire树、B树、B+树。 图算法（比较少，也就两个最短路径算法理解吧） 计算机网络 OSI7层模型（TCP4层） 每层的协议 url到页面的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-03T11:43:33.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面经知识汇总*">
+<meta name="twitter:description" content="基础知识 算法和数据结构 数组、链表、二叉树、队列、栈的各种操作（性能，场景） 二分查找和各种变种的二分查找 各类排序算法以及复杂度分析（快排、归并、堆） 各类算法题（手写） 理解并可以分析时间和空间复杂度。 动态规划、贪心。 红黑树、AVL树、Hash树、Tire树、B树、B+树。 图算法（比较少，也就两个最短路径算法理解吧） 计算机网络 OSI7层模型（TCP4层） 每层的协议 url到页面的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/05/03/面经知识汇总/">
+
+
+
+
+
+  <title>面经知识汇总* | 邓某的杂货铺</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邓某的杂货铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/03/面经知识汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面经知识汇总*</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-03T19:28:21+08:00">
+                2021-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识汇总/" itemprop="url" rel="index">
+                    <span itemprop="name">知识汇总</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><ul>
+<li>算法和数据结构</li>
+<li>数组、链表、二叉树、队列、栈的各种操作（性能，场景）</li>
+<li>二分查找和各种变种的二分查找</li>
+<li>各类排序算法以及复杂度分析（快排、归并、堆）</li>
+<li>各类算法题（手写）</li>
+<li>理解并可以分析时间和空间复杂度。</li>
+<li>动态规划、贪心。</li>
+<li>红黑树、AVL树、Hash树、Tire树、B树、B+树。</li>
+<li>图算法（比较少，也就两个最短路径算法理解吧）</li>
+<li>计算机网络</li>
+<li>OSI7层模型（TCP4层）</li>
+<li>每层的协议</li>
+<li>url到页面的过程</li>
+</ul>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><ul>
+<li>http/https 1.0、1.1、2.0</li>
+<li>get/post 以及幂等性</li>
+<li>http 协议头相关</li>
+<li>网络攻击（CSRF、XSS）</li>
+<li><p>TCP/IP</p>
+</li>
+<li><p>三次握手、四次挥手</p>
+</li>
+<li>拥塞控制（过程、阈值）</li>
+<li>流量控制与滑动窗口</li>
+<li>TCP与UDP比较</li>
+<li>子网划分（一般只有笔试有）</li>
+<li>DDos 攻击</li>
+<li>(B)IO/NIO/AIO<br>三者原理，各个语言是怎么实现的</li>
+<li>Netty</li>
+<li>Linux内核select poll epoll</li>
+</ul>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><ul>
+<li>索引（包括分类及优化方式，失效条件，底层结构）</li>
+<li>sql语法（join，union，子查询，having，group by</li>
+<li>引擎对比（InnoDB，MyISAM）</li>
+<li>数据库的锁（行锁，表锁，页级锁，意向锁，读锁，写锁，悲观锁，乐观锁，以及加锁的select sql方式）</li>
+<li>隔离级别，依次解决的问题（脏读、不可重复读、幻读）</li>
+<li>事务的ACID</li>
+<li>B树、B+树</li>
+<li>优化（explain，慢查询，show profile）</li>
+<li>数据库的范式。</li>
+<li>分库分表，主从复制，读写分离。</li>
+<li>Nosql相关</li>
+</ul>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><ul>
+<li>进程通信IPC（几种方式），与线程区别</li>
+<li>OS的几种策略（页面置换，进程调度等，每个里面有几种算法）</li>
+<li>互斥与死锁相关的</li>
+<li>linux常用命令（问的时候都会给具体某一个场景）</li>
+<li>Linux内核相关（select、poll、epoll）</li>
+</ul>
+<h1 id="分布式架构"><a href="#分布式架构" class="headerlink" title="分布式架构"></a>分布式架构</h1><ul>
+<li>CAP原理和BASE理论。</li>
+<li>Nosql与KV存储（redis，hbase，mongodb，memcached等）</li>
+<li>服务化理论（包括服务发现、治理等，zookeeper、etcd、springcloud微服务）</li>
+<li>负载均衡（原理、cdn、一致性hash）</li>
+<li>RPC框架（包括整体的一些框架理论，通信的netty，序列化协议thrift，protobuff等）</li>
+<li>消息队列（原理、kafka，activeMQ，rocketMQ）</li>
+<li>分布式存储系统（GFS、HDFS、fastDFS）、存储模型（skipList、LSM等）</li>
+<li>分布式事务、分布式锁等</li>
+</ul>
+<h1 id="大数据与数据分析"><a href="#大数据与数据分析" class="headerlink" title="大数据与数据分析"></a>大数据与数据分析</h1><ul>
+<li><p>hadoop生态圈(hive、hbase、hdfs、zookeeper、storm、kafka)</p>
+</li>
+<li><p>spark体系</p>
+</li>
+</ul>
+<h1 id="搜索引擎与技术"><a href="#搜索引擎与技术" class="headerlink" title="搜索引擎与技术"></a>搜索引擎与技术</h1><h1 id="机器学习算法"><a href="#机器学习算法" class="headerlink" title="机器学习算法"></a>机器学习算法</h1><h1 id="工具的理论和使用："><a href="#工具的理论和使用：" class="headerlink" title="工具的理论和使用："></a>工具的理论和使用：</h1><p>git、docker、maven/gradle、Jenkins</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面经/" rel="tag"># 面经</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/03/C-面向高级对象编程-下/" rel="next" title="C++: 面向高级对象编程(下)*">
+                <i class="fa fa-chevron-left"></i> C++: 面向高级对象编程(下)*
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/05/03/STL标准库与泛型编程/" rel="prev" title="STL标准库与泛型编程">
+                STL标准库与泛型编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg" alt="Austin Deng">
+            
+              <p class="site-author-name" itemprop="name">Austin Deng</p>
+              <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">2.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-number">3.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统"><span class="nav-number">4.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式架构"><span class="nav-number">5.</span> <span class="nav-text">分布式架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#大数据与数据分析"><span class="nav-number">6.</span> <span class="nav-text">大数据与数据分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索引擎与技术"><span class="nav-number">7.</span> <span class="nav-text">搜索引擎与技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习算法"><span class="nav-number">8.</span> <span class="nav-text">机器学习算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具的理论和使用："><span class="nav-number">9.</span> <span class="nav-text">工具的理论和使用：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin Deng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

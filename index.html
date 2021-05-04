@@ -262,6 +262,513 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/03/STL标准库与泛型编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/05/03/STL标准库与泛型编程/" itemprop="url">STL标准库与泛型编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-03T19:31:47+08:00">
+                2021-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="STL各组件应用示例"><a href="#STL各组件应用示例" class="headerlink" title="STL各组件应用示例"></a>STL各组件应用示例</h1><h2 id="STL六大组件"><a href="#STL六大组件" class="headerlink" title="STL六大组件"></a>STL六大组件</h2><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="使用array"><a href="#使用array" class="headerlink" title="使用array"></a>使用<code>array</code></h3><h3 id="使用vector"><a href="#使用vector" class="headerlink" title="使用vector"></a>使用<code>vector</code></h3><h3 id="使用list"><a href="#使用list" class="headerlink" title="使用list"></a>使用<code>list</code></h3><h3 id="使用forward-list"><a href="#使用forward-list" class="headerlink" title="使用forward_list"></a>使用<code>forward_list</code></h3><h3 id="使用deque"><a href="#使用deque" class="headerlink" title="使用deque"></a>使用<code>deque</code></h3><h3 id="使用stack和queue"><a href="#使用stack和queue" class="headerlink" title="使用stack和queue"></a>使用<code>stack</code>和<code>queue</code></h3><h3 id="使用multiset和multimap"><a href="#使用multiset和multimap" class="headerlink" title="使用multiset和multimap"></a>使用<code>multiset</code>和<code>multimap</code></h3><h3 id="使用unordered-multiset和unordered-multimap"><a href="#使用unordered-multiset和unordered-multimap" class="headerlink" title="使用unordered_multiset和unordered_multimap"></a>使用<code>unordered_multiset</code>和<code>unordered_multimap</code></h3><h2 id="分配器"><a href="#分配器" class="headerlink" title="分配器"></a>分配器</h2><h1 id="STL容器源码分析"><a href="#STL容器源码分析" class="headerlink" title="STL容器源码分析"></a>STL容器源码分析</h1><h2 id="STL设计模式-OOP和GP"><a href="#STL设计模式-OOP和GP" class="headerlink" title="STL设计模式:OOP和GP"></a>STL设计模式:OOP和GP</h2><h2 id="运算符重载与模板特化"><a href="#运算符重载与模板特化" class="headerlink" title="运算符重载与模板特化"></a>运算符重载与模板特化</h2><h2 id="分配器-1"><a href="#分配器-1" class="headerlink" title="分配器"></a>分配器</h2><h2 id="容器-1"><a href="#容器-1" class="headerlink" title="容器"></a>容器</h2><h3 id="容器list"><a href="#容器list" class="headerlink" title="容器list"></a>容器<code>list</code></h3><h3 id="容器vector"><a href="#容器vector" class="headerlink" title="容器vector"></a>容器<code>vector</code></h3><h3 id="容器array"><a href="#容器array" class="headerlink" title="容器array"></a>容器<code>array</code></h3><h3 id="容器deque"><a href="#容器deque" class="headerlink" title="容器deque"></a>容器<code>deque</code></h3><h3 id="容器queue和stack"><a href="#容器queue和stack" class="headerlink" title="容器queue和stack"></a>容器<code>queue</code>和<code>stack</code></h3><h3 id="容器rbtree"><a href="#容器rbtree" class="headerlink" title="容器rbtree"></a>容器<code>rbtree</code></h3><h3 id="容器set和multiset"><a href="#容器set和multiset" class="headerlink" title="容器set和multiset"></a>容器<code>set</code>和<code>multiset</code></h3><h3 id="容器map和multimap"><a href="#容器map和multimap" class="headerlink" title="容器map和multimap"></a>容器<code>map</code>和<code>multimap</code></h3><h3 id="容器hashtable"><a href="#容器hashtable" class="headerlink" title="容器hashtable"></a>容器<code>hashtable</code></h3><h3 id="容器unordered-set、unordered-multiset、unordered-map和unordered-multimap"><a href="#容器unordered-set、unordered-multiset、unordered-map和unordered-multimap" class="headerlink" title="容器unordered_set、unordered_multiset、unordered_map和unordered_multimap"></a>容器<code>unordered_set</code>、<code>unordered_multiset</code>、<code>unordered_map</code>和<code>unordered_multimap</code></h3><h1 id="STL算法源码分析"><a href="#STL算法源码分析" class="headerlink" title="STL算法源码分析"></a>STL算法源码分析</h1><h2 id="迭代器对算法的影响"><a href="#迭代器对算法的影响" class="headerlink" title="迭代器对算法的影响"></a>迭代器对算法的影响</h2><h3 id="迭代器的iterator-category类型"><a href="#迭代器的iterator-category类型" class="headerlink" title="迭代器的iterator_category类型"></a>迭代器的<code>iterator_category</code>类型</h3><h3 id="iterator-traits和type-traits对算法的影响"><a href="#iterator-traits和type-traits对算法的影响" class="headerlink" title="iterator_traits和type_traits对算法的影响"></a><code>iterator_traits</code>和<code>type_traits</code>对算法的影响</h3><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="算法accumulate"><a href="#算法accumulate" class="headerlink" title="算法accumulate"></a>算法<code>accumulate</code></h3><h3 id="算法for-each"><a href="#算法for-each" class="headerlink" title="算法for_each"></a>算法<code>for_each</code></h3><h3 id="算法replace、replace-if、replace-copy"><a href="#算法replace、replace-if、replace-copy" class="headerlink" title="算法replace、replace_if、replace_copy"></a>算法<code>replace</code>、<code>replace_if</code>、<code>replace_copy</code></h3><h3 id="算法count、count-if"><a href="#算法count、count-if" class="headerlink" title="算法count、count_if"></a>算法<code>count</code>、<code>count_if</code></h3><h3 id="算法find、find-if"><a href="#算法find、find-if" class="headerlink" title="算法find、find_if"></a>算法<code>find</code>、<code>find_if</code></h3><h3 id="算法sort"><a href="#算法sort" class="headerlink" title="算法sort"></a>算法<code>sort</code></h3><h3 id="算法binary-search"><a href="#算法binary-search" class="headerlink" title="算法binary_search"></a>算法<code>binary_search</code></h3><h1 id="STL仿函数源码分析"><a href="#STL仿函数源码分析" class="headerlink" title="STL仿函数源码分析"></a>STL仿函数源码分析</h1><h1 id="STL适配器源码分析"><a href="#STL适配器源码分析" class="headerlink" title="STL适配器源码分析"></a>STL适配器源码分析</h1><h2 id="容器适配器"><a href="#容器适配器" class="headerlink" title="容器适配器"></a>容器适配器</h2><h2 id="仿函数适配器"><a href="#仿函数适配器" class="headerlink" title="仿函数适配器"></a>仿函数适配器</h2><h3 id="仿函数适配器binder2nd及其辅助函数bind2nd"><a href="#仿函数适配器binder2nd及其辅助函数bind2nd" class="headerlink" title="仿函数适配器binder2nd及其辅助函数bind2nd"></a>仿函数适配器<code>binder2nd</code>及其辅助函数<code>bind2nd</code></h3><h3 id="仿函数适配器unary-negate及其辅助函数not1"><a href="#仿函数适配器unary-negate及其辅助函数not1" class="headerlink" title="仿函数适配器unary_negate及其辅助函数not1"></a>仿函数适配器<code>unary_negate</code>及其辅助函数<code>not1</code></h3><h3 id="仿函数适配器bind"><a href="#仿函数适配器bind" class="headerlink" title="仿函数适配器bind"></a>仿函数适配器<code>bind</code></h3><h2 id="迭代器适配器"><a href="#迭代器适配器" class="headerlink" title="迭代器适配器"></a>迭代器适配器</h2><h3 id="逆向迭代器reverse-iterator"><a href="#逆向迭代器reverse-iterator" class="headerlink" title="逆向迭代器reverse_iterator"></a>逆向迭代器<code>reverse_iterator</code></h3><h3 id="用于插入的迭代器insert-iterator及其辅助函数inserter"><a href="#用于插入的迭代器insert-iterator及其辅助函数inserter" class="headerlink" title="用于插入的迭代器insert_iterator及其辅助函数inserter"></a>用于插入的迭代器<code>insert_iterator</code>及其辅助函数<code>inserter</code></h3><h3 id="输出流迭代器ostream-iterator"><a href="#输出流迭代器ostream-iterator" class="headerlink" title="输出流迭代器ostream_iterator"></a>输出流迭代器<code>ostream_iterator</code></h3><h3 id="输入流迭代器istream-iterator"><a href="#输入流迭代器istream-iterator" class="headerlink" title="输入流迭代器istream_iterator"></a>输入流迭代器<code>istream_iterator</code></h3><h1 id="其它标准库相关的话题"><a href="#其它标准库相关的话题" class="headerlink" title="其它标准库相关的话题"></a>其它标准库相关的话题</h1><h2 id="容器tuple"><a href="#容器tuple" class="headerlink" title="容器tuple"></a>容器<code>tuple</code></h2><h3 id="使用tuple"><a href="#使用tuple" class="headerlink" title="使用tuple"></a>使用<code>tuple</code></h3><h3 id="tuple类源码分析"><a href="#tuple类源码分析" class="headerlink" title="tuple类源码分析"></a><code>tuple</code>类源码分析</h3><h2 id="type-traits"><a href="#type-traits" class="headerlink" title="type traits"></a>type traits</h2><h3 id="C-11之前的类型萃取机制-type-traits"><a href="#C-11之前的类型萃取机制-type-traits" class="headerlink" title="C++11之前的类型萃取机制:__type_traits"></a>C++11之前的类型萃取机制:<code>__type_traits</code></h3><h3 id="C-11中的类型萃取机制-辅助类"><a href="#C-11中的类型萃取机制-辅助类" class="headerlink" title="C++11中的类型萃取机制:辅助类"></a>C++11中的类型萃取机制:辅助类</h3><h3 id="类型萃取机制源码分析"><a href="#类型萃取机制源码分析" class="headerlink" title="类型萃取机制源码分析"></a>类型萃取机制源码分析</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/03/面经知识汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/05/03/面经知识汇总/" itemprop="url">面经知识汇总*</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-03T19:28:21+08:00">
+                2021-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识汇总/" itemprop="url" rel="index">
+                    <span itemprop="name">知识汇总</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><ul>
+<li>算法和数据结构</li>
+<li>数组、链表、二叉树、队列、栈的各种操作（性能，场景）</li>
+<li>二分查找和各种变种的二分查找</li>
+<li>各类排序算法以及复杂度分析（快排、归并、堆）</li>
+<li>各类算法题（手写）</li>
+<li>理解并可以分析时间和空间复杂度。</li>
+<li>动态规划、贪心。</li>
+<li>红黑树、AVL树、Hash树、Tire树、B树、B+树。</li>
+<li>图算法（比较少，也就两个最短路径算法理解吧）</li>
+<li>计算机网络</li>
+<li>OSI7层模型（TCP4层）</li>
+<li>每层的协议</li>
+<li>url到页面的过程</li>
+</ul>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><ul>
+<li>http/https 1.0、1.1、2.0</li>
+<li>get/post 以及幂等性</li>
+<li>http 协议头相关</li>
+<li>网络攻击（CSRF、XSS）</li>
+<li><p>TCP/IP</p>
+</li>
+<li><p>三次握手、四次挥手</p>
+</li>
+<li>拥塞控制（过程、阈值）</li>
+<li>流量控制与滑动窗口</li>
+<li>TCP与UDP比较</li>
+<li>子网划分（一般只有笔试有）</li>
+<li>DDos 攻击</li>
+<li>(B)IO/NIO/AIO<br>三者原理，各个语言是怎么实现的</li>
+<li>Netty</li>
+<li>Linux内核select poll epoll</li>
+</ul>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><ul>
+<li>索引（包括分类及优化方式，失效条件，底层结构）</li>
+<li>sql语法（join，union，子查询，having，group by</li>
+<li>引擎对比（InnoDB，MyISAM）</li>
+<li>数据库的锁（行锁，表锁，页级锁，意向锁，读锁，写锁，悲观锁，乐观锁，以及加锁的select sql方式）</li>
+<li>隔离级别，依次解决的问题（脏读、不可重复读、幻读）</li>
+<li>事务的ACID</li>
+<li>B树、B+树</li>
+<li>优化（explain，慢查询，show profile）</li>
+<li>数据库的范式。</li>
+<li>分库分表，主从复制，读写分离。</li>
+<li>Nosql相关</li>
+</ul>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><ul>
+<li>进程通信IPC（几种方式），与线程区别</li>
+<li>OS的几种策略（页面置换，进程调度等，每个里面有几种算法）</li>
+<li>互斥与死锁相关的</li>
+<li>linux常用命令（问的时候都会给具体某一个场景）</li>
+<li>Linux内核相关（select、poll、epoll）</li>
+</ul>
+<h1 id="分布式架构"><a href="#分布式架构" class="headerlink" title="分布式架构"></a>分布式架构</h1><ul>
+<li>CAP原理和BASE理论。</li>
+<li>Nosql与KV存储（redis，hbase，mongodb，memcached等）</li>
+<li>服务化理论（包括服务发现、治理等，zookeeper、etcd、springcloud微服务）</li>
+<li>负载均衡（原理、cdn、一致性hash）</li>
+<li>RPC框架（包括整体的一些框架理论，通信的netty，序列化协议thrift，protobuff等）</li>
+<li>消息队列（原理、kafka，activeMQ，rocketMQ）</li>
+<li>分布式存储系统（GFS、HDFS、fastDFS）、存储模型（skipList、LSM等）</li>
+<li>分布式事务、分布式锁等</li>
+</ul>
+<h1 id="大数据与数据分析"><a href="#大数据与数据分析" class="headerlink" title="大数据与数据分析"></a>大数据与数据分析</h1><ul>
+<li><p>hadoop生态圈(hive、hbase、hdfs、zookeeper、storm、kafka)</p>
+</li>
+<li><p>spark体系</p>
+</li>
+</ul>
+<h1 id="搜索引擎与技术"><a href="#搜索引擎与技术" class="headerlink" title="搜索引擎与技术"></a>搜索引擎与技术</h1><h1 id="机器学习算法"><a href="#机器学习算法" class="headerlink" title="机器学习算法"></a>机器学习算法</h1><h1 id="工具的理论和使用："><a href="#工具的理论和使用：" class="headerlink" title="工具的理论和使用："></a>工具的理论和使用：</h1><p>git、docker、maven/gradle、Jenkins</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/03/C-面向高级对象编程-下/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/05/03/C-面向高级对象编程-下/" itemprop="url">C++: 面向高级对象编程(下)*</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-03T19:21:08+08:00">
+                2021-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h1><h2 id="将本类型转换为其他类型"><a href="#将本类型转换为其他类型" class="headerlink" title="将本类型转换为其他类型"></a>将本类型转换为其他类型</h2><p>定义操作符<code>类型名()</code>即可将本类型变量转换为其他类型的函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fraction</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Fraction(<span class="keyword">int</span> num, <span class="keyword">int</span> den = <span class="number">1</span>): m_numerator(num), m_denominator(den) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;	<span class="comment">// 重载类型转换运算符 double()</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">double</span>)(m_numerator * <span class="number">1.0</span> / m_denominator);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_numerator;        <span class="comment">// 分子</span></span><br><span class="line">    <span class="keyword">int</span> m_denominator;      <span class="comment">// 分母</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种类型转换有可能是隐式的，例如：</p>
+<pre><code>Fraction f(3, 5);
+double d = f + 4;     // 隐式转换，调用 Fraction::operator double() 函数将f转换为 double 类型变量
+</code></pre><p>对于语句<code>f + 4</code>,编译器可能会去寻找以下重载了运算符+的两个函数</p>
+<ul>
+<li><code>Fraction::operator+(double)</code></li>
+<li><code>operator+(Fraction, double)</code></li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/05/03/C-面向高级对象编程-下/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/10/makefile学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -880,7 +1387,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/05/C-面向高级对象编程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/05/C-面向高级对象编程(上)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
@@ -899,7 +1406,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/04/05/C-面向高级对象编程/" itemprop="url">C++: 面向高级对象编程*</a></h1>
+                <a class="post-title-link" href="/2021/04/05/C-面向高级对象编程(上)/" itemprop="url">C++: 面向高级对象编程(上)</a></h1>
         
 
         <div class="post-meta">
@@ -989,7 +1496,7 @@
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/04/05/C-面向高级对象编程/#more" rel="contents">
+            <a class="btn" href="/2021/04/05/C-面向高级对象编程(上)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1342,471 +1849,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/21/计算网络相关知识点整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Austin Deng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓某的杂货铺">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/21/计算网络相关知识点整理/" itemprop="url">计算网络相关知识点整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-21T18:41:49+08:00">
-                2020-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识点/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="OSI-参考模型"><a href="#OSI-参考模型" class="headerlink" title="OSI 参考模型"></a>OSI 参考模型</h2><ul>
-<li>应用层：用户与网络的界面，为应用程序提供访问 ISO 的手段</li>
-<li>表示层：数据解密加密、压缩、格式转换</li>
-<li>会话层：会话管理和同步</li>
-<li>传输层：流量控制、差错控制、服务质量、数据传输管理<ul>
-<li>报文段(TCP)</li>
-<li>用户数据报(UDP)</li>
-</ul>
-</li>
-<li>网络层：流量控制、拥塞控制、差错控制、网际互连(分组、数据报)</li>
-<li>数据链路层：成帧、差错控制、流量控制、传输管理(帧)</li>
-<li>物理层：透明传输比特流(比特)</li>
-</ul>
-<p>在ISO/OSI中，网络层支持面向链接和非链接<br>而在TCP/IP中，则是在传输层</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/08/21/计算网络相关知识点整理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/20/数据结构与算法相关知识点整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Austin Deng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓某的杂货铺">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/20/数据结构与算法相关知识点整理/" itemprop="url">数据结构与算法相关知识点整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-20T15:15:46+08:00">
-                2020-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识点/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="https://i.loli.net/2020/08/19/oQcMX5WbRJqIK4a.png" alt="数据的逻辑结构.png"></p>
-<p>存储结构</p>
-<ul>
-<li>顺序存储</li>
-<li>链式存储</li>
-<li>索引存储</li>
-<li>散列存储</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/08/20/数据结构与算法相关知识点整理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/操作系统相关知识点整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Austin Deng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓某的杂货铺">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/17/操作系统相关知识点整理/" itemprop="url">操作系统相关知识点整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-17T16:19:21+08:00">
-                2020-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识点/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="琐碎的知识点"><a href="#琐碎的知识点" class="headerlink" title="琐碎的知识点"></a>琐碎的知识点</h2><ul>
-<li><p>线程是独立调度的基本单位(不拥有系统资源)<br>进程是拥有资源的基本单位</p>
-</li>
-<li><p>进程实体包括：程序段、相关数据段、PCB</p>
-</li>
-<li><p>周转时间 = 作业<code>完成</code>时间 - 作业<code>提交</code>时间(即进入内存的时间)<br>等待时间 = 周转时间 - 执行时间大小<br>带权周转时间 = 作业周转时间 / 作业实际运行时间</p>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/08/17/操作系统相关知识点整理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1859,7 +1901,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1870,7 +1912,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1881,7 +1923,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

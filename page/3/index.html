@@ -262,6 +262,507 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/06/MySQL-数据库操作常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/06/MySQL-数据库操作常用命令/" itemprop="url">MySQL 数据库操作常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T17:51:05+08:00">
+                2018-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><pre><code>create database &lt;name&gt;; // 创建数据库
+use &lt;database-name&gt;; // 切换数据库
+drop database &lt;name&gt;; // 删除数据库
+show tables/databases; // 显示所有表/数据库
+describe &lt;table-name&gt;; // 显示表的详细信息
+select version(),current_date; // 显示当前 MySQL 和当前时间
+flush privileges; // 刷新数据库
+</code></pre><h2 id="基本技巧"><a href="#基本技巧" class="headerlink" title="基本技巧"></a>基本技巧</h2><pre><code>shell&gt; net start/stop mysql
+shell&gt; service mysql restart
+shell&gt; mysql -u root -p
+// 修改 root 密码
+mysql&gt; update password=password(&quot;123456&quot;) where user=&apos;root&apos;; 
+// 授权访问
+mysql&gt; grant all privileges on *.* to root@&apos;%&apos; identified by ’设置密码’ with grant option;
+mysql&gt; revoke all privileges on *.* from root@&apos;%&apos;;
+// 备份数据库
+shell&gt; mysqldump -h host -u root -p dbname &gt;dbname_backup.sql
+// 恢复数据库
+shell&gt; mysqladmin -h myhost -u root -p create dbname
+shell&gt; mysqldump -h host -u root -p dbname &lt; dbname_backup.sql
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/Github-使用技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/05/Github-使用技巧/" itemprop="url">Github 使用技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T17:28:43+08:00">
+                2018-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="github-多账号配置"><a href="#github-多账号配置" class="headerlink" title="github 多账号配置"></a>github 多账号配置</h1><ul>
+<li><p>指定文件名生成新的秘钥</p>
+<pre><code>$ ssh-keygen -t rsa -f ~/.ssh/id_rsa_second -C &quot;second@mail.com&quot;
+</code></pre></li>
+<li><p>将公钥添加到 SSH agent</p>
+<pre><code>$ ssh-agent bash
+$ ssh-add ~/.ssh/id_rsa_second
+</code></pre></li>
+<li><p>在.ssh目录下，增加config配置</p>
+<pre><code>#Host myhost（这里是自定义的host简称，以后连接远程服务器就可以用命令ssh myhost）[注意下面有缩进]
+#User 登录用户名(如：git)
+#HostName 主机名可用ip也可以是域名(如:github.com或者bitbucket.org)
+#Port 服务器open-ssh端口（默认：22,默认时一般不写此行
+#IdentityFile 证书文件路径（如~/.ssh/id_rsa_*)
+</code></pre><ul>
+<li><p>具体实例</p>
+<pre><code># first.github (first@gmail.com)
+Host github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa
+
+# second (second@gmail.com)
+Host github-second
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_second
+</code></pre></li>
+</ul>
+</li>
+<li><p>添加远程仓库地址</p>
+<pre><code>git remote add origin git@github-second:second/test.git
+# 并非原来的git remote add origin git@github.com:second/test.git
+</code></pre></li>
+<li><p>修改用户信息</p>
+<pre><code>//设置global
+git config --global user.name &quot;AustinDeng&quot;
+git config --global user.email &quot;nidhogg.dxx@gmail.com&quot;
+
+//设置仓库的user.email和user.name
+git config  user.email &quot;nidhogg.dxx@gmail.com&quot;
+git config  user.name &quot;AustinDeng&quot;
+</code></pre></li>
+</ul>
+<h1 id="使用-gist-来分享代码-文章"><a href="#使用-gist-来分享代码-文章" class="headerlink" title="使用 gist 来分享代码/文章"></a>使用 gist 来分享代码/文章</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li>打开 <a href="https://gist.github.com/" target="_blank" rel="noopener">https://gist.github.com/</a></li>
+<li>可以发布一个私密的 gist, 这样只有在浏览器中输入其 URL 才可见</li>
+<li>可以使用 Markdown 格式,注意文件名要带有 .md 后缀</li>
+</ul>
+<h2 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h2><ul>
+<li>使用 <a href="http://www.roughdraft.io/" target="_blank" rel="noopener">http://www.roughdraft.io/</a> 发布你的 Gist</li>
+<li>使用 <a href="https://bl.ocks.org/" target="_blank" rel="noopener">https://bl.ocks.org/</a> 将你的 Gist 托管为一个页面</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/Vim生存之道/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Austin Deng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2018/06/25/5b30e09e999b8.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓某的杂货铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/19/Vim生存之道/" itemprop="url">Vim生存之道</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T13:08:40+08:00">
+                2018-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="https://i.loli.net/2018/07/19/5b50109e5dc93.gif" alt="Vim.gif"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/19/Vim生存之道/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/数据结构与算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1111,7 +1612,7 @@ p指针指向的地址（即存储数据的地址）
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1122,7 +1623,7 @@ p指针指向的地址（即存储数据的地址）
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1133,7 +1634,7 @@ p指针指向的地址（即存储数据的地址）
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
