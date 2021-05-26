@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="第 239 场周赛 到目标元素的最小值签到题  将字符串拆分为递减的连续值这一题没有通过很可惜了，问题在于错误理解了INT的最大值的含义，在二进制表示中INT的最大值是32位的，而在十进制中，INT的最大值是2147483647，只有10位，题目给的字符串长度最大是20位  邻位交换的最小次数下一个排列没有想到，舍友提醒之后，对于统计交换的次数没有思考，可以采用常规贪心算法即可。  包含每个查询的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-19T06:26:49.785Z">
+<meta property="og:updated_time" content="2021-05-26T07:42:05.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode周赛">
 <meta name="twitter:description" content="第 239 场周赛 到目标元素的最小值签到题  将字符串拆分为递减的连续值这一题没有通过很可惜了，问题在于错误理解了INT的最大值的含义，在二进制表示中INT的最大值是32位的，而在十进制中，INT的最大值是2147483647，只有10位，题目给的字符串长度最大是20位  邻位交换的最小次数下一个排列没有想到，舍友提醒之后，对于统计交换的次数没有思考，可以采用常规贪心算法即可。  包含每个查询的">
@@ -404,6 +404,22 @@
 <li><p><a href="https://leetcode-cn.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/" target="_blank" rel="noopener">恰有 K 根木棍可以看到的排列数目</a><br>一开始的思路是 回溯法+动态规划 (先用回溯法求全排列，再用动态规划求k个方案数) 时间复杂度O(n<em>n!)复杂度爆炸。<br>答案给的是二维动态规划<br>用 dp[i][j] 表示长度为 1,2,⋯,i 的木棍且可以可以看到其中的 j 根木棍的方案数<br>状态转移方程为：dp[i][j] = dp[i-1][j-1] + dp[i-1][j]</em>(i-1)<br>复杂度为O(nk)</p>
 </li>
 </ol>
+<h2 id="第-242-场周赛"><a href="#第-242-场周赛" class="headerlink" title="第 242 场周赛"></a>第 242 场周赛</h2><ol>
+<li><p><a href="https://leetcode-cn.com/problems/longer-contiguous-segments-of-ones-than-zeros/" target="_blank" rel="noopener">哪种连续子字符串更长</a><br>签到题，一次遍历即可，遍历的过程中动态更新 <code>1</code> 串和 <code>0</code> 串的长度即可。</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/minimum-speed-to-arrive-on-time/" target="_blank" rel="noopener">准时到达的列车最小时速</a><br>二分查找基础题，没有难度</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/jump-game-vii/" target="_blank" rel="noopener">跳跃游戏 VII</a><br>使用了双指针模拟，一个min指针指向最短到达的位置，一个max指针指向最远到达的地方，然后通过了 119/123个测试用例，醉了</p>
+</li>
+</ol>
+<p>这道题有两种解法：</p>
+<ul>
+<li>前缀和+动态规划</li>
+<li>滑动窗口+动态规划</li>
+</ul>
+<ol start="4">
+<li><a href="https://leetcode-cn.com/problems/stone-game-viii/" target="_blank" rel="noopener">石子游戏 VIII</a><br>前缀和+逆序动态规划</li>
+</ol>
 
       
     </div>
@@ -578,7 +594,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-239-场周赛"><span class="nav-number">1.</span> <span class="nav-text">第 239 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-240-场周赛"><span class="nav-number">2.</span> <span class="nav-text">第 240 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-52-场双周赛"><span class="nav-number">3.</span> <span class="nav-text">第 52 场双周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-241-场周赛"><span class="nav-number">4.</span> <span class="nav-text">第 241 场周赛</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-239-场周赛"><span class="nav-number">1.</span> <span class="nav-text">第 239 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-240-场周赛"><span class="nav-number">2.</span> <span class="nav-text">第 240 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-52-场双周赛"><span class="nav-number">3.</span> <span class="nav-text">第 52 场双周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-241-场周赛"><span class="nav-number">4.</span> <span class="nav-text">第 241 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-242-场周赛"><span class="nav-number">5.</span> <span class="nav-text">第 242 场周赛</span></a></li></ol></div>
             
 
           </div>
