@@ -87,19 +87,19 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="第零章：前言(Preface)研一下半年，选了一门分布式和云计算的专业课，授课是丁箐老师，实验指导是赵振刚老师。通过这门课的学习，感觉还是收获很多的。 于是想写一篇文章整理一下所学的知识，这样方便日后巩固相关的内容，增加一些理解。 本门课程主要由两大部分组成，一是课程的理论学习，二是实验操作。这两部分都很有用，都会整理写出来。 其中，实验总共有四次，对于每次实验，我都是很认真的完成的，并且还比较用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/DHT.png">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/分布式互斥.png">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/算法的比较.jpg">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/严格一致性.png">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/顺序一致性.png">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/因果一致性.png">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/两阶段提交.png">
-<meta property="og:image" content="http://yoursite.com/2021/07/31/images/三阶段提交.png">
-<meta property="og:updated_time" content="2021-08-11T14:50:17.839Z">
+<meta property="og:image" content="http://yoursite.com/images/DHT.png">
+<meta property="og:image" content="http://yoursite.com/images/分布式互斥.png">
+<meta property="og:image" content="http://yoursite.com/images/算法的比较.jpg">
+<meta property="og:image" content="http://yoursite.com/images/严格一致性.png">
+<meta property="og:image" content="http://yoursite.com/images/顺序一致性.png">
+<meta property="og:image" content="http://yoursite.com/images/因果一致性.png">
+<meta property="og:image" content="http://yoursite.com/images/两阶段提交.png">
+<meta property="og:image" content="http://yoursite.com/images/三阶段提交.png">
+<meta property="og:updated_time" content="2021-08-11T15:03:30.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式和云计算(理论)">
 <meta name="twitter:description" content="第零章：前言(Preface)研一下半年，选了一门分布式和云计算的专业课，授课是丁箐老师，实验指导是赵振刚老师。通过这门课的学习，感觉还是收获很多的。 于是想写一篇文章整理一下所学的知识，这样方便日后巩固相关的内容，增加一些理解。 本门课程主要由两大部分组成，一是课程的理论学习，二是实验操作。这两部分都很有用，都会整理写出来。 其中，实验总共有四次，对于每次实验，我都是很认真的完成的，并且还比较用">
-<meta name="twitter:image" content="http://yoursite.com/2021/07/31/images/DHT.png">
+<meta name="twitter:image" content="http://yoursite.com/images/DHT.png">
 
 
 
@@ -848,7 +848,7 @@
 <li>为每个实体分配唯一的m比特密钥</li>
 <li>实体属于具有最小id&gt;=k的节点(称为其后继者)的管辖范围</li>
 </ul>
-<p><img src="../images/DHT.png" alt="DHT"></p>
+<p><img src="/images/DHT.png" alt="DHT"></p>
 <p>拓展阅读：<a href="https://zhuanlan.zhihu.com/p/53711866" target="_blank" rel="noopener">Chord</a></p>
 <h3 id="结构化命名"><a href="#结构化命名" class="headerlink" title="结构化命名"></a>结构化命名</h3><h4 id="名称空间"><a href="#名称空间" class="headerlink" title="名称空间"></a>名称空间</h4><ul>
 <li>组织成名称空间</li>
@@ -946,14 +946,14 @@
 </ul>
 </li>
 </ul>
-<h4 id="分布式互斥算法"><a href="#分布式互斥算法" class="headerlink" title="分布式互斥算法"></a>分布式互斥算法</h4><p><img src="../images/分布式互斥.png" alt="分布式互斥"></p>
+<h4 id="分布式互斥算法"><a href="#分布式互斥算法" class="headerlink" title="分布式互斥算法"></a>分布式互斥算法</h4><p><img src="/images/分布式互斥.png" alt="分布式互斥"></p>
 <ol>
 <li>0号，2号都想要访问资源，所以0号，2号都要把访问资源时间发出去，1号不想访问资源，就不用发送时间戳</li>
 <li>1号接收别人请求资源的消息且自己不需要访问资源，就都回了个OK，</li>
 <li>2号因为访问资源的时间戳比0号小，所以就给0号发送OK，说0号节点，你先访问</li>
 <li>0号节点在都收到其他节点的OK后，就去访问资源，并且也记下了2号也是访问资源的，所以在访问完资源后，就对2号发送OK，叫2号节点去访问资源</li>
 </ol>
-<h4 id="四种算法的比较"><a href="#四种算法的比较" class="headerlink" title="四种算法的比较"></a>四种算法的比较</h4><p><img src="../images/算法的比较.jpg" alt="算法的比较"></p>
+<h4 id="四种算法的比较"><a href="#四种算法的比较" class="headerlink" title="四种算法的比较"></a>四种算法的比较</h4><p><img src="/images/算法的比较.jpg" alt="算法的比较"></p>
 <h3 id="节点地全局定位"><a href="#节点地全局定位" class="headerlink" title="节点地全局定位"></a>节点地全局定位</h3><p>略</p>
 <h3 id="选举算法"><a href="#选举算法" class="headerlink" title="选举算法"></a>选举算法</h3><p>略</p>
 <h3 id="分布式死锁"><a href="#分布式死锁" class="headerlink" title="分布式死锁"></a>分布式死锁</h3><p>略</p>
@@ -977,11 +977,11 @@
 <p>冲突操作：有写操作参与的操作才有可能冲突，所以维护一致性，必须保证对多个复制部分进行的冲突操作必须都是相同的操作</p>
 <p>在分布式系统中，系统会引导进程在不同的数据块上进行存储操作，这数据块上的数据是相同的</p>
 <h3 id="以数据为中心的一致性"><a href="#以数据为中心的一致性" class="headerlink" title="以数据为中心的一致性"></a>以数据为中心的一致性</h3><h4 id="严格一致性"><a href="#严格一致性" class="headerlink" title="严格一致性"></a>严格一致性</h4><p>对数据项X的任何读取都返回对应于X的最近一次写入的结果的值</p>
-<p><img src="../images/严格一致性.png" alt="严格一致性"></p>
+<p><img src="/images/严格一致性.png" alt="严格一致性"></p>
 <h4 id="顺序一致性"><a href="#顺序一致性" class="headerlink" title="顺序一致性"></a>顺序一致性</h4><p>数据存储上的所有进程的操作以某种顺序执行，并且每个单独进程操作按其程序指定的顺序出现在此序列中</p>
-<p><img src="../images/顺序一致性.png" alt="顺序一致性"></p>
+<p><img src="/images/顺序一致性.png" alt="顺序一致性"></p>
 <h4 id="因果一致性"><a href="#因果一致性" class="headerlink" title="因果一致性"></a>因果一致性</h4><p>所有进程必须以相同的顺序看到潜在因果相关的写入，不同进程可能会以不同的顺序看到并发写入</p>
-<p><img src="../images/因果一致性.png" alt="因果一致性"></p>
+<p><img src="/images/因果一致性.png" alt="因果一致性"></p>
 <h3 id="以客户为中心的一致性"><a href="#以客户为中心的一致性" class="headerlink" title="以客户为中心的一致性"></a>以客户为中心的一致性</h3><ul>
 <li>单调读</li>
 <li>单调写</li>
@@ -1045,8 +1045,8 @@
 <h3 id="可靠的客户端-服务端通信"><a href="#可靠的客户端-服务端通信" class="headerlink" title="可靠的客户端-服务端通信"></a>可靠的客户端-服务端通信</h3><p>略</p>
 <h3 id="可靠的组通信"><a href="#可靠的组通信" class="headerlink" title="可靠的组通信"></a>可靠的组通信</h3><p>略</p>
 <h3 id="分布式提交"><a href="#分布式提交" class="headerlink" title="分布式提交"></a>分布式提交</h3><ul>
-<li>两阶段提交<br><img src="../images/两阶段提交.png" alt="两阶段提交"></li>
-<li>三阶段提交<br><img src="../images/三阶段提交.png" alt="三阶段提交"></li>
+<li>两阶段提交<br><img src="/images/两阶段提交.png" alt="两阶段提交"></li>
+<li>三阶段提交<br><img src="/images/三阶段提交.png" alt="三阶段提交"></li>
 </ul>
 <h3 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>当系统发送故障时，需要使系统进入无错状态</p>
 <ul>
