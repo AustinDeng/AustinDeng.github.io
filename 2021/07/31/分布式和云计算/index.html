@@ -95,7 +95,8 @@
 <meta property="og:image" content="http://yoursite.com/images/因果一致性.png">
 <meta property="og:image" content="http://yoursite.com/images/两阶段提交.png">
 <meta property="og:image" content="http://yoursite.com/images/三阶段提交.png">
-<meta property="og:updated_time" content="2021-08-11T15:03:30.854Z">
+<meta property="og:image" content="http://yoursite.com/images/google云计算架构.png">
+<meta property="og:updated_time" content="2021-08-14T14:30:42.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式和云计算(理论)">
 <meta name="twitter:description" content="第零章：前言(Preface)研一下半年，选了一门分布式和云计算的专业课，授课是丁箐老师，实验指导是赵振刚老师。通过这门课的学习，感觉还是收获很多的。 于是想写一篇文章整理一下所学的知识，这样方便日后巩固相关的内容，增加一些理解。 本门课程主要由两大部分组成，一是课程的理论学习，二是实验操作。这两部分都很有用，都会整理写出来。 其中，实验总共有四次，对于每次实验，我都是很认真的完成的，并且还比较用">
@@ -1056,6 +1057,406 @@
 <h4 id="检查点"><a href="#检查点" class="headerlink" title="检查点"></a>检查点</h4><p>当系统提供可靠的通信时，发送的消息也应当以一致的状态接收</p>
 <p>级联回滚： 如果检查点是在”错误的”时刻进行的，则恢复线可能位于系统启动时</p>
 <h4 id="消息日志记录"><a href="#消息日志记录" class="headerlink" title="消息日志记录"></a>消息日志记录</h4><p>不使用(昂贵的)检查点，而是尝试从最近的检查点重放通信行为  ===&gt; 将消息存储到log中</p>
+<h2 id="第九章：-云计算"><a href="#第九章：-云计算" class="headerlink" title="第九章： 云计算"></a>第九章： 云计算</h2><p>云计算的内容主要围绕了Google、Microsoft、Amazon三家展开讲解，分别介绍了各自的特点以及原理</p>
+<p>着重讲解的是 Google 的云计算</p>
+<h3 id="Google-云计算原理"><a href="#Google-云计算原理" class="headerlink" title="Google 云计算原理"></a>Google 云计算原理</h3><ul>
+<li>概念回顾</li>
+<li>Google云计算背景</li>
+<li>分布式文件系统GFS</li>
+<li>并行数据处理模型MapReduce</li>
+<li>分布式锁服务Chubby</li>
+<li>分布式数据库BigTable</li>
+<li>Google AppEngine</li>
+<li>Google 云计算技术小结</li>
+</ul>
+<h4 id="概念回顾"><a href="#概念回顾" class="headerlink" title="概念回顾"></a>概念回顾</h4><ul>
+<li>网格计算<ul>
+<li>在动态变化、由多个机构组成的虚拟组织中协调资源共享和求解问题</li>
+<li>实现跨组织平台异构资源的共享</li>
+</ul>
+</li>
+<li>云计算<ul>
+<li>一种商业计算模型</li>
+<li>将计算任务分布在大量计算机构成的资源池上，使各种应用系统能够根据需求获取计算力、存储空间以及信息服务</li>
+</ul>
+</li>
+</ul>
+<h5 id="网格计算与云计算的比较"><a href="#网格计算与云计算的比较" class="headerlink" title="网格计算与云计算的比较"></a>网格计算与云计算的比较</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">网格计算</th>
+<th style="text-align:center">云计算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">异构资源</td>
+<td style="text-align:center">同构资源</td>
+</tr>
+<tr>
+<td style="text-align:center">不同规格</td>
+<td style="text-align:center">单一规格</td>
+</tr>
+<tr>
+<td style="text-align:center">虚拟组织</td>
+<td style="text-align:center">虚拟机</td>
+</tr>
+<tr>
+<td style="text-align:center">科学计算为主</td>
+<td style="text-align:center">数据处理为主</td>
+</tr>
+<tr>
+<td style="text-align:center">高性能计算机</td>
+<td style="text-align:center">服务器、PC</td>
+</tr>
+<tr>
+<td style="text-align:center">紧耦合</td>
+<td style="text-align:center">松耦合</td>
+</tr>
+<tr>
+<td style="text-align:center">免费</td>
+<td style="text-align:center">按量计算</td>
+</tr>
+<tr>
+<td style="text-align:center">标准化</td>
+<td style="text-align:center">尚无标准</td>
+</tr>
+<tr>
+<td style="text-align:center">科学界</td>
+<td style="text-align:center">商业社会</td>
+</tr>
+</tbody>
+</table>
+<h5 id="云计算的分类"><a href="#云计算的分类" class="headerlink" title="云计算的分类"></a>云计算的分类</h5><ul>
+<li>将软件服务(SaaS)：租赁人工智能、人脸识别软件、地图等</li>
+<li>将平台作为服务(PaaS):提供一层API，更加针对程序员提供编程环境</li>
+<li>将基础架构作为服务(IaaS): 租赁主机、所有环境自己搭建，更灵活</li>
+</ul>
+<h4 id="Google云计算背景"><a href="#Google云计算背景" class="headerlink" title="Google云计算背景"></a>Google云计算背景</h4><h5 id="历史背景"><a href="#历史背景" class="headerlink" title="历史背景"></a>历史背景</h5><p>略</p>
+<h5 id="Google-如何实现云计算的"><a href="#Google-如何实现云计算的" class="headerlink" title="Google 如何实现云计算的"></a>Google 如何实现云计算的</h5><p>Google 云计算平台技术架构</p>
+<ul>
+<li>文件存储： Google Distributed File System，GFS</li>
+<li>并行数据处理：MapReduce</li>
+<li>分布式锁：Chubby</li>
+<li>结构化数据表：BigTable</li>
+</ul>
+<p><img src="/images/google云计算架构.png" alt="Google云计算架构"></p>
+<h4 id="分布式文件系统GFS"><a href="#分布式文件系统GFS" class="headerlink" title="分布式文件系统GFS"></a>分布式文件系统GFS</h4><h5 id="假设与目标"><a href="#假设与目标" class="headerlink" title="假设与目标"></a>假设与目标</h5><ul>
+<li>硬件出错是正常而非异常<ul>
+<li>系统应当由大量廉价、易损的硬件组成</li>
+<li>必须保证文件系统整体的可靠性</li>
+<li>由软件来保证硬件的可靠性</li>
+</ul>
+</li>
+<li>主要负载流数据的读写<ul>
+<li>主要用于程序处理批量数据，而非与用户的交互或随机读写</li>
+<li>数据写主要是“追加写”，“插入写”非常少</li>
+</ul>
+</li>
+<li>需要存储大尺寸的文件<ul>
+<li>存储的文件尺寸可能是GB或TB量级，而且应当能支持存储成千上万的大尺寸文件</li>
+</ul>
+</li>
+</ul>
+<h5 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h5><ul>
+<li>将文件划分为若干块(Chunk)存储<ul>
+<li>每个块固定大小(64M)</li>
+</ul>
+</li>
+<li>通过冗余来提高可靠性<ul>
+<li>每个数据至少在3个数据块服务器上冗余</li>
+<li>数据块损坏的概率</li>
+</ul>
+</li>
+<li>通过单个master来协调数据访问、元数据存储<ul>
+<li>结构简单，容易保持元数据一致性</li>
+</ul>
+</li>
+<li>无缓冲<ul>
+<li>在客户端产生缓存，对于GFS而已，无局部性原则，实现缓存无意义</li>
+</ul>
+</li>
+</ul>
+<h5 id="GFS的架构"><a href="#GFS的架构" class="headerlink" title="GFS的架构"></a>GFS的架构</h5><ul>
+<li><p>单一Master， 若干ChunkServer</p>
+</li>
+<li><p>问题</p>
+<ul>
+<li>单点故障</li>
+<li>性能瓶颈</li>
+</ul>
+</li>
+<li>解决方法：<ul>
+<li>单点故障：采用多个影子Master节点进行热备，一旦主节点损坏，立刻选举一个新的主节点服务</li>
+<li>性能瓶颈： 尽量减少数据存取中Master的参与度<ul>
+<li>不使用Master读取数据，仅用于保存元数据</li>
+<li>客户端缓存元数据</li>
+<li>采用大尺寸的数据块(64M)</li>
+<li>数据修改顺序交由Primary Chunk Server完成</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Master-节点任务"><a href="#Master-节点任务" class="headerlink" title="Master 节点任务"></a>Master 节点任务</h5><ul>
+<li>存储元数据</li>
+<li>文件系统目录管理与加锁</li>
+<li>与 ChunkServer 进行周期性通信<ul>
+<li>发送指令、搜索状态，跟踪数据块的完好性</li>
+</ul>
+</li>
+<li>数据块创建、复制以及负载均衡<ul>
+<li>对ChunkServer的空间使用和访问速度进行负载均衡，平滑数据存储和访问请求的负载</li>
+<li>对数据块进行复制、分散到ChunkServer上</li>
+<li>一旦数据块冗余小于最低数，就发起复制操作</li>
+</ul>
+</li>
+<li>垃圾回收<ul>
+<li>在日志中记录删除操作，并将文件改名隐藏</li>
+<li>缓慢地回收隐藏文件</li>
+<li>与传统文件删除相比更简单、更安全</li>
+</ul>
+</li>
+<li>陈旧数据块删除<ul>
+<li>探测陈旧的数据块，并删除</li>
+</ul>
+</li>
+</ul>
+<h5 id="GFS-架构的特点"><a href="#GFS-架构的特点" class="headerlink" title="GFS 架构的特点"></a>GFS 架构的特点</h5><ul>
+<li>采用中心服务器模式<ul>
+<li>可以方便地增加Chunk Server</li>
+<li>Master掌握系统内所有Chunk Server的情况，方便进行负载均衡</li>
+<li>不存在元数据的一致性问题，因为采用的是集中式</li>
+</ul>
+</li>
+<li>不缓存数据</li>
+<li>在用户态下实现<ul>
+<li>直接利用Chunk Server的文件系统存取Chunk，实现简单</li>
+<li>用户态应用调试简单，利于开发</li>
+<li>用户态的GFS不会影响Chunk Server 的稳定性</li>
+</ul>
+</li>
+<li>提供专用的访问接口<ul>
+<li>未提供标准的POSIX访问接口</li>
+<li>降低GFS的实现复杂度</li>
+</ul>
+</li>
+</ul>
+<h5 id="GFS-的容错方法"><a href="#GFS-的容错方法" class="headerlink" title="GFS 的容错方法"></a>GFS 的容错方法</h5><p>-</p>
+<ul>
+<li>Chunk Server 容错<ul>
+<li>每个Chunk有多个存储副本(通常是三个)，分别存储于不同的服务器上</li>
+<li>每个Chunk又划分为若干个Block(64KB)，每个Block对应一个32bit的校验码，保证数据正确</li>
+<li>若某个Block错误，则转移至其他Chunk副本</li>
+</ul>
+</li>
+<li>Master容错机制<ul>
+<li>三类元数据：命名空间(目录结构)、Chunk与文件名的映射以及Chunk副本的位置信息</li>
+<li>前两类通过日志提供容错，Chunk副本信息存储于Chunk Server，Master出现故障时可恢复</li>
+</ul>
+</li>
+</ul>
+<h4 id="并行数据处理模型MapReduce"><a href="#并行数据处理模型MapReduce" class="headerlink" title="并行数据处理模型MapReduce"></a>并行数据处理模型MapReduce</h4><p>并行计算模式：<br>把编程分为两个部分，Worker负责对数据的处理，Master负责对数据的切分，对Worker拷贝复制到每一份数据，分配Worker参数，接收返回的参数</p>
+<ul>
+<li>为什么要MapReduce？<br>计算问题简单，但求解困难<ul>
+<li>待处理数据量巨大(PB级别)，只有分布在成百上千个节点上并行计算才能在可接受的时间内完成</li>
+</ul>
+</li>
+</ul>
+<h5 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h5><ul>
+<li>一个软件架构，是一种处理海量数据的并行编程模式</li>
+<li>用于大规模数据集(通常大于1TB)的并行运算</li>
+<li>MapReduce实现Map和Reduce两个功能<ul>
+<li>Map把一个函数应用于集合中所有成员，然后返回一个基于这个处理的结果集</li>
+<li>Reduce对结果集进行分类和归纳</li>
+<li>Map和Reduce两个函数可能会并行执行</li>
+</ul>
+</li>
+</ul>
+<h5 id="文件存储位置"><a href="#文件存储位置" class="headerlink" title="文件存储位置"></a>文件存储位置</h5><ul>
+<li>源文件：GFS</li>
+<li>Map处理结果：本地存储</li>
+<li>Reduce处理结果：GFS</li>
+<li>日志：GFS</li>
+</ul>
+<h5 id="MapReduce的容错"><a href="#MapReduce的容错" class="headerlink" title="MapReduce的容错"></a>MapReduce的容错</h5><ul>
+<li>Worker故障<ul>
+<li>Master周期性的ping每个Worker，如果master在一个确定的时间段内没有收到worker返回的信息，那么就把这个Worker标记为失败节点</li>
+<li>重新执行该节点上已经执行或尚未执行的Map任务</li>
+<li>重新执行该节点上未完成的Reduce任务，已经完成的不再执行(因为文件保存在GFS，全部看得到)</li>
+</ul>
+</li>
+<li>Master故障<ul>
+<li>定期写入检查点数据</li>
+<li>从检查点恢复</li>
+</ul>
+</li>
+</ul>
+<h5 id="MapReduce的优化"><a href="#MapReduce的优化" class="headerlink" title="MapReduce的优化"></a>MapReduce的优化</h5><ul>
+<li>任务备份机制<ul>
+<li>慢的Worker会严重地拖延整个执行完成的时间<ul>
+<li>由于其他任务占用了资源</li>
+<li>磁盘损坏</li>
+</ul>
+</li>
+<li>解决方案：在临近结束的时候，启动多个进程来执行尚未完成的任务</li>
+</ul>
+</li>
+<li>本地处理<ul>
+<li>Master调度策略</li>
+</ul>
+</li>
+<li>跳过有问题的记录</li>
+</ul>
+<h4 id="分布式锁服务Chubby"><a href="#分布式锁服务Chubby" class="headerlink" title="分布式锁服务Chubby"></a>分布式锁服务Chubby</h4><ul>
+<li>主要用于解决分布式一致性的问题<ul>
+<li>在一个分布式系统中，有一组的Process，它们需要确定一个Value。</li>
+<li>于是每个Process都提出一个Value，一致性就是指只有其中一个Value能够被选中作为最后确定的值</li>
+<li>并且这个值被选出来后，所有Process都需要被通知到</li>
+</ul>
+</li>
+<li>粗粒度的分布式锁服务<ul>
+<li>Chubby是Google为解决分布式一致性问题而设计的提供粗粒度锁服务的<strong>文件系统</strong>(Chubby就是GFS文件的一种)</li>
+<li>其他分布式系统可以使用它对共享资源的访问进行同步</li>
+</ul>
+</li>
+</ul>
+<p>粗粒度：</p>
+<ul>
+<li>文件系统相对内存颗粒度大</li>
+<li>时间上，支持长时间加锁</li>
+</ul>
+<h5 id="Chubby的设计目标"><a href="#Chubby的设计目标" class="headerlink" title="Chubby的设计目标"></a>Chubby的设计目标</h5><ul>
+<li>需要实现的特性<ul>
+<li>高可用</li>
+<li>高可靠</li>
+<li>支持粗粒度的建议性锁服务(支持长时间加锁)</li>
+<li>支持小规模文件直接存储</li>
+</ul>
+</li>
+<li>不作为考虑的特性<ul>
+<li>高性能</li>
+<li>存储能力</li>
+</ul>
+</li>
+</ul>
+<h5 id="Chubby文件系统"><a href="#Chubby文件系统" class="headerlink" title="Chubby文件系统"></a>Chubby文件系统</h5><ul>
+<li>Chubby 系统本质上就是一个分布式的、存储大量小文件的文件系统</li>
+<li>Chubby 中的锁就是文件</li>
+<li>在GFS中，创建文件就是进行“加锁”操作，创建文件成功就是那个server抢占到了“锁”</li>
+<li>用户通过打开、关闭和存取文件，获取共享锁或者独占锁；并且通过通信机制，向用户发送更新信息</li>
+</ul>
+<h5 id="Chubby的应用"><a href="#Chubby的应用" class="headerlink" title="Chubby的应用"></a>Chubby的应用</h5><ul>
+<li>主节点选举</li>
+<li>独占式锁</li>
+<li>共享锁</li>
+<li>数据存取应用</li>
+</ul>
+<h4 id="分布式数据库BigTable"><a href="#分布式数据库BigTable" class="headerlink" title="分布式数据库BigTable"></a>分布式数据库BigTable</h4><p>BigTable：基于GFS和Chubby的分布式存储系统，对数据进行结构化存储和管理</p>
+<h5 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h5><ul>
+<li>具有广泛的适应性<ul>
+<li>支持Google系列产品的存储需求</li>
+</ul>
+</li>
+<li>具有很强的可拓展性<ul>
+<li>根据需要随时加入或撤销服务器</li>
+<li>应对不断增多的访问需求</li>
+</ul>
+</li>
+<li>高可用性<ul>
+<li>单个节点易损，但要确保几乎所有的情况下系统都可用</li>
+</ul>
+</li>
+<li>简单性<ul>
+<li>简单的底层系统可减少系统出错概率，为上层开发带来便利</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h5><ul>
+<li>行<ul>
+<li>每行数据有一个可排序的关键字和任意列项</li>
+<li>字符串、整数、二进制串甚至可串行化的结构都可以作为行键</li>
+<li>表按照行键“逐字节排序”顺序对行进行有序化处理</li>
+<li>表内数据非常稀疏，不同的行的列数完全目可以大不相同</li>
+<li>URL是较为常见的行键，存储时需要倒排</li>
+</ul>
+</li>
+<li>列<ul>
+<li>特定含义的数据的集合，如图片、链接等</li>
+<li>可将多个列归并为一组，称为簇(family)</li>
+<li>同一个簇的数据被压缩一起保存</li>
+<li>簇是必须的，是BigTable中访问控制的基本单元</li>
+</ul>
+</li>
+<li>时间戳<ul>
+<li>保存不同时期的数据，比如网页快照</li>
+</ul>
+</li>
+<li>“A big table”<ul>
+<li>表中的列可以不限制地增长</li>
+<li>表中的行可以不限制地增长</li>
+</ul>
+</li>
+<li>无数据校验<ul>
+<li>每一行可存储任意数目的列</li>
+<li>任意类型的数据均可存储</li>
+<li>数据的有效性校验由构建于其上的应用系统完成</li>
+</ul>
+</li>
+<li>一致性<ul>
+<li>针对同一行的多个操作可以分组合并</li>
+<li>不支持对多个进行修改的操作</li>
+</ul>
+</li>
+</ul>
+<h5 id="物理视图"><a href="#物理视图" class="headerlink" title="物理视图"></a>物理视图</h5><ul>
+<li>逻辑上的“表”被划分成若干个子表(Tablet)<ul>
+<li>每个Tablet由多个SSTable文件组成</li>
+<li>SSTable文件存储在GFS之上</li>
+</ul>
+</li>
+<li>每个子表存储了table的一部分行<ul>
+<li>元数据：起始行键、终止行键</li>
+<li>如果子表体积超过了阈值(如200M)，会进行分割</li>
+</ul>
+</li>
+</ul>
+<h5 id="主节点的职责"><a href="#主节点的职责" class="headerlink" title="主节点的职责"></a>主节点的职责</h5><ul>
+<li>为每个子表服务器分配子表，对外提供服务</li>
+<li>与GFS垃圾回收进行交互，收回废弃的SSTable</li>
+<li>探测子表服务器的故障与恢复</li>
+<li>负载均衡</li>
+</ul>
+<h5 id="子表服务器故障恢复"><a href="#子表服务器故障恢复" class="headerlink" title="子表服务器故障恢复"></a>子表服务器故障恢复</h5><ul>
+<li>新的故障<ul>
+<li>子表服务器内存中的memtable丢失</li>
+</ul>
+</li>
+<li>恢复方法<ul>
+<li>按照tablet将该服务器对应的日志分片</li>
+<li>为每个失效的tablet分配新的子表服务器</li>
+<li>新子表服务器读取对应的分段commit log，并按照日志修改tablet</li>
+<li>删除commit log中已实施的内容</li>
+<li>重新对外提供服务</li>
+</ul>
+</li>
+</ul>
+<h5 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h5><ul>
+<li>局部性群组(Locality Group)<ul>
+<li>根据需要，将原本不存储在一起的数据，以列族为单位存储至单独的子表</li>
+<li>如用户对网站排名、语言等分析信息感兴趣，那么可以将这些列族放至单独的子表，减少无用信息读取，改善存取效率</li>
+</ul>
+</li>
+<li>布隆过滤器(Bloom Filter)<ul>
+<li>布隆过滤器是判断某个元素是否隶属于集合</li>
+<li>优点：误判率低，其存储空间仅为Hash表的1/8至1/4</li>
+<li>用于判断列键是否位于SSTable中，快速确定某个列键的位置</li>
+</ul>
+</li>
+</ul>
+<h4 id="Google-AppEngine"><a href="#Google-AppEngine" class="headerlink" title="Google AppEngine"></a>Google AppEngine</h4><p>略</p>
+<h4 id="Google-云计算技术小结"><a href="#Google-云计算技术小结" class="headerlink" title="Google 云计算技术小结"></a>Google 云计算技术小结</h4><p>略</p>
+<h2 id="第十章：微软、亚马逊云计算"><a href="#第十章：微软、亚马逊云计算" class="headerlink" title="第十章：微软、亚马逊云计算"></a>第十章：微软、亚马逊云计算</h2><p>没精力了。。。。写不动了。。。。</p>
 
       
     </div>
@@ -1232,7 +1633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第零章：前言-Preface"><span class="nav-number">1.</span> <span class="nav-text">第零章：前言(Preface)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章：分布式的介绍-Introduction"><span class="nav-number">2.</span> <span class="nav-text">第一章：分布式的介绍(Introduction)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统的定义"><span class="nav-number">2.1.</span> <span class="nav-text">分布式系统的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统的目标"><span class="nav-number">2.2.</span> <span class="nav-text">分布式系统的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#资源可用性、连通性"><span class="nav-number">2.2.1.</span> <span class="nav-text">资源可用性、连通性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透明性"><span class="nav-number">2.2.2.</span> <span class="nav-text">透明性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开放性"><span class="nav-number">2.2.3.</span> <span class="nav-text">开放性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可拓展性"><span class="nav-number">2.2.4.</span> <span class="nav-text">可拓展性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#规模可拓展：主要在用户数、进程数可以拓展"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">规模可拓展：主要在用户数、进程数可以拓展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#地理可拓展：是指节点距离可拓展"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">地理可拓展：是指节点距离可拓展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#管理域可拓展：管理域-语言不同、底层系统不同-扩大"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">管理域可拓展：管理域(语言不同、底层系统不同)扩大</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统的分类"><span class="nav-number">2.3.</span> <span class="nav-text">分布式系统的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式计算系统"><span class="nav-number">2.3.1.</span> <span class="nav-text">分布式计算系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式信息系统"><span class="nav-number">2.3.2.</span> <span class="nav-text">分布式信息系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式普适系统"><span class="nav-number">2.3.3.</span> <span class="nav-text">分布式普适系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章：分布式系统架构-Architectures"><span class="nav-number">3.</span> <span class="nav-text">第二章：分布式系统架构(Architectures)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#体系结构样式"><span class="nav-number">3.1.</span> <span class="nav-text">体系结构样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层体系结构"><span class="nav-number">3.1.1.</span> <span class="nav-text">分层体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于对象的体系结构"><span class="nav-number">3.1.2.</span> <span class="nav-text">基于对象的体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以数据为中心的体系结构"><span class="nav-number">3.1.3.</span> <span class="nav-text">以数据为中心的体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于事件的体系结构"><span class="nav-number">3.1.4.</span> <span class="nav-text">基于事件的体系结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统体系结构"><span class="nav-number">3.2.</span> <span class="nav-text">系统体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集中式体系结构"><span class="nav-number">3.2.1.</span> <span class="nav-text">集中式体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分散体系结构"><span class="nav-number">3.2.2.</span> <span class="nav-text">分散体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#P2P"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">P2P</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Napster"><span class="nav-number">3.2.2.1.1.</span> <span class="nav-text">Napster</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Gnutella"><span class="nav-number">3.2.2.1.2.</span> <span class="nav-text">Gnutella</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#chord"><span class="nav-number">3.2.2.1.3.</span> <span class="nav-text">chord</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#bitTorrent"><span class="nav-number">3.2.2.1.4.</span> <span class="nav-text">bitTorrent</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#总结-1"><span class="nav-number">3.2.2.1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式-混合体系结构"><span class="nav-number">3.2.3.</span> <span class="nav-text">分布式/混合体系结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统中的体系结构与中间件"><span class="nav-number">3.3.</span> <span class="nav-text">分布式系统中的体系结构与中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统中的自我管理"><span class="nav-number">3.4.</span> <span class="nav-text">分布式系统中的自我管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章：进程-Processes"><span class="nav-number">4.</span> <span class="nav-text">第三章：进程(Processes)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-number">4.1.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上下文切换"><span class="nav-number">4.1.1.</span> <span class="nav-text">上下文切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程和操作系统"><span class="nav-number">4.1.2.</span> <span class="nav-text">线程和操作系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程和分布式系统"><span class="nav-number">4.1.3.</span> <span class="nav-text">线程和分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多线程服务器"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">多线程服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟化"><span class="nav-number">4.2.</span> <span class="nav-text">虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟化的分类"><span class="nav-number">4.2.1.</span> <span class="nav-text">虚拟化的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在指令架构上进行虚拟化"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">在指令架构上进行虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在硬件层上做虚拟化"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">在硬件层上做虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统在虚拟化"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">操作系统在虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在函数层进行虚拟化"><span class="nav-number">4.2.1.4.</span> <span class="nav-text">在函数层进行虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在应用层做虚拟化"><span class="nav-number">4.2.1.5.</span> <span class="nav-text">在应用层做虚拟化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">4.3.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器"><span class="nav-number">4.4.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常规设计问题"><span class="nav-number">4.4.1.</span> <span class="nav-text">常规设计问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#无状态服务器"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">无状态服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有状态服务器"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">有状态服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cookie"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">Cookie</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器集群"><span class="nav-number">4.4.2.</span> <span class="nav-text">服务器集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理服务器集群"><span class="nav-number">4.4.3.</span> <span class="nav-text">管理服务器集群</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码迁移"><span class="nav-number">4.5.</span> <span class="nav-text">代码迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码迁移的方法"><span class="nav-number">4.5.1.</span> <span class="nav-text">代码迁移的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移和本地资源"><span class="nav-number">4.5.2.</span> <span class="nav-text">迁移和本地资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异构系统中的迁移"><span class="nav-number">4.5.3.</span> <span class="nav-text">异构系统中的迁移</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章：通讯-Communication"><span class="nav-number">5.</span> <span class="nav-text">第四章：通讯(Communication)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分层协议"><span class="nav-number">5.1.</span> <span class="nav-text">分层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层协议-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">分层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#底层"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">底层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传输层"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用层"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中间件层"><span class="nav-number">5.1.1.4.</span> <span class="nav-text">中间件层</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通信类型"><span class="nav-number">5.1.2.</span> <span class="nav-text">通信类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程过程调用"><span class="nav-number">5.2.</span> <span class="nav-text">远程过程调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stubs-存根"><span class="nav-number">5.2.1.</span> <span class="nav-text">Stubs(存根)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向消息的通信"><span class="nav-number">5.3.</span> <span class="nav-text">面向消息的通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#瞬时通信"><span class="nav-number">5.3.1.</span> <span class="nav-text">瞬时通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向流的通信"><span class="nav-number">5.4.</span> <span class="nav-text">面向流的通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组播-多播通信"><span class="nav-number">5.5.</span> <span class="nav-text">组播/多播通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用程序级别多播"><span class="nav-number">5.5.1.</span> <span class="nav-text">应用程序级别多播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于Gossip的多播"><span class="nav-number">5.5.2.</span> <span class="nav-text">基于Gossip的多播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">5.5.2.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更新-信息传播-模型"><span class="nav-number">5.5.2.2.</span> <span class="nav-text">更新(信息传播)模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移除对象"><span class="nav-number">5.5.2.3.</span> <span class="nav-text">移除对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">5.5.2.4.</span> <span class="nav-text">应用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章：命名-Naming"><span class="nav-number">6.</span> <span class="nav-text">第五章：命名(Naming)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名实体"><span class="nav-number">6.1.</span> <span class="nav-text">命名实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平面命名"><span class="nav-number">6.2.</span> <span class="nav-text">平面命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-Hash-Tables——分布式哈希表-以chord为例"><span class="nav-number">6.3.</span> <span class="nav-text">Distributed Hash Tables——分布式哈希表(以chord为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构化命名"><span class="nav-number">6.4.</span> <span class="nav-text">结构化命名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#名称空间"><span class="nav-number">6.4.1.</span> <span class="nav-text">名称空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#名称解析"><span class="nav-number">6.4.2.</span> <span class="nav-text">名称解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#名称空间的实现"><span class="nav-number">6.4.3.</span> <span class="nav-text">名称空间的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例：域名系统-最大的分布式系统"><span class="nav-number">6.4.4.</span> <span class="nav-text">示例：域名系统(最大的分布式系统)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于属性的命名"><span class="nav-number">6.5.</span> <span class="nav-text">基于属性的命名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章：同步-Synchronization"><span class="nav-number">7.</span> <span class="nav-text">第六章：同步(Synchronization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟同步"><span class="nav-number">7.1.</span> <span class="nav-text">时钟同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#物理时钟"><span class="nav-number">7.1.1.</span> <span class="nav-text">物理时钟</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Cristian’s-Algorithm"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">Cristian’s Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑时钟"><span class="nav-number">7.1.2.</span> <span class="nav-text">逻辑时钟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矢量-向量时间戳"><span class="nav-number">7.1.3.</span> <span class="nav-text">矢量/向量时间戳</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥"><span class="nav-number">7.2.</span> <span class="nav-text">互斥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式互斥算法"><span class="nav-number">7.2.1.</span> <span class="nav-text">分布式互斥算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四种算法的比较"><span class="nav-number">7.2.2.</span> <span class="nav-text">四种算法的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点地全局定位"><span class="nav-number">7.3.</span> <span class="nav-text">节点地全局定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选举算法"><span class="nav-number">7.4.</span> <span class="nav-text">选举算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式死锁"><span class="nav-number">7.5.</span> <span class="nav-text">分布式死锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章：一致性-Consistency-与复制-Replication"><span class="nav-number">8.</span> <span class="nav-text">第七章：一致性(Consistency)与复制(Replication)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">8.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以数据为中心的一致性"><span class="nav-number">8.2.</span> <span class="nav-text">以数据为中心的一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#严格一致性"><span class="nav-number">8.2.1.</span> <span class="nav-text">严格一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序一致性"><span class="nav-number">8.2.2.</span> <span class="nav-text">顺序一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#因果一致性"><span class="nav-number">8.2.3.</span> <span class="nav-text">因果一致性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以客户为中心的一致性"><span class="nav-number">8.3.</span> <span class="nav-text">以客户为中心的一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制副本管理"><span class="nav-number">8.4.</span> <span class="nav-text">复制副本管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一致性协议"><span class="nav-number">8.5.</span> <span class="nav-text">一致性协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章：-容错-Fault-Tolerance"><span class="nav-number">9.</span> <span class="nav-text">第八章： 容错(Fault Tolerance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">9.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Process-resilience"><span class="nav-number">9.2.</span> <span class="nav-text">Process resilience</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拜占庭将军问题"><span class="nav-number">9.3.</span> <span class="nav-text">拜占庭将军问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠的客户端-服务端通信"><span class="nav-number">9.4.</span> <span class="nav-text">可靠的客户端-服务端通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠的组通信"><span class="nav-number">9.5.</span> <span class="nav-text">可靠的组通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式提交"><span class="nav-number">9.6.</span> <span class="nav-text">分布式提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复"><span class="nav-number">9.7.</span> <span class="nav-text">恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">9.7.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查点"><span class="nav-number">9.7.2.</span> <span class="nav-text">检查点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息日志记录"><span class="nav-number">9.7.3.</span> <span class="nav-text">消息日志记录</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第零章：前言-Preface"><span class="nav-number">1.</span> <span class="nav-text">第零章：前言(Preface)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章：分布式的介绍-Introduction"><span class="nav-number">2.</span> <span class="nav-text">第一章：分布式的介绍(Introduction)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统的定义"><span class="nav-number">2.1.</span> <span class="nav-text">分布式系统的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统的目标"><span class="nav-number">2.2.</span> <span class="nav-text">分布式系统的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#资源可用性、连通性"><span class="nav-number">2.2.1.</span> <span class="nav-text">资源可用性、连通性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透明性"><span class="nav-number">2.2.2.</span> <span class="nav-text">透明性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开放性"><span class="nav-number">2.2.3.</span> <span class="nav-text">开放性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可拓展性"><span class="nav-number">2.2.4.</span> <span class="nav-text">可拓展性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#规模可拓展：主要在用户数、进程数可以拓展"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">规模可拓展：主要在用户数、进程数可以拓展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#地理可拓展：是指节点距离可拓展"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">地理可拓展：是指节点距离可拓展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#管理域可拓展：管理域-语言不同、底层系统不同-扩大"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">管理域可拓展：管理域(语言不同、底层系统不同)扩大</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统的分类"><span class="nav-number">2.3.</span> <span class="nav-text">分布式系统的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式计算系统"><span class="nav-number">2.3.1.</span> <span class="nav-text">分布式计算系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式信息系统"><span class="nav-number">2.3.2.</span> <span class="nav-text">分布式信息系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式普适系统"><span class="nav-number">2.3.3.</span> <span class="nav-text">分布式普适系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章：分布式系统架构-Architectures"><span class="nav-number">3.</span> <span class="nav-text">第二章：分布式系统架构(Architectures)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#体系结构样式"><span class="nav-number">3.1.</span> <span class="nav-text">体系结构样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层体系结构"><span class="nav-number">3.1.1.</span> <span class="nav-text">分层体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于对象的体系结构"><span class="nav-number">3.1.2.</span> <span class="nav-text">基于对象的体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以数据为中心的体系结构"><span class="nav-number">3.1.3.</span> <span class="nav-text">以数据为中心的体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于事件的体系结构"><span class="nav-number">3.1.4.</span> <span class="nav-text">基于事件的体系结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统体系结构"><span class="nav-number">3.2.</span> <span class="nav-text">系统体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集中式体系结构"><span class="nav-number">3.2.1.</span> <span class="nav-text">集中式体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分散体系结构"><span class="nav-number">3.2.2.</span> <span class="nav-text">分散体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#P2P"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">P2P</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Napster"><span class="nav-number">3.2.2.1.1.</span> <span class="nav-text">Napster</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Gnutella"><span class="nav-number">3.2.2.1.2.</span> <span class="nav-text">Gnutella</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#chord"><span class="nav-number">3.2.2.1.3.</span> <span class="nav-text">chord</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#bitTorrent"><span class="nav-number">3.2.2.1.4.</span> <span class="nav-text">bitTorrent</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#总结-1"><span class="nav-number">3.2.2.1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式-混合体系结构"><span class="nav-number">3.2.3.</span> <span class="nav-text">分布式/混合体系结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统中的体系结构与中间件"><span class="nav-number">3.3.</span> <span class="nav-text">分布式系统中的体系结构与中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统中的自我管理"><span class="nav-number">3.4.</span> <span class="nav-text">分布式系统中的自我管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章：进程-Processes"><span class="nav-number">4.</span> <span class="nav-text">第三章：进程(Processes)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-number">4.1.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上下文切换"><span class="nav-number">4.1.1.</span> <span class="nav-text">上下文切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程和操作系统"><span class="nav-number">4.1.2.</span> <span class="nav-text">线程和操作系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程和分布式系统"><span class="nav-number">4.1.3.</span> <span class="nav-text">线程和分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多线程服务器"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">多线程服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟化"><span class="nav-number">4.2.</span> <span class="nav-text">虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟化的分类"><span class="nav-number">4.2.1.</span> <span class="nav-text">虚拟化的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在指令架构上进行虚拟化"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">在指令架构上进行虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在硬件层上做虚拟化"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">在硬件层上做虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统在虚拟化"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">操作系统在虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在函数层进行虚拟化"><span class="nav-number">4.2.1.4.</span> <span class="nav-text">在函数层进行虚拟化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在应用层做虚拟化"><span class="nav-number">4.2.1.5.</span> <span class="nav-text">在应用层做虚拟化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">4.3.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器"><span class="nav-number">4.4.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常规设计问题"><span class="nav-number">4.4.1.</span> <span class="nav-text">常规设计问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#无状态服务器"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">无状态服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有状态服务器"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">有状态服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cookie"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">Cookie</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器集群"><span class="nav-number">4.4.2.</span> <span class="nav-text">服务器集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理服务器集群"><span class="nav-number">4.4.3.</span> <span class="nav-text">管理服务器集群</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码迁移"><span class="nav-number">4.5.</span> <span class="nav-text">代码迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码迁移的方法"><span class="nav-number">4.5.1.</span> <span class="nav-text">代码迁移的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移和本地资源"><span class="nav-number">4.5.2.</span> <span class="nav-text">迁移和本地资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异构系统中的迁移"><span class="nav-number">4.5.3.</span> <span class="nav-text">异构系统中的迁移</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章：通讯-Communication"><span class="nav-number">5.</span> <span class="nav-text">第四章：通讯(Communication)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分层协议"><span class="nav-number">5.1.</span> <span class="nav-text">分层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层协议-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">分层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#底层"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">底层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传输层"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用层"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中间件层"><span class="nav-number">5.1.1.4.</span> <span class="nav-text">中间件层</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通信类型"><span class="nav-number">5.1.2.</span> <span class="nav-text">通信类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程过程调用"><span class="nav-number">5.2.</span> <span class="nav-text">远程过程调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stubs-存根"><span class="nav-number">5.2.1.</span> <span class="nav-text">Stubs(存根)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向消息的通信"><span class="nav-number">5.3.</span> <span class="nav-text">面向消息的通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#瞬时通信"><span class="nav-number">5.3.1.</span> <span class="nav-text">瞬时通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向流的通信"><span class="nav-number">5.4.</span> <span class="nav-text">面向流的通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组播-多播通信"><span class="nav-number">5.5.</span> <span class="nav-text">组播/多播通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用程序级别多播"><span class="nav-number">5.5.1.</span> <span class="nav-text">应用程序级别多播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于Gossip的多播"><span class="nav-number">5.5.2.</span> <span class="nav-text">基于Gossip的多播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">5.5.2.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更新-信息传播-模型"><span class="nav-number">5.5.2.2.</span> <span class="nav-text">更新(信息传播)模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移除对象"><span class="nav-number">5.5.2.3.</span> <span class="nav-text">移除对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">5.5.2.4.</span> <span class="nav-text">应用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章：命名-Naming"><span class="nav-number">6.</span> <span class="nav-text">第五章：命名(Naming)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名实体"><span class="nav-number">6.1.</span> <span class="nav-text">命名实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平面命名"><span class="nav-number">6.2.</span> <span class="nav-text">平面命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-Hash-Tables——分布式哈希表-以chord为例"><span class="nav-number">6.3.</span> <span class="nav-text">Distributed Hash Tables——分布式哈希表(以chord为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构化命名"><span class="nav-number">6.4.</span> <span class="nav-text">结构化命名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#名称空间"><span class="nav-number">6.4.1.</span> <span class="nav-text">名称空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#名称解析"><span class="nav-number">6.4.2.</span> <span class="nav-text">名称解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#名称空间的实现"><span class="nav-number">6.4.3.</span> <span class="nav-text">名称空间的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例：域名系统-最大的分布式系统"><span class="nav-number">6.4.4.</span> <span class="nav-text">示例：域名系统(最大的分布式系统)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于属性的命名"><span class="nav-number">6.5.</span> <span class="nav-text">基于属性的命名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章：同步-Synchronization"><span class="nav-number">7.</span> <span class="nav-text">第六章：同步(Synchronization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟同步"><span class="nav-number">7.1.</span> <span class="nav-text">时钟同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#物理时钟"><span class="nav-number">7.1.1.</span> <span class="nav-text">物理时钟</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Cristian’s-Algorithm"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">Cristian’s Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑时钟"><span class="nav-number">7.1.2.</span> <span class="nav-text">逻辑时钟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矢量-向量时间戳"><span class="nav-number">7.1.3.</span> <span class="nav-text">矢量/向量时间戳</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥"><span class="nav-number">7.2.</span> <span class="nav-text">互斥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式互斥算法"><span class="nav-number">7.2.1.</span> <span class="nav-text">分布式互斥算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四种算法的比较"><span class="nav-number">7.2.2.</span> <span class="nav-text">四种算法的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点地全局定位"><span class="nav-number">7.3.</span> <span class="nav-text">节点地全局定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选举算法"><span class="nav-number">7.4.</span> <span class="nav-text">选举算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式死锁"><span class="nav-number">7.5.</span> <span class="nav-text">分布式死锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章：一致性-Consistency-与复制-Replication"><span class="nav-number">8.</span> <span class="nav-text">第七章：一致性(Consistency)与复制(Replication)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">8.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以数据为中心的一致性"><span class="nav-number">8.2.</span> <span class="nav-text">以数据为中心的一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#严格一致性"><span class="nav-number">8.2.1.</span> <span class="nav-text">严格一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序一致性"><span class="nav-number">8.2.2.</span> <span class="nav-text">顺序一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#因果一致性"><span class="nav-number">8.2.3.</span> <span class="nav-text">因果一致性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以客户为中心的一致性"><span class="nav-number">8.3.</span> <span class="nav-text">以客户为中心的一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制副本管理"><span class="nav-number">8.4.</span> <span class="nav-text">复制副本管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一致性协议"><span class="nav-number">8.5.</span> <span class="nav-text">一致性协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章：-容错-Fault-Tolerance"><span class="nav-number">9.</span> <span class="nav-text">第八章： 容错(Fault Tolerance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">9.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Process-resilience"><span class="nav-number">9.2.</span> <span class="nav-text">Process resilience</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拜占庭将军问题"><span class="nav-number">9.3.</span> <span class="nav-text">拜占庭将军问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠的客户端-服务端通信"><span class="nav-number">9.4.</span> <span class="nav-text">可靠的客户端-服务端通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠的组通信"><span class="nav-number">9.5.</span> <span class="nav-text">可靠的组通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式提交"><span class="nav-number">9.6.</span> <span class="nav-text">分布式提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复"><span class="nav-number">9.7.</span> <span class="nav-text">恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">9.7.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查点"><span class="nav-number">9.7.2.</span> <span class="nav-text">检查点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息日志记录"><span class="nav-number">9.7.3.</span> <span class="nav-text">消息日志记录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九章：-云计算"><span class="nav-number">10.</span> <span class="nav-text">第九章： 云计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-云计算原理"><span class="nav-number">10.1.</span> <span class="nav-text">Google 云计算原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念回顾"><span class="nav-number">10.1.1.</span> <span class="nav-text">概念回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#网格计算与云计算的比较"><span class="nav-number">10.1.1.1.</span> <span class="nav-text">网格计算与云计算的比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#云计算的分类"><span class="nav-number">10.1.1.2.</span> <span class="nav-text">云计算的分类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Google云计算背景"><span class="nav-number">10.1.2.</span> <span class="nav-text">Google云计算背景</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#历史背景"><span class="nav-number">10.1.2.1.</span> <span class="nav-text">历史背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Google-如何实现云计算的"><span class="nav-number">10.1.2.2.</span> <span class="nav-text">Google 如何实现云计算的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式文件系统GFS"><span class="nav-number">10.1.3.</span> <span class="nav-text">分布式文件系统GFS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#假设与目标"><span class="nav-number">10.1.3.1.</span> <span class="nav-text">假设与目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设计思路"><span class="nav-number">10.1.3.2.</span> <span class="nav-text">设计思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GFS的架构"><span class="nav-number">10.1.3.3.</span> <span class="nav-text">GFS的架构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Master-节点任务"><span class="nav-number">10.1.3.4.</span> <span class="nav-text">Master 节点任务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GFS-架构的特点"><span class="nav-number">10.1.3.5.</span> <span class="nav-text">GFS 架构的特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GFS-的容错方法"><span class="nav-number">10.1.3.6.</span> <span class="nav-text">GFS 的容错方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并行数据处理模型MapReduce"><span class="nav-number">10.1.4.</span> <span class="nav-text">并行数据处理模型MapReduce</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MapReduce"><span class="nav-number">10.1.4.1.</span> <span class="nav-text">MapReduce</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件存储位置"><span class="nav-number">10.1.4.2.</span> <span class="nav-text">文件存储位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MapReduce的容错"><span class="nav-number">10.1.4.3.</span> <span class="nav-text">MapReduce的容错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MapReduce的优化"><span class="nav-number">10.1.4.4.</span> <span class="nav-text">MapReduce的优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式锁服务Chubby"><span class="nav-number">10.1.5.</span> <span class="nav-text">分布式锁服务Chubby</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Chubby的设计目标"><span class="nav-number">10.1.5.1.</span> <span class="nav-text">Chubby的设计目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Chubby文件系统"><span class="nav-number">10.1.5.2.</span> <span class="nav-text">Chubby文件系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Chubby的应用"><span class="nav-number">10.1.5.3.</span> <span class="nav-text">Chubby的应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式数据库BigTable"><span class="nav-number">10.1.6.</span> <span class="nav-text">分布式数据库BigTable</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#设计目标"><span class="nav-number">10.1.6.1.</span> <span class="nav-text">设计目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据模型"><span class="nav-number">10.1.6.2.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#物理视图"><span class="nav-number">10.1.6.3.</span> <span class="nav-text">物理视图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主节点的职责"><span class="nav-number">10.1.6.4.</span> <span class="nav-text">主节点的职责</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#子表服务器故障恢复"><span class="nav-number">10.1.6.5.</span> <span class="nav-text">子表服务器故障恢复</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能优化"><span class="nav-number">10.1.6.6.</span> <span class="nav-text">性能优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Google-AppEngine"><span class="nav-number">10.1.7.</span> <span class="nav-text">Google AppEngine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Google-云计算技术小结"><span class="nav-number">10.1.8.</span> <span class="nav-text">Google 云计算技术小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十章：微软、亚马逊云计算"><span class="nav-number">11.</span> <span class="nav-text">第十章：微软、亚马逊云计算</span></a></li></ol></div>
             
 
           </div>
