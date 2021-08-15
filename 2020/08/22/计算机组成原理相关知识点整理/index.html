@@ -87,24 +87,24 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="计算机概述 吞吐量：系统在单位时间内处理请求的数量主要取决于主存的存取周期 CPU时钟周期(节拍脉冲，T周期)：最小时间单位每个动作至少一个时钟周期 主频：CPU时钟频率，时钟周期的倒数 CPI：执行一条指令所需要的时钟周期数 CPU执行时间，运行一个程序所花费的时间$ CP执行时间 = \frac{CPU时钟周期数}{主频} = \frac{指令条数*CPI}{主频}$ MIPS：每秒执行多少百">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/l6SbQksCwnZIEmA.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/WZBADCqHfn1rEhu.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/fCo5QKTyAMwv3aI.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/WwqJeOHfk9lXs7Y.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/CJupMT31PfLXhQl.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/30/KT2Bnvrxq1jZ3yC.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/30/apUhuEy9WtkvVJm.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/EGLfsYVQ2wAexOp.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/iBmWSKDJ3Up2xPs.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/23/qavfywzlPRC741o.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/25/4d8IV6LQcDBn7vk.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/26/mGiw1UNP6lh8E3C.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/25/mN6a24B5sKAIXEQ.png">
-<meta property="og:updated_time" content="2021-04-05T08:46:05.981Z">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/定点小数.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/计算机组成原理相关知识点整理/images/数值表示之间的关系.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/码制添补关系.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/各码制之间关系的实例.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/IEEE754.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/各个编码方式的数值范围.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/地址寻址.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/直接映射.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/全相联映射.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/组相联映射.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/精简指令集与复杂指令集.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/微指令格式.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机组成原理/总线异步定时方式.png">
+<meta property="og:updated_time" content="2021-08-15T14:50:19.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机组成原理相关知识点整理">
 <meta name="twitter:description" content="计算机概述 吞吐量：系统在单位时间内处理请求的数量主要取决于主存的存取周期 CPU时钟周期(节拍脉冲，T周期)：最小时间单位每个动作至少一个时钟周期 主频：CPU时钟频率，时钟周期的倒数 CPI：执行一条指令所需要的时钟周期数 CPU执行时间，运行一个程序所花费的时间$ CP执行时间 = \frac{CPU时钟周期数}{主频} = \frac{指令条数*CPI}{主频}$ MIPS：每秒执行多少百">
-<meta name="twitter:image" content="https://i.loli.net/2020/08/23/l6SbQksCwnZIEmA.png">
+<meta name="twitter:image" content="http://yoursite.com/images/计算机组成原理/定点小数.png">
 
 
 
@@ -282,7 +282,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -397,7 +397,7 @@
 <h2 id="奇偶检验码"><a href="#奇偶检验码" class="headerlink" title="奇偶检验码"></a>奇偶检验码</h2><p>码距为2</p>
 <h2 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h2><p>$海明不等式：2^r \geq n+r+1(其中n为信息位，r为冗余信息位)$<br>$纠错理论： L-1 = D+C且D \geq C(其中L为码距，D为检错的位数，C为纠错位数)$</p>
 <h2 id="循环冗余码-CRC"><a href="#循环冗余码-CRC" class="headerlink" title="循环冗余码(CRC)"></a>循环冗余码(CRC)</h2><p>此处的知识点与计算机网络一样</p>
-<h2 id="定点小数"><a href="#定点小数" class="headerlink" title="定点小数"></a>定点小数</h2><p><img src="https://i.loli.net/2020/08/23/l6SbQksCwnZIEmA.png" alt="定点小数.png"></p>
+<h2 id="定点小数"><a href="#定点小数" class="headerlink" title="定点小数"></a>定点小数</h2><p><img src="/images/计算机组成原理/定点小数.png" alt="定点小数.png"></p>
 <p>$01…1 ===&gt; 最大正数： 1-2^{-n}$<br>$11…1 ===&gt; 最大负数： -(1-2^{-n})$</p>
 <h2 id="定点整数"><a href="#定点整数" class="headerlink" title="定点整数"></a>定点整数</h2><p>最大正数：$2^n-1$<br>最小负数：$-(2^n-1)$</p>
 <h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>小数：</p>
@@ -422,9 +422,9 @@
 <li>全0表示最小值：$-2^n$<br>全1表示最大值：$2^n-1$</li>
 <li>保持数据原有的大小顺序</li>
 </ol>
-<h2 id="数值表示之间的关系"><a href="#数值表示之间的关系" class="headerlink" title="数值表示之间的关系"></a>数值表示之间的关系</h2><p><img src="https://i.loli.net/2020/08/23/WZBADCqHfn1rEhu.png" alt="数值表示之间的关系.png"></p>
+<h2 id="数值表示之间的关系"><a href="#数值表示之间的关系" class="headerlink" title="数值表示之间的关系"></a>数值表示之间的关系</h2><p><img src="./images/数值表示之间的关系.png" alt="数值表示之间的关系.png"></p>
 <p>当$x$为正数时：<br>$x = [x]<em>{原码} = [x]</em>{反码} = [x]_{补码}$</p>
-<h2 id="定点数的移位运算"><a href="#定点数的移位运算" class="headerlink" title="定点数的移位运算"></a>定点数的移位运算</h2><p><img src="https://i.loli.net/2020/08/23/fCo5QKTyAMwv3aI.png" alt="码制添补关系.png"></p>
+<h2 id="定点数的移位运算"><a href="#定点数的移位运算" class="headerlink" title="定点数的移位运算"></a>定点数的移位运算</h2><p><img src="/images/计算机组成原理/码制添补关系.png" alt="码制添补关系.png"></p>
 <p>逻辑移位不管左移还是右移，都添加0</p>
 <h2 id="符号拓展"><a href="#符号拓展" class="headerlink" title="符号拓展"></a>符号拓展</h2><ol>
 <li>原有形式的符号位移到新形式的符号位上</li>
@@ -445,7 +445,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="各个码制之间关系的实例"><a href="#各个码制之间关系的实例" class="headerlink" title="各个码制之间关系的实例"></a>各个码制之间关系的实例</h2><p><img src="https://i.loli.net/2020/08/23/WwqJeOHfk9lXs7Y.png" alt="各码制之间关系的实例.png"></p>
+<h2 id="各个码制之间关系的实例"><a href="#各个码制之间关系的实例" class="headerlink" title="各个码制之间关系的实例"></a>各个码制之间关系的实例</h2><p><img src="/images/计算机组成原理/各码制之间关系的实例.png" alt="各码制之间关系的实例.png"></p>
 <h2 id="规格化浮点数"><a href="#规格化浮点数" class="headerlink" title="规格化浮点数"></a>规格化浮点数</h2><p>左规：可能多次<br>右规：只用一次</p>
 <ol>
 <li><p>原码规格化：<br>$ \frac{1}{2} \leq M \leq (1-2^{-n}) $<br>$-(1-2^n) \leq M \leq -\frac{1}{2}$</p>
@@ -473,7 +473,7 @@
 </li>
 </ol>
 <h2 id="IEEE-754"><a href="#IEEE-754" class="headerlink" title="IEEE 754"></a>IEEE 754</h2><p>单精度float  ===&gt; 32位</p>
-<p><img src="https://i.loli.net/2020/08/23/CJupMT31PfLXhQl.png" alt="IEEE754.png"></p>
+<p><img src="/images/计算机组成原理/IEEE754.png" alt="IEEE754.png"></p>
 <p>$(-1)^s<em>1.M</em>2^{E-127} ~~~~E\in[1, 254]$</p>
 <p>规定：</p>
 <ul>
@@ -504,8 +504,8 @@
 </tr>
 </tbody>
 </table>
-<p><img src="https://i.loli.net/2020/08/30/KT2Bnvrxq1jZ3yC.png" alt="各个编码方式的数值范围.png"></p>
-<h1 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h1><p><img src="https://i.loli.net/2020/08/30/apUhuEy9WtkvVJm.png" alt="地址寻址.png"></p>
+<p><img src="/images/计算机组成原理/各个编码方式的数值范围.png" alt="各个编码方式的数值范围.png"></p>
+<h1 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h1><p><img src="/images/计算机组成原理/地址寻址.png" alt="地址寻址.png"></p>
 <h2 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h2><p>静态随机存储器<br>双稳态触发器(六管Mos)、非破坏性读出、易失性、集成度低</p>
 <h2 id="DRAM-动态"><a href="#DRAM-动态" class="headerlink" title="DRAM(动态)"></a>DRAM(动态)</h2><p>电容、一次刷新一行存储单元</p>
 <ul>
@@ -546,21 +546,21 @@
 </ul>
 </li>
 </ul>
-<h2 id="Cache和主存的映射"><a href="#Cache和主存的映射" class="headerlink" title="Cache和主存的映射"></a>Cache和主存的映射</h2><h3 id="直接映射：主存数据块放Cache中唯一位置"><a href="#直接映射：主存数据块放Cache中唯一位置" class="headerlink" title="直接映射：主存数据块放Cache中唯一位置"></a>直接映射：主存数据块放Cache中唯一位置</h3><p><img src="https://i.loli.net/2020/08/23/EGLfsYVQ2wAexOp.png" alt="直接映射.png"></p>
+<h2 id="Cache和主存的映射"><a href="#Cache和主存的映射" class="headerlink" title="Cache和主存的映射"></a>Cache和主存的映射</h2><h3 id="直接映射：主存数据块放Cache中唯一位置"><a href="#直接映射：主存数据块放Cache中唯一位置" class="headerlink" title="直接映射：主存数据块放Cache中唯一位置"></a>直接映射：主存数据块放Cache中唯一位置</h3><p><img src="/images/计算机组成原理/直接映射.png" alt="直接映射.png"></p>
 <p>地址变换：主存地址 ===&gt; Cache中的地址</p>
 <ol>
 <li>取主存块号  ===&gt; 找到Cache块号</li>
 <li>比较Cache块号中的区号(标记)与主存的区号(标记)是否一致</li>
 <li>若是，则主存的区块号+块内地址 = 访问Cache的地址</li>
 </ol>
-<h3 id="全相联映像：主存数据块随意放在Cache中"><a href="#全相联映像：主存数据块随意放在Cache中" class="headerlink" title="全相联映像：主存数据块随意放在Cache中"></a>全相联映像：主存数据块随意放在Cache中</h3><p><img src="https://i.loli.net/2020/08/23/iBmWSKDJ3Up2xPs.png" alt="全相联映射.png"></p>
+<h3 id="全相联映像：主存数据块随意放在Cache中"><a href="#全相联映像：主存数据块随意放在Cache中" class="headerlink" title="全相联映像：主存数据块随意放在Cache中"></a>全相联映像：主存数据块随意放在Cache中</h3><p><img src="/images/计算机组成原理/全相联映射.png" alt="全相联映射.png"></p>
 <p>地址变换：</p>
 <ol>
 <li>取主存块号  —&gt; 与标识Cache(标识Cache可能是一个存放一张表的Cache)全表比较</li>
 <li>若找到，则取出Cache块号</li>
 <li>Cache块号 + 块内地址 = 访问Cache的地址 </li>
 </ol>
-<h3 id="组相联映像-只能放特定组，组内可以随意放"><a href="#组相联映像-只能放特定组，组内可以随意放" class="headerlink" title="组相联映像:只能放特定组，组内可以随意放"></a>组相联映像:只能放特定组，组内可以随意放</h3><p><img src="https://i.loli.net/2020/08/23/qavfywzlPRC741o.png" alt="组相联映射.png"></p>
+<h3 id="组相联映像-只能放特定组，组内可以随意放"><a href="#组相联映像-只能放特定组，组内可以随意放" class="headerlink" title="组相联映像:只能放特定组，组内可以随意放"></a>组相联映像:只能放特定组，组内可以随意放</h3><p><img src="/images/计算机组成原理/组相联映射.png" alt="组相联映射.png"></p>
 <p>地址变换机构：</p>
 <ol>
 <li>取出主存地址的块号，取余，得到Cache的<strong>组号</strong></li>
@@ -673,7 +673,7 @@
 <li>先间址后变址：$EA=(A)+(IX)$</li>
 <li>变址基址一起: $EA=A+(BR)+(IX)$</li>
 </ol>
-<h2 id="复杂指令集-CISC-和精简指令集-RISC"><a href="#复杂指令集-CISC-和精简指令集-RISC" class="headerlink" title="复杂指令集(CISC)和精简指令集(RISC)"></a>复杂指令集(CISC)和精简指令集(RISC)</h2><p><img src="https://i.loli.net/2020/08/25/4d8IV6LQcDBn7vk.png" alt="精简指令集与复杂指令集.png"></p>
+<h2 id="复杂指令集-CISC-和精简指令集-RISC"><a href="#复杂指令集-CISC-和精简指令集-RISC" class="headerlink" title="复杂指令集(CISC)和精简指令集(RISC)"></a>复杂指令集(CISC)和精简指令集(RISC)</h2><p><img src="/images/计算机组成原理/精简指令集与复杂指令集.png" alt="精简指令集与复杂指令集.png"></p>
 <h1 id="中央处理器"><a href="#中央处理器" class="headerlink" title="中央处理器"></a>中央处理器</h1><h2 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h2><ul>
 <li>算术逻辑单元(ALU)</li>
 <li>暂存寄存器</li>
@@ -760,7 +760,7 @@
 </li>
 <li>字段间接编码</li>
 </ol>
-<h2 id="微指令格式"><a href="#微指令格式" class="headerlink" title="微指令格式"></a>微指令格式</h2><p><img src="https://i.loli.net/2020/08/26/mGiw1UNP6lh8E3C.png" alt="微指令格式.png"></p>
+<h2 id="微指令格式"><a href="#微指令格式" class="headerlink" title="微指令格式"></a>微指令格式</h2><p><img src="/images/计算机组成原理/微指令格式.png" alt="微指令格式.png"></p>
 <ol>
 <li><p>水平型微指令：<br>定义并执行几种并行的基本操作</p>
 <ul>
@@ -831,7 +831,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="总线异步定时方式-按需分配时间"><a href="#总线异步定时方式-按需分配时间" class="headerlink" title="总线异步定时方式(按需分配时间)"></a>总线异步定时方式(按需分配时间)</h2><p><img src="https://i.loli.net/2020/08/25/mN6a24B5sKAIXEQ.png" alt="总线异步定时方式.png"></p>
+<h2 id="总线异步定时方式-按需分配时间"><a href="#总线异步定时方式-按需分配时间" class="headerlink" title="总线异步定时方式(按需分配时间)"></a>总线异步定时方式(按需分配时间)</h2><p><img src="/images/计算机组成原理/总线异步定时方式.png" alt="总线异步定时方式.png"></p>
 <h2 id="总线标准"><a href="#总线标准" class="headerlink" title="总线标准"></a>总线标准</h2><ul>
 <li>ISA: 最早微机系统总线</li>
 <li>EISA: 扩展ISA(32位)</li>
@@ -988,7 +988,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="Austin Deng">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Austin Deng">
             
               <p class="site-author-name" itemprop="name">Austin Deng</p>
               <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>

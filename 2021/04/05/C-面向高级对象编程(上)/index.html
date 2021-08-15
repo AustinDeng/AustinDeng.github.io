@@ -79,60 +79,59 @@
 
 
 
-<meta name="description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
+<meta name="description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构![头文件结构.PNG]/images/面向对象编程上/头文件结构.png) 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(g">
 <meta name="keywords" content="面向对象,OOP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++: 面向高级对象编程(上)">
 <meta property="og:url" content="http://yoursite.com/2021/04/05/C-面向高级对象编程(上)/index.html">
 <meta property="og:site_name" content="邓某的杂货铺">
-<meta property="og:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
+<meta property="og:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构![头文件结构.PNG]/images/面向对象编程上/头文件结构.png) 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2021/04/05/MtNP8hWp4gsDBjK.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/97K4M3Nq8gioUnd.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/35ZmH9ILTcOAoE2.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/8yxAuonNEH4dB5g.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/B4A8FxyJjIcizL6.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/7G1dufcMv2CDSyF.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/aM4fsPlNj8vODKV.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/8sBdNyYlLj59SeK.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/n6mXrQlvxP7Ok4j.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/bynX8LER7m3VOqx.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/oOjtJi8pTXm7wsS.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/XjnVyIvrGkgPwmf.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/TXe1ixfp48sdEqQ.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/06/wAal9VWbzHjQBpg.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/MCSF8wJc1ylmL9o.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/VFSaRfv8EMiun4m.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/V6jlfT9LPvqghHZ.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/GxP461wF2pMHjgh.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/sIY7AvDpMQVay8T.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/fnrbDWqOHGP69mZ.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/hHZmXCPFVKL2yEO.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/q8olsKOhX2BYJcM.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/LAOU5yZgEQlBzMS.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/nc2W5KLVM6E4RbX.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/PeEpKHL91YGlqTt.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/jVAqROikGJMsrx3.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/avjOBnKdCPyqcI4.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/oDSygevFXz2crdV.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/YelmjHXPBCSAEQr.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/uqPGKX8oVreBiwQ.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/ke3vNDXtJScMnhb.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/sfJdjY4PrylwRzO.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/8gVGJsyPlzS2fUC.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/36BtWAkRM28PKNb.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/5NTtbkGSUerKR6D.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/1tJ49l7jqW5CsEI.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/yC1u3eVTSvdq5mi.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/EyCGK8sauBWLrAH.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/Wazmv34po8DOgVN.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/NxI3sO4AghrlvRP.png">
-<meta property="og:image" content="https://i.loli.net/2021/05/03/NclS4QdRjyt2FPf.png">
-<meta property="og:updated_time" content="2021-05-03T11:20:37.786Z">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/构造函数参数.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/常量成员函数.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/参数传递.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/返回值传递.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/友元1.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/友元2.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载+=.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载+=2.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载+=.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载流输出.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string头文件.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string类定义.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/构造和析构.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/拷贝构造函数.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/检测自我赋值.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/不检测自我赋值.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/堆栈.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/new.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/delete.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string_new.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string_delete.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/complex内存分布.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string内存分布.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/complex数组.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string数组.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/delete_array.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/static.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/复合1.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/复合2.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/委托.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/继承1.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/继承2.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数1.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数2.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数3.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数3.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Observer1.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Observer2.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Composite.png">
+<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Prototype.png">
+<meta property="og:updated_time" content="2021-08-15T14:50:19.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++: 面向高级对象编程(上)">
-<meta name="twitter:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
-<meta name="twitter:image" content="https://i.loli.net/2021/04/05/MtNP8hWp4gsDBjK.png">
+<meta name="twitter:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构![头文件结构.PNG]/images/面向对象编程上/头文件结构.png) 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(g">
+<meta name="twitter:image" content="http://yoursite.com/images/面向对象编程上/构造函数参数.png">
 
 
 
@@ -310,7 +309,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -395,7 +394,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。</p>
-<h2 id="基于对象-Object-Based-的程序设计"><a href="#基于对象-Object-Based-的程序设计" class="headerlink" title="基于对象(Object Based)的程序设计"></a>基于对象(Object Based)的程序设计</h2><h3 id="不带有指针成员变量的类——以复数类complex为例"><a href="#不带有指针成员变量的类——以复数类complex为例" class="headerlink" title="不带有指针成员变量的类——以复数类complex为例"></a>不带有指针成员变量的类——以复数类complex为例</h3><h4 id="头文件的结构"><a href="#头文件的结构" class="headerlink" title="头文件的结构"></a>头文件的结构</h4><p><img src="https://i.loli.net/2021/04/05/MtNP8hWp4gsDBjK.png" alt="头文件结构.PNG"></p>
+<h2 id="基于对象-Object-Based-的程序设计"><a href="#基于对象-Object-Based-的程序设计" class="headerlink" title="基于对象(Object Based)的程序设计"></a>基于对象(Object Based)的程序设计</h2><h3 id="不带有指针成员变量的类——以复数类complex为例"><a href="#不带有指针成员变量的类——以复数类complex为例" class="headerlink" title="不带有指针成员变量的类——以复数类complex为例"></a>不带有指针成员变量的类——以复数类complex为例</h3><h4 id="头文件的结构"><a href="#头文件的结构" class="headerlink" title="头文件的结构"></a>头文件的结构</h4><p>![头文件结构.PNG]/images/面向对象编程上/头文件结构.png)</p>
 <p>由上图可知，头文件的结构一般包含以下四个部分：</p>
 <ul>
 <li>防卫式声明(guard)：防止头文件被重复包含</li>
@@ -415,20 +414,20 @@
 <h3 id="函数设计"><a href="#函数设计" class="headerlink" title="函数设计"></a>函数设计</h3><h4 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h4><p>在类声明内定义的函数将自动转换为<code>inline</code>函数<br>在类声明以外定义的函数，需要加上<code>inline</code>关键字</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="built_in">complex</span>&amp; x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x.imag();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>构造函数可以使用默认实参，并且采用列表初始化(initialization list)</p>
-<p><img src="https://i.loli.net/2021/04/06/97K4M3Nq8gioUnd.png" alt="构造函数参数.png"></p>
+<p><img src="/images/面向对象编程上/构造函数参数.png" alt="构造函数参数.png"></p>
 <h4 id="常量成员函数"><a href="#常量成员函数" class="headerlink" title="常量成员函数"></a>常量成员函数</h4><p>如果类中的成员函数不会改变成员变量，则应当加上<code>const</code>关键字</p>
-<p><img src="https://i.loli.net/2021/04/06/35ZmH9ILTcOAoE2.png" alt="常量成员函数.png"></p>
+<p><img src="/images/面向对象编程上/常量成员函数.png" alt="常量成员函数.png"></p>
 <p>若这类函数不加以const修饰,则常量对象将不能调用这些函数</p>
-<h4 id="参数按值传递和按引用传递"><a href="#参数按值传递和按引用传递" class="headerlink" title="参数按值传递和按引用传递"></a>参数按值传递和按引用传递</h4><p><img src="https://i.loli.net/2021/04/06/8yxAuonNEH4dB5g.png" alt="参数传递.png"></p>
+<h4 id="参数按值传递和按引用传递"><a href="#参数按值传递和按引用传递" class="headerlink" title="参数按值传递和按引用传递"></a>参数按值传递和按引用传递</h4><p><img src="/images/面向对象编程上/参数传递.png" alt="参数传递.png"></p>
 <p>按引用传递可以节约内存，提高传递效率</p>
 <p>为了避免传入的参数在函数体内被修改，可以使用<code>const</code>关键字修饰传入的参数</p>
-<h4 id="返回值的值传递与引用传递"><a href="#返回值的值传递与引用传递" class="headerlink" title="返回值的值传递与引用传递"></a>返回值的值传递与引用传递</h4><p><img src="https://i.loli.net/2021/04/06/B4A8FxyJjIcizL6.png" alt="返回值传递.png"></p>
+<h4 id="返回值的值传递与引用传递"><a href="#返回值的值传递与引用传递" class="headerlink" title="返回值的值传递与引用传递"></a>返回值的值传递与引用传递</h4><p><img src="/images/面向对象编程上/返回值传递.png" alt="返回值传递.png"></p>
 <p>为提高效率,若函数的返回值是原本就存在的对象,则应以引用形式返回</p>
 <p>若函数的返回值是临时变量,则只能通过值传递返回</p>
 <h4 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h4><p>友元函数不受访问级别的控制，可以自由访问对象的所有成员</p>
-<p><img src="https://i.loli.net/2021/04/06/7G1dufcMv2CDSyF.png" alt="友元1.png"></p>
+<p><img src="/images/面向对象编程上/友元1.png" alt="友元1.png"></p>
 <p>同一类的各个对象互为友元函数，因此在类定义内可以访问其他对象的私有变量</p>
-<p><img src="https://i.loli.net/2021/04/06/aM4fsPlNj8vODKV.png" alt="友元2.png"></p>
+<p><img src="/images/面向对象编程上/友元2.png" alt="友元2.png"></p>
 <h3 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h3><p>C++操作符重载有两种形式</p>
 <ul>
 <li>在类内声明<code>public</code>函数实现操作符重载，此时操作符作用在左操作数上</li>
@@ -440,14 +439,14 @@
 </code></pre><p>输入参数和输出参数均使用引用传值,输入参数在函数中不应被改动,因此使用<code>const</code>修饰</p>
 <p>输出参数类型为<code>complex&amp;</code>,这是为了支持将多个<code>+=</code>操作符串联起来</p>
 <p>若返回参数类型设为<code>void</code>,也支持形如<code>c2+=c1</code>的运算,但不支持形如<code>c3+=c2+=c1</code>的运算</p>
-<p><img src="https://i.loli.net/2021/04/06/8sBdNyYlLj59SeK.png" alt="重载__.png"></p>
+<p><img src="/images/面向对象编程上/重载+=.png" alt="重载__.png"></p>
 <p>函数体内调用友元函数<code>__doapl(complex *, const complex &amp;)</code>第一个参数接收成员函数内隐含的<code>this</code>指针,其内容在函数中会被改变<br>第二个参数接收重载函数的参数,该参数在函数中不会被改变,以<code>const</code>修饰.</p>
-<p><img src="https://i.loli.net/2021/04/06/n6mXrQlvxP7Ok4j.png" alt="重载__2.png"></p>
+<p><img src="/images/面向对象编程上/重载+=2.png" alt="重载__2.png"></p>
 <p>引用传递参数和返回值的好处在于传送者无需知道接收者是否以引用形式接收,只需要和值传递一样写代码就行,不需要改动</p>
-<h4 id="在类内声明或函数重载"><a href="#在类内声明或函数重载" class="headerlink" title="在类内声明或函数重载 +"></a>在类内声明或函数重载 +</h4><p><img src="https://i.loli.net/2021/04/06/bynX8LER7m3VOqx.png" alt="重载_.png"></p>
+<h4 id="在类内声明或函数重载"><a href="#在类内声明或函数重载" class="headerlink" title="在类内声明或函数重载 +"></a>在类内声明或函数重载 +</h4><p><img src="/images/面向对象编程上/重载+=.png" alt="重载_.png"></p>
 <p>因为重载操作符的成员函数是作用在左操作数上的,若使用类内声明<code>public</code>函数重载操作符的方法,就不能支持第3种用法了<br>因此使用在类外声明函数重载<code>+</code>运算符</p>
 <p>这3个函数返回的是局部对象(local object),在退出函数时对象就会被销毁,因此不能使用引用传递返回值</p>
-<h4 id="在类外声明函数重载-lt-lt"><a href="#在类外声明函数重载-lt-lt" class="headerlink" title="在类外声明函数重载 &lt;&lt;"></a>在类外声明函数重载 &lt;&lt;</h4><p><img src="https://i.loli.net/2021/04/06/oOjtJi8pTXm7wsS.png" alt="重载流输出.png"></p>
+<h4 id="在类外声明函数重载-lt-lt"><a href="#在类外声明函数重载-lt-lt" class="headerlink" title="在类外声明函数重载 &lt;&lt;"></a>在类外声明函数重载 &lt;&lt;</h4><p><img src="/images/面向对象编程上/重载流输出.png" alt="重载流输出.png"></p>
 <p>与重载+的考虑方法类似,&lt;&lt;操作符通常的使用方式是<code>cout&lt;&lt;c1</code>而非<code>c1&lt;&lt;cout</code>,因此不能使用成员函数重载<code>&lt;&lt;</code>运算符</p>
 <p>考虑到形如<code>cout&lt;&lt;c1&lt;&lt;c2&lt;&lt;c3</code>的级联用法,重载函数的返回值为<code>ostream&amp;</code>而非<code>void</code></p>
 <h3 id="总结代码编写的注意事项"><a href="#总结代码编写的注意事项" class="headerlink" title="总结代码编写的注意事项"></a>总结代码编写的注意事项</h3><ul>
@@ -458,9 +457,9 @@
 <li>数据放入<code>private</code>中，大部分函数放入<code>public</code>中</li>
 </ul>
 <h2 id="带有指针的成员变量的类——以字符串String为例"><a href="#带有指针的成员变量的类——以字符串String为例" class="headerlink" title="带有指针的成员变量的类——以字符串String为例"></a>带有指针的成员变量的类——以字符串String为例</h2><p>String类定义在头文件string.h中,其结构与complex.h类似</p>
-<p><img src="https://i.loli.net/2021/04/06/XjnVyIvrGkgPwmf.png" alt="string头文件.png"></p>
+<p><img src="/images/面向对象编程上/string头文件.png" alt="string头文件.png"></p>
 <p>类声明如下,使用指针成员变量m_data管理String类中的字符串数据</p>
-<p><img src="https://i.loli.net/2021/04/06/TXe1ixfp48sdEqQ.png" alt="string类定义.png"></p>
+<p><img src="/images/面向对象编程上/string类定义.png" alt="string类定义.png"></p>
 <h3 id="三种特殊函数"><a href="#三种特殊函数" class="headerlink" title="三种特殊函数"></a>三种特殊函数</h3><ul>
 <li>拷贝构造函数</li>
 <li>拷贝赋值函数</li>
@@ -468,19 +467,19 @@
 </ul>
 <p>对于不带有指针的类,这3个函数可以使用编译器默认为我们生成的版本;但是编写带有指针的类时就有必要定义这3个特殊函数</p>
 <h4 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h4><p>构造函数和析构函数中执行数据的深拷贝和释放</p>
-<p><img src="https://i.loli.net/2021/04/06/wAal9VWbzHjQBpg.png" alt="构造和析构.png"></p>
+<p><img src="/images/面向对象编程上/构造和析构.png" alt="构造和析构.png"></p>
 <p>值得注意的是使用<code>delete[]</code>操作符释放数组内存,若直接使用<code>delete</code>操作符释放数组内存虽然能够通过编译,但有可能产生内存泄漏</p>
 <h4 id="拷贝构造函数和拷贝赋值函数"><a href="#拷贝构造函数和拷贝赋值函数" class="headerlink" title="拷贝构造函数和拷贝赋值函数"></a>拷贝构造函数和拷贝赋值函数</h4><p>拷贝构造函数和拷贝赋值函数的使用场景不同，下面这个例子中，拷贝3虽然使用了<code>=</code>赋值，但是由于在初始化过程中使用的，所以调用的是拷贝构造函数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> s1 = <span class="string">"hello"</span>;</span><br><span class="line"><span class="function"><span class="keyword">String</span> <span class="title">s2</span><span class="params">(s1)</span></span>;        <span class="comment">// 拷贝一： 调用拷贝构造函数</span></span><br><span class="line"><span class="keyword">String</span> s3;</span><br><span class="line">s3 = s1;              <span class="comment">// 拷贝二： 调用拷贝赋值函数</span></span><br><span class="line"><span class="keyword">String</span> s4 = s1;       <span class="comment">// 拷贝三： 调用拷贝构造函数</span></span><br></pre></td></tr></table></figure>
 <p>拷贝构造函数可以直接调用友元对象的数据指针进行拷贝来实现</p>
-<p><img src="https://i.loli.net/2021/05/03/MCSF8wJc1ylmL9o.png" alt="拷贝构造函数.png"></p>
+<p><img src="/images/面向对象编程上/拷贝构造函数.png" alt="拷贝构造函数.png"></p>
 <p>拷贝赋值函数中要检测自我赋值，不仅是为了考虑效率，也是为了防止出现BUG</p>
-<p><img src="https://i.loli.net/2021/05/03/VFSaRfv8EMiun4m.png" alt="检测自我赋值.png"></p>
+<p><img src="/images/面向对象编程上/检测自我赋值.png" alt="检测自我赋值.png"></p>
 <p>如果拷贝赋值函数中不检测自我赋值，在第二步中会出现BUG</p>
-<p><img src="https://i.loli.net/2021/05/03/V6jlfT9LPvqghHZ.png" alt="不检测自我赋值.png"></p>
+<p><img src="/images/面向对象编程上/不检测自我赋值.png" alt="不检测自我赋值.png"></p>
 <h3 id="堆栈与内存管理"><a href="#堆栈与内存管理" class="headerlink" title="堆栈与内存管理"></a>堆栈与内存管理</h3><h4 id="堆栈及对象的生命周期"><a href="#堆栈及对象的生命周期" class="headerlink" title="堆栈及对象的生命周期"></a>堆栈及对象的生命周期</h4><p>栈(stack),是存在于某作用域(scope)的一块内存空间<br>当你调用函数,函数本身就会形成一个stack用来记录它所接收的参数以及返回地址.在函数本体内声明的任何变量,其所使用的内存块都取自上述stack</p>
 <p>堆(heap),是指由操作系统提供的一块global内存空间,程序可动态分配从其中获得若干区块</p>
-<p><img src="https://i.loli.net/2021/05/03/GxP461wF2pMHjgh.png" alt="堆栈.png"></p>
+<p><img src="/images/面向对象编程上/堆栈.png" alt="堆栈.png"></p>
 <ul>
 <li><p>stack object的生命周期</p>
 <pre><code>class Complex{...};
@@ -520,9 +519,9 @@ delete p;
 </li>
 </ul>
 <h4 id="new-和-delete-过程中的内存分配"><a href="#new-和-delete-过程中的内存分配" class="headerlink" title="new 和 delete 过程中的内存分配"></a><code>new</code> 和 <code>delete</code> 过程中的内存分配</h4><ul>
-<li><p><code>new</code>操作<strong>先分配内存，再调用构造函数</strong><br><img src="https://i.loli.net/2021/05/03/sIY7AvDpMQVay8T.png" alt="new.png"></p>
+<li><p><code>new</code>操作<strong>先分配内存，再调用构造函数</strong><br><img src="/images/面向对象编程上/new.png" alt="new.png"></p>
 </li>
-<li><p><code>delete</code>操作<strong>先调用构造函数，再释放内存</strong><br><img src="https://i.loli.net/2021/05/03/fnrbDWqOHGP69mZ.png" alt="delete.png"></p>
+<li><p><code>delete</code>操作<strong>先调用构造函数，再释放内存</strong><br><img src="/images/面向对象编程上/delete.png" alt="delete.png"></p>
 </li>
 </ul>
 <p>对于带有指针的<code>String</code>类,<code>new</code>和<code>delete</code>的操作如下：</p>
@@ -535,8 +534,8 @@ delete p;
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/hHZmXCPFVKL2yEO.png" alt="string_new.png"></td>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/q8olsKOhX2BYJcM.png" alt="string_delete.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/string_new.png" alt="string_new.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/string_delete.png" alt="string_delete.png"></td>
 </tr>
 </tbody>
 </table>
@@ -550,8 +549,8 @@ delete p;
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/LAOU5yZgEQlBzMS.png" alt="complex内存分布.png"></td>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/nc2W5KLVM6E4RbX.png" alt="string内存分布.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/complex内存分布.png" alt="complex内存分布.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/string内存分布.png" alt="string内存分布.png"></td>
 </tr>
 </tbody>
 </table>
@@ -565,28 +564,28 @@ delete p;
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/PeEpKHL91YGlqTt.png" alt="complex数组.png"></td>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/jVAqROikGJMsrx3.png" alt="string数组.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/complex数组.png" alt="complex数组.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/string数组.png" alt="string数组.png"></td>
 </tr>
 </tbody>
 </table>
 <p>根据数组在内存中的状态,自然可以理解为什么new[]和delete[]应该配对使用了: delete操作符仅会调用一次析构函数,而delete[]操作符依次对每个元素调用析构函数.对于String这样带有指针的类,若将delete[]误用为delete会引起内存泄漏</p>
-<p><img src="https://i.loli.net/2021/05/03/avjOBnKdCPyqcI4.png" alt="delete_array.png"></p>
+<p><img src="/images/面向对象编程上/delete_array.png" alt="delete_array.png"></p>
 <h2 id="static-成员"><a href="#static-成员" class="headerlink" title="static 成员"></a>static 成员</h2><p>对于类来说,<code>non-static</code>成员变量每个对象均存在一份,<code>static</code>成员变量和<code>static</code>成员函数在内存中仅存在一份<br>其中<code>non-static</code>成员函数通过指定this指针获得函数的调用权,而<code>static</code>函数不需要this指针即可调用</p>
-<p><img src="https://i.loli.net/2021/05/03/oDSygevFXz2crdV.png" alt="static.png"></p>
+<p><img src="/images/面向对象编程上/static.png" alt="static.png"></p>
 <p><code>static</code>成员函数可以通过对象调用,也可以通过类名调用</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> m_rate;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">set_rate</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span>&amp; x)</span> </span>&#123; m_rate = x; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">double</span> Account::m_rate = <span class="number">8.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Account::set_rate(<span class="number">5.0</span>);</span><br><span class="line">    Account a;</span><br><span class="line">    a.set_rate(<span class="number">7.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>static</code>成员变量需要在类声明体外进行初始化</p>
 <h1 id="面向对象-Object-Oriented-的程序设计————类之间的关系"><a href="#面向对象-Object-Oriented-的程序设计————类之间的关系" class="headerlink" title="面向对象(Object Oriented)的程序设计————类之间的关系"></a>面向对象(Object Oriented)的程序设计————类之间的关系</h1><p>类之间的关系有复合(composition)、委托(aggregation)和继承(extension)3种</p>
 <h2 id="类之间得关系"><a href="#类之间得关系" class="headerlink" title="类之间得关系"></a>类之间得关系</h2><h3 id="复合-composition"><a href="#复合-composition" class="headerlink" title="复合(composition)"></a>复合(composition)</h3><p>复合表示一种<code>has-a</code>的关系,STL中<code>queue</code>的实现就使用了复合关系.这种结构也被称为<strong>adapter模式</strong></p>
-<p><img src="https://i.loli.net/2021/05/03/YelmjHXPBCSAEQr.png" alt="复合1.png"></p>
-<p>复合关系下构造由内而外,析构由外而内:<br><img src="https://i.loli.net/2021/05/03/uqPGKX8oVreBiwQ.png" alt="复合2.png"></p>
-<h3 id="委托-aggregation-composition-by-reference"><a href="#委托-aggregation-composition-by-reference" class="headerlink" title="委托(aggregation; composition by reference)"></a>委托(aggregation; composition by reference)</h3><p><img src="https://i.loli.net/2021/05/03/ke3vNDXtJScMnhb.png" alt="委托.png"></p>
+<p><img src="/images/面向对象编程上/复合1.png" alt="复合1.png"></p>
+<p>复合关系下构造由内而外,析构由外而内:<br><img src="/images/面向对象编程上/复合2.png" alt="复合2.png"></p>
+<h3 id="委托-aggregation-composition-by-reference"><a href="#委托-aggregation-composition-by-reference" class="headerlink" title="委托(aggregation; composition by reference)"></a>委托(aggregation; composition by reference)</h3><p><img src="/images/面向对象编程上/委托.png" alt="委托.png"></p>
 <p>委托将类的定义与类的实现分隔开来,也被称为<strong>编译防火墙</strong></p>
 <h3 id="继承-extension"><a href="#继承-extension" class="headerlink" title="继承(extension)"></a>继承(extension)</h3><p>继承表示一种<code>is-a</code>的关系,STL中<code>_List_node</code>的实现就使用了继承关系</p>
-<p><img src="https://i.loli.net/2021/05/03/sfJdjY4PrylwRzO.png" alt="继承1.png"></p>
+<p><img src="/images/面向对象编程上/继承1.png" alt="继承1.png"></p>
 <p>继承关系下构造由内而外,析构由外而内:</p>
-<p><img src="https://i.loli.net/2021/05/03/8gVGJsyPlzS2fUC.png" alt="继承2.png"></p>
+<p><img src="/images/面向对象编程上/继承2.png" alt="继承2.png"></p>
 <h4 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h4><p>成员函数有3种: 非虚函数、虚函数和纯虚函数</p>
 <ul>
 <li><p>非虚函數(non-virtual function): 不希望子类重新定义(override)的函数</p>
@@ -596,9 +595,9 @@ delete p;
 <li><p>纯虚函數(pure virtual function): 子类必须重新定义(override)的函数,没有默认定义</p>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2021/05/03/36BtWAkRM28PKNb.png" alt="虚函数1.png"></p>
+<p><img src="/images/面向对象编程上/虚函数1.png" alt="虚函数1.png"></p>
 <p>使用虚函数实现框架: 框架的作者想要实现一般的文件处理类,由框架的使用者定义具体的文件处理过程,则可以用虚函数来实现</p>
-<p><img src="https://i.loli.net/2021/05/03/5NTtbkGSUerKR6D.png" alt="虚函数2.png"></p>
+<p><img src="/images/面向对象编程上/虚函数2.png" alt="虚函数2.png"></p>
 <p>将框架中父类<code>CDocument</code>的<code>Serialize()</code>函数设为虚函数,由框架使用者编写的子类<code>CMyDoc</code>定义具体的文件处理过程,流程示意图和代码如下:</p>
 <table>
 <thead>
@@ -609,19 +608,19 @@ delete p;
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/1tJ49l7jqW5CsEI.png" alt="虚函数3.png"></td>
-<td style="text-align:center"><img src="https://i.loli.net/2021/05/03/yC1u3eVTSvdq5mi.png" alt="虚函数4.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/虚函数3.png" alt="虚函数3.png"></td>
+<td style="text-align:center"><img src="/images/面向对象编程上/虚函数3.png" alt="虚函数3.png"></td>
 </tr>
 </tbody>
 </table>
 <h2 id="面向对象设计范例"><a href="#面向对象设计范例" class="headerlink" title="面向对象设计范例"></a>面向对象设计范例</h2><h3 id="使用委托-继承实现Observer模式"><a href="#使用委托-继承实现Observer模式" class="headerlink" title="使用委托+继承实现Observer模式"></a>使用委托+继承实现Observer模式</h3><p>使用Observer模式实现多个窗口订阅同一份内容并保持实时更新</p>
-<p><img src="https://i.loli.net/2021/05/03/EyCGK8sauBWLrAH.png" alt="Observer1.png"></p>
+<p><img src="/images/面向对象编程上/Observer1.png" alt="Observer1.png"></p>
 <p>类结构图如下:</p>
-<p><img src="https://i.loli.net/2021/05/03/Wazmv34po8DOgVN.png" alt="Observer2.png"></p>
+<p><img src="/images/面向对象编程上/Observer2.png" alt="Observer2.png"></p>
 <h3 id="使用委托-继承实现Composite模式"><a href="#使用委托-继承实现Composite模式" class="headerlink" title="使用委托+继承实现Composite模式"></a>使用委托+继承实现Composite模式</h3><p>使用Composite模式实现多态,类结构图如下</p>
-<p><img src="https://i.loli.net/2021/05/03/NxI3sO4AghrlvRP.png" alt="Composite.png"></p>
+<p><img src="/images/面向对象编程上/Composite.png" alt="Composite.png"></p>
 <h3 id="使用委托-继承实现Prototype模式"><a href="#使用委托-继承实现Prototype模式" class="headerlink" title="使用委托+继承实现Prototype模式"></a>使用委托+继承实现Prototype模式</h3><p>Prototype模式示意图如下:</p>
-<p><img src="https://i.loli.net/2021/05/03/NclS4QdRjyt2FPf.png" alt="Prototype.png"></p>
+<p><img src="/images/面向对象编程上/Prototype.png" alt="Prototype.png"></p>
 
       
     </div>
@@ -732,7 +731,7 @@ delete p;
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="Austin Deng">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Austin Deng">
             
               <p class="site-author-name" itemprop="name">Austin Deng</p>
               <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>

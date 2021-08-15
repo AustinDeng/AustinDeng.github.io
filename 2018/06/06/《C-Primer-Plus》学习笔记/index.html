@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="第一章: 预备知识 编译步骤：  如果程序违反了语言规则，编译器将会生成错误信息。 但是，有时，真正的问题可能在标识之前； 有时，一个错误可能引发一连串的错误消息。  所以，改正错误时，先改正第一个错误； 如果找不到错误，请查看前一行；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://t1.picb.cc/uploads/2018/06/06/2BbETR.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/06/19/5b29029b3531d.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/20/5b2a01500fe26.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/20/5b2a01a8057e8.png">
-<meta property="og:updated_time" content="2021-05-02T14:01:44.232Z">
+<meta property="og:image" content="http://yoursite.com/images/CPP学习笔记/编译步骤.jpg">
+<meta property="og:image" content="http://yoursite.com/images/CPP学习笔记/运行结果.png">
+<meta property="og:image" content="http://yoursite.com/images/CPP学习笔记/运行结果1.png">
+<meta property="og:image" content="http://yoursite.com/images/CPP学习笔记/运行结果2.png">
+<meta property="og:updated_time" content="2021-08-15T14:50:19.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《C++ Primer Plus》学习笔记*">
 <meta name="twitter:description" content="第一章: 预备知识 编译步骤：  如果程序违反了语言规则，编译器将会生成错误信息。 但是，有时，真正的问题可能在标识之前； 有时，一个错误可能引发一连串的错误消息。  所以，改正错误时，先改正第一个错误； 如果找不到错误，请查看前一行；">
-<meta name="twitter:image" content="https://t1.picb.cc/uploads/2018/06/06/2BbETR.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/CPP学习笔记/编译步骤.jpg">
 
 
 
@@ -273,7 +273,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -358,7 +358,7 @@
 
       
         <h2 id="第一章-预备知识"><a href="#第一章-预备知识" class="headerlink" title="第一章: 预备知识"></a>第一章: 预备知识</h2><ul>
-<li>编译步骤：<br><img src="https://t1.picb.cc/uploads/2018/06/06/2BbETR.jpg" alt="编程步骤"></li>
+<li>编译步骤：<br><img src="/images/CPP学习笔记/编译步骤.jpg" alt="编译步骤"></li>
 </ul>
 <pre><code>如果程序违反了语言规则，编译器将会生成错误信息。
 但是，有时，真正的问题可能在标识之前；
@@ -430,7 +430,7 @@ char shirt_size = &quot;S&quot;; // 将 S 的内存地址赋值给 shirt_size
 <li>标准头文件 <code>&lt;cstring&gt;</code> 提供了字符串相关函数的声明。头文件<code>&lt;string&gt;</code>提供了 string 类。</li>
 <li><p><code>getline()</code>函数每次读取一行，它通过换行符来确定行尾，但不保存换行符；<code>get()</code>函数也是用来读取一行的输入，不过读取到行尾时，并不再读取并丢弃换行符，而是将其留在输入队列中。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"What year was your house built?\n"</span>;</span><br><span class="line">  <span class="keyword">int</span> year;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; year;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"What is its street address?\n"</span>;</span><br><span class="line">  <span class="keyword">char</span> address[<span class="number">80</span>];</span><br><span class="line">  <span class="built_in">cin</span>.getline(address, <span class="number">80</span>);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Year built: "</span> &lt;&lt; year &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Address: "</span> &lt;&lt; address &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Done!\n"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果<br><img src="https://i.loli.net/2018/06/19/5b29029b3531d.png" alt><br>我们发现，根本就没有输入地址的机会。<strong>原因在于</strong>，当 cin 读取年份，将回车键生成的换行符留在了输入队列中。后面的 cin.getline() 看到换行符后，将认为是一个空行，并将一个空的字符串赋值给了 address 数组。<br>解决方法：</p>
+<p>运行结果<br><img src="/images/CPP学习笔记/运行结果.png" alt="运行结果"><br>我们发现，根本就没有输入地址的机会。<strong>原因在于</strong>，当 cin 读取年份，将回车键生成的换行符留在了输入队列中。后面的 cin.getline() 看到换行符后，将认为是一个空行，并将一个空的字符串赋值给了 address 数组。<br>解决方法：</p>
 <p>  cin &gt;&gt; yuear;<br>  cin.get(); // or cin,get(ch);</p>
 <p>或者：</p>
 <p>  (cin &gt;&gt; year).get();</p>
@@ -508,7 +508,7 @@ else
     statement2
 </code></pre><p>  书上的例子：</p>
   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> ch;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Type, and I shall repeat!\n"</span>;</span><br><span class="line">  <span class="built_in">cin</span>.<span class="built_in">get</span>(ch);</span><br><span class="line">  <span class="keyword">while</span>(ch != <span class="string">'.'</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (ch == <span class="string">'\n'</span>)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; ch;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; ++ch; <span class="comment">// 此处改为 cout &lt;&lt; ch + 1 会发生什么？</span></span><br><span class="line">    <span class="built_in">cin</span>.<span class="built_in">get</span>(ch);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"\nDone!"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  运行结果：<br>  <img src="https://i.loli.net/2018/06/20/5b2a01500fe26.png" alt><br>  将第十七行改一下就变成这样了：<br>  <img src="https://i.loli.net/2018/06/20/5b2a01a8057e8.png" alt><br>  这涉及到 cout 处理不同的类型的转换。</p>
+<p>  运行结果：<br>  <img src="/images/CPP学习笔记/运行结果1.png" alt="运行结果1"><br>  将第十七行改一下就变成这样了：<br>  <img src="/images/CPP学习笔记/运行结果2.png" alt="运行结果2"><br>  这涉及到 cout 处理不同的类型的转换。</p>
 </li>
 <li><p>逻辑表达式</p>
 <ul>
@@ -667,7 +667,7 @@ cin.get();
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="Austin Deng">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Austin Deng">
             
               <p class="site-author-name" itemprop="name">Austin Deng</p>
               <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>

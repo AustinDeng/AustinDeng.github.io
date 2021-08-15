@@ -87,19 +87,19 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="概述OSI 参考模型 应用层：用户与网络的界面，为应用程序提供访问 ISO 的手段 表示层：数据解密加密、压缩、格式转换 会话层：会话管理和同步 传输层：流量控制、差错控制、服务质量、数据传输管理 报文段(TCP) 用户数据报(UDP)   网络层：流量控制、拥塞控制、差错控制、网际互连(分组、数据报) 数据链路层：成帧、差错控制、流量控制、传输管理(帧) 物理层：透明传输比特流(比特)  在IS">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/w2HVRBuDeSyZbFG.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/U9u41rF6Vxt3lmX.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/KAwG3zd2qpi1tbN.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/bLQ3muP2XySNWtR.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/hDzIl3C8fGkV65p.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/xNEjuUoPetrYF5v.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/AInOHWQX4tvmpVN.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/21/utCQdh5GgT76LJD.png">
-<meta property="og:updated_time" content="2021-04-23T15:41:26.148Z">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/CSMA.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/DHCP.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/路由协议.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/熟知端口.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/建立TCP.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/释放TCP.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/拥塞控制.png">
+<meta property="og:image" content="http://yoursite.com/images/计算机网络/电子邮件系统.png">
+<meta property="og:updated_time" content="2021-08-15T14:50:19.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算网络相关知识点整理">
 <meta name="twitter:description" content="概述OSI 参考模型 应用层：用户与网络的界面，为应用程序提供访问 ISO 的手段 表示层：数据解密加密、压缩、格式转换 会话层：会话管理和同步 传输层：流量控制、差错控制、服务质量、数据传输管理 报文段(TCP) 用户数据报(UDP)   网络层：流量控制、拥塞控制、差错控制、网际互连(分组、数据报) 数据链路层：成帧、差错控制、流量控制、传输管理(帧) 物理层：透明传输比特流(比特)  在IS">
-<meta name="twitter:image" content="https://i.loli.net/2020/08/21/w2HVRBuDeSyZbFG.png">
+<meta name="twitter:image" content="http://yoursite.com/images/计算机网络/CSMA.png">
 
 
 
@@ -277,7 +277,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -526,7 +526,7 @@
 <li><p>CSMA(先听再发)</p>
 </li>
 </ol>
-<p><img src="https://i.loli.net/2020/08/21/w2HVRBuDeSyZbFG.png" alt="CSMA.png"></p>
+<p><img src="/images/计算机网络/CSMA.png" alt="CSMA.png"></p>
 <ol start="4">
 <li>CSMA/CD(总线型，半双工)</li>
 </ol>
@@ -621,14 +621,14 @@
 <h2 id="DHCP-动态主机配置协议"><a href="#DHCP-动态主机配置协议" class="headerlink" title="DHCP(动态主机配置协议)"></a>DHCP(动态主机配置协议)</h2><ul>
 <li>用于给主机动态分配IP地址</li>
 <li>应用层协议，基于UDP</li>
-<li>广播方式进行交互<br><img src="https://i.loli.net/2020/08/21/U9u41rF6Vxt3lmX.png" alt="DHCP.png"></li>
+<li>广播方式进行交互<br><img src="/images/计算机网络/DHCP.png" alt="DHCP.png"></li>
 </ul>
 <h2 id="ICMP-网际控制报文"><a href="#ICMP-网际控制报文" class="headerlink" title="ICMP(网际控制报文)"></a>ICMP(网际控制报文)</h2><ul>
 <li>主机或者路由器报告差错和异常情况</li>
 <li>ICMP是IP层协议(网络层)</li>
 <li>PING工作在应用层，使用网络层的ICMP<br>  Traceroute/tracert工作在网络层</li>
 </ul>
-<h2 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h2><p><img src="https://i.loli.net/2020/08/21/KAwG3zd2qpi1tbN.png" alt="路由协议.png"></p>
+<h2 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h2><p><img src="/images/计算机网络/路由协议.png" alt="路由协议.png"></p>
 <h2 id="IP组播"><a href="#IP组播" class="headerlink" title="IP组播"></a>IP组播</h2><p>(IGMP协议)(224.0.0.0 ~ 239.255.255.255)</p>
 <ul>
 <li>基于UDP,尽最大努力交付 </li>
@@ -657,7 +657,7 @@
 <li>可靠性在应用层完成</li>
 <li>二进制反码运算求和取反<br>不为偶数个字节需要填入一个全0字节</li>
 </ul>
-<h2 id="熟知端口"><a href="#熟知端口" class="headerlink" title="熟知端口"></a>熟知端口</h2><p><img src="https://i.loli.net/2020/08/21/bLQ3muP2XySNWtR.png" alt="熟知端口.png"></p>
+<h2 id="熟知端口"><a href="#熟知端口" class="headerlink" title="熟知端口"></a>熟知端口</h2><p><img src="/images/计算机网络/熟知端口.png" alt="熟知端口.png"></p>
 <h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><ul>
 <li>面向字节流</li>
 <li>首部长度 20~60字节<ul>
@@ -697,9 +697,9 @@
 <h2 id="信道利用率"><a href="#信道利用率" class="headerlink" title="信道利用率"></a>信道利用率</h2><p>$信道利用率 = \frac{T_D}{T_D + RTT + T_A} = \frac{L/C}{T}$</p>
 <p>$其中，L为T内发送Lbit数据，C为发送方数据传输率，T为发送周期(T_D+RTT+T_A)$</p>
 <p>$信道吞吐率= 信道利用率*发送方的发送速率$</p>
-<h2 id="TCP链接的建立和释放"><a href="#TCP链接的建立和释放" class="headerlink" title="TCP链接的建立和释放"></a>TCP链接的建立和释放</h2><h3 id="建立链接"><a href="#建立链接" class="headerlink" title="建立链接"></a>建立链接</h3><p><img src="https://i.loli.net/2020/08/21/hDzIl3C8fGkV65p.png" alt="建立TCP.png"></p>
-<h3 id="释放链接"><a href="#释放链接" class="headerlink" title="释放链接"></a>释放链接</h3><p><img src="https://i.loli.net/2020/08/21/xNEjuUoPetrYF5v.png" alt="释放TCP.png"></p>
-<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><p><img src="https://i.loli.net/2020/08/21/AInOHWQX4tvmpVN.png" alt="拥塞控制.png"></p>
+<h2 id="TCP链接的建立和释放"><a href="#TCP链接的建立和释放" class="headerlink" title="TCP链接的建立和释放"></a>TCP链接的建立和释放</h2><h3 id="建立链接"><a href="#建立链接" class="headerlink" title="建立链接"></a>建立链接</h3><p><img src="/images/计算机网络/建立TCP.png" alt="建立TCP.png"></p>
+<h3 id="释放链接"><a href="#释放链接" class="headerlink" title="释放链接"></a>释放链接</h3><p><img src="/images/计算机网络/释放TCP.png" alt="释放TCP.png"></p>
+<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><p><img src="/images/计算机网络/拥塞控制.png" alt="拥塞控制.png"></p>
 <h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><ul>
 <li>P2P模型(所有计算机都对等)</li>
 <li>C/S模型</li>
@@ -727,7 +727,7 @@
 <li><p>电子邮件</p>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2020/08/21/utCQdh5GgT76LJD.png" alt="电子邮件系统.png"></p>
+<p><img src="/images/计算机网络/电子邮件系统.png" alt="电子邮件系统.png"></p>
 <p>Hotmail、Gmail在浏览器用HTTP，在不同邮件服务器之间才用SMTP<br>POP3在传输层使用明文密码</p>
 <ul>
 <li>万维网www<ul>
@@ -845,7 +845,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="Austin Deng">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Austin Deng">
             
               <p class="site-author-name" itemprop="name">Austin Deng</p>
               <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>

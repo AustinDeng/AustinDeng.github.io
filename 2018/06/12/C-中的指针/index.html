@@ -87,17 +87,17 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="一、指针 C++ 的指针很好理解，但是操作起来就有点难度了。而我对指针传参过程的理解也是费了点心思。主要是 JS 写得脑萎缩了。  先用一张图回忆一下指针   P 是一个 int 型的指针，指向内存 Ox6efff4  与指针配套食用的是取地址运算符&amp;amp;和解除引用运算符*，于是我们就需要知道三个属性：&amp;amp;p是指针的变量地址 p指针指向的地址（即存储数据的地址） *p指针指向的地址的值">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://t1.picb.cc/uploads/2018/06/12/2xG5a7.png">
-<meta property="og:image" content="https://t1.picb.cc/uploads/2018/06/12/2xHfft.png">
-<meta property="og:image" content="https://s1.ax1x.com/2018/06/13/COgG90.png">
-<meta property="og:image" content="https://s1.ax1x.com/2018/06/13/COgcjO.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/25/5b589b210e0c8.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/25/5b589c0ce8181.png">
-<meta property="og:updated_time" content="2021-04-05T08:46:05.973Z">
+<meta property="og:image" content="http://yoursite.com/images/CPP中的指针/1.png">
+<meta property="og:image" content="http://yoursite.com/images/CPP中的指针/2.png">
+<meta property="og:image" content="http://yoursite.com/images/CPP中的指针/3.png">
+<meta property="og:image" content="http://yoursite.com/images/CPP中的指针/4.png">
+<meta property="og:image" content="http://yoursite.com/images/CPP中的指针/5.png">
+<meta property="og:image" content="http://yoursite.com/images/CPP中的指针/6.png">
+<meta property="og:updated_time" content="2021-08-15T14:50:19.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ 中的指针">
 <meta name="twitter:description" content="一、指针 C++ 的指针很好理解，但是操作起来就有点难度了。而我对指针传参过程的理解也是费了点心思。主要是 JS 写得脑萎缩了。  先用一张图回忆一下指针   P 是一个 int 型的指针，指向内存 Ox6efff4  与指针配套食用的是取地址运算符&amp;amp;和解除引用运算符*，于是我们就需要知道三个属性：&amp;amp;p是指针的变量地址 p指针指向的地址（即存储数据的地址） *p指针指向的地址的值">
-<meta name="twitter:image" content="https://t1.picb.cc/uploads/2018/06/12/2xG5a7.png">
+<meta name="twitter:image" content="http://yoursite.com/images/CPP中的指针/1.png">
 
 
 
@@ -275,7 +275,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -365,7 +365,7 @@
 <li><p>先用一张图回忆一下指针</p>
 </li>
 </ul>
-<p><img src="https://t1.picb.cc/uploads/2018/06/12/2xG5a7.png" alt="C++Pointer"><br><code>P</code> 是一个 <code>int</code> 型的指针，指向内存 <code>Ox6efff4</code></p>
+<p><img src="/images/CPP中的指针/1.png" alt="C++Pointer"><br><code>P</code> 是一个 <code>int</code> 型的指针，指向内存 <code>Ox6efff4</code></p>
 <ul>
 <li>与指针配套食用的是取地址运算符<code>&amp;</code>和解除引用运算符<code>*</code>，于是我们就需要知道三个属性：<pre><code>&amp;p是指针的变量地址
 p指针指向的地址（即存储数据的地址）
@@ -379,7 +379,7 @@ p指针指向的地址（即存储数据的地址）
 <li><code>引用传递</code>：形参相当于是实参的别名，函数内部对形参的修改相当于对外部实参的修改，即传递的值会被修改。</li>
 <li><p><code>指针传递</code>：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">int</span> *x)</span></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*x: "</span> &lt;&lt; *x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  *x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> *p = &amp;a;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;a: "</span> &lt;&lt; &amp;a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"p: "</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  function(p);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br><img src="https://t1.picb.cc/uploads/2018/06/12/2xHfft.png" alt="result"></p>
+<p>运行结果：<br><img src="/images/CPP中的指针/2.png" alt="result"></p>
 </li>
 </ul>
 <h1 id="三、二级指针"><a href="#三、二级指针" class="headerlink" title="三、二级指针"></a>三、二级指针</h1><ul>
@@ -387,7 +387,7 @@ p指针指向的地址（即存储数据的地址）
 <li>指向指针的指针被称为二级指针。</li>
 <li>二级指针图示：</li>
 </ul>
-<p><img src="https://s1.ax1x.com/2018/06/13/COgG90.png" alt="pointer"><br>同样我们需要知道这些：</p>
+<p><img src="/images/CPP中的指针/3.png" alt="pointer"><br>同样我们需要知道这些：</p>
 <ul>
 <li><code>pp</code>是二级指针保存的地址</li>
 <li><code>&amp;pp</code>是二级指针的地址</li>
@@ -395,19 +395,19 @@ p指针指向的地址（即存储数据的地址）
 <li><p><code>**pp</code>是二级指针所指向的地址里面保存的地址（数据），该地址里面保存的数据（相当于<code>*p</code>）</p>
 <p>二级指针作为参数传递：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">int</span> **x)</span></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*x: "</span> &lt;&lt; *x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"**x: "</span> &lt;&lt; **x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  **x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> *p = &amp;a;</span><br><span class="line">  <span class="keyword">int</span> **pp = &amp;p;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;a: "</span> &lt;&lt; &amp;a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"p: "</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"pp: "</span> &lt;&lt; pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*pp: "</span> &lt;&lt; *pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"**pp: "</span> &lt;&lt; **pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  function(pp);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"a: "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br><img src="https://s1.ax1x.com/2018/06/13/COgcjO.png" alt="point2"></p>
+<p>运行结果：<br><img src="/images/CPP中的指针/4.png" alt="point2"></p>
 <p>程序说明：</p>
 <ul>
 <li>这么简单就不用说明了吧。</li>
 <li>不过要注意的是，因为传的是二级指针，所以函数原型中声明参数的时候需要<code>int **x</code>使用两个星号。</li>
 </ul>
 </li>
-<li><p>来个更直观一点的图示:<br><img src="https://i.loli.net/2018/07/25/5b589b210e0c8.png" alt="截图20180725234511.png"><br>让我们来看看各个变量代表的值是什么:</p>
+<li><p>来个更直观一点的图示:<br><img src="/images/CPP中的指针/5.png" alt="截图20180725234511.png"><br>让我们来看看各个变量代表的值是什么:</p>
   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">int</span> *p = &amp;x;</span><br><span class="line">  <span class="keyword">int</span> **pp = &amp;p;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;x: "</span> &lt;&lt; &amp;x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"p: "</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*p: "</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;p: "</span> &lt;&lt; &amp;p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"pp: "</span> &lt;&lt; pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*pp: "</span> &lt;&lt; *pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"**pp: "</span> &lt;&lt; **pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"&amp;pp: "</span> &lt;&lt; &amp;pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"*&amp;pp: "</span> &lt;&lt; *&amp;pp &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>运行结果: </p>
-<p>  <img src="https://i.loli.net/2018/07/25/5b589c0ce8181.png" alt="20180725234912.png"></p>
+<p>  <img src="/images/CPP中的指针/6.png" alt="20180725234912.png"></p>
 <p>所以得出一个结论:</p>
 <pre><code>x == *p == **p;
 &amp;x == p == *pp;
@@ -577,7 +577,7 @@ int *p = &amp;gorp;
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="Austin Deng">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Austin Deng">
             
               <p class="site-author-name" itemprop="name">Austin Deng</p>
               <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>

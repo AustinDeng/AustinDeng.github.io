@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="进程琐碎的知识点 线程是独立调度的基本单位(不拥有系统资源)进程是拥有资源的基本单位  进程实体包括：程序段、相关数据段、PCB  周转时间 = 作业完成时间 - 作业提交时间(即进入内存的时间)等待时间 = 周转时间 - 执行时间大小带权周转时间 = 作业周转时间 / 作业实际运行时间">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2020/08/19/spG8S9DBkM7jmNv.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/19/Lm3lzcXKJY47oAp.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/19/5IvYal1EtrNFpxo.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/19/9NUF7sgbHcVxpKe.png">
-<meta property="og:image" content="https://i.loli.net/2020/08/19/5NoT83FHQyZ4KjC.png">
-<meta property="og:updated_time" content="2021-04-05T08:46:05.979Z">
+<meta property="og:image" content="http://yoursite.com/images/操作系统/缓冲区.png">
+<meta property="og:image" content="http://yoursite.com/images/操作系统/假脱机技术.png">
+<meta property="og:image" content="http://yoursite.com/images/操作系统s/系统文件物理结构的实现.png">
+<meta property="og:image" content="http://yoursite.com/images/操作系统/文件系统层次.png">
+<meta property="og:image" content="http://yoursite.com/images/操作系统/磁盘的存取时间.png">
+<meta property="og:updated_time" content="2021-08-15T14:50:19.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统相关知识点整理">
 <meta name="twitter:description" content="进程琐碎的知识点 线程是独立调度的基本单位(不拥有系统资源)进程是拥有资源的基本单位  进程实体包括：程序段、相关数据段、PCB  周转时间 = 作业完成时间 - 作业提交时间(即进入内存的时间)等待时间 = 周转时间 - 执行时间大小带权周转时间 = 作业周转时间 / 作业实际运行时间">
-<meta name="twitter:image" content="https://i.loli.net/2020/08/19/spG8S9DBkM7jmNv.png">
+<meta name="twitter:image" content="http://yoursite.com/images/操作系统/缓冲区.png">
 
 
 
@@ -274,7 +274,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -591,7 +591,7 @@
 <li>与设备的接口</li>
 <li>I/O控制逻辑</li>
 </ul>
-<h2 id="核心子系统"><a href="#核心子系统" class="headerlink" title="核心子系统"></a>核心子系统</h2><h3 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h3><p><img src="https://i.loli.net/2020/08/19/spG8S9DBkM7jmNv.png" alt="缓冲区.png"></p>
+<h2 id="核心子系统"><a href="#核心子系统" class="headerlink" title="核心子系统"></a>核心子系统</h2><h3 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h3><p><img src="/images/操作系统/缓冲区.png" alt="缓冲区.png"></p>
 <h4 id="单缓冲"><a href="#单缓冲" class="headerlink" title="单缓冲"></a>单缓冲</h4><p>每块数据用时Max(C, T) + M</p>
 <h4 id="双缓冲"><a href="#双缓冲" class="headerlink" title="双缓冲"></a>双缓冲</h4><p>每块数据用时Max(C+M, T)</p>
 <ul>
@@ -628,7 +628,7 @@
 <li>提高I/O速度</li>
 <li>实现虚拟设备功能</li>
 </ul>
-<p><img src="https://i.loli.net/2020/08/19/Lm3lzcXKJY47oAp.png" alt="假脱机技术.png"></p>
+<p><img src="/images/操作系统/假脱机技术.png" alt="假脱机技术.png"></p>
 <h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h2><h3 id="无结构文件-流式文件"><a href="#无结构文件-流式文件" class="headerlink" title="无结构文件(流式文件)"></a>无结构文件(流式文件)</h3><ul>
 <li>源程序文件</li>
 <li>目标代码文件</li>
@@ -649,9 +649,9 @@
 <li>基于索引结点(硬链接)</li>
 <li>利用符号符实现(软链接)  —&gt; 记录的是文件的路径名</li>
 </ul>
-<h2 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h2><p><img src="https://i.loli.net/2020/08/19/5IvYal1EtrNFpxo.png" alt="系统文件物理结构的实现.png"></p>
-<h2 id="文件系统层次"><a href="#文件系统层次" class="headerlink" title="文件系统层次"></a>文件系统层次</h2><p><img src="https://i.loli.net/2020/08/19/9NUF7sgbHcVxpKe.png" alt="文件系统层次.png"></p>
-<h2 id="磁盘的组织与管理："><a href="#磁盘的组织与管理：" class="headerlink" title="磁盘的组织与管理："></a>磁盘的组织与管理：</h2><h3 id="存取时间"><a href="#存取时间" class="headerlink" title="存取时间"></a>存取时间</h3><p><img src="https://i.loli.net/2020/08/19/5NoT83FHQyZ4KjC.png" alt="磁盘的存取时间.png"></p>
+<h2 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h2><p><img src="/images/操作系统s/系统文件物理结构的实现.png" alt="系统文件物理结构的实现.png"></p>
+<h2 id="文件系统层次"><a href="#文件系统层次" class="headerlink" title="文件系统层次"></a>文件系统层次</h2><p><img src="/images/操作系统/文件系统层次.png" alt="文件系统层次.png"></p>
+<h2 id="磁盘的组织与管理："><a href="#磁盘的组织与管理：" class="headerlink" title="磁盘的组织与管理："></a>磁盘的组织与管理：</h2><h3 id="存取时间"><a href="#存取时间" class="headerlink" title="存取时间"></a>存取时间</h3><p><img src="/images/操作系统/磁盘的存取时间.png" alt="磁盘的存取时间.png"></p>
 <h3 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h3><ul>
 <li>FCFS: 公平、简单；寻道久，仅适用I/O少的场合</li>
 <li>SSTF: 性能比FCFS好；可能产生”饥饿”</li>
@@ -786,7 +786,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="Austin Deng">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Austin Deng">
             
               <p class="site-author-name" itemprop="name">Austin Deng</p>
               <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
