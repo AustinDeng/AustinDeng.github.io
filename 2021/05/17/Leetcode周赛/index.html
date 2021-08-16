@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode,周赛,">
+  <meta name="keywords" content="周赛,Leetcode,">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="第 239 场周赛 到目标元素的最小值签到题  将字符串拆分为递减的连续值这一题没有通过很可惜了，问题在于错误理解了INT的最大值的含义，在二进制表示中INT的最大值是32位的，而在十进制中，INT的最大值是2147483647，只有10位，题目给的字符串长度最大是20位  邻位交换的最小次数下一个排列没有想到，舍友提醒之后，对于统计交换的次数没有思考，可以采用常规贪心算法即可。  包含每个查询的">
-<meta name="keywords" content="Leetcode,周赛">
+<meta name="keywords" content="周赛,Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode周赛">
 <meta property="og:url" content="http://yoursite.com/2021/05/17/Leetcode周赛/index.html">
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="第 239 场周赛 到目标元素的最小值签到题  将字符串拆分为递减的连续值这一题没有通过很可惜了，问题在于错误理解了INT的最大值的含义，在二进制表示中INT的最大值是32位的，而在十进制中，INT的最大值是2147483647，只有10位，题目给的字符串长度最大是20位  邻位交换的最小次数下一个排列没有想到，舍友提醒之后，对于统计交换的次数没有思考，可以采用常规贪心算法即可。  包含每个查询的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-06-16T03:18:50.096Z">
+<meta property="og:updated_time" content="2021-08-16T14:23:47.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode周赛">
 <meta name="twitter:description" content="第 239 场周赛 到目标元素的最小值签到题  将字符串拆分为递减的连续值这一题没有通过很可惜了，问题在于错误理解了INT的最大值的含义，在二进制表示中INT的最大值是32位的，而在十进制中，INT的最大值是2147483647，只有10位，题目给的字符串长度最大是20位  邻位交换的最小次数下一个排列没有想到，舍友提醒之后，对于统计交换的次数没有思考，可以采用常规贪心算法即可。  包含每个查询的">
@@ -420,7 +420,22 @@
 <ol start="4">
 <li><a href="https://leetcode-cn.com/problems/stone-game-viii/" target="_blank" rel="noopener">石子游戏 VIII</a><br>前缀和+逆序动态规划</li>
 </ol>
-<h2 id="第-53-场双周赛"><a href="#第-53-场双周赛" class="headerlink" title="第 53 场双周赛"></a>第 53 场双周赛</h2>
+<h2 id="第-254-场周赛"><a href="#第-254-场周赛" class="headerlink" title="第 254 场周赛"></a>第 254 场周赛</h2><ol>
+<li><p><a href="https://leetcode-cn.com/problems/number-of-strings-that-appear-as-substrings-in-word/" target="_blank" rel="noopener">作为子字符串出现在单词中的字符串数目</a><br>签到题，考点是字符串的匹配。题解给了KMP算法，比赛应该没人用KMP吧。。。调接口实现只需要几行代码就好了。。。</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/array-with-elements-not-equal-to-average-of-neighbors/" target="_blank" rel="noopener">构造元素不等于两相邻元素平均值的数组</a><br>这道题想出来了，但是没有完全想出来。<br>因为没有完全想出来所以想了一个回溯算法，类似全排列。。。很尴尬<br>最后还是用一开始的思路写出来了</p>
+</li>
+</ol>
+<p>此处有一处坑需要注意：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> curr = ((<span class="keyword">double</span>)nums[i<span class="number">-1</span>]+(<span class="keyword">double</span>)nums[i+<span class="number">1</span>])/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">double</span> curr = (nums[i<span class="number">-1</span>]+nums[i+<span class="number">1</span>])/<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>这两行代码得到的 <code>curr</code> 的值有时候是不一样的。。。。</p>
+<ol start="3">
+<li><a href="https://leetcode-cn.com/problems/minimum-non-zero-product-of-the-array-elements/" target="_blank" rel="noopener">数组元素的最小非零乘积</a><br>这题做不出来。<br>题解：数学推导+快速幂运算</li>
+</ol>
+<ol start="4">
+<li><a href="https://leetcode-cn.com/problems/last-day-where-you-can-still-cross/" target="_blank" rel="noopener">你能穿过矩阵的最后一天</a><br>二分查找 + 广度优先搜索</li>
+</ol>
+
       
     </div>
     
@@ -437,9 +452,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
-          
             <a href="/tags/周赛/" rel="tag"># 周赛</a>
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
           
         </div>
       
@@ -598,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-239-场周赛"><span class="nav-number">1.</span> <span class="nav-text">第 239 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-240-场周赛"><span class="nav-number">2.</span> <span class="nav-text">第 240 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-52-场双周赛"><span class="nav-number">3.</span> <span class="nav-text">第 52 场双周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-241-场周赛"><span class="nav-number">4.</span> <span class="nav-text">第 241 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-242-场周赛"><span class="nav-number">5.</span> <span class="nav-text">第 242 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-53-场双周赛"><span class="nav-number">6.</span> <span class="nav-text">第 53 场双周赛</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-239-场周赛"><span class="nav-number">1.</span> <span class="nav-text">第 239 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-240-场周赛"><span class="nav-number">2.</span> <span class="nav-text">第 240 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-52-场双周赛"><span class="nav-number">3.</span> <span class="nav-text">第 52 场双周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-241-场周赛"><span class="nav-number">4.</span> <span class="nav-text">第 241 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-242-场周赛"><span class="nav-number">5.</span> <span class="nav-text">第 242 场周赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-254-场周赛"><span class="nav-number">6.</span> <span class="nav-text">第 254 场周赛</span></a></li></ol></div>
             
 
           </div>
