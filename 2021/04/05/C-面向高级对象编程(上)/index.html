@@ -87,8 +87,8 @@
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.dengxiaoxu.com/blog/2021/04/05/C-面向高级对象编程(上)/images/面向对象编程上/头文件结构.png">
-<meta property="og:image" content="http://www.dengxiaoxu.com/blog/2021/04/05/C-面向高级对象编程(上)/images/面向对象编程上/构造函数参数.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/头文件结构.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/构造函数参数.png">
 <meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/常量成员函数.png">
 <meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/参数传递.png">
 <meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/返回值传递.png">
@@ -128,11 +128,11 @@
 <meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/Observer2.png">
 <meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/Composite.png">
 <meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/Prototype.png">
-<meta property="og:updated_time" content="2021-09-07T13:10:19.817Z">
+<meta property="og:updated_time" content="2021-09-07T13:14:35.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++: 面向高级对象编程(上)">
 <meta name="twitter:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(guard)：防止头文件被重复包含 前置声明(forward declarat">
-<meta name="twitter:image" content="http://www.dengxiaoxu.com/blog/2021/04/05/C-面向高级对象编程(上)/images/面向对象编程上/头文件结构.png">
+<meta name="twitter:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/头文件结构.png">
 
 
 
@@ -395,7 +395,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。</p>
-<h2 id="基于对象-Object-Based-的程序设计"><a href="#基于对象-Object-Based-的程序设计" class="headerlink" title="基于对象(Object Based)的程序设计"></a>基于对象(Object Based)的程序设计</h2><h3 id="不带有指针成员变量的类——以复数类complex为例"><a href="#不带有指针成员变量的类——以复数类complex为例" class="headerlink" title="不带有指针成员变量的类——以复数类complex为例"></a>不带有指针成员变量的类——以复数类complex为例</h3><h4 id="头文件的结构"><a href="#头文件的结构" class="headerlink" title="头文件的结构"></a>头文件的结构</h4><p><img src="./images/面向对象编程上/头文件结构.png" alt="头文件结构.PNG"></p>
+<h2 id="基于对象-Object-Based-的程序设计"><a href="#基于对象-Object-Based-的程序设计" class="headerlink" title="基于对象(Object Based)的程序设计"></a>基于对象(Object Based)的程序设计</h2><h3 id="不带有指针成员变量的类——以复数类complex为例"><a href="#不带有指针成员变量的类——以复数类complex为例" class="headerlink" title="不带有指针成员变量的类——以复数类complex为例"></a>不带有指针成员变量的类——以复数类complex为例</h3><h4 id="头文件的结构"><a href="#头文件的结构" class="headerlink" title="头文件的结构"></a>头文件的结构</h4><p><img src="/images/面向对象编程上/头文件结构.png" alt="头文件结构.PNG"></p>
 <p>由上图可知，头文件的结构一般包含以下四个部分：</p>
 <ul>
 <li>防卫式声明(guard)：防止头文件被重复包含</li>
@@ -415,7 +415,7 @@
 <h3 id="函数设计"><a href="#函数设计" class="headerlink" title="函数设计"></a>函数设计</h3><h4 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h4><p>在类声明内定义的函数将自动转换为<code>inline</code>函数<br>在类声明以外定义的函数，需要加上<code>inline</code>关键字</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="built_in">complex</span>&amp; x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x.imag();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>构造函数可以使用默认实参，并且采用列表初始化(initialization list)</p>
-<p><img src="./images/面向对象编程上/构造函数参数.png" alt="构造函数参数.png"></p>
+<p><img src="/images/面向对象编程上/构造函数参数.png" alt="构造函数参数.png"></p>
 <h4 id="常量成员函数"><a href="#常量成员函数" class="headerlink" title="常量成员函数"></a>常量成员函数</h4><p>如果类中的成员函数不会改变成员变量，则应当加上<code>const</code>关键字</p>
 <p><img src="/images/面向对象编程上/常量成员函数.png" alt="常量成员函数.png"></p>
 <p>若这类函数不加以const修饰,则常量对象将不能调用这些函数</p>
