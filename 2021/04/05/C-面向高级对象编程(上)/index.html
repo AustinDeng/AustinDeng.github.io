@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,21 +48,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
 
 
 
@@ -83,62 +83,62 @@
 <meta name="keywords" content="面向对象,OOP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++: 面向高级对象编程(上)">
-<meta property="og:url" content="http://yoursite.com/2021/04/05/C-面向高级对象编程(上)/index.html">
+<meta property="og:url" content="http://www.dengxiaoxu.com/blog/2021/04/05/C-面向高级对象编程(上)/index.html">
 <meta property="og:site_name" content="邓某的杂货铺">
 <meta property="og:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构![头文件结构.PNG]/images/面向对象编程上/头文件结构.png) 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/构造函数参数.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/常量成员函数.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/参数传递.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/返回值传递.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/友元1.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/友元2.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载+=.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载+=2.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载+=.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/重载流输出.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string头文件.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string类定义.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/构造和析构.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/拷贝构造函数.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/检测自我赋值.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/不检测自我赋值.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/堆栈.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/new.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/delete.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string_new.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string_delete.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/complex内存分布.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string内存分布.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/complex数组.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/string数组.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/delete_array.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/static.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/复合1.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/复合2.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/委托.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/继承1.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/继承2.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数1.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数2.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数3.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/虚函数3.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Observer1.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Observer2.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Composite.png">
-<meta property="og:image" content="http://yoursite.com/images/面向对象编程上/Prototype.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/构造函数参数.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/常量成员函数.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/参数传递.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/返回值传递.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/友元1.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/友元2.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/重载+=.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/重载+=2.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/重载+=.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/重载流输出.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/string头文件.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/string类定义.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/构造和析构.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/拷贝构造函数.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/检测自我赋值.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/不检测自我赋值.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/堆栈.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/new.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/delete.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/string_new.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/string_delete.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/complex内存分布.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/string内存分布.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/complex数组.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/string数组.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/delete_array.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/static.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/复合1.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/复合2.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/委托.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/继承1.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/继承2.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/虚函数1.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/虚函数2.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/虚函数3.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/虚函数3.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/Observer1.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/Observer2.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/Composite.png">
+<meta property="og:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/Prototype.png">
 <meta property="og:updated_time" content="2021-08-15T14:50:19.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++: 面向高级对象编程(上)">
 <meta name="twitter:description" content="前言最近看了侯捷老师关于C++的课——《C++: 面向高级对象编程（上）》，感觉收益匪浅，醍醐灌顶，因此将课程中学到的一些比较重要的内容整理出来。 基于对象(Object Based)的程序设计不带有指针成员变量的类——以复数类complex为例头文件的结构![头文件结构.PNG]/images/面向对象编程上/头文件结构.png) 由上图可知，头文件的结构一般包含以下四个部分：  防卫式声明(g">
-<meta name="twitter:image" content="http://yoursite.com/images/面向对象编程上/构造函数参数.png">
+<meta name="twitter:image" content="http://www.dengxiaoxu.com/images/面向对象编程上/构造函数参数.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/blog/',
     scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -161,7 +161,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/04/05/C-面向高级对象编程(上)/">
+  <link rel="canonical" href="http://www.dengxiaoxu.com/blog/2021/04/05/C-面向高级对象编程(上)/">
 
 
 
@@ -195,7 +195,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">邓某的杂货铺</span>
         <span class="logo-line-after"><i></i></span>
@@ -223,7 +223,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/blog/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
@@ -233,7 +233,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/blog/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
@@ -243,7 +243,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/blog/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
@@ -253,7 +253,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/blog/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
@@ -263,7 +263,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/blog/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
@@ -304,12 +304,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/05/C-面向高级对象编程(上)/">
+    <link itemprop="mainEntityOfPage" href="http://www.dengxiaoxu.com/blog/blog/2021/04/05/C-面向高级对象编程(上)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Austin Deng">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -356,7 +356,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
+                  <a href="/blog/categories/C/" itemprop="url" rel="index">
                     <span itemprop="name">C++</span>
                   </a>
                 </span>
@@ -638,9 +638,9 @@ delete p;
       
         <div class="post-tags">
           
-            <a href="/tags/面向对象/" rel="tag"># 面向对象</a>
+            <a href="/blog/tags/面向对象/" rel="tag"># 面向对象</a>
           
-            <a href="/tags/OOP/" rel="tag"># OOP</a>
+            <a href="/blog/tags/OOP/" rel="tag"># OOP</a>
           
         </div>
       
@@ -653,7 +653,7 @@ delete p;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/04/05/Python 中的装饰器/" rel="next" title="Python中的装饰器">
+              <a href="/blog/2021/04/05/Python 中的装饰器/" rel="next" title="Python中的装饰器">
                 <i class="fa fa-chevron-left"></i> Python中的装饰器
               </a>
             
@@ -663,7 +663,7 @@ delete p;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/04/05/C-面经/" rel="prev" title="C++: 面经*">
+              <a href="/blog/2021/04/05/C-面经/" rel="prev" title="C++: 面经*">
                 C++: 面经* <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -731,7 +731,7 @@ delete p;
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Austin Deng">
+              <img class="site-author-image" itemprop="image" src="/blog/images/avatar.jpg" alt="Austin Deng">
             
               <p class="site-author-name" itemprop="name">Austin Deng</p>
               <p class="site-description motion-element" itemprop="description">凡心所向，素履以往；生如逆旅，一苇以航。</p>
@@ -742,7 +742,7 @@ delete p;
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/blog/archives/">
               
                   <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
@@ -754,7 +754,7 @@ delete p;
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                <a href="/blog/categories/index.html">
                   <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
@@ -765,7 +765,7 @@ delete p;
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
+                <a href="/blog/tags/index.html">
                   <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
@@ -890,64 +890,64 @@ delete p;
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
