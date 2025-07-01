@@ -1,0 +1,26 @@
+{
+  "name": "my_blog",
+  "description": "A project of blog",
+  "version": "2.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "docs:build": "vuepress-webpack build src",
+    "docs:clean-dev": "vuepress-webpack dev src --clean-cache",
+    "docs:dev": "vuepress-webpack dev src",
+    "docs:update-package": "pnpm dlx vp-update"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-webpack": "2.0.0-rc.23",
+    "sass-embedded": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "vue": "^3.5.16",
+    "vuepress": "2.0.0-rc.23",
+    "vuepress-theme-hope": "2.0.0-rc.93"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
