@@ -1,5 +1,5 @@
 ---
-cover: /assets/images/cover2.jpg
+cover: /assets/images/cover2.jpg # 封面图片
 icon: pen-to-square
 date: 2022-01-12
 category:
@@ -8,7 +8,7 @@ tag:
   - red
   - round
 star: true
-sticky: true
+# sticky: true  # 置顶
 ---
 
 # Tomato
