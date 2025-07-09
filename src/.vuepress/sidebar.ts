@@ -4,6 +4,13 @@ export default sidebar({
   "/": [
     "",
     {
+      text: "游戏杂谈",
+      icon: "book",
+      prefix: "game/",
+      link: "game/",
+      children: "structure",
+    },
+    {
       text: "Demo",
       icon: "laptop-code",
       prefix: "demo/",
