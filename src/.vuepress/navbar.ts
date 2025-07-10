@@ -2,17 +2,17 @@ import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
   "/",
-  "/demo/",
+  // "/demo/",
   "/document/",
   {
     text: "Posts",
     icon: "pen-to-square",
-    prefix: "/posts/",
+    prefix: "/game/",
     children: [
       {
         text: "游戏杂谈",
         icon: "pen-to-square",
-        prefix: "游戏杂谈/",
+        prefix: "",
         children: [
           { text: "塞尔达：旷野之息", icon: "material-symbols:videogame-asset-outline", link: "塞尔达：旷野之息" },
         ],
@@ -53,9 +53,9 @@ export default navbar([
       // "strawberry",
     ],
   },
-  {
-    text: "V2 Docs",
-    icon: "book",
-    link: "https://theme-hope.vuejs.press/",
-  },
+  // {
+  //   text: "V2 Docs",
+  //   icon: "book",
+  //   link: "https://theme-hope.vuejs.press/",
+  // },
 ]);
