@@ -2,7 +2,7 @@
 home: true
 layout: Blog
 icon: house
-title: Blog Home
+title: 主页
 heroImage: /avatar.png
 heroText: 凡心所向, 素履以往; 生如逆旅, 一苇以航
 # tagline: 凡心所向, 素履以往; 生如逆旅, 一苇以航

@@ -10,6 +10,20 @@ export default sidebar({
       link: "game/",
       children: "structure",
     },
+    {
+      text: "闲窗偶录",
+      icon: "book",
+      prefix: "essay/",
+      link: "essay/",
+      children: "structure",
+    },
+    {
+      text: "邓某的书架",
+      icon: "book",
+      prefix: "redingnotes/",
+      link: "redingnotes/",
+      children: "structure",
+    },
     // {
     //   text: "Demo",
     //   icon: "laptop-code",
@@ -56,10 +70,31 @@ export default sidebar({
   "/document/":[
     "",
     {
-      text: "hbase",
-      icon: "book",
+      text: "HBase",
+      icon: "database",
       prefix: "hbase/",
       link: "hbase/",
+      children: "structure"
+    },
+    {
+      text: "AI",
+      icon: "computer",
+      prefix: "ai/",
+      link: "ai/",
+      children: "structure"
+    },
+    {
+      text: "算法",
+      icon: "rainbow",
+      prefix: "algorithm/",
+      link: "algorithm/",
+      children: "structure"
+    },
+    {
+      text: "理财知识",
+      icon: "star",
+      prefix: "financial/",
+      link: "financial/",
       children: "structure"
     },
     // {
