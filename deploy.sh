@@ -18,4 +18,5 @@ git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:AustinDeng/AustinDeng.github.io.git main
+# 把 Blog_Source 推到远程仓库的main分支就能自动构建gh-pages分支了
+git push -f git@github.com:AustinDeng/AustinDeng.github.io.git main:main
