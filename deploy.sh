@@ -3,7 +3,7 @@
 # 确保脚本抛出遇到的错误
 set -e
 
-source ~/.nvm/nvm.sh
+#source ~/.nvm/nvm.sh
 
 nvm use 22
 
