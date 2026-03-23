@@ -14,7 +14,7 @@ export default navbar([
         icon: "pen-to-square",
         prefix: "",
         children: [
-          { text: "塞尔达：旷野之息", icon: "material-symbols:videogame-asset-outline", link: "/game/塞尔达：旷野之息" },
+          { text: "塞尔达：旷野之息", link: "/game/塞尔达：旷野之息" },
         ],
       },
       {
@@ -22,15 +22,15 @@ export default navbar([
         icon: "pen-to-square",
         prefix: "",
         children: [
-          { text: "赤壁赋", icon: "material-symbols:videogame-asset-outline", link: "/essay/赤壁赋" },
+          { text: "古文观止", link: "/essay/古文观止" },
         ],
       },
       {
         text: "邓某的书架",
-        icon: "pen-to-square",
+        icon: "blue_book",
         prefix: "",
         children: [
-          { text: "苏东坡传", icon: "material-symbols:videogame-asset-outline", link: "/redingnotes/苏东坡传" },
+          { text: "苏东坡传", link: "/redingnotes/苏东坡传" },
         ],
       }
       // {

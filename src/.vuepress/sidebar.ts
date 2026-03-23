@@ -5,7 +5,7 @@ export default sidebar({
     "",
     {
       text: "游戏杂谈",
-      icon: "book",
+      icon: "material-symbols:videogame-asset-outline",
       prefix: "game/",
       link: "game/",
       children: "structure",
@@ -19,7 +19,7 @@ export default sidebar({
     },
     {
       text: "邓某的书架",
-      icon: "book",
+      icon: "scroll",
       prefix: "redingnotes/",
       link: "redingnotes/",
       children: "structure",
@@ -92,7 +92,7 @@ export default sidebar({
     },
     {
       text: "理财知识",
-      icon: "star",
+      icon: "key",
       prefix: "financial/",
       link: "financial/",
       children: "structure"
