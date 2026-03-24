@@ -37,6 +37,7 @@ export default hopeTheme({
   },
 
   blog: {
+    articlePerPage: 20,
     description: "Just a rookie.",
     intro: "/intro.html",
     medias: {
