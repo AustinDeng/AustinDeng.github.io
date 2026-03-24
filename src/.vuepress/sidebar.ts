@@ -77,10 +77,10 @@ export default sidebar({
       children: "structure"
     },
     {
-      text: "AI",
+      text: "人工智能",
       icon: "computer",
-      prefix: "ai/",
-      link: "ai/",
+      prefix: "人工智能/",
+      link: "人工智能/",
       children: "structure"
     },
     {
