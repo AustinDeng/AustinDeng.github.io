@@ -101,6 +101,11 @@ export default hopeTheme({
     mark: true,
     plantuml: true,
     spoiler: true,
+    highlighter: {
+      type: "shiki", // or "prismjs"
+      // langs: ['ts', 'json', 'vue', 'md', 'bash', 'diff'],
+      collapsedLines: true,
+    },
     stylize: [
       {
         matcher: "Recommended",

@@ -1,4 +1,5 @@
 import { defineUserConfig } from "vuepress";
+// import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 import theme from "./theme.js";
 
@@ -12,6 +13,12 @@ export default defineUserConfig({
 
   theme,
 
+  // plugins: [
+  //   shikiPlugin({
+  //     // 配置项
+  //     langs: ['ts', 'json', 'vue', 'md', 'bash', 'diff'],
+  //   }),
+  // ],
   
 
   // Enable it with pwa

@@ -30,7 +30,7 @@ cover: /assets/posts/封面/2.jpg
 空间复杂度`O(n)`，需要一个额外的map
 
 **代码**
-``` C++
+```C++ :collapsed-lines=25
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -161,7 +161,7 @@ int main() {
   1) 提供计算哈希值的函子（或特化 std::hash）
   2) 重载 ==运算符或提供相等比较函子
 
-```C++
+```C++ 
 #include <iostream>
 #include <map>
 #include <unordered_map>
@@ -187,7 +187,7 @@ int main() {
 
 
 **代码**
-``` C++
+``` C++ :collapsed-lines=25
 #include <vector>
 #include <string>
 #include <unordered_map>
@@ -336,7 +336,7 @@ int main() {
 
 **代码**
 
-``` C++
+``` C++ :collapsed-lines=25
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
@@ -445,41 +445,437 @@ int main() {
 ```
 
 
+## 4. [移动零](https://leetcode.cn/problems/move-zeroes/description/?envType=study-plan-v2&envId=top-100-liked)[easy]
+
+给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+请注意 ，必须在不复制数组的情况下原地对数组进行操作。
+
+**示例 1:**
+>输入: nums = [0,1,0,3,12]
+>输出: [1,3,12,0,0]
+
+**示例 2:**
+>输入: nums = [0]
+>输出: [0]
+ 
+
+**提示:**
+`1 <= nums.length <= 104`
+`-2^31 <= nums[i] <= 2^31 - 1`
+
+**思路**
+
+思路1：使用双指针，左指针指向当前已经处理好的序列的尾部，右指针指向待处理序列的头部
+思路2：两次遍历，记录零的个数，填入到数组尾部
+
+
+**代码**
+``` C++ :collapsed-lines=25
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+using namespace std;
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int cnt = 0;
+        int idx = 0;
+        for(int i=0; i<nums.size(); i++) {
+            if(nums[i] == 0) {
+                cnt += 1;
+            } else {
+                nums[idx] = nums[i];
+                idx += 1;
+            }
+        }
+
+        for(int i=nums.size()-1; i>=0 && cnt>0; i--) {
+            nums[i] = 0;
+            cnt--;
+        }
+    }
+};
+
+// 测试函数
+void testMoveZeroes() {
+    Solution solution;
+    
+    // 测试用例1: 普通情况
+    {
+        vector<int> nums = {0, 1, 0, 3, 12};
+        vector<int> expected = {1, 3, 12, 0, 0};
+        solution.moveZeroes(nums);
+        cout << "测试用例1: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    // 测试用例2: 全零数组
+    {
+        vector<int> nums = {0, 0, 0, 0};
+        vector<int> expected = {0, 0, 0, 0};
+        solution.moveZeroes(nums);
+        cout << "测试用例2: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    // 测试用例3: 无零数组
+    {
+        vector<int> nums = {1, 2, 3, 4, 5};
+        vector<int> expected = {1, 2, 3, 4, 5};
+        solution.moveZeroes(nums);
+        cout << "测试用例3: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    // 测试用例4: 单元素零
+    {
+        vector<int> nums = {0};
+        vector<int> expected = {0};
+        solution.moveZeroes(nums);
+        cout << "测试用例4: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    // 测试用例5: 单元素非零
+    {
+        vector<int> nums = {5};
+        vector<int> expected = {5};
+        solution.moveZeroes(nums);
+        cout << "测试用例5: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    // 测试用例6: 零在末尾
+    {
+        vector<int> nums = {1, 2, 3, 0, 0};
+        vector<int> expected = {1, 2, 3, 0, 0};
+        solution.moveZeroes(nums);
+        cout << "测试用例6: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    // 测试用例7: 零在开头
+    {
+        vector<int> nums = {0, 0, 1, 2, 3};
+        vector<int> expected = {1, 2, 3, 0, 0};
+        solution.moveZeroes(nums);
+        cout << "测试用例7: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    // 测试用例8: 交错零
+    {
+        vector<int> nums = {1, 0, 2, 0, 3, 0, 4};
+        vector<int> expected = {1, 2, 3, 4, 0, 0, 0};
+        solution.moveZeroes(nums);
+        cout << "测试用例8: ";
+        assert(nums == expected);
+        for (int num : nums) cout << num << " ";
+        cout << "✓" << endl;
+    }
+    
+    cout << "\n所有测试用例通过！" << endl;
+}
+
+int main() {
+    testMoveZeroes();
+    return 0;
+}
+```
+
+## 5. [盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+返回容器可以储存的最大水量。
+说明：你不能倾斜容器。
+
+**示例 1：**
+>输入：[1,8,6,2,5,4,8,3,7]
+>输出：49 
+
+**示例 2：**
+>输入：height = [1,1]
+>输出：1
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+
+## 6. [三数之和](https://leetcode.cn/problems/3sum/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给你一个整数数组 `nums` ，判断是否存在三元组 `[nums[i], nums[j], nums[k]]` 满足 `i != j`、`i != k` 且 `j != k` ，同时还满足 `nums[i] + nums[j] + nums[k] == 0` 。请你返回所有和为 `0` 且不重复的三元组。
+注意：答案中不可以包含重复的三元组。
+
+**示例 1：**
+>输入：nums = [-1,0,1,2,-1,-4]
+>输出：[[-1,-1,2],[-1,0,1]]
+>解释：
+>nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0 。
+>nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0 。
+>nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
+>不同的三元组是 [-1,0,1] 和 [-1,-1,2] 。
+>注意，输出的顺序和三元组的顺序并不重要。
+
+**示例 2：**
+>输入：nums = [0,1,1]
+>输出：[]
+>解释：唯一可能的三元组和不为 0 。
+
+**示例 3：**
+>输入：nums = [0,0,0]
+>输出：[[0,0,0]]
+>解释：唯一可能的三元组和为 0 。
+ 
+
+**提示：**
+`3 <= nums.length <= 3000`
+`-10^5 <= nums[i] <= 10^5`
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+
+## 7. [接雨水](https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked)[major]
+
+给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+
+**示例 1：**
+>输入：height = [0,1,0,2,1,0,1,3,2,1,2,1]
+>输出：6
+
+**示例 2：**
+>输入：height = [4,2,0,3,2,5]
+>输出：9
+ 
+
+**提示：**
+`n == height.length`
+`1 <= n <= 2 * 10^4`
+`0 <= height[i] <= 10^5`
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 8. [无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+给定一个字符串 `s` ，请你找出其中不含有重复字符的 最长子串的长度。
+
+**示例 1:**
+>输入: s = "abcabcbb"
+>输出: 3 
+>解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。注意 "bca" 和 "cab" 也是正确答案。
+
+**示例 2:**
+>输入: s = "bbbbb"
+>输出: 1
+>解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+
+**示例 3:**
+>输入: s = "pwwkew"
+>输出: 3
+>解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+>     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+ 
+
+**提示：**
+- `0 <= s.length <= 5 * 10^4`
+- `s 由英文字母、数字、符号和空格组成`
+
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+
+## 9. [找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+给定两个字符串 `s` 和 `p`，找到 `s` 中所有 `p` 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
+
+**示例 1:**
+>输入: s = "cbaebabacd", p = "abc"
+>输出: [0,6]
+>解释:
+>起始索引等于 0 的子串是 "cba", 它是 "abc" 的异位词。
+>起始索引等于 6 的子串是 "bac", 它是 "abc" 的异位词。
+
+**示例 2:**
+>输入: s = "abab", p = "ab"
+>输出: [0,1,2]
+>解释:
+>起始索引等于 0 的子串是 "ab", 它是 "ab" 的异位词。
+>起始索引等于 1 的子串是 "ba", 它是 "ab" 的异位词。
+>起始索引等于 2 的子串是 "ab", 它是 "ab" 的异位词。
+ 
+
+**提示:**
+- `1 <= s.length, p.length <= 3 * 10^4`
+- `s 和 p 仅包含小写字母`
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 10. [和为 K 的子数组](https://leetcode.cn/problems/subarray-sum-equals-k/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+给你一个整数数组 `nums` 和一个整数 `k` ，请你统计并返回 该数组中和为 `k` 的子数组的个数
+子数组是数组中元素的连续非空序列。
+
+**示例 1：**
+>输入：nums = [1,1,1], k = 2
+>输出：2
+
+**示例 2：**
+>输入：nums = [1,2,3], k = 3
+>输出：2
+ 
+
+**提示：**
+- `1 <= nums.length <= 2 * 10^4`
+- `-1000 <= nums[i] <= 1000`
+- `-10^7 <= k <= 10^7`
+
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 11. [滑动窗口最大值](http://leetcode.cn/problems/sliding-window-maximum/description/?envType=study-plan-v2&envId=top-100-liked)[major]
+给你一个整数数组 `nums`，有一个大小为 `k` 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 `k` 个数字。滑动窗口每次只向右移动一位。
+返回 滑动窗口中的最大值 。
+
+**示例 1：**
+>输入：nums = [1,3,-1,-3,5,3,6,7], k = 3
+>输出：[3,3,5,5,6,7]
+>解释：
+>滑动窗口的位置                最大值
+>---------------               -----
+>[1  3  -1] -3  5  3  6  7       3
+> 1 [3  -1  -3] 5  3  6  7       3
+> 1  3 [-1  -3  5] 3  6  7       5
+> 1  3  -1 [-3  5  3] 6  7       5
+> 1  3  -1  -3 [5  3  6] 7       6
+> 1  3  -1  -3  5 [3  6  7]      7
+
+**示例 2：**
+>输入：nums = [1], k = 1
+>输出：[1]
+ 
+
+**提示：**
+- `1 <= nums.length <= 10^5`
+- `-10^4 <= nums[i] <= 10^4`
+- `1 <= k <= nums.length`
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 12. [最小覆盖子串](http://leetcode.cn/problems/minimum-window-substring/description/?envType=study-plan-v2&envId=top-100-liked)[major]
+给定两个字符串 `s` 和 `t`，长度分别是 `m` 和 `n`，返回 `s` 中的最短窗口子串，使得该子串包含 `t` 中的每一个字符（包括重复字符）。如果没有这样的子串，返回空字符串 `""`。
+测试用例保证答案唯一。
+
+**示例 1：**
+>输入：s = "ADOBECODEBANC", t = "ABC"
+>输出："BANC"
+>解释：最小覆盖子串 "BANC" 包含来自字符串 t 的 'A'、'B' 和 'C'。
+
+**示例 2：**
+>输入：s = "a", t = "a"
+>输出："a"
+>解释：整个字符串 s 是最小覆盖子串。
+
+**示例 3:**
+>输入: s = "a", t = "aa"
+>输出: ""
+>解释: t 中两个字符 'a' 均应包含在 s 的子串中，
+>因此没有符合条件的子字符串，返回空字符串。
+ 
+
+**提示：**
+- `m == s.length`
+- `n == t.length`
+- `1 <= m, n <= 10^5`
+- `s 和 t 由英文字母组成`
+
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+
+
 <!-- ## 1. [两数之和](https://leetcode.cn/problems/two-sum/description/)[minor]
 
 **思路**
 
 **代码**
-``` C++
+``` C++ :collapsed-lines=25
 
 ``` -->
 
 <!-- 请完善以下代码，并补充测试用例，使得代码可以直接在本地g++编译运行
-```
+``` 
 class Solution {
 public:
-    int longestConsecutive(vector<int>& nums) {
-        unordered_set<int> s;
-        for(const int& i: nums) {
-            s.insert(i);
-        }
-
-        int res=0;
-        for(const int& i:s) {
-            if(!s.count(i-1)) {
-                int step = 1;
-                int curr = i;
-
-                while(s.count(curr+1)) {
-                    step++;
-                    curr++;
-                }
-
-                res = max(res, step);
+    void moveZeroes(vector<int>& nums) {
+        int cnt = 0;
+        int idx = 0;
+        for(int i=0; i<nums.size(); i++) {
+            if(nums[i] == 0) {
+                cnt += 1;
+            } else {
+                nums[idx] = nums[i];
+                idx += 1;
             }
         }
 
-        return res;
+        for(int i=nums.size()-1; i>=0 && cnt>0; i--) {
+            nums[i] = 0;
+            cnt--;
+        }
+
+        // return nums;
     }
 };
 ``` -->
