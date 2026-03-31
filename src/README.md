@@ -4,7 +4,7 @@ layout: Blog
 icon: house
 title: 主页
 heroImage: /avatar.png
-heroText: 凡心所向, 素履以往; 生如逆旅, 一苇以航
+heroText: 唯愿当歌对酒时，月光常照金樽里
 # tagline: 凡心所向, 素履以往; 生如逆旅, 一苇以航
 heroFullScreen: true
 # projects:
