@@ -616,9 +616,85 @@ int main() {
 
 **思路**
 
+这题很明显用双指针一前一后找到最大的盛水量的索引就
+具体的：
+1. 初始化左指针在数组的首部，右指针在数组的尾部
+2. 计算当前左指针和右指针所能盛水的量，更新记录最大值
+3. 当左指针的数值较右指针小时，移动左指针向右；否则移动右指针向左
+4. 重复第二步直到左右指针相遇
+
+时间复杂度：O(N)
+空间复杂度：O(1)
+
 **代码**
 ``` C++ :collapsed-lines=25
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int i = 0, j = height.size() - 1;
+        int res = 0;
+
+        while (i < j) {
+            int curr = min(height[i], height[j]) * (j - i);
+            res = max(res, curr);
+
+            if (height[i] <= height[j]) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+
+        return res;
+    }
+};
+
+// 测试用例
+int main() {
+    Solution solution;
+    
+    // 测试用例1: 示例
+    vector<int> height1 = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    int result1 = solution.maxArea(height1);
+    cout << "Test 1: " << result1 << " (Expected: 49)" << endl;
+    
+    // 测试用例2: 两个元素
+    vector<int> height2 = {1, 1};
+    int result2 = solution.maxArea(height2);
+    cout << "Test 2: " << result2 << " (Expected: 1)" << endl;
+    
+    // 测试用例3: 递增序列
+    vector<int> height3 = {1, 2, 3, 4, 5};
+    int result3 = solution.maxArea(height3);
+    cout << "Test 3: " << result3 << " (Expected: 6)" << endl;
+    
+    // 测试用例4: 递减序列
+    vector<int> height4 = {5, 4, 3, 2, 1};
+    int result4 = solution.maxArea(height4);
+    cout << "Test 4: " << result4 << " (Expected: 6)" << endl;
+    
+    // 测试用例5: 高墙在中间
+    vector<int> height5 = {4, 3, 2, 1, 4};
+    int result5 = solution.maxArea(height5);
+    cout << "Test 5: " << result5 << " (Expected: 16)" << endl;
+    
+    // 测试用例6: 只有一个元素
+    vector<int> height6 = {1};
+    int result6 = solution.maxArea(height6);
+    cout << "Test 6: " << result6 << " (Expected: 0)" << endl;
+    
+    // 测试用例7: 随机测试
+    vector<int> height7 = {2, 3, 4, 5, 18, 17, 6};
+    int result7 = solution.maxArea(height7);
+    cout << "Test 7: " << result7 << " (Expected: 17)" << endl;
+    
+    return 0;
+}
 ```
 
 
@@ -858,24 +934,22 @@ int main() {
 ``` 
 class Solution {
 public:
-    void moveZeroes(vector<int>& nums) {
-        int cnt = 0;
-        int idx = 0;
-        for(int i=0; i<nums.size(); i++) {
-            if(nums[i] == 0) {
-                cnt += 1;
+    int maxArea(vector<int>& height) {
+        int i=0, j=height.size()-1;
+        int res = 0;
+
+        while(i<j) {
+            int curr = min(height[i], height[j]) * (j-i);
+            res = max(res, curr);
+
+            if(height[i] <= height[j]) {
+                i++;
             } else {
-                nums[idx] = nums[i];
-                idx += 1;
+                j--;
             }
         }
 
-        for(int i=nums.size()-1; i>=0 && cnt>0; i--) {
-            nums[i] = 0;
-            cnt--;
-        }
-
-        // return nums;
+        return res;
     }
 };
 ``` -->
