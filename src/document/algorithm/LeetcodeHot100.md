@@ -919,6 +919,271 @@ int main() {
 
 ```
 
+## 13. [最大子数组和](https://leetcode.cn/problems/maximum-subarray/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给你一个整数数组 `nums` ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+子数组是数组中的一个连续部分。
+
+**示例 1：**
+>输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+>输出：6
+>解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+
+**示例 2：**
+>输入：nums = [1]
+>输出：1
+
+**示例 3：**
+>输入：nums = [5,4,-1,7,8]
+>输出：23
+ 
+
+**提示：**
+- `1 <= nums.length <= 10^5`
+- `-10^4 <= nums[i] <= 10^4`
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 14. [合并区间](https://leetcode.cn/problems/merge-intervals/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+以数组 `intervals` 表示若干个区间的集合，其中单个区间为 `intervals[i] = [starti, endi]` 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
+
+**示例 1：**
+>输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+>输出：[[1,6],[8,10],[15,18]]
+>解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+
+**示例 2：**
+>输入：intervals = [[1,4],[4,5]]
+>输出：[[1,5]]
+>解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。
+
+**示例 3：**
+>输入：intervals = [[4,7],[1,4]]
+>输出：[[1,7]]
+>解释：区间 [1,4] 和 [4,7] 可被视为重叠区间。
+ 
+
+**提示：**
+- `1 <= intervals.length <= 10^4`
+- `intervals[i].length == 2`
+- `0 <= starti <= endi <= 10^4`
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 15. [轮转数组](https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给定一个整数数组 nums，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。
+
+**示例 1:**
+输入: nums = [1,2,3,4,5,6,7], k = 3
+输出: [5,6,7,1,2,3,4]
+解释:
+向右轮转 1 步: [7,1,2,3,4,5,6]
+向右轮转 2 步: [6,7,1,2,3,4,5]
+向右轮转 3 步: [5,6,7,1,2,3,4]
+
+**示例 2:**
+输入：nums = [-1,-100,3,99], k = 2
+输出：[3,99,-1,-100]
+解释: 
+向右轮转 1 步: [99,-1,-100,3]
+向右轮转 2 步: [3,99,-1,-100]
+ 
+
+**提示：**
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+0 <= k <= 105
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 16. [除了自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给你一个整数数组 nums，返回 数组 answer ，其中 answer[i] 等于 nums 中除了 nums[i] 之外其余各元素的乘积 。
+
+题目数据 保证 数组 nums之中任意元素的全部前缀元素和后缀的乘积都在  32 位 整数范围内。
+
+请 不要使用除法，且在 O(n) 时间复杂度内完成此题。
+
+**示例 1:**
+输入: nums = [1,2,3,4]
+输出: [24,12,8,6]
+
+**示例 2:**
+输入: nums = [-1,1,0,-3,3]
+输出: [0,0,9,0,0]
+ 
+
+**提示：**
+2 <= nums.length <= 105
+-30 <= nums[i] <= 30
+输入 保证 数组 answer[i] 在  32 位 整数范围内
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 17. [缺失的第一个正数](https://leetcode.cn/problems/first-missing-positive/description/?envType=study-plan-v2&envId=top-100-liked)[major]
+
+给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
+请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。
+
+**示例 1：**
+输入：nums = [1,2,0]
+输出：3
+解释：范围 [1,2] 中的数字都在数组中。
+
+**示例 2：**
+输入：nums = [3,4,-1,1]
+输出：2
+解释：1 在数组中，但 2 没有。
+
+**示例 3：**
+输入：nums = [7,8,9,11,12]
+输出：1
+解释：最小的正数 1 没有出现。
+ 
+
+**提示：**
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 18. [矩阵置零](https://leetcode.cn/problems/set-matrix-zeroes/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0 。请使用 原地 算法。
+
+**示例 1：**
+输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]
+输出：[[1,0,1],[0,0,0],[1,0,1]]
+
+**示例 2：**
+输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+ 
+
+**提示：**
+m == matrix.length
+n == matrix[0].length
+1 <= m, n <= 200
+-231 <= matrix[i][j] <= 231 - 1
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 19. [螺旋矩阵]https://leetcode.cn/problems/spiral-matrix/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
+
+**示例 1：**
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[1,2,3,6,9,8,7,4,5]
+
+**示例 2：**
+输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+输出：[1,2,3,4,8,12,11,10,9,5,6,7]
+ 
+
+**提示：**
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 20. [旋转图像](https://leetcode.cn/problems/rotate-image/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+你必须在 原地 旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。
+
+**示例 1：**
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[[7,4,1],[8,5,2],[9,6,3]]
+
+**示例 2：**
+输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+
+**提示：**
+n == matrix.length == matrix[i].length
+1 <= n <= 20
+-1000 <= matrix[i][j] <= 1000
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+## 21. [搜索二维矩阵 II](https://leetcode.cn/problems/search-a-2d-matrix-ii/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+
+编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：
+
+每行的元素从左到右升序排列。
+每列的元素从上到下升序排列。
+ 
+
+**示例 1：**
+输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
+输出：true
+
+**示例 2：**
+输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
+输出：false
+
+**提示：**
+m == matrix.length
+n == matrix[i].length
+1 <= n, m <= 300
+-109 <= matrix[i][j] <= 109
+每行的所有元素从左到右升序排列
+每列的所有元素从上到下升序排列
+-109 <= target <= 109
+
+**思路**
+
+**代码**
+``` C++ :collapsed-lines=25
+
+```
+
+
+
 
 
 <!-- ## 1. [两数之和](https://leetcode.cn/problems/two-sum/description/)[minor]
