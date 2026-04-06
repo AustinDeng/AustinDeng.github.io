@@ -1897,10 +1897,200 @@ lRUCache.get(4);    // 返回 4
 
 ## 47. [从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
 
+给定两个整数数组 `preorder` 和 `inorder` ，其中 `preorder` 是二叉树的先序遍历， `inorder` 是同一棵树的中序遍历，请构造二叉树并返回其根节点。
+
+**示例 1:**
+
+![](https://assets.leetcode.com/uploads/2021/02/19/tree.jpg)
+
+>输入: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+>输出: [3,9,20,null,null,15,7]
+
+**示例 2:**
+
+>输入: preorder = [-1], inorder = [-1]
+>输出: [-1]
+ 
+
+提示:
+
+- `1 <= preorder.length <= 3000`
+- `inorder.length == preorder.length`
+- `-3000 <= preorder[i], inorder[i] <= 3000`
+- `preorder 和 inorder 均 无重复 元素`
+- `inorder 均出现在 preorder`
+- `preorder 保证 为二叉树的前序遍历序列`
+- `inorder 保证 为二叉树的中序遍历序列`
+
+
 **思路**
+
+对于任意一颗树而言，前序遍历的形式总是
+```
+[ 根节点, [左子树的前序遍历结果], [右子树的前序遍历结果] ]
+```
+即根节点总是前序遍历中的第一个节点。而中序遍历的形式总是
+```
+[ [左子树的中序遍历结果], 根节点, [右子树的中序遍历结果] ]
+```
+
+通过左子树的节点数，可以定位到左子树的前序遍历结果
+
+因此我们可以得到：根节点+左子树的前序和中序+右子树的前序和中序
+
+使用递归构建整棵树即可
+
+时间复杂度：O(n)，其中 n 是树中的节点个数
+空间复杂度：O(n)，其中 n 是树中的节点个数
+
 
 **代码**
 ``` C++ :collapsed-lines=25
+
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <queue>
+#include <climits>
+
+using namespace std;
+
+/**
+ * Definition for a binary tree node.
+ */
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class Solution {
+public:
+    unordered_map<int, int> idx;
+
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        int n = inorder.size();
+        for (int i = 0; i < n; i++) {
+            idx[inorder[i]] = i;
+        }
+        TreeNode* root = dfs(preorder, inorder, 0, n - 1, 0, n - 1);
+        return root;
+    }
+
+    TreeNode* dfs(vector<int>& preorder, vector<int>& inorder, int pre_left, int pre_right, int in_left, int in_right) {
+        // 终止条件
+        if (pre_left > pre_right || in_left > in_right) {
+            return nullptr;
+        }
+        // 构造根节点
+        TreeNode* root = new TreeNode(preorder[pre_left]);
+
+        // 找到这个根节点在中序的位置
+        int curr = preorder[pre_left];
+        int curr_idx = idx[curr];
+
+        // 左子树的节点数
+        int left_num = curr_idx - in_left;
+
+        root->left = dfs(preorder, inorder, pre_left + 1, pre_left + left_num, in_left, curr_idx - 1);
+        root->right = dfs(preorder, inorder, pre_left + 1 + left_num, pre_right, curr_idx + 1, in_right);
+
+        return root;
+    }
+};
+
+// 层序遍历打印二叉树（用于验证结果）
+void printTree(TreeNode* root) {
+    if (!root) {
+        cout << "[]" << endl;
+        return;
+    }
+    queue<TreeNode*> q;
+    q.push(root);
+    vector<int> res;
+    while (!q.empty()) {
+        TreeNode* node = q.front();
+        q.pop();
+        if (node) {
+            res.push_back(node->val);
+            q.push(node->left);
+            q.push(node->right);
+        } else {
+            res.push_back(INT_MIN); // 用INT_MIN表示空节点
+        }
+    }
+    // 去除末尾的空节点
+    while (!res.empty() && res.back() == INT_MIN) {
+        res.pop_back();
+    }
+    // 输出
+    cout << "[";
+    for (size_t i = 0; i < res.size(); i++) {
+        if (res[i] == INT_MIN) {
+            cout << "null";
+        } else {
+            cout << res[i];
+        }
+        if (i != res.size() - 1) {
+            cout << ",";
+        }
+    }
+    cout << "]" << endl;
+}
+
+// 测试用例
+int main() {
+    Solution sol;
+    
+    // 测试用例1: 普通二叉树
+    // 前序遍历: [3,9,20,15,7]
+    // 中序遍历: [9,3,15,20,7]
+    // 预期树: [3,9,20,null,null,15,7]
+    vector<int> preorder1 = {3, 9, 20, 15, 7};
+    vector<int> inorder1 = {9, 3, 15, 20, 7};
+    TreeNode* root1 = sol.buildTree(preorder1, inorder1);
+    cout << "Test case 1: ";
+    printTree(root1);
+    
+    // 测试用例2: 单节点
+    vector<int> preorder2 = {1};
+    vector<int> inorder2 = {1};
+    TreeNode* root2 = sol.buildTree(preorder2, inorder2);
+    cout << "Test case 2: ";
+    printTree(root2);
+    
+    // 测试用例3: 左斜树
+    // 前序遍历: [1,2,3]
+    // 中序遍历: [3,2,1]
+    // 预期树: [1,2,null,3]
+    vector<int> preorder3 = {1, 2, 3};
+    vector<int> inorder3 = {3, 2, 1};
+    TreeNode* root3 = sol.buildTree(preorder3, inorder3);
+    cout << "Test case 3: ";
+    printTree(root3);
+    
+    // 测试用例4: 右斜树
+    // 前序遍历: [1,2,3]
+    // 中序遍历: [1,2,3]
+    // 预期树: [1,null,2,null,3]
+    vector<int> preorder4 = {1, 2, 3};
+    vector<int> inorder4 = {1, 2, 3};
+    TreeNode* root4 = sol.buildTree(preorder4, inorder4);
+    cout << "Test case 4: ";
+    printTree(root4);
+    
+    // 测试用例5: 空树
+    vector<int> preorder5 = {};
+    vector<int> inorder5 = {};
+    TreeNode* root5 = sol.buildTree(preorder5, inorder5);
+    cout << "Test case 5: ";
+    printTree(root5);
+    
+    return 0;
+}
 
 ```
 
@@ -2305,13 +2495,133 @@ int main() {
 
 ```
 
-## 62. [N 皇后](https://leetcode.cn/problems/n-queens/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
+## 62. [N 皇后](https://leetcode.cn/problems/n-queens/description/?envType=study-plan-v2&envId=top-100-liked)[major]
+
+按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。
+
+`n 皇后问题` 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
+
+给你一个整数 `n` ，返回所有不同的 `n 皇后问题` 的解决方案。
+
+每一种解法包含一个不同的 `n 皇后问题` 的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。
+
+
+**示例 1：**
+
+![](https://assets.leetcode.com/uploads/2020/11/13/queens.jpg)
+
+>输入：n = 4
+>输出：[[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+>解释：如上图所示，4 皇后问题存在两个不同的解法。
+
+**示例 2：**
+
+>输入：n = 1
+>输出：[["Q"]]
+ 
+
+**提示：**
+
+- `1 <= n <= 9`
 
 **思路**
 
+用模拟法直接套回溯的模板就行
+
+创建一个nxn的棋盘，然后依次校验每个位置是否可以放得下一个皇后
+
+回溯的核心代码是这个：
+
+``` C++
+for (int i = 0; i < n; i++) {
+    if (!isValid(board, row, i)) {
+        continue;
+    }
+    board[row][i] = 'Q';
+    dfs(board, row + 1, n);
+    board[row][i] = '.';
+}
+```
+
+时间复杂度： O(n!×n)
+空间复杂度：O(n)
+
+n是皇后的数量
+
+
+
 **代码**
 ``` C++ :collapsed-lines=25
+#include <vector>
+#include <string>
+#include <iostream>
 
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<string>> res;
+    vector<vector<string>> solveNQueens(int n) {
+        vector<string> board(n, string(n, '.'));
+        dfs(board, 0, n);
+        return res;
+    }
+
+    void dfs(vector<string>& board, int row, int n) {
+        if (row == n) {
+            res.push_back(board);
+            return;  // 返回上一层
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (!isValid(board, row, i)) {
+                continue;
+            }
+            board[row][i] = 'Q';
+            dfs(board, row + 1, n);
+            board[row][i] = '.';
+        }
+    }
+
+    bool isValid(vector<string>& board, int row, int col) {
+        int n = board.size();
+        // 检查同一列
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 'Q') {
+                return false;
+            }
+        }
+        // 检查右上斜线
+        for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+            if (board[i][j] == 'Q') {
+                return false;
+            }
+        }
+        // 检查左上斜线
+        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 'Q') {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+// 测试函数
+int main() {
+    Solution sol;
+    int n = 4;
+    vector<vector<string>> result = sol.solveNQueens(n);
+    cout << "n = " << n << " 的解法有 " << result.size() << " 种：" << endl;
+    for (int i = 0; i < result.size(); i++) {
+        cout << "解法 " << i + 1 << ":" << endl;
+        for (const string& row : result[i]) {
+            cout << row << endl;
+        }
+        cout << endl;
+    }
+    return 0;
+}
 ```
 
 ## 63. [搜索插入位置](https://leetcode.cn/problems/search-insert-position/description/?envType=study-plan-v2&envId=top-100-liked)[easy]
@@ -2506,11 +2816,261 @@ int main() {
 
 ## 84. [完全平方数](https://leetcode.cn/problems/perfect-squares/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
 
+给你一个整数 `n` ，返回 和为 `n` 的完全平方数的最少数量 。
+
+`完全平方数` 是一个整数，其值等于另一个整数的平方；换句话说，其值等于一个整数自乘的积。例如，`1`、`4`、`9` 和 `16` 都是完全平方数，而 `3` 和 `11` 不是。
+
+ 
+
+**示例 1：**
+>输入：n = 12
+>输出：3 
+>解释：12 = 4 + 4 + 4
+
+**示例 2：**
+>输入：n = 13
+>输出：2
+>解释：13 = 4 + 9
+ 
+**提示：**
+
+- `1 <= n <= 10^4`
+
 **思路**
+
+我使用的是动态规划实现的
+
+设dp[n]表示最少需要多少个数的平方来表示整数 n
+那么我们在`1...n`中枚举`j`,那么j的平方数就是`j*j`，当`j*j<n`时,还需要`n-j*j`才能够到`n`
+于是问题就变成：求`n-j*j`的最少完全平方数
+
+典型的大问题转换成同等的小问题，状态转移方程：`dp[n] = 1 + min{j=1..x}dp[n-j*j]`,其中`x表示根号下n`
+
 
 **代码**
 ``` C++ :collapsed-lines=25
+#include <iostream>
+#include <vector>
+#include <climits>
+#include <cmath>
+using namespace std;
 
+class Solution {
+public:
+    int numSquares(int n) {
+        if (n <= 0) return 0;
+        
+        vector<int> dp(n + 1, 0);
+        
+        for (int i = 1; i <= n; i++) {
+            int curr = INT_MAX;
+            
+            for (int j = 1; j * j <= i; j++) {
+                curr = min(curr, dp[i - j * j]);
+            }
+            
+            dp[i] = 1 + curr;
+        }
+        
+        return dp[n];
+    }
+};
+
+// 更高效的解法（使用静态变量）
+class Solution2 {
+public:
+    int numSquares(int n) {
+        static vector<int> dp({0});
+        
+        if (n < dp.size()) {
+            return dp[n];
+        }
+        
+        // 扩展dp数组
+        for (int i = dp.size(); i <= n; i++) {
+            int curr = INT_MAX;
+            for (int j = 1; j * j <= i; j++) {
+                curr = min(curr, dp[i - j * j]);
+            }
+            dp.push_back(1 + curr);
+        }
+        
+        return dp[n];
+    }
+};
+
+// 四平方定理解法（更高效）
+class Solution3 {
+public:
+    int numSquares(int n) {
+        // 先检查是否满足四平方定理的特殊情况
+        // 1. 如果n是平方数，返回1
+        int sqrt_n = sqrt(n);
+        if (sqrt_n * sqrt_n == n) {
+            return 1;
+        }
+        
+        // 2. 检查是否满足n = 4^a*(8b+7)，即返回3
+        int temp = n;
+        while (temp % 4 == 0) {
+            temp /= 4;
+        }
+        if (temp % 8 == 7) {
+            return 4;
+        }
+        
+        // 3. 检查是否是两个平方数之和
+        for (int i = 1; i * i <= n; i++) {
+            int j = n - i * i;
+            int sqrt_j = sqrt(j);
+            if (sqrt_j * sqrt_j == j) {
+                return 2;
+            }
+        }
+        
+        // 4. 否则返回3
+        return 3;
+    }
+};
+
+// 测试函数
+void testSolution() {
+    Solution sol;
+    Solution2 sol2;
+    Solution3 sol3;
+    
+    vector<pair<int, int>> test_cases = {
+        {1, 1},    // 1 = 1^2
+        {2, 2},    // 2 = 1^2 + 1^2
+        {3, 3},    // 3 = 1^2 + 1^2 + 1^2
+        {4, 1},    // 4 = 2^2
+        {5, 2},    // 5 = 1^2 + 2^2
+        {6, 3},    // 6 = 1^2 + 1^2 + 2^2
+        {7, 4},    // 7 = 1^2 + 1^2 + 1^2 + 2^2
+        {8, 2},    // 8 = 2^2 + 2^2
+        {9, 1},    // 9 = 3^2
+        {10, 2},   // 10 = 1^2 + 3^2
+        {12, 3},   // 12 = 2^2 + 2^2 + 2^2
+        {13, 2},   // 13 = 2^2 + 3^2
+        {16, 1},   // 16 = 4^2
+        {17, 2},   // 17 = 1^2 + 4^2
+        {18, 2},   // 18 = 3^2 + 3^2
+        {19, 3},   // 19 = 1^2 + 3^2 + 3^2
+        {20, 2},   // 20 = 2^2 + 4^2
+        {48, 3},   // 48 = 4^2 + 4^2 + 4^2
+        {100, 1},  // 100 = 10^2
+        {101, 2},  // 101 = 1^2 + 10^2
+        {102, 3},  // 102 = 1^2 + 1^2 + 10^2
+        {103, 4},  // 103 = 1^2 + 1^2 + 1^2 + 10^2
+    };
+    
+    cout << "测试动态规划解法（Solution）:" << endl;
+    for (const auto& test_case : test_cases) {
+        int n = test_case.first;
+        int expected = test_case.second;
+        int result = sol.numSquares(n);
+        cout << "numSquares(" << n << ") = " << result 
+             << " (期望: " << expected << ")" 
+             << (result == expected ? " ✓" : " ✗") << endl;
+    }
+    
+    cout << "\n测试带缓存的解法（Solution2）:" << endl;
+    for (const auto& test_case : test_cases) {
+        int n = test_case.first;
+        int expected = test_case.second;
+        int result = sol2.numSquares(n);
+        cout << "numSquares(" << n << ") = " << result 
+             << (result == expected ? " ✓" : " ✗") << endl;
+    }
+    
+    cout << "\n测试四平方定理解法（Solution3）:" << endl;
+    for (const auto& test_case : test_cases) {
+        int n = test_case.first;
+        int expected = test_case.second;
+        int result = sol3.numSquares(n);
+        cout << "numSquares(" << n << ") = " << result 
+             << (result == expected ? " ✓" : " ✗") << endl;
+    }
+    
+    // 测试一些大数字
+    cout << "\n测试大数字的性能对比:" << endl;
+    vector<int> large_numbers = {1000, 10000, 100000};
+    
+    for (int n : large_numbers) {
+        cout << "\nn = " << n << ":" << endl;
+        
+        // 使用动态规划解法
+        clock_t start = clock();
+        int result1 = sol.numSquares(n);
+        clock_t end = clock();
+        double time1 = double(end - start) / CLOCKS_PER_SEC;
+        cout << "  动态规划解法: " << result1 << " (耗时: " << time1 << "秒)" << endl;
+        
+        // 使用带缓存的解法
+        start = clock();
+        int result2 = sol2.numSquares(n);
+        end = clock();
+        double time2 = double(end - start) / CLOCKS_PER_SEC;
+        cout << "  带缓存解法: " << result2 << " (耗时: " << time2 << "秒)" << endl;
+        
+        // 使用四平方定理解法
+        start = clock();
+        int result3 = sol3.numSquares(n);
+        end = clock();
+        double time3 = double(end - start) / CLOCKS_PER_SEC;
+        cout << "  四平方定理解法: " << result3 << " (耗时: " << time3 << "秒)" << endl;
+    }
+}
+
+int main() {
+    cout << "========== 完全平方数问题测试 ==========" << endl;
+    cout << "问题描述：给定正整数n，找到若干个完全平方数（如1,4,9,16,...）" << endl;
+    cout << "使得它们的和等于n。你需要让组成和的完全平方数的个数最少。" << endl;
+    cout << "======================================" << endl << endl;
+    
+    testSolution();
+    
+    // 交互式测试
+    cout << "\n========== 交互式测试 ==========" << endl;
+    Solution sol;
+    int n;
+    while (true) {
+        cout << "\n请输入一个正整数（输入0退出）: ";
+        cin >> n;
+        
+        if (n == 0) {
+            cout << "程序结束！" << endl;
+            break;
+        }
+        
+        if (n < 0) {
+            cout << "请输入正整数！" << endl;
+            continue;
+        }
+        
+        int result = sol.numSquares(n);
+        cout << n << " 最少需要 " << result << " 个完全平方数" << endl;
+        
+        // 显示如何组合
+        cout << "可能的组合方式: ";
+        int temp = n;
+        while (temp > 0) {
+            // 找到最大的平方数
+            for (int j = sqrt(temp); j >= 1; j--) {
+                int square = j * j;
+                if (sol.numSquares(temp - square) + 1 == result) {
+                    cout << square;
+                    temp -= square;
+                    if (temp > 0) cout << " + ";
+                    break;
+                }
+            }
+        }
+        cout << " = " << n << endl;
+    }
+    
+    return 0;
+}
 ```
 
 ## 85. [零钱兑换](https://leetcode.cn/problems/coin-change/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
@@ -2662,37 +3222,25 @@ int main() {
 
 <!-- 请完善以下代码，并补充测试用例，使得代码可以直接在本地g++编译运行
 ``` 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
-    int res = INT_MIN;
-    int maxPathSum(TreeNode* root) {
-        
-        dfs(root);
+    int numSquares(int n) {
+        vector<int> dp(n+1);
 
-        return res;
-    }
+        for(int i=1; i<=n; i++) {
+            int curr = INT_MAX;
 
-    int dfs(TreeNode* root) {
+            for(int j=1; j*j <=i; j++) {
+                curr = min(curr, dp[i-j*j]);
+            }
 
-        if(!root) return 0;
 
-        int left = max(dfs(root -> left), 0);
-        int right = max(dfs(root -> right), 0);
 
-        res = max(res, left+right+root->val);
+            dp[i] = 1 + curr;
+        }
 
-        return max(left, right) + root->val;
+
+        return dp[n];
     }
 };
 ``` -->
