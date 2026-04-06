@@ -616,7 +616,8 @@ int main() {
 
 **思路**
 
-这题很明显用双指针一前一后找到最大的盛水量的索引就
+这题很明显用双指针一前一后找到最大的盛水量的索引
+
 具体的：
 1. 初始化左指针在数组的首部，右指针在数组的尾部
 2. 计算当前左指针和右指针所能盛水的量，更新记录最大值
@@ -1923,11 +1924,286 @@ lRUCache.get(4);    // 返回 4
 
 ## 50. [二叉树中的最大路径和](https://leetcode.cn/problems/binary-tree-maximum-path-sum/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
 
+二叉树中的 `路径` 被定义为一条节点序列，序列中每对相邻节点之间都存在一条边。同一个节点在一条路径序列中 `至多出现一次` 。该路径 至少包含一个 `节点`，且不一定经过根节点。
+
+`路径和` 是路径中各节点值的总和。
+
+给你一个二叉树的根节点 `root` ，返回其 最大路径和 。
+
+
+
+**示例 1：**
+ 
+ ![](https://assets.leetcode.com/uploads/2020/10/13/exx1.jpg)
+
+>输入：root = [1,2,3]
+>输出：6
+>解释：最优路径是 2 -> 1 -> 3 ，路径和为 2 + 1 + 3 = 6
+
+**示例 2：**
+
+![](https://assets.leetcode.com/uploads/2020/10/13/exx2.jpg)
+
+>输入：root = [-10,9,20,null,null,15,7]
+>输出：42
+>解释：最优路径是 15 -> 20 -> 7 ，路径和为 15 + 20 + 7 = 42
+ 
+
+**提示：**
+- `树中节点数目范围是 [1, 3 * 10^4]`
+- `-1000 <= Node.val <= 1000`
+
+
 **思路**
+
+这是一道**困难**题，但是又是经典的一看就会，一写就废
+
+首先明确题目是需要使用递归，那么要如何递归，边界是什么
+1. 对于每个节点，我们要找到包含该节点的最大路径，那么就是`当前节点的值`加上左右节点的最大路径，即：
+
+    currNode = root->val + right + left;
+
+2. 我们需要明确这里`left`和`right`的含义，它们表示这个节点的最大贡献，节点的最大贡献可以理解为以当前节点为起点的最大路径和
+
+3. 对于一个节点而言，最大贡献就等于`root->val + max(left,right)`
+
+4. 通过递归找到左右节点的最大贡献，考虑左右节点为负数的时候，我们需要丢弃掉，因此：
+
+    left = max(dfs(root -> left), 0);
+    right = max(dfs(root -> right), 0);
+
+
+时间复杂度：O(N)
+空间复杂度：O(N)
 
 **代码**
 ``` C++ :collapsed-lines=25
+#include <iostream>
+#include <algorithm>
+#include <climits>
+#include <queue>
+using namespace std;
 
+/**
+ * Definition for a binary tree node.
+ */
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+/**
+ * Solution class for binary tree max path sum
+ */
+class Solution {
+public:
+    int res = INT_MIN;
+    
+    int maxPathSum(TreeNode* root) {
+        dfs(root);
+        return res;
+    }
+
+    int dfs(TreeNode* root) {
+        if(!root) return 0;
+
+        int left = max(dfs(root->left), 0);
+        int right = max(dfs(root->right), 0);
+
+        res = max(res, left + right + root->val);
+
+        return max(left, right) + root->val;
+    }
+};
+
+/**
+ * Utility class for tree operations
+ */
+class TreeUtils {
+public:
+    // Create a binary tree from level order traversal
+    TreeNode* createTreeFromLevelOrder(const vector<int>& nodes) {
+        if (nodes.empty() || nodes[0] == INT_MIN) return nullptr;
+        
+        TreeNode* root = new TreeNode(nodes[0]);
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        int i = 1;
+        while (!q.empty() && i < nodes.size()) {
+            TreeNode* current = q.front();
+            q.pop();
+            
+            // left child
+            if (i < nodes.size() && nodes[i] != INT_MIN) {
+                current->left = new TreeNode(nodes[i]);
+                q.push(current->left);
+            }
+            i++;
+            
+            // right child
+            if (i < nodes.size() && nodes[i] != INT_MIN) {
+                current->right = new TreeNode(nodes[i]);
+                q.push(current->right);
+            }
+            i++;
+        }
+        
+        return root;
+    }
+    
+    // Delete tree to prevent memory leak
+    void deleteTree(TreeNode* root) {
+        if (!root) return;
+        deleteTree(root->left);
+        deleteTree(root->right);
+        delete root;
+    }
+    
+    // Print tree in level order for verification
+    void printTreeLevelOrder(TreeNode* root) {
+        if (!root) {
+            cout << "Empty tree" << endl;
+            return;
+        }
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        cout << "Tree (level order): ";
+        while (!q.empty()) {
+            TreeNode* current = q.front();
+            q.pop();
+            
+            if (current) {
+                cout << current->val << " ";
+                if (current->left || current->right) {
+                    q.push(current->left);
+                    q.push(current->right);
+                }
+            } else {
+                cout << "null ";
+            }
+        }
+        cout << endl;
+    }
+};
+
+/**
+ * Test cases
+ */
+void runTestCases() {
+    Solution solution;
+    TreeUtils treeUtils;
+    
+    cout << "Binary Tree Maximum Path Sum - Test Cases" << endl;
+    cout << "=========================================" << endl;
+    
+    // Test Case 1: Simple positive tree
+    {
+        cout << "\nTest Case 1: Simple positive tree [1,2,3]" << endl;
+        vector<int> nodes = {1, 2, 3};
+        TreeNode* root = treeUtils.createTreeFromLevelOrder(nodes);
+        treeUtils.printTreeLevelOrder(root);
+        
+        int result = solution.maxPathSum(root);
+        cout << "Maximum Path Sum: " << result << endl;
+        cout << "Expected: 6" << endl;
+        
+        treeUtils.deleteTree(root);
+        solution.res = INT_MIN;  // Reset for next test
+    }
+    
+    // Test Case 2: Complex tree with negative numbers
+    {
+        cout << "\nTest Case 2: Complex tree [-10,9,20,null,null,15,7]" << endl;
+        vector<int> nodes = {-10, 9, 20, INT_MIN, INT_MIN, 15, 7};
+        TreeNode* root = treeUtils.createTreeFromLevelOrder(nodes);
+        treeUtils.printTreeLevelOrder(root);
+        
+        int result = solution.maxPathSum(root);
+        cout << "Maximum Path Sum: " << result << endl;
+        cout << "Expected: 42" << endl;
+        
+        treeUtils.deleteTree(root);
+        solution.res = INT_MIN;
+    }
+    
+    // Test Case 3: Single node
+    {
+        cout << "\nTest Case 3: Single node tree [5]" << endl;
+        vector<int> nodes = {5};
+        TreeNode* root = treeUtils.createTreeFromLevelOrder(nodes);
+        treeUtils.printTreeLevelOrder(root);
+        
+        int result = solution.maxPathSum(root);
+        cout << "Maximum Path Sum: " << result << endl;
+        cout << "Expected: 5" << endl;
+        
+        treeUtils.deleteTree(root);
+        solution.res = INT_MIN;
+    }
+    
+    // Test Case 4: All negative numbers
+    {
+        cout << "\nTest Case 4: All negative tree [-3,-1,-2]" << endl;
+        vector<int> nodes = {-3, -1, -2};
+        TreeNode* root = treeUtils.createTreeFromLevelOrder(nodes);
+        treeUtils.printTreeLevelOrder(root);
+        
+        int result = solution.maxPathSum(root);
+        cout << "Maximum Path Sum: " << result << endl;
+        cout << "Expected: -1" << endl;
+        
+        treeUtils.deleteTree(root);
+        solution.res = INT_MIN;
+    }
+    
+    // Test Case 5: Complex tree
+    {
+        cout << "\nTest Case 5: Complex tree [5,4,8,11,null,13,4,7,2,null,null,null,1]" << endl;
+        vector<int> nodes = {5, 4, 8, 11, INT_MIN, 13, 4, 7, 2, INT_MIN, INT_MIN, INT_MIN, INT_MIN, INT_MIN, 1};
+        TreeNode* root = treeUtils.createTreeFromLevelOrder(nodes);
+        treeUtils.printTreeLevelOrder(root);
+        
+        int result = solution.maxPathSum(root);
+        cout << "Maximum Path Sum: " << result << endl;
+        cout << "Expected: 48" << endl;
+        
+        treeUtils.deleteTree(root);
+        solution.res = INT_MIN;
+    }
+    
+    // Test Case 6: Tree with zeros
+    {
+        cout << "\nTest Case 6: Tree with zeros [0,1,1]" << endl;
+        vector<int> nodes = {0, 1, 1};
+        TreeNode* root = treeUtils.createTreeFromLevelOrder(nodes);
+        treeUtils.printTreeLevelOrder(root);
+        
+        int result = solution.maxPathSum(root);
+        cout << "Maximum Path Sum: " << result << endl;
+        cout << "Expected: 2" << endl;
+        
+        treeUtils.deleteTree(root);
+        solution.res = INT_MIN;
+    }
+    
+    cout << "\n=========================================" << endl;
+    cout << "All test cases completed!" << endl;
+}
+
+/**
+ * Main function
+ */
+int main() {
+    runTestCases();
+    return 0;
+}
 ```
 
 ## 51. [岛屿数量](https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&envId=top-100-liked)[minor]
@@ -2384,35 +2660,39 @@ lRUCache.get(4);    // 返回 4
 
 
 
-<!-- ## 1. [两数之和](https://leetcode.cn/problems/two-sum/description/)[minor]
-
-**思路**
-
-**代码**
-``` C++ :collapsed-lines=25
-
-``` -->
-
 <!-- 请完善以下代码，并补充测试用例，使得代码可以直接在本地g++编译运行
 ``` 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
-    int maxArea(vector<int>& height) {
-        int i=0, j=height.size()-1;
-        int res = 0;
-
-        while(i<j) {
-            int curr = min(height[i], height[j]) * (j-i);
-            res = max(res, curr);
-
-            if(height[i] <= height[j]) {
-                i++;
-            } else {
-                j--;
-            }
-        }
+    int res = INT_MIN;
+    int maxPathSum(TreeNode* root) {
+        
+        dfs(root);
 
         return res;
+    }
+
+    int dfs(TreeNode* root) {
+
+        if(!root) return 0;
+
+        int left = max(dfs(root -> left), 0);
+        int right = max(dfs(root -> right), 0);
+
+        res = max(res, left+right+root->val);
+
+        return max(left, right) + root->val;
     }
 };
 ``` -->
