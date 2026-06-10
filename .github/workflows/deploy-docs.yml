@@ -31,6 +31,12 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+      
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Approve build scripts
+        run: pnpm approve-builds --allow @parcel/watcher esbuild
 
       - name: 安装依赖
         run: |
